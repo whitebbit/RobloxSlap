@@ -1,0 +1,185 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Localization_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 0756e557c271c0845b906afbadbbd927, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 3203987063427825692
+  m_TableData:
+  - m_Id: 15791693824
+    m_Localized: Characters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7181340647424
+    m_Localized: Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9772627795968
+    m_Localized: Selected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 160290868174848
+    m_Localized: Trace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 237112117043200
+    m_Localized: SPIN!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 284006909816832
+    m_Localized: Free gifts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 297510307966976
+    m_Localized: Exit resets progress!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 321743813685248
+    m_Localized: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 321810494730240
+    m_Localized: Hands
+    m_Metadata:
+      m_Items: []
+  - m_Id: 321915545268224
+    m_Localized: Pets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518181047377920
+    m_Localized: Wheel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518519477379072
+    m_Localized: Gifts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518618991435776
+    m_Localized: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 522739043672064
+    m_Localized: 'The reward is through:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 532435343384576
+    m_Localized: Remove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1805534839840768
+    m_Localized: Unlock Pet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1826039177289728
+    m_Localized: "\u0410utoclick\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2003956725325824
+    m_Localized: Received
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9589682623094784
+    m_Localized: Click to unlock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9590423161020416
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9685054192230400
+    m_Localized: Delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9762012313821184
+    m_Localized: Choose the best
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10043688575180800
+    m_Localized: '{value}<sprite index=1>/ per hit'
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 10045174344458240
+    m_Localized: <sprite index=1>It is necessary to {value}
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 10714823474159616
+    m_Localized: Receive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10765505963106304
+    m_Localized: 1 min.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10765839972311040
+    m_Localized: Health x2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10766430639366144
+    m_Localized: Reward x2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10843422583824384
+    m_Localized: Strength x2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11413083427840000
+    m_Localized: <sprite index=0>{price} Is required
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 11414710553550848
+    m_Localized: Return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11418500446953472
+    m_Localized: <sprite index=1>{value} recommended
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 11419718841933824
+    m_Localized: <color=#3BDA00>Starter</color>
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 11419751842717696
+    m_Localized: <color=#38B2CE>Average</color>
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 11419791982206976
+    m_Localized: <color=#D836C4>Hard</color>
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 11419819563950080
+    m_Localized: <color=#FFCA00>Extreme</color>
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 11419852472459264
+    m_Localized: <color=#FF0000>The final boss</color>
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  references:
+    version: 2
+    RefIds:
+    - rid: 3203987063427825692
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0020c279aeae23000020826808b023000020828f238c2800002002cf109128000020027d2c9228000020022c34922800002082843d922800002082f0439228000020029a4b922800
