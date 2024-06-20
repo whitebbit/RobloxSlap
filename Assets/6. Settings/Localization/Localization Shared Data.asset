@@ -167,6 +167,46 @@ MonoBehaviour:
     m_Key: final_boss
     m_Metadata:
       m_Items: []
+  - m_Id: 12874268221902848
+    m_Key: Enemy_01
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874542248366080
+    m_Key: Enemy_02
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874574657753088
+    m_Key: Enemy_03
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874590671605760
+    m_Key: Enemy_04
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874602436628480
+    m_Key: Enemy_05
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874619339673600
+    m_Key: Enemy_06
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874630819483648
+    m_Key: Enemy_07
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874653665857536
+    m_Key: Enemy_08
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874664478773248
+    m_Key: Enemy_09
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874683910983680
+    m_Key: Enemy_10
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

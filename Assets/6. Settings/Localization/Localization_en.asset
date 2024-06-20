@@ -176,6 +176,46 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
+  - m_Id: 12874268221902848
+    m_Localized: Slapster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874542248366080
+    m_Localized: Fistmaster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874574657753088
+    m_Localized: Punch King
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874590671605760
+    m_Localized: Slapzilla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874602436628480
+    m_Localized: Palms of Fury
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874619339673600
+    m_Localized: Backhander
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874630819483648
+    m_Localized: Clapper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874653665857536
+    m_Localized: Knuckle Buster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874664478773248
+    m_Localized: Smackdown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12874683910983680
+    m_Localized: Thunder Palm
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
