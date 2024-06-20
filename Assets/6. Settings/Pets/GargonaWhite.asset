@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GargonaWhite
   m_EditorClassIdentifier: 
   id: gargona_white_pet
-  dropPercent: 30
-  rarity: 1
+  dropPercent: 15
+  rarity: 2
   prefab: {fileID: -2350354757554953372, guid: ca53cf3f5ca97b7488a8954f3bdab552, type: 3}
   boosterType: 0
   minBooster: 10

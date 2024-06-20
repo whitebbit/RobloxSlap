@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Deer
   m_EditorClassIdentifier: 
   id: deer_pet
-  dropPercent: 25
+  dropPercent: 60
   rarity: 1
   prefab: {fileID: -2391647163173068332, guid: c6a6a56d3d8467240bdd9ebd07aa05a6, type: 3}
   boosterType: 0

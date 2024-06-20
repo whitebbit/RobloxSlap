@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GoldPumpkin
   m_EditorClassIdentifier: 
   id: gold_pumpkin_pet
-  dropPercent: 30
-  rarity: 1
+  dropPercent: 1
+  rarity: 3
   prefab: {fileID: -6519407263713522673, guid: 08ee0b78cdc395341a16bec3cdad4b5e, type: 3}
   boosterType: 0
   minBooster: 10

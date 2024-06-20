@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Unicorn
   m_EditorClassIdentifier: 
   id: unicorn_pet
-  dropPercent: 30
+  dropPercent: 60
   rarity: 1
   prefab: {fileID: 1989091238207132324, guid: dcfaf383d5bf4a84c94237a2f12c1fa2, type: 3}
   boosterType: 0

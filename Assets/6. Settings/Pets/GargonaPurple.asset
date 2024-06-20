@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GargonaPurple
   m_EditorClassIdentifier: 
   id: gargona_purple_pet
-  dropPercent: 30
+  dropPercent: 60
   rarity: 1
   prefab: {fileID: 1253531607806711470, guid: a9a2e929703df324980e375850282d62, type: 3}
   boosterType: 0

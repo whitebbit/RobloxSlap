@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bigfoot
   m_EditorClassIdentifier: 
   id: bigfoot_pet
-  dropPercent: 15
+  dropPercent: 60
   rarity: 1
   prefab: {fileID: -3804529052193921576, guid: 62955583a790a3242b1868ed290a4828, type: 3}
   boosterType: 0

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Snake
   m_EditorClassIdentifier: 
   id: snake_pet
-  dropPercent: 30
-  rarity: 1
+  dropPercent: 15
+  rarity: 2
   prefab: {fileID: 1586886616468769640, guid: 11582de267496bb4bb31773c585cf278, type: 3}
   boosterType: 0
   minBooster: 10

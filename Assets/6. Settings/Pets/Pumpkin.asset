@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pumpkin
   m_EditorClassIdentifier: 
   id: pumpkin_pet
-  dropPercent: 30
+  dropPercent: 60
   rarity: 1
   prefab: {fileID: -1656883776597588761, guid: a83583d3438778740a2266676e0c5780, type: 3}
   boosterType: 0

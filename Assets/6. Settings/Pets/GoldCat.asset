@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GoldCat
   m_EditorClassIdentifier: 
   id: gold_cat_pet
-  dropPercent: 30
-  rarity: 1
+  dropPercent: 1
+  rarity: 3
   prefab: {fileID: 3854668031980477735, guid: 9fa86d97bde8b0c4f827cd2855ec1057, type: 3}
   boosterType: 0
   minBooster: 10
