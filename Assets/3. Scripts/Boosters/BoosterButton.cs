@@ -45,18 +45,14 @@ namespace _3._Scripts.Boosters
             _used = true;
             onActivateBooster?.Invoke();
             cooldownImage.fillAmount = 1;
-            cooldownImage.DOFillAmount(0, timeToDeactivate).SetEase(Ease.Linear);
+            cooldownImage.DOFillAmount(0, timeToDeactivate).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                onDeactivateBooster?.Invoke();
+                adImage.gameObject.SetActive(true);
+                cooldownImage.fillAmount = 0;
+                _used = false;
+            });
             adImage.gameObject.SetActive(false);
-            StartCoroutine(Deactivate());
-        }
-
-        private IEnumerator Deactivate()
-        {
-            yield return new WaitForSeconds(timeToDeactivate);
-            onDeactivateBooster?.Invoke();
-            adImage.gameObject.SetActive(true);
-            cooldownImage.fillAmount = 0;
-            _used = false;
         }
     }
 }

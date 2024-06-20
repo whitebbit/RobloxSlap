@@ -6,6 +6,7 @@ using DG.Tweening;
 using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using VInspector;
 using Random = UnityEngine.Random;
@@ -18,6 +19,12 @@ namespace _3._Scripts.Debugger
         private Button enableButton;
 
         [SerializeField] private Transform enableArrow;
+
+        [Tab("Quality")] [SerializeField] private Volume volume;
+
+        [SerializeField] private Light mainLight;
+
+
         [Tab("Panel")] [SerializeField] private Transform panel;
 
         [Tab("Pet")] [SerializeField] private TMP_InputField petInputField;
@@ -44,21 +51,30 @@ namespace _3._Scripts.Debugger
         }
 
         public void Save() => GBGames.instance.Save();
+
         public void DeleteSaves() => GBGames.Delete();
+
         //public void UnlockPet() => GBGames.saves.petSaves.Unlock(petInputField.text);
         public void UnlockTrail() => GBGames.saves.trailSaves.Unlock(trailInputField.text);
         public void Add1000FirstCurrency() => WalletManager.FirstCurrency += 1000;
         public void Add1000SecondCurrency() => WalletManager.SecondCurrency += 1000;
+        public void ChangePostProcessing() => volume.enabled = !volume.enabled;
+
+        public void ChangeShadow()
+        {
+            mainLight.shadows = mainLight.shadows == LightShadows.None ? LightShadows.Soft : LightShadows.None;
+        }
+
 
         public void UnlockRandomTrail()
         {
             var trails = Configuration.Instance.AllTrails.Where(t => !GBGames.saves.trailSaves.Unlocked(t.ID)).ToList();
-            if(trails.Count <= 0) return;
-            
+            if (trails.Count <= 0) return;
+
             var rand = Random.Range(0, trails.Count);
             GBGames.saves.trailSaves.Unlock(trails[rand].ID);
         }
-        
+
         public void UnlockRandomPet()
         {
             //var pets = Configuration.Instance.AllPets.Where(t => !GBGames.saves.petSaves.Unlocked(t.ID)).ToList();
