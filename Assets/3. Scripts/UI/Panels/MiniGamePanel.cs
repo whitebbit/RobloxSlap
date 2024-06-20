@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using _3._Scripts.Boosters;
 using UnityEngine;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Inputs;
@@ -99,8 +100,9 @@ namespace _3._Scripts.UI.Panels
 
         private void HandlePlayerWin()
         {
-            var effectInstance = CurrencyEffectPanel.Instance.SpawnEffect(effect, rewardType, _rewardCount);
-            effectInstance.Initialize(rewardType, _rewardCount);
+            var rewardC = BoostersHandler.Instance.GetBoosterState("reward_booster") ? _rewardCount * 2 : _rewardCount;
+            var effectInstance = CurrencyEffectPanel.Instance.SpawnEffect(effect, rewardType, rewardC);
+            effectInstance.Initialize(rewardType, rewardC);
             _playerWin = false;
         }
 
@@ -111,6 +113,5 @@ namespace _3._Scripts.UI.Panels
                 component.gameObject.SetActive(state);
             }
         }
-
     }
 }

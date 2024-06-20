@@ -48,16 +48,17 @@ namespace _3._Scripts.Player
 
         private void Update()
         {
-            if (_input.GetAction() && !UIManager.Instance.Active) DoAction();
+            if ((_input.GetAction() || BoostersHandler.Instance.GetBoosterState("auto_clicker")) &&
+                !UIManager.Instance.Active) DoAction();
         }
 
         private void DoAction()
         {
             if (_actionable == null) return;
             if (_isOnCooldown) return;
-            
+
             _isOnCooldown = true;
-            
+
             _animator.DoAction(baseAnimationTime);
         }
 

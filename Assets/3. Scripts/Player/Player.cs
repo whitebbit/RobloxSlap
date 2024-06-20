@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using _3._Scripts.Boosters;
 using _3._Scripts.Characters;
 using _3._Scripts.Config;
 using _3._Scripts.MiniGame;
@@ -47,8 +48,10 @@ namespace _3._Scripts.Player
             return new FighterData
             {
                 photo = photo,
-                health = 100,
-                strength = WalletManager.FirstCurrency
+                health = BoostersHandler.Instance.GetBoosterState("health_booster") ? 200 : 100,
+                strength = BoostersHandler.Instance.GetBoosterState("slap_booster")
+                    ? WalletManager.FirstCurrency * 2
+                    : WalletManager.FirstCurrency
             };
         }
 
@@ -64,7 +67,7 @@ namespace _3._Scripts.Player
             var pets = GBGames.saves.petsSave.selected.Sum(p => p.booster);
             var character = Configuration.Instance.AllCharacters.FirstOrDefault(
                 h => h.ID == GBGames.saves.characterSaves.current).Booster;
-            
+
             return (strengthPerClick + pets + character) * hand;
         }
 
