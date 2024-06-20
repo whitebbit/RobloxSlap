@@ -19,4 +19,4 @@ MonoBehaviour:
   boosterType: 0
   minBooster: 10
   maxBooster: 25
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: c6fb7f3dcf6cd4b4f9d37113f4ba580b, type: 3}
