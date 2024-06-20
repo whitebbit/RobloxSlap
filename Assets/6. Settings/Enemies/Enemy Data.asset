@@ -15,5 +15,7 @@ MonoBehaviour:
   localizationID: 
   icon: {fileID: 21300000, guid: 8c7867b1ed7413b4c8e5a2ee70da3d30, type: 3}
   health: 100
-  strength: 0
+  strength: 10
+  rewardCount: 10
   complexityType: 0
+  model: {fileID: -8679921383154817045, guid: 7178f30bc3be0434a85a0788565fb49e, type: 3}

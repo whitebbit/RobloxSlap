@@ -17,6 +17,8 @@ namespace _3._Scripts.MiniGame
 
         public void GetHit() => Animator().SetTrigger("GetHit");
 
+        public virtual void OnStart(){}
+        public virtual void OnEnd(){}
         public virtual void EndFight(bool win)
         {
             OnSlap = null;

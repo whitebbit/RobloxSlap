@@ -14,32 +14,43 @@ namespace _3._Scripts.Enemies
 {
     public class Enemy : Fighter
     {
-        [Tab("Components")]
-        [SerializeField] private EnemyData data;
+        [Tab("Components")] 
         [SerializeField, Min(1)] private float attackSpeed;
         [SerializeField] private PlayerAnimator animator;
-        [Tab("Texts")] [SerializeField] private LocalizeStringEvent nameText;
+        [Tab("Texts")] [SerializeField]
+        private Transform allTexts;
+        [Space]
+        [SerializeField] private LocalizeStringEvent nameText;
         [SerializeField] private LocalizeStringEvent complexityText;
         [SerializeField] private LocalizeStringEvent recommendationText;
-
-        public EnemyData Data => data;
+        
         private FighterData _fighterData;
+       
 
-        private void Start()
+        public void Initialize(EnemyData data)
         {
-            animator.SetGrounded(true);
-            animator.SetSpeed(0);
+            var obj = Instantiate(data.Model, transform);
+            var anim = obj.GetComponent<Animator>();
+            
+            obj.localScale = Vector3.one * 0.5f;
+            obj.localPosition = Vector3.zero;
 
+            anim.enabled = false;
+            
             _fighterData = new FighterData
             {
                 health = data.Health,
                 strength = data.Strength,
                 photo = data.Icon
             };
-            
-            InitializeText();
-        }
 
+            InitializeText(data);
+            
+            animator.SetAvatar(anim.avatar);
+            animator.SetSpeed(0);
+            animator.SetGrounded(true);
+        }
+        
         public override void StartFight()
         {
             base.StartFight();
@@ -50,6 +61,16 @@ namespace _3._Scripts.Enemies
         {
             base.EndFight(win);
             StopAllCoroutines();
+        }
+
+        public override void OnStart()
+        {
+            allTexts.gameObject.SetActive(false);
+        }
+
+        public override void OnEnd()
+        {
+            allTexts.gameObject.SetActive(true);
         }
 
         public override FighterData FighterData()
@@ -71,7 +92,7 @@ namespace _3._Scripts.Enemies
             }
         }
 
-        private void InitializeText()
+        private void InitializeText(EnemyData data)
         {
             nameText.SetReference(data.LocalizationID);
             complexityText.TextToComplexity(data.ComplexityType);
