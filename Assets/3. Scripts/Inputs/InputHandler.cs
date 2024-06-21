@@ -41,7 +41,7 @@ namespace _3._Scripts.Inputs
             switch (GBGames.deviceType)
             {
                 case DeviceType.Mobile:
-                    mobileInput.gameObject.SetActive(state);
+                    mobileInput.SetState(state);
                     break;
                 case DeviceType.Tablet:
                     break;
