@@ -33,20 +33,10 @@ namespace InstantGamesBridge.Modules.RemoteConfig
         private Action<bool, List<RemoteConfigValue>> _getCallback;
 
         
-        public void Get(Action<bool, List<RemoteConfigValue>> onComplete)
+        public void Get(Dictionary<string, object> options, Action<bool, List<RemoteConfigValue>> onComplete)
         {
             _getCallback = onComplete;
 
-#if !UNITY_EDITOR
-            InstantGamesBridgeRemoteConfigGet("");
-#else
-            OnRemoteConfigGetFailed();
-#endif
-        }
-
-        public void Get(RemoteConfigGetPlatformDependedOptions options, Action<bool, List<RemoteConfigValue>> onComplete)
-        {
-            _getCallback = onComplete;
 #if !UNITY_EDITOR
             InstantGamesBridgeRemoteConfigGet(options.ToJson());
 #else
@@ -64,7 +54,7 @@ namespace InstantGamesBridge.Modules.RemoteConfig
             
             try
             {
-                var container = JsonUtility.FromJson<ValuesContainer>(result.SurroundWithKey("values").FixBooleans().SurroundWithBraces());
+                var container = JsonUtility.FromJson<ValuesContainer>(result.SurroundWithKey("values").ConvertBooleanToCSharp().SurroundWithBraces());
                 values = container.values;
             }
             catch (Exception e)

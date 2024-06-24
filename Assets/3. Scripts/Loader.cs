@@ -30,6 +30,7 @@ namespace _3._Scripts
 
         private void GBGamesOnSaveLoadedCallback()
         {
+            GBGames.InGameLoadingStarted();
             StartCoroutine(InitializeLocalization());
         }
 

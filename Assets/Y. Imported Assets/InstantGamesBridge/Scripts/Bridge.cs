@@ -24,9 +24,8 @@ namespace InstantGamesBridge
         public static DeviceModule device => instance._device; 
         public static LeaderboardModule leaderboard => instance._leaderboard; 
         public static PaymentsModule payments => instance._payments; 
-        public static RemoteConfigModule remoteConfig => instance._remoteConfig;
-        public static bool initialized;
-        
+        public static RemoteConfigModule remoteConfig => instance._remoteConfig; 
+
         private AdvertisementModule _advertisement;
         private GameModule _game;
         private StorageModule _storage;
@@ -38,10 +37,10 @@ namespace InstantGamesBridge
         private PaymentsModule _payments;
         private RemoteConfigModule _remoteConfig;
 
+        public static bool Initialized { get; private set; }
         protected override void Awake()
         {
             base.Awake();
-            initialized = false;
             _platform = new PlatformModule();
             _game = gameObject.AddComponent<GameModule>();
             _player = gameObject.AddComponent<PlayerModule>();
@@ -52,7 +51,8 @@ namespace InstantGamesBridge
             _leaderboard = gameObject.AddComponent<LeaderboardModule>();
             _payments = gameObject.AddComponent<PaymentsModule>();
             _remoteConfig = gameObject.AddComponent<RemoteConfigModule>();
-            initialized = true;
+
+            Initialized = true;
         }
     }
 }

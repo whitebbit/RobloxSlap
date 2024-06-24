@@ -1,5 +1,6 @@
 ﻿#if UNITY_WEBGL
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 #if !UNITY_EDITOR
 using System.Runtime.InteropServices;
@@ -135,7 +136,7 @@ namespace InstantGamesBridge.Modules.Social
         private static extern void InstantGamesBridgeShare(string options);
 
         [DllImport("__Internal")]
-        private static extern void InstantGamesBridgeInviteFriends();
+        private static extern void InstantGamesBridgeInviteFriends(string options);
 
         [DllImport("__Internal")]
         private static extern void InstantGamesBridgeJoinCommunity(string options);
@@ -162,56 +163,41 @@ namespace InstantGamesBridge.Modules.Social
         private Action<bool> _rateCallback;
 
 
-        public void Share(Action<bool> onComplete, params SharePlatformDependedOptions[] platformDependedOptions)
+        public void Share(Dictionary<string, object> options, Action<bool> onComplete = null)
         {
             _shareCallback = onComplete;
-            Share(platformDependedOptions);
-        }
-
-        public void Share(params SharePlatformDependedOptions[] platformDependedOptions)
-        {
 #if !UNITY_EDITOR
-            InstantGamesBridgeShare(platformDependedOptions.ToJson());
+            InstantGamesBridgeShare(options.ToJson());
 #else
             OnShareCompleted("false");
 #endif
         }
 
-        public void InviteFriends(Action<bool> onComplete = null)
+        public void InviteFriends(Dictionary<string, object> options, Action<bool> onComplete = null)
         {
             _inviteFriendsCallback = onComplete;
 #if !UNITY_EDITOR
-            InstantGamesBridgeInviteFriends();
+            InstantGamesBridgeInviteFriends(options.ToJson());
 #else
             OnInviteFriendsCompleted("false");
 #endif
         }
 
-        public void JoinCommunity(Action<bool> onComplete, params JoinCommunityPlatformDependedOptions[] platformDependedOptions)
+        public void JoinCommunity(Dictionary<string, object> options, Action<bool> onComplete = null)
         {
             _joinCommunityCallback = onComplete;
-            JoinCommunity(platformDependedOptions);
-        }
-
-        public void JoinCommunity(params JoinCommunityPlatformDependedOptions[] platformDependedOptions)
-        {
 #if !UNITY_EDITOR
-            InstantGamesBridgeJoinCommunity(platformDependedOptions.ToJson());
+            InstantGamesBridgeJoinCommunity(options.ToJson());
 #else
             OnJoinCommunityCompleted("false");
 #endif
         }
 
-        public void CreatePost(Action<bool> onComplete, params CreatePostPlatformDependedOptions[] platformDependedOptions)
+        public void CreatePost(Dictionary<string, object> options, Action<bool> onComplete = null)
         {
             _createPostCallback = onComplete;
-            CreatePost(platformDependedOptions);
-        }
-
-        public void CreatePost(params CreatePostPlatformDependedOptions[] platformDependedOptions)
-        {
 #if !UNITY_EDITOR
-            InstantGamesBridgeCreatePost(platformDependedOptions.ToJson());
+            InstantGamesBridgeCreatePost(options.ToJson());
 #else
             OnCreatePostCompleted("false");
 #endif

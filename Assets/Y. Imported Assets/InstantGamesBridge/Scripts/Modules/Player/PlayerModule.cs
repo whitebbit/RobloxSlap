@@ -81,7 +81,7 @@ namespace InstantGamesBridge.Modules.Player
                 
                 try
                 {
-                    var photosContainer = JsonUtility.FromJson<PhotosContainer>(json.SurroundWithKey("photos").FixBooleans().SurroundWithBraces());
+                    var photosContainer = JsonUtility.FromJson<PhotosContainer>(json.SurroundWithKey("photos").ConvertBooleanToCSharp().SurroundWithBraces());
                     return photosContainer.photos;
                 }
                 catch (Exception e)
@@ -111,18 +111,18 @@ namespace InstantGamesBridge.Modules.Player
         private static extern string InstantGamesBridgePlayerPhotos();
 
         [DllImport("__Internal")]
-        private static extern void InstantGamesBridgeAuthorizePlayer(string platformSpecifiedOptions);
+        private static extern void InstantGamesBridgeAuthorizePlayer(string options);
 #endif
 
         private Action<bool> _authorizationCallback;
 
 
-        public void Authorize(Action<bool> onComplete = null, params AuthorizePlatformDependedOptions[] platformDependedOptions)
+        public void Authorize(Dictionary<string, object> options = null, Action<bool> onComplete = null)
         {
             _authorizationCallback = onComplete;
 
 #if !UNITY_EDITOR
-            InstantGamesBridgeAuthorizePlayer(platformDependedOptions.ToJson());
+            InstantGamesBridgeAuthorizePlayer(options.ToJson());
 #else
             OnAuthorizeCompleted("false");
 #endif

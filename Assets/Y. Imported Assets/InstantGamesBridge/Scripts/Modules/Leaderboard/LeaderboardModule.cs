@@ -35,18 +35,6 @@ namespace InstantGamesBridge.Modules.Leaderboard
             }
         }
 
-        public bool isMultipleBoardsSupported
-        {
-            get
-            {
-#if !UNITY_EDITOR
-                return InstantGamesBridgeIsLeaderboardMultipleBoardsSupported() == "true";
-#else
-                return false;
-#endif
-            }
-        }
-
         public bool isSetScoreSupported
         {
             get
@@ -91,9 +79,6 @@ namespace InstantGamesBridge.Modules.Leaderboard
         private static extern string InstantGamesBridgeIsLeaderboardNativePopupSupported();
 
         [DllImport("__Internal")]
-        private static extern string InstantGamesBridgeIsLeaderboardMultipleBoardsSupported();
-
-        [DllImport("__Internal")]
         private static extern string InstantGamesBridgeIsLeaderboardSetScoreSupported();
 
         [DllImport("__Internal")]
@@ -120,52 +105,41 @@ namespace InstantGamesBridge.Modules.Leaderboard
         private Action<bool, List<LeaderboardEntry>> _getEntriesCallback;
         private Action<bool> _showNativePopupCallback;
 
-
-        public void SetScore(Action<bool> onComplete, params SetScorePlatformDependedOptions[] platformDependedOptions)
-        {
-            _setScoreCallback = onComplete;
-            SetScore(platformDependedOptions);
-        }
-
-        public void SetScore(params SetScorePlatformDependedOptions[] platformDependedOptions)
+        
+        public void SetScore(Dictionary<string, object> options, Action<bool> onComplete)
         {
 #if !UNITY_EDITOR
-            InstantGamesBridgeLeaderboardSetScore(platformDependedOptions.ToJson());
+            InstantGamesBridgeLeaderboardSetScore(options.ToJson());
 #else
             OnLeaderboardSetScoreCompleted("false");
 #endif
         }
 
-        public void GetScore(Action<bool, int> onComplete, params GetScorePlatformDependedOptions[] platformDependedOptions)
+        public void GetScore(Dictionary<string, object> options, Action<bool, int> onComplete)
         {
             _getScoreCallback = onComplete;
 #if !UNITY_EDITOR
-            InstantGamesBridgeLeaderboardGetScore(platformDependedOptions.ToJson());
+            InstantGamesBridgeLeaderboardGetScore(options.ToJson());
 #else
             OnLeaderboardGetScoreCompleted("false");
 #endif
         }
 
-        public void GetEntries(Action<bool, List<LeaderboardEntry>> onComplete, params GetEntriesPlatformDependedOptions[] platformDependedOptions)
+        public void GetEntries(Dictionary<string, object> options, Action<bool, List<LeaderboardEntry>> onComplete)
         {
             _getEntriesCallback = onComplete;
 #if !UNITY_EDITOR
-            InstantGamesBridgeLeaderboardGetEntries(platformDependedOptions.ToJson());
+            InstantGamesBridgeLeaderboardGetEntries(options.ToJson());
 #else
             OnLeaderboardGetEntriesCompletedSuccess("false");
 #endif
         }
 
-        public void ShowNativePopup(Action<bool> onComplete, params ShowNativePopupPlatformDependedOptions[] platformDependedOptions)
+        public void ShowNativePopup(Dictionary<string, object> options, Action<bool> onComplete = null)
         {
             _showNativePopupCallback = onComplete;
-            ShowNativePopup(platformDependedOptions);
-        }
-
-        public void ShowNativePopup(params ShowNativePopupPlatformDependedOptions[] platformDependedOptions)
-        {
 #if !UNITY_EDITOR
-            InstantGamesBridgeLeaderboardShowNativePopup(platformDependedOptions.ToJson());
+            InstantGamesBridgeLeaderboardShowNativePopup(options.ToJson());
 #else
             OnLeaderboardShowNativePopupCompleted("false");
 #endif

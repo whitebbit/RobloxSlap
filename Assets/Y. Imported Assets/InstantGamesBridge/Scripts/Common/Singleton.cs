@@ -5,7 +5,6 @@ namespace InstantGamesBridge.Common
     public class Singleton<T> : MonoBehaviour where T : Component
     {
         private static T _instance;
-
         private static bool _isApplicationQuitting;
 
         public static T instance

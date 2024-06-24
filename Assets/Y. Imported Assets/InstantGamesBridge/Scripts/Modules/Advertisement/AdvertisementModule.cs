@@ -1,7 +1,8 @@
 ﻿#if UNITY_WEBGL
 using System;
-using UnityEngine;
+using System.Collections.Generic;
 using InstantGamesBridge.Common;
+using UnityEngine;
 #if !UNITY_EDITOR
 using System.Runtime.InteropServices;
 #endif
@@ -58,7 +59,7 @@ namespace InstantGamesBridge.Modules.Advertisement
         private static extern void InstantGamesBridgeSetMinimumDelayBetweenInterstitial(string options);
 
         [DllImport("__Internal")]
-        private static extern void InstantGamesBridgeShowInterstitial(string options);
+        private static extern void InstantGamesBridgeShowInterstitial();
 
         [DllImport("__Internal")]
         private static extern void InstantGamesBridgeShowRewarded();
@@ -73,12 +74,10 @@ namespace InstantGamesBridge.Modules.Advertisement
         private static extern void InstantGamesBridgeHideBanner();
 #endif
 
-        
-        public void ShowBanner(params ShowBannerPlatformDependedOptions[] otherPlatformDependedOptions)
+        public void ShowBanner(Dictionary<string, object> options = null)
         {
 #if !UNITY_EDITOR
-            var options = otherPlatformDependedOptions.ToJson();
-            InstantGamesBridgeShowBanner(options);
+            InstantGamesBridgeShowBanner(options.ToJson());
 #else
             OnBannerStateChanged(BannerState.Loading.ToString());
             OnBannerStateChanged(BannerState.Shown.ToString());
@@ -104,14 +103,13 @@ namespace InstantGamesBridge.Modules.Advertisement
 #endif
         }
 
-        public void ShowInterstitial(bool ignoreDelay = false)
+        public void ShowInterstitial()
         {
 #if !UNITY_EDITOR
-            var json = ignoreDelay.ToString().SurroundWithKey("ignoreDelay").FixBooleans().SurroundWithBraces();
-            InstantGamesBridgeShowInterstitial(json);
+            InstantGamesBridgeShowInterstitial();
 #else
             var delta = DateTime.Now - _lastInterstitialShownTimestamp;
-            if (delta.TotalSeconds > _minimumDelayBetweenInterstitial || ignoreDelay)
+            if (delta.TotalSeconds > _minimumDelayBetweenInterstitial)
             {
                 OnInterstitialStateChanged(InterstitialState.Loading.ToString());
                 OnInterstitialStateChanged(InterstitialState.Opened.ToString());
@@ -124,14 +122,6 @@ namespace InstantGamesBridge.Modules.Advertisement
 #endif
         }
 
-        #if UNITY_EDITOR
-        public bool CanShowInterstitial()
-        {
-            var delta = DateTime.Now - _lastInterstitialShownTimestamp;
-            return delta.TotalSeconds > _minimumDelayBetweenInterstitial;
-        }
-        #endif
-        
         public void ShowRewarded()
         {
 #if !UNITY_EDITOR

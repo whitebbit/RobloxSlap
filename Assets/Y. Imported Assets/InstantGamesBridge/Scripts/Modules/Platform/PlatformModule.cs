@@ -1,7 +1,6 @@
 ﻿#if UNITY_WEBGL
-using System;
-using InstantGamesBridge.Common;
 #if !UNITY_EDITOR
+using System;
 using System.Runtime.InteropServices;
 #endif
 
@@ -10,38 +9,7 @@ namespace InstantGamesBridge.Modules.Platform
     public class PlatformModule
     {
 #if !UNITY_EDITOR
-        public PlatformId id 
-        { 
-            get
-            {
-                var platformId = InstantGamesBridgeGetPlatformId();
-
-                switch (platformId)
-                {
-                    case "vk":
-                        return PlatformId.VK;
-                    
-                    case "yandex":
-                        return PlatformId.Yandex;
-                    
-                    case "crazy_games":
-                        return PlatformId.CrazyGames;
-                    
-                    case "absolute_games":
-                        return PlatformId.AbsoluteGames;
-
-                    case "game_distribution":
-                        return PlatformId.GameDistribution;
-
-                    case "vk_play":
-                        return PlatformId.VKPlay;
-                    
-                    default:
-                        return PlatformId.Mock;
-                }
-            }
-        }
-
+        public string id { get; } = InstantGamesBridgeGetPlatformId();
         public string language { get; } = InstantGamesBridgeGetPlatformLanguage();
         public string payload { get; } = InstantGamesBridgeGetPlatformPayload();
         public string tld { get; } = InstantGamesBridgeGetPlatformTld();
@@ -61,7 +29,7 @@ namespace InstantGamesBridge.Modules.Platform
         [DllImport("__Internal")]
         private static extern void InstantGamesBridgeSendMessageToPlatform(string message);
 #else
-        public PlatformId id => PlatformId.Mock;
+        public string id => "mock";
         public string language => "en";
         public string payload => null;
         public string tld => null;

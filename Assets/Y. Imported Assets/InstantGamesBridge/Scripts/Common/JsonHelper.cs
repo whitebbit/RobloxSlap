@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using InstantGamesBridge.Modules;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace InstantGamesBridge.Common
 {
@@ -20,36 +21,68 @@ namespace InstantGamesBridge.Common
             return "\"" + key + "\":" + json;
         }
 
-        public static string FixBooleans(this string json)
+        public static string ConvertBooleanToCSharp(this string json)
         {
-            return json.Replace("True", "true").Replace("False", "false");
+            return json.Replace("true", "True").Replace("false", "False");
         }
-        
-        public static string ToJson(this PlatformDependedOptionsBase[] platformDependedOptions)
+
+        public static string ToJson(this Dictionary<string, object> data)
         {
-            var json = string.Empty;
-            var alreadyAddedPlatforms = new List<PlatformId>();
+            var sb = new StringBuilder();
+            var isFirst = true;
 
-            for (var i = 0; i < platformDependedOptions.Length; i++)
+            foreach (var item in data)
             {
-                var options = platformDependedOptions[i];
-                var targetPlatform = options.GetTargetPlatform();
-
-                if (alreadyAddedPlatforms.Contains(targetPlatform))
+                if (!isFirst)
                 {
-                    continue;
+                    sb.Append(",");
                 }
+                isFirst = false;
 
-                if (i > 0 && i <= platformDependedOptions.Length - 1)
-                {
-                    json += ", ";
-                }
-
-                json += options.ToJson();
-                alreadyAddedPlatforms.Add(targetPlatform);
+                sb.Append(item.Value.ToJson().SurroundWithKey(item.Key));
             }
 
-            return json;
+            return sb.ToString().SurroundWithBraces();
+        }
+
+        private static string ToJson(this Array data)
+        {
+            var sb = new StringBuilder();
+            sb.Append("[");
+            var isFirst = true;
+
+            foreach (var item in data)
+            {
+                if (!isFirst)
+                {
+                    sb.Append(",");
+                }
+                isFirst = false;
+
+                sb.Append(item.ToJson());
+            }
+
+            sb.Append("]");
+            return sb.ToString();
+        }
+
+        private static string ToJson(this object data)
+        {
+            return data switch
+            {
+                null => "null",
+                string s => "\"" + EscapeString(s) + "\"",
+                int or float or double => data.ToString(),
+                bool b => b ? "true" : "false",
+                Array array => array.ToJson(),
+                Dictionary<string, object> objects => objects.ToJson(),
+                _ => "null"
+            };
+        }
+
+        private static string EscapeString(string str)
+        {
+            return str.Replace("\\", "\\\\").Replace("\"", "\\\"");
         }
     }
 }

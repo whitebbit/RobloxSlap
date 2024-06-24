@@ -1,223 +1,632 @@
 fileFormatVersion: 2
 guid: 2c64c6af0d82b6b4592489531d450d41
-timeCreated: 1516260919
-licenseType: Store
 ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: Big Rock 01
-    100002: Big Rock 02
-    100004: Big Rock 03
-    100006: Box002
-    100008: Grass 01
-    100010: Ground 01
-    100012: Ground 02
-    100014: Ground 03
-    100016: Ground 04
-    100018: Ground 05
-    100020: Ground 06
-    100022: Ground 07
-    100024: Ground 08
-    100026: Ground Rock 01
-    100028: Ground Rock 02
-    100030: Ground Rock 03
-    100032: //RootNode
-    100034: Log 01
-    100036: Male01 NS01
-    100038: Mushroom 01A
-    100040: Mushroom 01B
-    100042: Mushroom 01C
-    100044: Ocean 01
-    100046: Plant 02A
-    100048: Plant 02B
-    100050: Plant 02C
-    100052: Plant 04A
-    100054: Plant 04B
-    100056: Plant 04C
-    100058: Plant 06A
-    100060: Plant 06B
-    100062: Plant 06C
-    100064: Rock 01
-    100066: Rock 02
-    100068: Rock 03
-    100070: Rock 04
-    100072: Rock 05
-    100074: Tree 01A
-    100076: Tree 01B
-    100078: Tree 01C
-    100080: Tree 02A
-    400000: Big Rock 01
-    400002: Big Rock 02
-    400004: Big Rock 03
-    400006: Box002
-    400008: Grass 01
-    400010: Ground 01
-    400012: Ground 02
-    400014: Ground 03
-    400016: Ground 04
-    400018: Ground 05
-    400020: Ground 06
-    400022: Ground 07
-    400024: Ground 08
-    400026: Ground Rock 01
-    400028: Ground Rock 02
-    400030: Ground Rock 03
-    400032: Log 01
-    400034: //RootNode
-    400036: Male01 NS01
-    400038: Mushroom 01A
-    400040: Mushroom 01B
-    400042: Mushroom 01C
-    400044: Ocean 01
-    400046: Plant 02A
-    400048: Plant 02B
-    400050: Plant 02C
-    400052: Plant 04A
-    400054: Plant 04B
-    400056: Plant 04C
-    400058: Plant 06A
-    400060: Plant 06B
-    400062: Plant 06C
-    400064: Rock 01
-    400066: Rock 02
-    400068: Rock 03
-    400070: Rock 04
-    400072: Rock 05
-    400074: Tree 01A
-    400076: Tree 01B
-    400078: Tree 01C
-    400080: Tree 02A
-    2300000: Big Rock 01
-    2300002: Big Rock 02
-    2300004: Big Rock 03
-    2300006: Box002
-    2300008: Grass 01
-    2300010: Ground 01
-    2300012: Ground 02
-    2300014: Ground 03
-    2300016: Ground 04
-    2300018: Ground 05
-    2300020: Ground 06
-    2300022: Ground 07
-    2300024: Ground 08
-    2300026: Ground Rock 01
-    2300028: Ground Rock 02
-    2300030: Ground Rock 03
-    2300032: Log 01
-    2300034: Male01 NS01
-    2300036: Mushroom 01A
-    2300038: Mushroom 01B
-    2300040: Mushroom 01C
-    2300042: Ocean 01
-    2300044: Plant 02A
-    2300046: Plant 02B
-    2300048: Plant 02C
-    2300050: Plant 04A
-    2300052: Plant 04B
-    2300054: Plant 04C
-    2300056: Plant 06A
-    2300058: Plant 06B
-    2300060: Plant 06C
-    2300062: Rock 01
-    2300064: Rock 02
-    2300066: Rock 03
-    2300068: Rock 04
-    2300070: Rock 05
-    2300072: Tree 01A
-    2300074: Tree 01B
-    2300076: Tree 01C
-    2300078: Tree 02A
-    2300080: //RootNode
-    3300000: Big Rock 01
-    3300002: Big Rock 02
-    3300004: Big Rock 03
-    3300006: Box002
-    3300008: Grass 01
-    3300010: Ground 01
-    3300012: Ground 02
-    3300014: Ground 03
-    3300016: Ground 04
-    3300018: Ground 05
-    3300020: Ground 06
-    3300022: Ground 07
-    3300024: Ground 08
-    3300026: Ground Rock 01
-    3300028: Ground Rock 02
-    3300030: Ground Rock 03
-    3300032: Log 01
-    3300034: Male01 NS01
-    3300036: Mushroom 01A
-    3300038: Mushroom 01B
-    3300040: Mushroom 01C
-    3300042: Ocean 01
-    3300044: Plant 02A
-    3300046: Plant 02B
-    3300048: Plant 02C
-    3300050: Plant 04A
-    3300052: Plant 04B
-    3300054: Plant 04C
-    3300056: Plant 06A
-    3300058: Plant 06B
-    3300060: Plant 06C
-    3300062: Rock 01
-    3300064: Rock 02
-    3300066: Rock 03
-    3300068: Rock 04
-    3300070: Rock 05
-    3300072: Tree 01A
-    3300074: Tree 01B
-    3300076: Tree 01C
-    3300078: Tree 02A
-    3300080: //RootNode
-    4300000: Male01 NS01
-    4300002: Ground 01
-    4300004: Ground 02
-    4300006: Ground 03
-    4300008: Rock 01
-    4300010: Box002
-    4300012: Big Rock 01
-    4300014: Tree 02A
-    4300016: Plant 02A
-    4300018: Plant 02B
-    4300020: Plant 02C
-    4300022: Plant 04B
-    4300024: Plant 04C
-    4300026: Ground Rock 01
-    4300028: Ground Rock 02
-    4300030: Ground Rock 03
-    4300032: Tree 01A
-    4300034: Plant 04A
-    4300036: Rock 02
-    4300038: Rock 03
-    4300040: Rock 04
-    4300042: Rock 05
-    4300044: Big Rock 02
-    4300046: Big Rock 03
-    4300048: Tree 01B
-    4300050: Tree 01C
-    4300052: Mushroom 01A
-    4300054: Mushroom 01B
-    4300056: Mushroom 01C
-    4300058: Plant 06A
-    4300060: Plant 06B
-    4300062: Plant 06C
-    4300064: Grass 01
-    4300066: Ocean 01
-    4300068: Ground 04
-    4300070: Ground 05
-    4300072: Ground 06
-    4300074: Ground 07
-    4300076: Ground 08
-    4300078: Log 01
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Big Rock 01
+  - first:
+      1: 100002
+    second: Big Rock 02
+  - first:
+      1: 100004
+    second: Big Rock 03
+  - first:
+      1: 100006
+    second: Box002
+  - first:
+      1: 100008
+    second: Grass 01
+  - first:
+      1: 100010
+    second: Ground 01
+  - first:
+      1: 100012
+    second: Ground 02
+  - first:
+      1: 100014
+    second: Ground 03
+  - first:
+      1: 100016
+    second: Ground 04
+  - first:
+      1: 100018
+    second: Ground 05
+  - first:
+      1: 100020
+    second: Ground 06
+  - first:
+      1: 100022
+    second: Ground 07
+  - first:
+      1: 100024
+    second: Ground 08
+  - first:
+      1: 100026
+    second: Ground Rock 01
+  - first:
+      1: 100028
+    second: Ground Rock 02
+  - first:
+      1: 100030
+    second: Ground Rock 03
+  - first:
+      1: 100032
+    second: //RootNode
+  - first:
+      1: 100034
+    second: Log 01
+  - first:
+      1: 100036
+    second: Male01 NS01
+  - first:
+      1: 100038
+    second: Mushroom 01A
+  - first:
+      1: 100040
+    second: Mushroom 01B
+  - first:
+      1: 100042
+    second: Mushroom 01C
+  - first:
+      1: 100044
+    second: Ocean 01
+  - first:
+      1: 100046
+    second: Plant 02A
+  - first:
+      1: 100048
+    second: Plant 02B
+  - first:
+      1: 100050
+    second: Plant 02C
+  - first:
+      1: 100052
+    second: Plant 04A
+  - first:
+      1: 100054
+    second: Plant 04B
+  - first:
+      1: 100056
+    second: Plant 04C
+  - first:
+      1: 100058
+    second: Plant 06A
+  - first:
+      1: 100060
+    second: Plant 06B
+  - first:
+      1: 100062
+    second: Plant 06C
+  - first:
+      1: 100064
+    second: Rock 01
+  - first:
+      1: 100066
+    second: Rock 02
+  - first:
+      1: 100068
+    second: Rock 03
+  - first:
+      1: 100070
+    second: Rock 04
+  - first:
+      1: 100072
+    second: Rock 05
+  - first:
+      1: 100074
+    second: Tree 01A
+  - first:
+      1: 100076
+    second: Tree 01B
+  - first:
+      1: 100078
+    second: Tree 01C
+  - first:
+      1: 100080
+    second: Tree 02A
+  - first:
+      4: 400000
+    second: Big Rock 01
+  - first:
+      4: 400002
+    second: Big Rock 02
+  - first:
+      4: 400004
+    second: Big Rock 03
+  - first:
+      4: 400006
+    second: Box002
+  - first:
+      4: 400008
+    second: Grass 01
+  - first:
+      4: 400010
+    second: Ground 01
+  - first:
+      4: 400012
+    second: Ground 02
+  - first:
+      4: 400014
+    second: Ground 03
+  - first:
+      4: 400016
+    second: Ground 04
+  - first:
+      4: 400018
+    second: Ground 05
+  - first:
+      4: 400020
+    second: Ground 06
+  - first:
+      4: 400022
+    second: Ground 07
+  - first:
+      4: 400024
+    second: Ground 08
+  - first:
+      4: 400026
+    second: Ground Rock 01
+  - first:
+      4: 400028
+    second: Ground Rock 02
+  - first:
+      4: 400030
+    second: Ground Rock 03
+  - first:
+      4: 400032
+    second: Log 01
+  - first:
+      4: 400034
+    second: //RootNode
+  - first:
+      4: 400036
+    second: Male01 NS01
+  - first:
+      4: 400038
+    second: Mushroom 01A
+  - first:
+      4: 400040
+    second: Mushroom 01B
+  - first:
+      4: 400042
+    second: Mushroom 01C
+  - first:
+      4: 400044
+    second: Ocean 01
+  - first:
+      4: 400046
+    second: Plant 02A
+  - first:
+      4: 400048
+    second: Plant 02B
+  - first:
+      4: 400050
+    second: Plant 02C
+  - first:
+      4: 400052
+    second: Plant 04A
+  - first:
+      4: 400054
+    second: Plant 04B
+  - first:
+      4: 400056
+    second: Plant 04C
+  - first:
+      4: 400058
+    second: Plant 06A
+  - first:
+      4: 400060
+    second: Plant 06B
+  - first:
+      4: 400062
+    second: Plant 06C
+  - first:
+      4: 400064
+    second: Rock 01
+  - first:
+      4: 400066
+    second: Rock 02
+  - first:
+      4: 400068
+    second: Rock 03
+  - first:
+      4: 400070
+    second: Rock 04
+  - first:
+      4: 400072
+    second: Rock 05
+  - first:
+      4: 400074
+    second: Tree 01A
+  - first:
+      4: 400076
+    second: Tree 01B
+  - first:
+      4: 400078
+    second: Tree 01C
+  - first:
+      4: 400080
+    second: Tree 02A
+  - first:
+      23: 2300000
+    second: Big Rock 01
+  - first:
+      23: 2300002
+    second: Big Rock 02
+  - first:
+      23: 2300004
+    second: Big Rock 03
+  - first:
+      23: 2300006
+    second: Box002
+  - first:
+      23: 2300008
+    second: Grass 01
+  - first:
+      23: 2300010
+    second: Ground 01
+  - first:
+      23: 2300012
+    second: Ground 02
+  - first:
+      23: 2300014
+    second: Ground 03
+  - first:
+      23: 2300016
+    second: Ground 04
+  - first:
+      23: 2300018
+    second: Ground 05
+  - first:
+      23: 2300020
+    second: Ground 06
+  - first:
+      23: 2300022
+    second: Ground 07
+  - first:
+      23: 2300024
+    second: Ground 08
+  - first:
+      23: 2300026
+    second: Ground Rock 01
+  - first:
+      23: 2300028
+    second: Ground Rock 02
+  - first:
+      23: 2300030
+    second: Ground Rock 03
+  - first:
+      23: 2300032
+    second: Log 01
+  - first:
+      23: 2300034
+    second: Male01 NS01
+  - first:
+      23: 2300036
+    second: Mushroom 01A
+  - first:
+      23: 2300038
+    second: Mushroom 01B
+  - first:
+      23: 2300040
+    second: Mushroom 01C
+  - first:
+      23: 2300042
+    second: Ocean 01
+  - first:
+      23: 2300044
+    second: Plant 02A
+  - first:
+      23: 2300046
+    second: Plant 02B
+  - first:
+      23: 2300048
+    second: Plant 02C
+  - first:
+      23: 2300050
+    second: Plant 04A
+  - first:
+      23: 2300052
+    second: Plant 04B
+  - first:
+      23: 2300054
+    second: Plant 04C
+  - first:
+      23: 2300056
+    second: Plant 06A
+  - first:
+      23: 2300058
+    second: Plant 06B
+  - first:
+      23: 2300060
+    second: Plant 06C
+  - first:
+      23: 2300062
+    second: Rock 01
+  - first:
+      23: 2300064
+    second: Rock 02
+  - first:
+      23: 2300066
+    second: Rock 03
+  - first:
+      23: 2300068
+    second: Rock 04
+  - first:
+      23: 2300070
+    second: Rock 05
+  - first:
+      23: 2300072
+    second: Tree 01A
+  - first:
+      23: 2300074
+    second: Tree 01B
+  - first:
+      23: 2300076
+    second: Tree 01C
+  - first:
+      23: 2300078
+    second: Tree 02A
+  - first:
+      23: 2300080
+    second: //RootNode
+  - first:
+      33: 3300000
+    second: Big Rock 01
+  - first:
+      33: 3300002
+    second: Big Rock 02
+  - first:
+      33: 3300004
+    second: Big Rock 03
+  - first:
+      33: 3300006
+    second: Box002
+  - first:
+      33: 3300008
+    second: Grass 01
+  - first:
+      33: 3300010
+    second: Ground 01
+  - first:
+      33: 3300012
+    second: Ground 02
+  - first:
+      33: 3300014
+    second: Ground 03
+  - first:
+      33: 3300016
+    second: Ground 04
+  - first:
+      33: 3300018
+    second: Ground 05
+  - first:
+      33: 3300020
+    second: Ground 06
+  - first:
+      33: 3300022
+    second: Ground 07
+  - first:
+      33: 3300024
+    second: Ground 08
+  - first:
+      33: 3300026
+    second: Ground Rock 01
+  - first:
+      33: 3300028
+    second: Ground Rock 02
+  - first:
+      33: 3300030
+    second: Ground Rock 03
+  - first:
+      33: 3300032
+    second: Log 01
+  - first:
+      33: 3300034
+    second: Male01 NS01
+  - first:
+      33: 3300036
+    second: Mushroom 01A
+  - first:
+      33: 3300038
+    second: Mushroom 01B
+  - first:
+      33: 3300040
+    second: Mushroom 01C
+  - first:
+      33: 3300042
+    second: Ocean 01
+  - first:
+      33: 3300044
+    second: Plant 02A
+  - first:
+      33: 3300046
+    second: Plant 02B
+  - first:
+      33: 3300048
+    second: Plant 02C
+  - first:
+      33: 3300050
+    second: Plant 04A
+  - first:
+      33: 3300052
+    second: Plant 04B
+  - first:
+      33: 3300054
+    second: Plant 04C
+  - first:
+      33: 3300056
+    second: Plant 06A
+  - first:
+      33: 3300058
+    second: Plant 06B
+  - first:
+      33: 3300060
+    second: Plant 06C
+  - first:
+      33: 3300062
+    second: Rock 01
+  - first:
+      33: 3300064
+    second: Rock 02
+  - first:
+      33: 3300066
+    second: Rock 03
+  - first:
+      33: 3300068
+    second: Rock 04
+  - first:
+      33: 3300070
+    second: Rock 05
+  - first:
+      33: 3300072
+    second: Tree 01A
+  - first:
+      33: 3300074
+    second: Tree 01B
+  - first:
+      33: 3300076
+    second: Tree 01C
+  - first:
+      33: 3300078
+    second: Tree 02A
+  - first:
+      33: 3300080
+    second: //RootNode
+  - first:
+      43: 4300000
+    second: Male01 NS01
+  - first:
+      43: 4300002
+    second: Ground 01
+  - first:
+      43: 4300004
+    second: Ground 02
+  - first:
+      43: 4300006
+    second: Ground 03
+  - first:
+      43: 4300008
+    second: Rock 01
+  - first:
+      43: 4300010
+    second: Box002
+  - first:
+      43: 4300012
+    second: Big Rock 01
+  - first:
+      43: 4300014
+    second: Tree 02A
+  - first:
+      43: 4300016
+    second: Plant 02A
+  - first:
+      43: 4300018
+    second: Plant 02B
+  - first:
+      43: 4300020
+    second: Plant 02C
+  - first:
+      43: 4300022
+    second: Plant 04B
+  - first:
+      43: 4300024
+    second: Plant 04C
+  - first:
+      43: 4300026
+    second: Ground Rock 01
+  - first:
+      43: 4300028
+    second: Ground Rock 02
+  - first:
+      43: 4300030
+    second: Ground Rock 03
+  - first:
+      43: 4300032
+    second: Tree 01A
+  - first:
+      43: 4300034
+    second: Plant 04A
+  - first:
+      43: 4300036
+    second: Rock 02
+  - first:
+      43: 4300038
+    second: Rock 03
+  - first:
+      43: 4300040
+    second: Rock 04
+  - first:
+      43: 4300042
+    second: Rock 05
+  - first:
+      43: 4300044
+    second: Big Rock 02
+  - first:
+      43: 4300046
+    second: Big Rock 03
+  - first:
+      43: 4300048
+    second: Tree 01B
+  - first:
+      43: 4300050
+    second: Tree 01C
+  - first:
+      43: 4300052
+    second: Mushroom 01A
+  - first:
+      43: 4300054
+    second: Mushroom 01B
+  - first:
+      43: 4300056
+    second: Mushroom 01C
+  - first:
+      43: 4300058
+    second: Plant 06A
+  - first:
+      43: 4300060
+    second: Plant 06B
+  - first:
+      43: 4300062
+    second: Plant 06C
+  - first:
+      43: 4300064
+    second: Grass 01
+  - first:
+      43: 4300066
+    second: Ocean 01
+  - first:
+      43: 4300068
+    second: Ground 04
+  - first:
+      43: 4300070
+    second: Ground 05
+  - first:
+      43: 4300072
+    second: Ground 06
+  - first:
+      43: 4300074
+    second: Ground 07
+  - first:
+      43: 4300076
+    second: Ground 08
+  - first:
+      43: 4300078
+    second: Log 01
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -225,6 +634,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -233,36 +644,55 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 1
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 0
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -272,14 +702,19 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

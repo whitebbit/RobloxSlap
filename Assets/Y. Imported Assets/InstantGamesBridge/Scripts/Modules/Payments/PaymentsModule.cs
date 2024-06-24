@@ -29,10 +29,10 @@ namespace InstantGamesBridge.Modules.Payments
         private static extern string InstantGamesBridgeIsPaymentsSupported();
         
         [DllImport("__Internal")]
-        private static extern void InstantGamesBridgePaymentsPurchase(string id);
+        private static extern void InstantGamesBridgePaymentsPurchase(string options);
 
         [DllImport("__Internal")]
-        private static extern void InstantGamesBridgePaymentsConsumePurchase(string token);
+        private static extern void InstantGamesBridgePaymentsConsumePurchase(string options);
         
         [DllImport("__Internal")]
         private static extern void InstantGamesBridgePaymentsGetPurchases();
@@ -47,23 +47,23 @@ namespace InstantGamesBridge.Modules.Payments
         private Action<bool, List<PaymentsCatalogItemData>> _getCatalogCallback;
 
 
-        public void Purchase(string id, Action<bool> onComplete = null)
+        public void Purchase(Dictionary<string, object> options, Action<bool> onComplete = null)
         {
             _purchaseCallback = onComplete;
 
 #if !UNITY_EDITOR
-            InstantGamesBridgePaymentsPurchase(id);
+            InstantGamesBridgePaymentsPurchase(options.ToJson());
 #else
             OnPaymentsPurchaseCompleted("false");
 #endif
         }
         
-        public void ConsumePurchase(string token, Action<bool> onComplete = null)
+        public void ConsumePurchase(Dictionary<string, object> options, Action<bool> onComplete = null)
         {
             _consumePurchaseCallback = onComplete;
 
 #if !UNITY_EDITOR
-            InstantGamesBridgePaymentsConsumePurchase(token);
+            InstantGamesBridgePaymentsConsumePurchase(options.ToJson());
 #else
             OnPaymentsConsumePurchaseCompleted("false");
 #endif

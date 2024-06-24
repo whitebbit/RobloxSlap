@@ -1,16 +1,17 @@
 using _3._Scripts.UI.Interfaces;
 using DG.Tweening;
+using GBGamesPlugin;
 using UnityEngine;
 
 namespace _3._Scripts.UI
 {
-    public abstract class UIElement: MonoBehaviour, IUIElement
+    public abstract class UIElement : MonoBehaviour, IUIElement
     {
         private bool _enabled;
         private bool onTransition;
         public abstract IUITransition InTransition { get; set; }
         public abstract IUITransition OutTransition { get; set; }
-        
+
         public bool Enabled
         {
             get => _enabled;
@@ -18,22 +19,24 @@ namespace _3._Scripts.UI
             {
                 if (value)
                 {
+                    GBGames.GameplayStopped();
                     UIManager.Instance.Active = true;
                     Open();
                 }
                 else
                 {
+                    GBGames.GameplayStarted();
                     UIManager.Instance.Active = false;
                     Close();
                 }
+
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-
             }
         }
 
-         private Tween currentTween;
-        
+        private Tween currentTween;
+
         public abstract void Initialize();
 
         public virtual void ForceOpen()
@@ -43,6 +46,7 @@ namespace _3._Scripts.UI
             _enabled = true;
             OnOpen();
         }
+
         public virtual void ForceClose()
         {
             OnClose();
@@ -59,7 +63,7 @@ namespace _3._Scripts.UI
                 currentTween?.Kill();
                 currentTween = null;
             }
-            
+
             onTransition = true;
             gameObject.SetActive(true);
             currentTween = InTransition.AnimateIn().OnComplete(() =>
@@ -69,6 +73,7 @@ namespace _3._Scripts.UI
             });
             OnOpen();
         }
+
         private void Close()
         {
             if (onTransition)
@@ -77,7 +82,7 @@ namespace _3._Scripts.UI
                 currentTween?.Kill();
                 currentTween = null;
             }
-            
+
             onTransition = true;
             currentTween = OutTransition.AnimateOut().OnComplete(() =>
             {
@@ -91,6 +96,7 @@ namespace _3._Scripts.UI
         protected virtual void OnOpen()
         {
         }
+
         protected virtual void OnClose()
         {
         }
