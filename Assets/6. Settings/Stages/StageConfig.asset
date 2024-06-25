@@ -22,3 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a61203c8868bb4545b2cca47a1d02f6f, type: 2}
   trainings:
   - {fileID: 11400000, guid: 2fd6c0dedb22a9a40acb5182ebbf9c1f, type: 2}
+  - {fileID: 11400000, guid: 7f41d6afa3e17a84f87a474ab43c3698, type: 2}
+  - {fileID: 11400000, guid: 38810e5fac83a2948a7bab7857f08d94, type: 2}
+  - {fileID: 11400000, guid: 0e655a744970e5340badb267b4525e4d, type: 2}
+  - {fileID: 11400000, guid: b3e52e7f28098b14a8d6ff4f7154ec48, type: 2}
