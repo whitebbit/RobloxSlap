@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd05df2cce5d47ab82b760ad297b8988, type: 3}
   m_Name: TrainingConfig 2
   m_EditorClassIdentifier: 
-  count: 21
-  requiredCount: 0
-  color: {r: 0.27654123, g: 1, b: 0, a: 1}
+  count: 8000000
+  requiredCount: 6.5e+19
+  color: {r: 0.9951428, g: 1, b: 0, a: 1}

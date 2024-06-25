@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: StageConfig 4
   m_EditorClassIdentifier: 
   id: 4
-  petUnlocker: {fileID: 11400000, guid: cdc1652cebbd26a49b07cd01404f9cb0, type: 2}
+  petUnlocker: {fileID: 11400000, guid: dd6ae3ed36e6ae34083d701f8c890b7e, type: 2}
   enemies:
-  - {fileID: 11400000, guid: 732f822820a581b4b91b6f3b82510f84, type: 2}
-  - {fileID: 11400000, guid: 53ed68ab42437014aa71fba1c4d79154, type: 2}
-  - {fileID: 11400000, guid: d8528689f3945d54c8f534807a10e69b, type: 2}
-  - {fileID: 11400000, guid: 45966362fee40b74a8d8653d19cece97, type: 2}
-  - {fileID: 11400000, guid: a61203c8868bb4545b2cca47a1d02f6f, type: 2}
+  - {fileID: 11400000, guid: 50e044be3d4b993478d801e7eca61e43, type: 2}
+  - {fileID: 11400000, guid: 56123c41b275db948889e4a2b6ad315a, type: 2}
+  - {fileID: 11400000, guid: 44b876066cfd0754ab4013b704ec7239, type: 2}
+  - {fileID: 11400000, guid: f538ca6dabb030b498e9ffd08915b42f, type: 2}
   trainings:
-  - {fileID: 11400000, guid: 2fd6c0dedb22a9a40acb5182ebbf9c1f, type: 2}
+  - {fileID: 11400000, guid: a6e5e112c022f754bb95633f7e36d40f, type: 2}
+  - {fileID: 11400000, guid: 1d9631bd5988e724f95f52273be4dd64, type: 2}
+  - {fileID: 11400000, guid: f8e94beffe257cc4895bc08468241f30, type: 2}
+  - {fileID: 11400000, guid: 4a652d77f7b1c904695375af3279df2e, type: 2}
+  - {fileID: 11400000, guid: 245a842bcb1780d41bad701c64873af5, type: 2}
