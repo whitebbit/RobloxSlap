@@ -10,15 +10,20 @@ namespace _3._Scripts.Stages.Scriptable
     public class StageConfig : ScriptableObject
     {
         [SerializeField, Min(0)] private int id;
-        [Space] [SerializeField] private PetUnlockerConfig petUnlocker;
-        
+        [SerializeField, Min(0)] private float teleportPrice;
+        [SerializeField] private float giftBooster;
+        [Header("Configs")] 
+        [SerializeField] private PetUnlockerConfig petUnlocker;
         [SerializeField] private List<EnemyData> enemies = new();
         [SerializeField] private List<TrainingConfig> trainings = new ();
 
+        public float GiftBooster => giftBooster;
         public PetUnlockerConfig PetUnlocker => petUnlocker;
         public List<EnemyData> Enemies => enemies;
         public List<TrainingConfig> Trainings => trainings;
         public int ID => id;
+
+        public float TeleportPrice => teleportPrice;
         
         
     }

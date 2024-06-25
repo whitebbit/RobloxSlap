@@ -12,8 +12,11 @@ namespace _3._Scripts.Stages
     public class StageController : Singleton<StageController>
     {
         [SerializeField] private List<Stage> stages = new();
+        
+        public Stage CurrentStage { get; private set; }
         private int _activeStageID;
-
+        private int _currentID;
+        
         private void Start()
         {
 #if UNITY_EDITOR
@@ -26,14 +29,17 @@ namespace _3._Scripts.Stages
 
         public void TeleportToNextStage()
         {
-            GBGames.saves.stageID += 1;
-            TeleportToStage(GBGames.saves.stageID);
+            _currentID += 1;
+            if (_currentID > GBGames.saves.stageID)
+                GBGames.saves.stageID = _currentID;
+            TeleportToStage(_currentID);
             GBGames.instance.Save();
         }
 
         public void TeleportToPreviousStage()
         {
-            TeleportToStage(GBGames.saves.stageID - 1);
+            _currentID -= 1;
+            TeleportToStage(_currentID);
         }
 
         private void TeleportToStage(int id)
@@ -42,6 +48,9 @@ namespace _3._Scripts.Stages
             
             if (stage == null) return;
             
+            CurrentStage = stage;
+            _currentID = id;
+
             foreach (var s in stages)
             {
                 s.gameObject.SetActive(false);
@@ -50,7 +59,8 @@ namespace _3._Scripts.Stages
             var spawnPoint = stage.SpawnPoint.position;
 
             stage.gameObject.SetActive(true);
-
+            stage.Initialize();
+            
             Player.Player.instance.Teleport(spawnPoint);
         }
 

@@ -1,5 +1,6 @@
 ﻿using _3._Scripts.Config;
 using _3._Scripts.Currency.Enums;
+using _3._Scripts.UI.Extensions;
 using _3._Scripts.Wallet;
 using DG.Tweening;
 using TMPro;
@@ -20,7 +21,7 @@ namespace _3._Scripts.UI.Effects
         {
             var image = Configuration.Instance.GetCurrency(type).Icon;
             icon.sprite = image;
-            icon.SetNativeSize();
+            icon.ScaleImage();
             counter.text = $"+{WalletManager.ConvertToWallet((decimal) count)}";
             canvasGroup.alpha = 0;
 

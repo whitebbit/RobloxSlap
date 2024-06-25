@@ -31,9 +31,10 @@ namespace _3._Scripts.Actions
 
         private float _requiredCount;
         private float _count;
-        
+        private Vector3 _startPosition;
         public void Initialize(TrainingConfig config)
         {
+            _startPosition = shakeObject.localPosition;
             _count = config.Count;
             _requiredCount = config.RequiredCount;
             
@@ -46,12 +47,11 @@ namespace _3._Scripts.Actions
         {
             if(WalletManager.GetQuantityByType(currencyType) < _requiredCount) return;
             
-            var position = shakeObject.localPosition;
             var training = Player.Player.instance.GetTrainingStrength(_count);
             var obj = CurrencyEffectPanel.Instance.SpawnEffect(effect, currencyType, training);
             
             obj.Initialize(currencyType, training);
-            shakeObject.DOShakePosition(0.25f, 0.25f, 50).OnComplete(() => shakeObject.localPosition = position);
+            shakeObject.DOShakePosition(0.25f, 0.25f, 50).OnComplete(() => shakeObject.localPosition = _startPosition);
             particle.Play();
         }
     }

@@ -48,6 +48,8 @@ namespace _3._Scripts.Pets
 
         private void PopulatePetSlots()
         {
+            if(content.childCount > 0) return;
+            
             _data.Sort((x, y) => y.DropPercent.CompareTo(x.DropPercent));
             foreach (var petData in _data)
             {

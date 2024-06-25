@@ -1,6 +1,7 @@
 ﻿using System;
 using _3._Scripts.Config;
 using _3._Scripts.Currency.Enums;
+using _3._Scripts.UI.Extensions;
 using _3._Scripts.Wallet;
 using DG.Tweening;
 using TMPro;
@@ -29,6 +30,8 @@ namespace _3._Scripts.Currency
             var currency = Configuration.Instance.GetCurrency(type);
             icon.sprite = currency.Icon;
             table.color = currency.DarkColor;
+            icon.ScaleImage();
+
             switch (type)
             {
                 case CurrencyType.First:

@@ -11,16 +11,33 @@ namespace _3._Scripts.Stages
     public class StagePortal : MonoBehaviour
     {
         [SerializeField] private TeleportType type;
-        [SerializeField] private float teleportPrice;
+        private float _teleportPrice;
         [SerializeField] private LocalizeStringEvent text;
 
+        public TeleportType Type => type;
+
+        public void SetPrice(float price)
+        {
+            _teleportPrice = price;
+            switch (type)
+            {
+                case TeleportType.Next:
+                    text.SetReference("teleport_price");
+                    text.SetVariable("price", WalletManager.ConvertToWallet((decimal) _teleportPrice));
+                    break;
+                case TeleportType.Previous:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
         private void Start()
         {
             switch (type)
             {
                 case TeleportType.Next:
                     text.SetReference("teleport_price");
-                    text.SetVariable("price", WalletManager.ConvertToWallet((decimal) teleportPrice));
+                    text.SetVariable("price", WalletManager.ConvertToWallet((decimal) _teleportPrice));
                     break;
                 case TeleportType.Previous:
                     text.SetReference("teleport_return");
@@ -38,7 +55,7 @@ namespace _3._Scripts.Stages
             switch (type)
             {
                 case TeleportType.Next:
-                    if (WalletManager.SecondCurrency < teleportPrice) return;
+                    if (WalletManager.SecondCurrency < _teleportPrice) return;
 
                     StageController.Instance.TeleportToNextStage();
                     break;

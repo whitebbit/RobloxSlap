@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _3._Scripts.UI.Extensions;
 using _3._Scripts.UI.Scriptable.Roulette;
 using DG.Tweening;
 using TMPro;
@@ -24,25 +25,37 @@ namespace _3._Scripts.UI.Elements
         [SerializeField]private Timer timer;
         private bool _rewarded;
 
+        private bool _firstInitialization;
+        
         public void Initialize()
         {
-            GetComponent<Button>().onClick.AddListener(GetReward);
-            timer.StartTimer(timeToTake);
-            timer.OnTimerEnd += () =>
+            if (!_firstInitialization)
             {
-                receiveText.gameObject.SetActive(true);
-                receiveText.DOFade(1, 0f);
+                GetComponent<Button>().onClick.AddListener(GetReward);
+                
+                timer.StartTimer(timeToTake);
+                timer.OnTimerEnd += () =>
+                {
+                    receiveText.gameObject.SetActive(true);
+                    receiveText.DOFade(1, 0f);
 
-                timer.gameObject.SetActive(false);
-            };
+                    timer.gameObject.SetActive(false);
+                    
+                };
+                
+                gotImage.DOFade(0, 0f);
+                gotImage.gameObject.SetActive(false);
+                receivedText.DOFade(0, 0f);
+                receivedText.gameObject.SetActive(false);
+                receiveText.DOFade(0, 0f);
+                receiveText.gameObject.SetActive(false);
+
+                _firstInitialization = true;
+            }
+            
             icon.sprite = item.Icon();
+            icon.ScaleImage();
             title.text = string.IsNullOrEmpty(item.Title()) ? "" : $"x{item.Title()}";
-            gotImage.DOFade(0, 0f);
-            gotImage.gameObject.SetActive(false);
-            receivedText.DOFade(0, 0f);
-            receivedText.gameObject.SetActive(false);
-            receiveText.DOFade(0, 0f);
-            receiveText.gameObject.SetActive(false);
         }
 
         private void GetReward()

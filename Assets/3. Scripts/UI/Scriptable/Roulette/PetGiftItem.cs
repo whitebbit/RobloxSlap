@@ -13,8 +13,7 @@ namespace _3._Scripts.UI.Scriptable.Roulette
         {
             return data.Icon;
         }
-
-
+        
         public override string Title()
         {
             return "";

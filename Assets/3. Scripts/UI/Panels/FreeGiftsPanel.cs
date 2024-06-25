@@ -13,11 +13,16 @@ namespace _3._Scripts.UI.Panels
         {
             InTransition = transition;
             OutTransition = transition;
+            
+        }
+
+        protected override void OnOpen()
+        {
+            base.OnOpen();
             foreach (var slot in slots)
             {
                 slot.Initialize();
             }
         }
-        
     }
 }

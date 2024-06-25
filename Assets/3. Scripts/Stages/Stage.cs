@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _3._Scripts.Actions;
 using _3._Scripts.Pets;
+using _3._Scripts.Stages.Enums;
 using _3._Scripts.Stages.Scriptable;
 using UnityEngine;
 using VInspector;
@@ -14,16 +16,24 @@ namespace _3._Scripts.Stages
         [SerializeField] private Transform spawnPoint;
 
         public Transform SpawnPoint => spawnPoint;
-
+        public float GiftBooster => config.GiftBooster;
         public int ID => config.ID;
 
-        private void Awake()
+        public void Initialize()
         {
             InitializeEnemy();
             InitializePetUnlocker();
             InitializeTraining();
+            InitializeTeleport();
         }
 
+        private void InitializeTeleport()
+        {
+            var obj = GetComponentsInChildren<StagePortal>().FirstOrDefault(s => s.Type == TeleportType.Next);
+            if(obj != null)
+                obj.SetPrice(config.TeleportPrice);
+        }
+        
         private void InitializeEnemy()
         {
             var obj = GetComponentsInChildren<Interactive.MiniGame>();

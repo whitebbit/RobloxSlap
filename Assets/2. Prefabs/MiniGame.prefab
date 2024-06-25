@@ -721,7 +721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0132acc5fa7242e181be1ea8781d095b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 0}
   enemyPrefab: {fileID: 1996508843137607846, guid: c0b7a580d76ad644b8830ab8ca1e7d84, type: 3}
   virtualCamera: {fileID: 6431574359921663622}
   playerPoint: {fileID: 9221788403065127692}
@@ -746,5 +745,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 3, z: 3}
+  m_Size: {x: 1.82, y: 3, z: 1.55}
   m_Center: {x: 0, y: 1, z: 0}

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<sprite index=0>{price} \u0422\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044F"
+  m_text: <sprite index=0>{price} Is required
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c270d616ca595641a526ed6ad73b30e, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 36d4ad34f8357e54b86ff392248622d1, type: 2}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_fontSizeMin: 0.1
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:0756e557c271c0845b906afbadbbd927
     m_TableEntryReference:
-      m_KeyId: 11414710553550848
+      m_KeyId: 11413083427840000
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -516,7 +516,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  teleportPrice: 0
   text: {fileID: 5174141502866033558}
 --- !u!1001 &8364896997239180941
 PrefabInstance:
@@ -529,6 +528,10 @@ PrefabInstance:
     - target: {fileID: 1662323936096388, guid: d634b2980723ef249938730c1a27905d, type: 3}
       propertyPath: m_Name
       value: Entrance 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821079277348491, guid: d634b2980723ef249938730c1a27905d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4595723548689694, guid: d634b2980723ef249938730c1a27905d, type: 3}
       propertyPath: m_RootOrder
