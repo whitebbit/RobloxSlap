@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01cac3bca2d14b39ace880293787f63a, type: 3}
-  m_Name: Unicorn
+  m_Name: Bigfoot 1
   m_EditorClassIdentifier: 
-  id: unicorn_pet
-  dropPercent: 60
-  rarity: 1
-  prefab: {fileID: 1989091238207132324, guid: dcfaf383d5bf4a84c94237a2f12c1fa2, type: 3}
+  id: bigfoot_pet
+  dropPercent: 15
+  rarity: 2
+  prefab: {fileID: -3804529052193921576, guid: 62955583a790a3242b1868ed290a4828, type: 3}
   boosterType: 0
-  minBooster: 141
-  maxBooster: 155
-  icon: {fileID: 21300000, guid: 6db9c67f0c4febd40a6adfaec8e930aa, type: 3}
+  minBooster: 54
+  maxBooster: 69
+  icon: {fileID: 21300000, guid: 6782aaa6532733b4a918652153e8adf6, type: 3}

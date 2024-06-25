@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df4ffaf036fd46eb984e2fc8f15c2f42, type: 3}
-  m_Name: wind_hand
+  m_Name: 18 star_hand
   m_EditorClassIdentifier: 
-  id: wind_hand
+  id: star_hand
   icon: {fileID: 21300000, guid: eb2cbd0984b4ed44ca3eb703d056ad04, type: 3}
   rarity: 2
   currencyType: 0
-  price: 0
-  booster: 2
-  color: {r: 0.8078432, g: 0.9490197, b: 0.95294124, a: 1}
-  texture: {fileID: 2800000, guid: e34aefa49c9b2a34098ae5fbc657ede4, type: 3}
+  price: 1000000
+  booster: 1000000
+  color: {r: 0.9960785, g: 0.82745105, b: 0.37647063, a: 1}
+  texture: {fileID: 2800000, guid: 43cd41da4856a4880b2669b2faa31301, type: 3}
   particle: {fileID: 605322129208036338, guid: e27367905292e09488807fd0027669cc, type: 3}

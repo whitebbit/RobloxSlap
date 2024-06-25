@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01cac3bca2d14b39ace880293787f63a, type: 3}
-  m_Name: GargonaWhite
+  m_Name: 1 Cat 1
   m_EditorClassIdentifier: 
-  id: gargona_white_pet
-  dropPercent: 15
-  rarity: 2
-  prefab: {fileID: -2350354757554953372, guid: ca53cf3f5ca97b7488a8954f3bdab552, type: 3}
+  id: cat_pet
+  dropPercent: 60
+  rarity: 1
+  prefab: {fileID: 5133892070346818555, guid: f780663713dd88a4f990fe9aea849bca, type: 3}
   boosterType: 0
-  minBooster: 85
-  maxBooster: 91
-  icon: {fileID: 21300000, guid: c6fb7f3dcf6cd4b4f9d37113f4ba580b, type: 3}
+  minBooster: 113
+  maxBooster: 114
+  icon: {fileID: 21300000, guid: 84a5749ccbc45704696c40ee02ed0f79, type: 3}
