@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01cac3bca2d14b39ace880293787f63a, type: 3}
-  m_Name: GoldUnicorn
+  m_Name: Dragon
   m_EditorClassIdentifier: 
-  id: gold_unicorn_pet
-  dropPercent: 1
-  rarity: 3
-  prefab: {fileID: 5558371338247227444, guid: d740425c66232194d8393faa1b5ffaf9, type: 3}
+  id: dragon_pet
+  dropPercent: 15
+  rarity: 2
+  prefab: {fileID: -9001622260480800953, guid: 3b5f6a06c424e704f873fbee3144e697, type: 3}
   boosterType: 0
-  minBooster: 10
-  maxBooster: 25
-  icon: {fileID: 21300000, guid: 9281b2002cadf824b8e96aeb0b492bc5, type: 3}
+  minBooster: 29
+  maxBooster: 38
+  icon: {fileID: 21300000, guid: c460c53292293c941861fb6d82c95480, type: 3}

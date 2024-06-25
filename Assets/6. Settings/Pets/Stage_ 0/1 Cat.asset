@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01cac3bca2d14b39ace880293787f63a, type: 3}
-  m_Name: Snake
+  m_Name: 1 Cat
   m_EditorClassIdentifier: 
-  id: snake_pet
-  dropPercent: 15
-  rarity: 2
-  prefab: {fileID: 1586886616468769640, guid: 11582de267496bb4bb31773c585cf278, type: 3}
+  id: cat_pet
+  dropPercent: 60
+  rarity: 1
+  prefab: {fileID: 5133892070346818555, guid: f780663713dd88a4f990fe9aea849bca, type: 3}
   boosterType: 0
-  minBooster: 10
-  maxBooster: 25
-  icon: {fileID: 21300000, guid: a04133bc544876f4381b849538afbe3b, type: 3}
+  minBooster: 3
+  maxBooster: 6
+  icon: {fileID: 21300000, guid: 84a5749ccbc45704696c40ee02ed0f79, type: 3}

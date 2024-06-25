@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01cac3bca2d14b39ace880293787f63a, type: 3}
-  m_Name: GoldPumpkin
+  m_Name: Pumpkin
   m_EditorClassIdentifier: 
-  id: gold_pumpkin_pet
-  dropPercent: 1
-  rarity: 3
-  prefab: {fileID: -6519407263713522673, guid: 08ee0b78cdc395341a16bec3cdad4b5e, type: 3}
+  id: pumpkin_pet
+  dropPercent: 60
+  rarity: 1
+  prefab: {fileID: -1656883776597588761, guid: a83583d3438778740a2266676e0c5780, type: 3}
   boosterType: 0
-  minBooster: 10
-  maxBooster: 25
-  icon: {fileID: 21300000, guid: f32ab47c569166e469db2a9821c381ba, type: 3}
+  minBooster: 70
+  maxBooster: 82
+  icon: {fileID: 21300000, guid: 7dbb8984438c96a418f7e2142a58ce5e, type: 3}

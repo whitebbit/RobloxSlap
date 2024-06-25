@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01cac3bca2d14b39ace880293787f63a, type: 3}
-  m_Name: Cat
+  m_Name: Deer
   m_EditorClassIdentifier: 
-  id: cat_pet
+  id: deer_pet
   dropPercent: 60
   rarity: 1
-  prefab: {fileID: 5133892070346818555, guid: f780663713dd88a4f990fe9aea849bca, type: 3}
+  prefab: {fileID: -2391647163173068332, guid: c6a6a56d3d8467240bdd9ebd07aa05a6, type: 3}
   boosterType: 0
-  minBooster: 10
-  maxBooster: 25
-  icon: {fileID: 21300000, guid: 84a5749ccbc45704696c40ee02ed0f79, type: 3}
+  minBooster: 21
+  maxBooster: 28
+  icon: {fileID: 21300000, guid: a361409250141c34f83b3f22c6b8be31, type: 3}
