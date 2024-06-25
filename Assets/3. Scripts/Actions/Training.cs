@@ -19,6 +19,7 @@ namespace _3._Scripts.Actions
         [Tab("Settings")]
         [SerializeField] private CurrencyType currencyType;
         [SerializeField] private CurrencyCounterEffect effect;
+        [SerializeField] private Transform shakeObject;
         [SerializeField] private ParticleSystem particle;
         
         [Tab("Count")]
@@ -37,12 +38,12 @@ namespace _3._Scripts.Actions
         {
             if(WalletManager.GetQuantityByType(currencyType) < requiredCount) return;
             
-            var position = transform.localPosition;
+            var position = shakeObject.localPosition;
             var training = Player.Player.instance.GetTrainingStrength(count);
             var obj = CurrencyEffectPanel.Instance.SpawnEffect(effect, currencyType, training);
             
             obj.Initialize(currencyType, training);
-            transform.DOShakePosition(0.25f, 0.25f, 50).OnComplete(() => transform.localPosition = position);
+            shakeObject.DOShakePosition(0.25f, 0.25f, 50).OnComplete(() => shakeObject.localPosition = position);
             particle.Play();
         }
     }

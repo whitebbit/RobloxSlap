@@ -1,4 +1,5 @@
 using _3._Scripts.UI.Interfaces;
+using _3._Scripts.UI.Panels;
 using DG.Tweening;
 using GBGamesPlugin;
 using UnityEngine;
@@ -19,13 +20,15 @@ namespace _3._Scripts.UI
             {
                 if (value)
                 {
-                    GBGames.GameplayStopped();
+                    if (!(this is MiniGamePanel))
+                        GBGames.GameplayStopped();
                     UIManager.Instance.Active = true;
                     Open();
                 }
                 else
                 {
-                    GBGames.GameplayStarted();
+                    if (!(this is MiniGamePanel))
+                        GBGames.GameplayStarted();
                     UIManager.Instance.Active = false;
                     Close();
                 }
