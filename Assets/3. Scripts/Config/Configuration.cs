@@ -34,8 +34,9 @@ namespace _3._Scripts.Config
 
         private void Start()
         {
-            GBGames.GameReady();
             GBGames.InGameLoadingStopped();
+            GBGames.GameplayStarted();
+            GBGames.GameReady();
         }
     }
 }

@@ -15,23 +15,26 @@ namespace _3._Scripts.Interactive
     public class MiniGame : MonoBehaviour, IInteractive
     {
         [Tab("Fight components")]
-        [SerializeField] private EnemyData enemyData;
         [SerializeField] private Enemy enemyPrefab;
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
         [Tab("Transforms")] 
         [SerializeField] private Transform playerPoint;
         [SerializeField] private Transform enemyPoint;
         [SerializeField] private Transform useTutorialObject;
+        
+        private EnemyData _enemyData;
         private Fighter _enemy;
         
         private bool _fightStarted;
 
-        private void Awake()
+        public void Initialize(EnemyData data)
         {
             var enemy = Instantiate(enemyPrefab, transform);
+
+            _enemyData = data;
             
             enemy.transform.localPosition = enemyPoint.localPosition;
-            enemy.Initialize(enemyData);
+            enemy.Initialize(_enemyData);
             
             _enemy = enemy;
         }
@@ -54,7 +57,7 @@ namespace _3._Scripts.Interactive
             var player = Player.Player.instance;
 
             panel.Enabled = true;
-            panel.StartMiniGame(Player.Player.instance, _enemy, enemyData.RewardCount, EndFight);
+            panel.StartMiniGame(Player.Player.instance, _enemy, _enemyData.RewardCount, EndFight);
 
             useTutorialObject.gameObject.SetActive(false);
 

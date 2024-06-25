@@ -228,7 +228,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2c847b973a8657a45a12e1da38420ae2, type: 2}
   - {fileID: 11400000, guid: 86d141beaf651f04891da25baff18dce, type: 2}
   - {fileID: 11400000, guid: 757af53f17a80fc4fa3c83b333efdb75, type: 2}
-  price: 2121212121
+  price: 0
   priceText: {fileID: 3467557758704653883}
   eggModel: {fileID: 6330137154180754707}
   canvas: {fileID: 225064227499183077}
@@ -1187,4 +1187,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobile: {fileID: 8976302596816574566}
+  mobile3D: {fileID: 0}
   pc: {fileID: 1818538091400055021}

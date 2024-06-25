@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Cat
   m_EditorClassIdentifier: 
   id: cat_pet
-  dropPercent: 15
-  rarity: 2
+  dropPercent: 60
+  rarity: 1
   prefab: {fileID: 5133892070346818555, guid: f780663713dd88a4f990fe9aea849bca, type: 3}
   boosterType: 0
   minBooster: 10

@@ -17,9 +17,7 @@ namespace _3._Scripts.Pets
 {
     public class PetUnlocker : MonoBehaviour, IInteractive
     {
-        [SerializeField] private List<PetData> data = new();
         [Tab("Price Settings")]
-        [SerializeField] private float price;
         [SerializeField] private TMP_Text priceText;
         
         [Tab("Interactive Settings")]
@@ -30,8 +28,14 @@ namespace _3._Scripts.Pets
         [SerializeField] private RectTransform content;
         [SerializeField] private PetUnlockerSlot slotPrefab;
         
-        private void Start()
+        private List<PetData> _data = new();
+
+        private float _price;
+        public void Initialize(PetUnlockerConfig config)
         {
+            _data = config.Pets;
+            _price = config.Price;
+            
             InitializeUI();
             PopulatePetSlots();
             SetInitialVisibility();
@@ -39,13 +43,13 @@ namespace _3._Scripts.Pets
         
         private void InitializeUI()
         {
-            priceText.text = $"<sprite index=0>{WalletManager.ConvertToWallet((decimal) price)}";
+            priceText.text = $"<sprite index=0>{WalletManager.ConvertToWallet((decimal) _price)}";
         }
 
         private void PopulatePetSlots()
         {
-            data.Sort((x, y) => y.DropPercent.CompareTo(x.DropPercent));
-            foreach (var petData in data)
+            _data.Sort((x, y) => y.DropPercent.CompareTo(x.DropPercent));
+            foreach (var petData in _data)
             {
                 var petSlot = Instantiate(slotPrefab, content);
                 petSlot.Initialize(petData.Icon, petData.DropPercent);
@@ -60,11 +64,11 @@ namespace _3._Scripts.Pets
 
         private PetData GetRandomPet()
         {
-            var totalWeight = data.Sum(d => d.DropPercent);
+            var totalWeight = _data.Sum(d => d.DropPercent);
             var randomValue = Random.Range(0, totalWeight);
             var cumulativeWeight = 0f;
 
-            foreach (var petData in data)
+            foreach (var petData in _data)
             {
                 cumulativeWeight += petData.DropPercent;
                 if (randomValue <= cumulativeWeight)
@@ -83,7 +87,7 @@ namespace _3._Scripts.Pets
 
         public void Interact()
         {
-            if (GBGames.saves.petsSave.MaxUnlocked(25) || !WalletManager.TrySpend(CurrencyType.Second, price))
+            if (GBGames.saves.petsSave.MaxUnlocked(25) || !WalletManager.TrySpend(CurrencyType.Second, _price))
                 return;
 
             var panel = UIManager.Instance.GetPanel<PetUnlockerPanel>();

@@ -1,5 +1,6 @@
 ﻿using System;
 using _3._Scripts.Actions.Interfaces;
+using _3._Scripts.Actions.Scriptable;
 using _3._Scripts.Config;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Localization;
@@ -20,26 +21,33 @@ namespace _3._Scripts.Actions
         [SerializeField] private CurrencyType currencyType;
         [SerializeField] private CurrencyCounterEffect effect;
         [SerializeField] private Transform shakeObject;
-        [SerializeField] private ParticleSystem particle;
+        [SerializeField] private MeshRenderer mesh;
         
+        [SerializeField] private ParticleSystem particle;
         [Tab("Count")]
-        [SerializeField] private float count;
         [SerializeField] private LocalizeStringEvent countText;
         [Tab("Required")]
-        [SerializeField] private float requiredCount;
         [SerializeField] private LocalizeStringEvent requiredText;
-        private void Start()
+
+        private float _requiredCount;
+        private float _count;
+        
+        public void Initialize(TrainingConfig config)
         {
-            requiredText.SetVariable("value", WalletManager.ConvertToWallet((decimal) requiredCount));
-            countText.SetVariable("value", WalletManager.ConvertToWallet((decimal) count));
+            _count = config.Count;
+            _requiredCount = config.RequiredCount;
+            
+            mesh.materials[0].DOColor(config.Color, 0);
+            requiredText.SetVariable("value", WalletManager.ConvertToWallet((decimal) _requiredCount));
+            countText.SetVariable("value", WalletManager.ConvertToWallet((decimal) _count));
         }
 
         public void Action()
         {
-            if(WalletManager.GetQuantityByType(currencyType) < requiredCount) return;
+            if(WalletManager.GetQuantityByType(currencyType) < _requiredCount) return;
             
             var position = shakeObject.localPosition;
-            var training = Player.Player.instance.GetTrainingStrength(count);
+            var training = Player.Player.instance.GetTrainingStrength(_count);
             var obj = CurrencyEffectPanel.Instance.SpawnEffect(effect, currencyType, training);
             
             obj.Initialize(currencyType, training);

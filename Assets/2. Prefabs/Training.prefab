@@ -5333,8 +5333,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.51, y: 2.24, z: 1.5}
+  m_Center: {x: 0.39, y: 2.02, z: -0.57}
 --- !u!114 &4321373741056973370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5350,10 +5350,9 @@ MonoBehaviour:
   currencyType: 0
   effect: {fileID: 3400154131304464156, guid: 469f7092be63a304f82faf0c38812156, type: 3}
   shakeObject: {fileID: 7229019819947694093}
+  mesh: {fileID: 4354884694589261826}
   particle: {fileID: 8280353515803238497}
-  count: 21
   countText: {fileID: 3250716393922452443}
-  requiredCount: 0
   requiredText: {fileID: 6610674600214140577}
 --- !u!1 &5490816905304005532
 GameObject:
