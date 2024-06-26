@@ -25,6 +25,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - DR_OUTLINE_ON
   - DR_RIM_ON
   - _CELPRIMARYMODE_SINGLE
   - _TEXTUREBLENDINGMODE_MULTIPLY
@@ -35,8 +36,7 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses:
-  - SRPDEFAULTUNLIT
+  disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -136,7 +136,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _GradientAngle: 0
-    - _GradientCenterX: 0
+    - _GradientCenterX: 112.86
     - _GradientCenterY: 0
     - _GradientEnabled: 0
     - _GradientSize: 10
@@ -147,17 +147,17 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _OutlineDepthOffset: 0
-    - _OutlineEnabled: 0
+    - _OutlineEnabled: 1
     - _OutlineScale: 1
-    - _OutlineWidth: 2.49
+    - _OutlineWidth: 0.5
     - _OverrideLightmapDir: 0
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RimEnabled: 1
-    - _SelfShadingSize: 0.545
+    - _SelfShadingSize: 0.364
     - _SelfShadingSizeExtra: 0.6
-    - _ShadowEdgeSize: 0.166
+    - _ShadowEdgeSize: 0.5
     - _ShadowEdgeSizeExtra: 0.05
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -178,11 +178,11 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.5535231, g: 0.22957456, b: 0.7264151, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorDim: {r: 0, g: 0, b: 0, a: 1}
+    - _ColorDim: {r: 0, g: 0.6886792, b: 0.6420217, a: 1}
     - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _ColorDimExtra: {r: 0.5535231, g: 0.22957456, b: 0.7264151, a: 1}
     - _ColorDimSteps: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _ColorGradient: {r: 0.5535231, g: 0.22957456, b: 0.7264151, a: 1}
+    - _ColorGradient: {r: 0.7830189, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlatRimColor: {r: 1, g: 1, b: 1, a: 1}
     - _FlatSpecularColor: {r: 0.6579609, g: 0.40583837, b: 0.9056604, a: 1}
