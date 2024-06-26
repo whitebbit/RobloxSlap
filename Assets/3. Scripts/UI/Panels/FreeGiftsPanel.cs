@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using _3._Scripts.Stages;
 using _3._Scripts.UI.Elements;
 using _3._Scripts.UI.Panels.Base;
 using UnityEngine;
@@ -13,7 +15,10 @@ namespace _3._Scripts.UI.Panels
         {
             InTransition = transition;
             OutTransition = transition;
-            
+            foreach (var slot in slots)
+            {
+                slot.Initialize();
+            }
         }
 
         protected override void OnOpen()
@@ -24,5 +29,6 @@ namespace _3._Scripts.UI.Panels
                 slot.Initialize();
             }
         }
+        
     }
 }

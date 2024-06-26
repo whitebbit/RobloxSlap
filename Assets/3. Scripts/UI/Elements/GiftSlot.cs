@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _3._Scripts.UI.Extensions;
 using _3._Scripts.UI.Scriptable.Roulette;
 using DG.Tweening;
@@ -52,10 +53,13 @@ namespace _3._Scripts.UI.Elements
 
                 _firstInitialization = true;
             }
+
             
             icon.sprite = item.Icon();
             icon.ScaleImage();
             title.text = string.IsNullOrEmpty(item.Title()) ? "" : $"x{item.Title()}";
+            
+        
         }
 
         private void GetReward()

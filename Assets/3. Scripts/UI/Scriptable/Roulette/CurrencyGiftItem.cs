@@ -15,11 +15,15 @@ namespace _3._Scripts.UI.Scriptable.Roulette
     [CreateAssetMenu(fileName = "CurrencyRouletteItem", menuName = "Roulette Item/Currency", order = 0)]
     public class CurrencyGiftItem : GiftItem
     {
-        [Tab("Base settings")]
-        [SerializeField] private CurrencyType type;
+        [Tab("Base settings")] [SerializeField]
+        private CurrencyType type;
+
         [SerializeField] private int count;
 
-        private float Count => count * StageController.Instance.CurrentStage.GiftBooster;
+        private float Count => StageController.Instance.CurrentStage == null
+            ? count * 1
+            : count * StageController.Instance.CurrentStage.GiftBooster;
+
         public override Sprite Icon()
         {
             return Configuration.Instance.GetCurrency(type)?.Icon;

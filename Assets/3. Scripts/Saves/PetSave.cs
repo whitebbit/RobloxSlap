@@ -11,7 +11,7 @@ namespace _3._Scripts.Saves
     {
         public List<PetSaveData> unlocked = new();
         public List<PetSaveData> selected = new();
-        
+        public event Action ONPetUnlocked;
         public void Unlock(PetData data)
         {
             var hash = $"{data.ID}_{DateTime.Now}".GetHashCode();
@@ -23,6 +23,7 @@ namespace _3._Scripts.Saves
             };
 
             unlocked.Add(petSaveData);
+            ONPetUnlocked?.Invoke();
         }
 
         public void Select(int id)

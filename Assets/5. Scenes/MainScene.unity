@@ -14712,6 +14712,7 @@ GameObject:
   - component: {fileID: 271483266}
   - component: {fileID: 271483268}
   - component: {fileID: 271483267}
+  - component: {fileID: 271483269}
   m_Layer: 5
   m_Name: Alram
   m_TagString: Untagged
@@ -14752,14 +14753,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.18823531, b: 0.3019608, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0e07c8fb8158b4d95bc5184c10777d99, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd023b778262f49f48903cd87a572572, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14777,6 +14778,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271483265}
   m_CullTransparentMesh: 0
+--- !u!114 &271483269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271483265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &272289601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16285,6 +16301,7 @@ GameObject:
   - component: {fileID: 314341580}
   - component: {fileID: 314341579}
   - component: {fileID: 314341582}
+  - component: {fileID: 314341583}
   m_Layer: 5
   m_Name: Upgrades
   m_TagString: Untagged
@@ -16420,6 +16437,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef6ea817b064b1ab63f23dc69836dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &314341583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314341577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ec69ba6b7c422ea9e345cc314c3a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notification: {fileID: 1837158946}
 --- !u!1 &316668107
 GameObject:
   m_ObjectHideFlags: 0
@@ -16698,6 +16728,7 @@ GameObject:
   - component: {fileID: 321091397}
   - component: {fileID: 321091399}
   - component: {fileID: 321091398}
+  - component: {fileID: 321091400}
   m_Layer: 5
   m_Name: Alram
   m_TagString: Untagged
@@ -16763,6 +16794,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321091396}
   m_CullTransparentMesh: 0
+--- !u!114 &321091400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321091396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &321478923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19082,7 +19128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &394567712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24210,6 +24256,7 @@ GameObject:
   - component: {fileID: 522059168}
   - component: {fileID: 522059167}
   - component: {fileID: 522059170}
+  - component: {fileID: 522059171}
   m_Layer: 5
   m_Name: Pets
   m_TagString: Untagged
@@ -24295,6 +24342,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 271483265}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &522059168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24345,6 +24404,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef6ea817b064b1ab63f23dc69836dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &522059171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522059165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2382902405e74443a57aa2d002678c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notification: {fileID: 271483266}
 --- !u!1001 &530000985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29163,7 +29235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679659125}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.28678977, y: 3e-45, z: -1e-45, w: 0.95799357}
+  m_LocalRotation: {x: 0.28678977, y: -1e-45, z: -0, w: 0.95799357}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -54139,7 +54211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd715741db674e15a6cc8b8cb50b5a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumCheckTime: 10
+  minimumCheckTime: 11
   timers:
   - {fileID: 267762447}
   - {fileID: 338481196}
@@ -58693,6 +58765,7 @@ GameObject:
   - component: {fileID: 1299952733}
   - component: {fileID: 1299952735}
   - component: {fileID: 1299952734}
+  - component: {fileID: 1299952736}
   m_Layer: 5
   m_Name: Alram
   m_TagString: Untagged
@@ -58715,10 +58788,10 @@ RectTransform:
   - {fileID: 1477633094}
   m_Father: {fileID: 1155707476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9.6, y: -14.7}
-  m_SizeDelta: {x: 64.7913, y: 64.7913}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -56.2, y: 56}
+  m_SizeDelta: {x: 65.2148, y: 65.2148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1299952734
 MonoBehaviour:
@@ -58758,6 +58831,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299952732}
   m_CullTransparentMesh: 0
+--- !u!114 &1299952736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299952732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1306256436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71001,7 +71089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1371333899
 RectTransform:
   m_ObjectHideFlags: 0
@@ -92454,7 +92542,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: b2eb8ea39e503404ea2e7c09145811ab, type: 2}
     - target: {fileID: 8729934218705925558, guid: 50ca7ebdae3beb8468226802d3a6cf8a, type: 3}
       propertyPath: timeToTake
-      value: 120
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -94505,6 +94593,7 @@ GameObject:
   - component: {fileID: 1837158946}
   - component: {fileID: 1837158948}
   - component: {fileID: 1837158947}
+  - component: {fileID: 1837158949}
   m_Layer: 5
   m_Name: Alram
   m_TagString: Untagged
@@ -94545,14 +94634,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.18823531, b: 0.3019608, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0e07c8fb8158b4d95bc5184c10777d99, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd023b778262f49f48903cd87a572572, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -94570,6 +94659,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837158945}
   m_CullTransparentMesh: 0
+--- !u!114 &1837158949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837158945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1837201047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98736,7 +98840,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 872ff2c58a8f494418d0eac33bfffe55, type: 2}
     - target: {fileID: 8729934218705925558, guid: 50ca7ebdae3beb8468226802d3a6cf8a, type: 3}
       propertyPath: timeToTake
-      value: 60
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -103751,7 +103855,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095013992}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30893397, y: -0.000000016364705, z: 0.000000005315635, w: 0.95108354}
+  m_LocalRotation: {x: 0.30893397, y: 0.000000016364705, z: -0.000000005315635, w: 0.95108354}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -26,27 +26,19 @@ namespace _3._Scripts.UI.Utils
         {
             notificationImage.gameObject.SetActive(false);
             _button.onClick.AddListener(() => notificationImage.gameObject.SetActive(false));
-            StartCoroutine(CheckTimerState());
+
+            StartCoroutine(CheckTimers());
         }
 
-        private IEnumerator CheckTimerState()
+        private IEnumerator CheckTimers()
         {
             while (true)
             {
-                yield return new WaitForSeconds(minimumCheckTime + 1);
-                if (!timers.Any(t => t.TimerEnd() && !t.TimerStopped)) continue;
-                NotificationAnimation();
+                yield return new WaitForSeconds(minimumCheckTime);
+
+                if (timers.Count(timer => timer != null && timer.TimerEnd() && !timer.TimerStopped) > 0)
+                    notificationImage.gameObject.SetActive(true);
             }
-        }
-
-        private void NotificationAnimation()
-        {
-            var rect = (RectTransform) notificationImage.transform;
-            var startSize = rect.sizeDelta;
-
-            notificationImage.gameObject.SetActive(true);
-            rect.DOSizeDelta(startSize * 1.25f, 0.25f).OnComplete(() => { rect.DOSizeDelta(startSize, 0.1f); })
-                .SetEase(Ease.InOutBounce).SetLink(notificationImage.gameObject);
         }
     }
 }

@@ -48,11 +48,9 @@ namespace _3._Scripts
             var remainingTime = Mathf.Max(0, _durationInSeconds - (Time.time - _startTime));
             _timerText.text = FormatTime(remainingTime);
 
-            if (remainingTime <= 0)
-            {
-                _isRunning = false;
-                OnTimerEnd?.Invoke();
-            }
+            if (!(remainingTime <= 0)) return;
+            _isRunning = false;
+            OnTimerEnd?.Invoke();
         }
 
         public void StartTimer(float timeInSeconds)
