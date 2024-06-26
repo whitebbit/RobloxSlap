@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StageConfig 2
   m_EditorClassIdentifier: 
   id: 2
-  teleportPrice: 0
+  teleportPrice: 1500000
   giftBooster: 4
   petUnlocker: {fileID: 11400000, guid: f044153c43e56e74db7d414eee8b0c6a, type: 2}
   enemies:
