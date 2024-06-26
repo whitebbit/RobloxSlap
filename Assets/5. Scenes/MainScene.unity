@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.5911469, g: 0.8562972, b: 0.9461331, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -592,7 +592,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.2
+  m_fontSize: 21.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6328,7 +6328,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.3
+  m_fontSize: 34.9
   m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8397,7 +8397,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.2
+  m_fontSize: 21.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -22621,7 +22621,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.15
+  m_fontSize: 30
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -29163,7 +29163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679659125}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.28678977, y: -1e-45, z: -0, w: 0.95799357}
+  m_LocalRotation: {x: 0.28678977, y: 3e-45, z: -1e-45, w: 0.95799357}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -40179,7 +40179,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.2
+  m_fontSize: 21.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -41333,7 +41333,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.95
+  m_fontSize: 52
   m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -58506,18 +58506,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1000e8338135e1a48af9b8fea9062a4a, type: 2}
   - {fileID: 11400000, guid: c04b00051e6620d42a9db4a3634c46f6, type: 2}
   allPets:
-  - {fileID: 11400000, guid: 2294b75142c68534796b079accbcc56c, type: 2}
   - {fileID: 11400000, guid: 8862394893b37964096b94b07295248e, type: 2}
+  - {fileID: 11400000, guid: 2294b75142c68534796b079accbcc56c, type: 2}
+  - {fileID: 11400000, guid: 72ae04f9425320b45821bed6189f29eb, type: 2}
   - {fileID: 11400000, guid: dff2927cd4081014b941467f7cac0f4f, type: 2}
   - {fileID: 11400000, guid: 22dc8dd134af5964a82f134c5a76f129, type: 2}
-  - {fileID: 11400000, guid: 7239a847492806d4981a490d7f3b7b85, type: 2}
-  - {fileID: 11400000, guid: 3c7c3a4fe8dd5834da9bbf6dd98d7efd, type: 2}
-  - {fileID: 11400000, guid: 72ae04f9425320b45821bed6189f29eb, type: 2}
   - {fileID: 11400000, guid: f4f8be88b2cad6f478babcbb00cc9b2b, type: 2}
+  - {fileID: 11400000, guid: 7239a847492806d4981a490d7f3b7b85, type: 2}
+  - {fileID: 11400000, guid: fa0e098015d68ca4ab8cefec48e43aa6, type: 2}
   - {fileID: 11400000, guid: 6e212ee2b2ca0ea4197b5b184cf788a2, type: 2}
-  - {fileID: 11400000, guid: 7615ed3c6c2d639428158b1fb4cbfce5, type: 2}
+  - {fileID: 11400000, guid: 121cf39b4f552ef4482fcabbd2438808, type: 2}
   - {fileID: 11400000, guid: 6451d52aefc59ee43a0c8102be0072d4, type: 2}
-  - {fileID: 11400000, guid: 59158d6858d8ede4d80b32aa35ac7ea4, type: 2}
+  - {fileID: 11400000, guid: b04b9ae8a919611418e40c2c27468df8, type: 2}
+  - {fileID: 11400000, guid: 7f63bbbf531a46840a13551cbf9f896e, type: 2}
+  - {fileID: 11400000, guid: 9460ec3a6192d55489034bb75a3064b1, type: 2}
+  - {fileID: 11400000, guid: 7754b7d2e1327164ea3bd7597e60c9dd, type: 2}
+  - {fileID: 11400000, guid: 64ec87bc80e67f1499c952fdc6c4853d, type: 2}
+  - {fileID: 11400000, guid: 9a46826a124bf724fb97c8ff40d185b5, type: 2}
+  - {fileID: 11400000, guid: cf583fb6f34b6a34e8689753a564ae56, type: 2}
   allUpgrades:
   - {fileID: 11400000, guid: 83930d22d8624574cb386c30ed6db892, type: 2}
   - {fileID: 11400000, guid: 6566ffa040a97ef41b7b89161ff99e9a, type: 2}
@@ -73991,7 +73997,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.05
+  m_fontSize: 52
   m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -83808,7 +83814,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 29.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -84448,7 +84454,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.6
+  m_fontSize: 30
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -91186,7 +91192,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.2
+  m_fontSize: 21.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -96111,7 +96117,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.5
+  m_fontSize: 25.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -100303,7 +100309,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.55
+  m_fontSize: 30
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -101811,7 +101817,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.75
+  m_fontSize: 15.9
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -103745,7 +103751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095013992}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30893397, y: 0.000000016364705, z: -0.000000005315635, w: 0.95108354}
+  m_LocalRotation: {x: 0.30893397, y: -0.000000016364705, z: 0.000000005315635, w: 0.95108354}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -104411,7 +104417,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.85
+  m_fontSize: 52
   m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 1

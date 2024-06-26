@@ -51,11 +51,11 @@ namespace _3._Scripts.Currency
             {
                 case CurrencyType.First:
                     WalletManager.OnFirstCurrencyChange += OnChange;
-                    OnChange((int)WalletManager.FirstCurrency, (int)WalletManager.FirstCurrency);
+                    OnChange(WalletManager.FirstCurrency, WalletManager.FirstCurrency);
                     break;
                 case CurrencyType.Second:
                     WalletManager.OnSecondCurrencyChange += OnChange;
-                    OnChange((int)WalletManager.SecondCurrency, (int)WalletManager.SecondCurrency);
+                    OnChange(WalletManager.SecondCurrency, WalletManager.SecondCurrency);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

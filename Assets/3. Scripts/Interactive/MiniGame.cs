@@ -15,28 +15,30 @@ namespace _3._Scripts.Interactive
 {
     public class MiniGame : MonoBehaviour, IInteractive
     {
-        [Tab("Fight components")]
-        [SerializeField] private Enemy enemyPrefab;
+        [Tab("Fight components")] [SerializeField]
+        private Enemy enemyPrefab;
+
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
-        [Tab("Transforms")] 
-        [SerializeField] private Transform playerPoint;
+        [Tab("Transforms")] [SerializeField] private Transform playerPoint;
         [SerializeField] private Transform enemyPoint;
         [SerializeField] private Transform useTutorialObject;
-        
+
         private EnemyData _enemyData;
         private Fighter _enemy;
-        
+
         private bool _fightStarted;
 
         public void Initialize(EnemyData data)
         {
+            if (_enemy != null) return;
+
             var enemy = Instantiate(enemyPrefab, transform);
 
             _enemyData = data;
-            
+
             enemy.transform.localPosition = enemyPoint.localPosition;
             enemy.Initialize(_enemyData);
-            
+
             _enemy = enemy;
         }
 
@@ -70,7 +72,7 @@ namespace _3._Scripts.Interactive
             TutorialSystem.StepComplete("fight");
 
             _fightStarted = true;
-            
+
             Player.Player.instance.OnStart();
             _enemy.OnStart();
         }
@@ -84,7 +86,7 @@ namespace _3._Scripts.Interactive
             CameraController.Instance.SwapToMain();
             UIManager.Instance.GetPanel<MiniGamePanel>().Enabled = false;
             Player.Player.instance.OnEnd();
-            
+
             _enemy.OnEnd();
         }
 
