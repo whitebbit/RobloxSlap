@@ -216,6 +216,74 @@ MonoBehaviour:
     m_Localized: Thunder Palm
     m_Metadata:
       m_Items: []
+  - m_Id: 15072656145256448
+    m_Localized: Palm Crusher
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072659270012928
+    m_Localized: Strike Force
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072793751982080
+    m_Localized: Bash Bringer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072798210527232
+    m_Localized: The Smasher
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072801092014080
+    m_Localized: Knuckle Fury
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072803629568000
+    m_Localized: Slap Knight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072878657277952
+    m_Localized: Palm Warrior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072592320532480
+    m_Localized: Face Slapper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072594728062976
+    m_Localized: Hand of Doom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072596133154816
+    m_Localized: Slap Dragon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072968012730368
+    m_Localized: Fist Fury
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072882633478144
+    m_Localized: Slapzilla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072887305932800
+    m_Localized: Face Smasher
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072890581684224
+    m_Localized: Hand Hammer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072958063841280
+    m_Localized: The Whacker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072963357052928
+    m_Localized: Thump Titan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15072965491953664
+    m_Localized: The Clapper
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
