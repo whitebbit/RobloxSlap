@@ -1,5 +1,6 @@
 ﻿using System;
 using _3._Scripts.MiniGame;
+using _3._Scripts.Wallet;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -24,7 +25,8 @@ namespace _3._Scripts.UI.Elements
             _data = data;
             icon.sprite = data.photo;
             healthBar.value = 1;
-            healthText.text = $"{data.health}/{data.health}";
+            healthText.text =
+                $"{WalletManager.ConvertToWallet((decimal) _data.health)}/{WalletManager.ConvertToWallet((decimal) _data.health)}";
             _currentHealth = data.health;
         }
 
@@ -34,7 +36,8 @@ namespace _3._Scripts.UI.Elements
             _currentHealth = Math.Clamp(_currentHealth, 0, _data.health);
             var value = _currentHealth / _data.health;
 
-            healthText.text = $"{_currentHealth}/{_data.health}";
+            healthText.text =
+                $"{WalletManager.ConvertToWallet((decimal) _currentHealth)}/{WalletManager.ConvertToWallet((decimal) _data.health)}";
             healthBar.DOValue(value, 0.1f).OnComplete(() =>
             {
                 if (_currentHealth <= 0)

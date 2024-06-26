@@ -275,6 +275,26 @@ MonoBehaviour:
     m_Key: Enemy_27
     m_Metadata:
       m_Items: []
+  - m_Id: 15102772382932992
+    m_Key: tutorial_fight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15103361829445632
+    m_Key: tutorial_train
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15111359045967872
+    m_Key: title_battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15112022140264448
+    m_Key: title_train
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15112645883600896
+    m_Key: title_pets
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

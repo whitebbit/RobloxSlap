@@ -3,6 +3,7 @@ using _3._Scripts.Enemies;
 using _3._Scripts.Enemies.Scriptable;
 using _3._Scripts.Interactive.Interfaces;
 using _3._Scripts.MiniGame;
+using _3._Scripts.Tutorial;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Panels;
 using Cinemachine;
@@ -66,6 +67,7 @@ namespace _3._Scripts.Interactive
             player.transform.DOLookAt(_enemy.transform.position, 0, AxisConstraint.Y);
 
             CameraController.Instance.SwapTo(virtualCamera);
+            TutorialSystem.StepComplete("fight");
 
             _fightStarted = true;
             
@@ -76,13 +78,13 @@ namespace _3._Scripts.Interactive
         private void EndFight()
         {
             _fightStarted = false;
+            useTutorialObject.gameObject.SetActive(true);
 
             Player.Player.instance.PetsHandler.SetState(true);
             CameraController.Instance.SwapToMain();
             UIManager.Instance.GetPanel<MiniGamePanel>().Enabled = false;
-            useTutorialObject.gameObject.SetActive(true);
-            
             Player.Player.instance.OnEnd();
+            
             _enemy.OnEnd();
         }
 

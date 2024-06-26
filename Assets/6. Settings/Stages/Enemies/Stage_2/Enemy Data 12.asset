@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy Data 12
   m_EditorClassIdentifier: 
   localizationID: Enemy_13
-  icon: {fileID: 21300000, guid: 6fd2c94e614a6fb4b94f620bfad29b9e, type: 3}
+  icon: {fileID: 21300000, guid: 8c7686b70502e6b4681f33f8bd1b2921, type: 3}
   health: 2.1e+12
   strength: 25
   rewardCount: 50000

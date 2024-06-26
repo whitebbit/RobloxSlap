@@ -284,6 +284,26 @@ MonoBehaviour:
     m_Localized: The Clapper
     m_Metadata:
       m_Items: []
+  - m_Id: 15102772382932992
+    m_Localized: Fight and earn cups
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15103361829445632
+    m_Localized: Train and gain strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15111359045967872
+    m_Localized: <sprite index=0>Battle<sprite index=0>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15112022140264448
+    m_Localized: <sprite index=1>Training<sprite index=1>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15112645883600896
+    m_Localized: <sprite index=2>Pets<sprite index=2>
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
