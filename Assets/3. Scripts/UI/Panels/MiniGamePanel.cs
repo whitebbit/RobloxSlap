@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using _3._Scripts.Ads;
 using _3._Scripts.Boosters;
 using UnityEngine;
 using _3._Scripts.Currency.Enums;
@@ -39,6 +40,7 @@ namespace _3._Scripts.UI.Panels
 
             SetComponentsState(false);
             InputHandler.Instance.SetState(false);
+            InterstitialsTimer.Instance.Blocked = true;
 
             countdownTimer.StartCountdown(StartFight);
         }
@@ -91,6 +93,7 @@ namespace _3._Scripts.UI.Panels
             _onGameEnd?.Invoke();
             SetComponentsState(true);
             InputHandler.Instance.SetState(true);
+            InterstitialsTimer.Instance.Blocked = false;
 
             if (_playerWin)
             {

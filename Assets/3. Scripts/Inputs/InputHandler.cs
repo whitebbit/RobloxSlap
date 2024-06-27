@@ -21,6 +21,7 @@ namespace _3._Scripts.Inputs
                     case DeviceType.Mobile:
                         if(!mobileInput.gameObject.activeSelf)
                             mobileInput.gameObject.SetActive(true);
+                        UnityEngine.Input.multiTouchEnabled = true;
                         return mobileInput;
                     case DeviceType.Desktop:
                         if(mobileInput.gameObject.activeSelf)

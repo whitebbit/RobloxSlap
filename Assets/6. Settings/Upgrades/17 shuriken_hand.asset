@@ -15,7 +15,7 @@ MonoBehaviour:
   id: shuriken_hand
   icon: {fileID: 21300000, guid: eb2cbd0984b4ed44ca3eb703d056ad04, type: 3}
   rarity: 2
-  currencyType: 0
+  currencyType: 1
   price: 320000
   booster: 128000
   color: {r: 0.4901961, g: 0.49803925, b: 0.49803925, a: 1}

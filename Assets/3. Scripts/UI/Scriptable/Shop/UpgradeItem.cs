@@ -1,4 +1,5 @@
 ﻿using _3._Scripts.Characters;
+using _3._Scripts.Wallet;
 using UnityEngine;
 using VInspector;
 
@@ -9,18 +10,18 @@ namespace _3._Scripts.UI.Scriptable.Shop
     {
         [SerializeField] private float booster;
         [SerializeField] private Color color;
-        
-        [Tab("Prefab")] [SerializeField]
-        private Texture texture;
+
+        [Tab("Prefab")] [SerializeField] private Texture texture;
         [SerializeField] private ParticleSystem particle;
 
         public float Booster => booster;
         public Color Color => color;
         public Texture Texture => texture;
         public ParticleSystem Particle => particle;
+
         public override string Title()
         {
-            return $"x{booster}<sprite index=1>";
+            return $"x{WalletManager.ConvertToWallet((decimal) booster)}<sprite index=1>";
         }
     }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   id: diamond_hand
   icon: {fileID: 21300000, guid: eb2cbd0984b4ed44ca3eb703d056ad04, type: 3}
   rarity: 2
-  currencyType: 0
+  currencyType: 1
   price: 700
   booster: 128
   color: {r: 0.14901961, g: 0.854902, b: 0.94117653, a: 1}

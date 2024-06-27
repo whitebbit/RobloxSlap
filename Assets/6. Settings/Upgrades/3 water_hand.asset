@@ -15,7 +15,7 @@ MonoBehaviour:
   id: water_hand
   icon: {fileID: 21300000, guid: eb2cbd0984b4ed44ca3eb703d056ad04, type: 3}
   rarity: 2
-  currencyType: 0
+  currencyType: 1
   price: 50
   booster: 8
   color: {r: 0.21960786, g: 0.67058825, b: 0.9607844, a: 1}

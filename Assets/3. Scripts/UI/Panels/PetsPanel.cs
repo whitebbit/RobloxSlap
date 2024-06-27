@@ -86,11 +86,13 @@ namespace _3._Scripts.UI.Panels
 
         private void OnClick(PetSlot slot)
         {
-            if(_currentSlot !=null)
+            if(_currentSlot != null)
                 _currentSlot.Unselect();
             
             _currentSlot = slot;
-            _currentSlot.Select();
+            
+            if(_currentSlot != null)
+                _currentSlot.Select();
             
             booster.gameObject.SetActive(true);
             selected.Initialize(slot.SaveData);

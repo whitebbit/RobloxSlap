@@ -4,54 +4,50 @@ using UnityEngine.Serialization;
 
 namespace _3._Scripts.Inputs.Utils
 {
-    public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class FixedTouchField : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
     {
-        private int _pointerId = -1;
-        private Vector2 _pointerOld;
+        private int _pointerId;
+        private Vector2 _startTouchPosition;
+        private Vector2 _currentTouchPosition;
+        private Vector2 _axis;
 
-        public Vector2 Axis { get; private set; }
+        public Vector2 Axis => _axis;
         public bool Pressed { get; private set; }
 
         private void Update()
         {
             if (Pressed)
             {
-                if (_pointerId >= 0 && _pointerId < Input.touches.Length)
-                {
-                    var touch = Input.touches[_pointerId];
-                    if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
-                    {
-                        Axis = touch.position - _pointerOld;
-                        _pointerOld = touch.position;
-                    }
-                    else
-                    {
-                        Axis = Vector2.zero;
-                    }
-                }
-                else
-                {
-                    Axis = (Vector2) Input.mousePosition - _pointerOld;
-                    _pointerOld = Input.mousePosition;
-                }
+                _axis = _currentTouchPosition - _startTouchPosition;
             }
             else
             {
-                Axis = Vector2.zero;
+                _axis = Vector2.zero;
             }
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (Pressed) return;
             Pressed = true;
             _pointerId = eventData.pointerId;
-            _pointerOld = eventData.position;
+            _startTouchPosition = eventData.position;
+            _currentTouchPosition = _startTouchPosition;
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            if (Pressed && eventData.pointerId == _pointerId)
+            {
+                _currentTouchPosition = eventData.position;
+            }
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
+            if (!Pressed || eventData.pointerId != _pointerId) return;
             Pressed = false;
-            _pointerId = -1;
+            _axis = Vector2.zero;
         }
     }
 }

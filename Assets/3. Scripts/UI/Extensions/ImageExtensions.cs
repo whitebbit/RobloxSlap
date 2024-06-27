@@ -23,5 +23,12 @@ namespace _3._Scripts.UI.Extensions
                 ? new Vector2(currentHeight * aspectRatio, currentHeight)
                 : new Vector2(currentWidth, currentWidth / aspectRatio);
         }
+
+        public static void Fade(this Image image, float value)
+        {
+            var color = image.color;
+            color.a = value;
+            image.color = color;
+        }
     }
 }

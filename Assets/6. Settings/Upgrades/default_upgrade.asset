@@ -15,7 +15,7 @@ MonoBehaviour:
   id: default_upgrade
   icon: {fileID: 21300000, guid: eb2cbd0984b4ed44ca3eb703d056ad04, type: 3}
   rarity: 1
-  currencyType: 0
+  currencyType: 1
   price: 0
   booster: 1
   color: {r: 1, g: 1, b: 1, a: 1}

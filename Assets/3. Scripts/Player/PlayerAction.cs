@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using _3._Scripts.Actions.Interfaces;
+using _3._Scripts.Ads;
 using _3._Scripts.Boosters;
 using _3._Scripts.Config;
 using _3._Scripts.Detectors;
@@ -49,7 +50,7 @@ namespace _3._Scripts.Player
         private void Update()
         {
             if ((_input.GetAction() || BoostersHandler.Instance.GetBoosterState("auto_clicker")) &&
-                !UIManager.Instance.Active) DoAction();
+                !UIManager.Instance.Active && !InterstitialsTimer.Instance.Active) DoAction();
         }
 
         private void DoAction()

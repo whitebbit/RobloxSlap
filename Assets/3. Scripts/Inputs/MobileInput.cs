@@ -18,14 +18,11 @@ namespace _3._Scripts.Inputs
         private void Awake()
         {
             _canvas = GetComponent<CanvasGroup>();
-            
         }
         
         public void SetState(bool state)
         {
             _canvas.alpha = state ? 1 : 0;
-            _canvas.blocksRaycasts = state;
-            _canvas.interactable = state;
         }
         
         public Vector2 GetMovementAxis()
@@ -60,6 +57,7 @@ namespace _3._Scripts.Inputs
 
         public void CursorState()
         {
+            
         }
     }
 }
