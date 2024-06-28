@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   teleportPrice: 1500000
-  giftBooster: 4
+  giftBooster: 100
   petUnlocker: {fileID: 11400000, guid: f044153c43e56e74db7d414eee8b0c6a, type: 2}
   enemies:
   - {fileID: 11400000, guid: 72efd3032f6302a4e8b961457a30209e, type: 2}
