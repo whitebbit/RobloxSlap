@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using _3._Scripts.UI.Scriptable.Shop;
 using _3._Scripts.Upgrades;
 using Unity.VisualScripting;
@@ -61,13 +63,24 @@ namespace _3._Scripts.Characters
         
         private void Start()
         {
+            _animator.enabled = true;
             Player.Player.instance.PlayerAnimator.SetAvatar(_animator.avatar);
+            StartCoroutine(DelayFixAnimation());
         }
 
         public void SetUpgrade(UpgradeItem upgrade)
         {
             right.Initialize(upgrade);
             left.Initialize(upgrade);
+        }
+
+        private IEnumerator DelayFixAnimation()
+        {
+            yield return null;
+            Player.Player.instance.PlayerAnimator.SetState(false);
+            yield return null;
+            Player.Player.instance.PlayerAnimator.SetState(true);
+            _animator.enabled = false;
         }
     }
 }

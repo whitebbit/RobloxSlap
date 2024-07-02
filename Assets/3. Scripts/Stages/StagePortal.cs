@@ -3,6 +3,7 @@ using _3._Scripts.Currency.Enums;
 using _3._Scripts.Localization;
 using _3._Scripts.Stages.Enums;
 using _3._Scripts.Wallet;
+using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 
@@ -55,9 +56,21 @@ namespace _3._Scripts.Stages
             switch (type)
             {
                 case TeleportType.Next:
-                    if (WalletManager.SecondCurrency < _teleportPrice) return;
+                    
+                    if (GBGames.saves.stageID > StageController.Instance.CurrentID)
+                    {
+                        StageController.Instance.TeleportToNextStage();
+                        Debug.Log("1");
+                    }
+                    else
+                    {
+                        if (WalletManager.SecondCurrency >= _teleportPrice)
+                        {
+                            StageController.Instance.TeleportToNextStage();
+                            Debug.Log("2");
+                        }
+                    }
 
-                    StageController.Instance.TeleportToNextStage();
                     break;
                 case TeleportType.Previous:
                     StageController.Instance.TeleportToPreviousStage();

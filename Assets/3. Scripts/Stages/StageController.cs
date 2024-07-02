@@ -15,8 +15,8 @@ namespace _3._Scripts.Stages
         
         public Stage CurrentStage { get; private set; }
         private int _activeStageID;
-        private int _currentID;
-        
+
+        public int CurrentID { get; private set; }
         private void Start()
         {
 #if UNITY_EDITOR
@@ -29,17 +29,17 @@ namespace _3._Scripts.Stages
 
         public void TeleportToNextStage()
         {
-            _currentID += 1;
-            if (_currentID > GBGames.saves.stageID)
-                GBGames.saves.stageID = _currentID;
-            TeleportToStage(_currentID);
+            CurrentID += 1;
+            if (CurrentID > GBGames.saves.stageID)
+                GBGames.saves.stageID = CurrentID;
+            TeleportToStage(CurrentID);
             GBGames.instance.Save();
         }
 
         public void TeleportToPreviousStage()
         {
-            _currentID -= 1;
-            TeleportToStage(_currentID);
+            CurrentID -= 1;
+            TeleportToStage(CurrentID);
         }
 
         private void TeleportToStage(int id)
@@ -49,7 +49,7 @@ namespace _3._Scripts.Stages
             if (stage == null) return;
             
             CurrentStage = stage;
-            _currentID = id;
+            CurrentID = id;
 
             foreach (var s in stages)
             {

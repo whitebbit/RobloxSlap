@@ -12,7 +12,7 @@ namespace GBGamesPlugin
     public partial class GBGames
     {
         public static List<LeaderboardEntry> leaderboardEntries = new();
-        private static readonly Dictionary<string, float> LeaderboardsScore = new();
+        private static readonly Dictionary<string, int> LeaderboardsScore = new();
 
         /// <summary>
         /// Поддерживает ли платформа лидерборды.
@@ -49,7 +49,7 @@ namespace GBGamesPlugin
         /// <summary>
         /// Записать очки игрока.
         /// </summary>
-        public static void SetLeaderboardScore(string name, float score,
+        public static void SetLeaderboardScore(string leaderboardName, int score,
             Action onSetLeaderboardScoreSuccess = null,
             Action onSetLeaderboardScoreFailed = null)
         {
@@ -57,10 +57,10 @@ namespace GBGamesPlugin
 
             SetLeaderboardScore(new Dictionary<string, object>
             {
-                {"leaderboardName", name}, {"score", score}
+                {"leaderboardName", leaderboardName}, {"score", score}
             }, onSetLeaderboardScoreSuccess, onSetLeaderboardScoreFailed);
 
-            LeaderboardsScore[name] = score;
+            LeaderboardsScore[leaderboardName] = score;
         }
 
         private static void SetLeaderboardScore(Dictionary<string, object> options = default,
@@ -68,11 +68,21 @@ namespace GBGamesPlugin
             Action onSetLeaderboardScoreFailed = null)
         {
             if (!leaderboardIsSetScoreSupported) return;
-            Bridge.leaderboard.SetScore(options, (success) =>
+
+            try
             {
-                if (success) onSetLeaderboardScoreSuccess?.Invoke();
-                else onSetLeaderboardScoreFailed?.Invoke();
-            });
+                Bridge.leaderboard.SetScore(options, (success) =>
+                {
+                    if (success) onSetLeaderboardScoreSuccess?.Invoke();
+                    else onSetLeaderboardScoreFailed?.Invoke();
+                });
+            }
+            catch (Exception e)
+            {
+                Message(e.Message, LoggerState.error);
+                throw;
+            }
+            
         }
 
 
@@ -84,7 +94,7 @@ namespace GBGamesPlugin
         /// <summary>
         /// Получение очков игрока.
         /// </summary>
-        public static float GetLeaderboardScore(string name)
+        public static int GetLeaderboardScore(string name)
         {
             return !leaderboardIsGetScoreSupported ? 0 : LeaderboardsScore.GetValueOrDefault(name, 0);
         }

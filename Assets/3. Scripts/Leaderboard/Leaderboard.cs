@@ -25,10 +25,12 @@ namespace _3._Scripts.Leaderboard
         }
 
 
-        public void UpdateScore(float score)
+        public void UpdateScore(int score)
         {
-            if (Math.Abs(GBGames.GetLeaderboardScore(leaderboardName) - score) > 0.1f)
+            if (GBGames.GetLeaderboardScore(leaderboardName) != score)
+            {
                 GBGames.SetLeaderboardScore(leaderboardName, score);
+            }
         }
 
         private IEnumerator InitializeLeaderboard()
