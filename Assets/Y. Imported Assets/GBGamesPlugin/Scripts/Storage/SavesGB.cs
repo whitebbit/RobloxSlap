@@ -19,6 +19,7 @@ namespace GBGamesPlugin
         public SaveHandler<string> upgradeSaves = new();
         public WalletSave walletSave = new();
         public PetSave petsSave = new();
+        public DailyRewardSave dailyReward = new();
         
         public int stageID;
         public bool sound = true;

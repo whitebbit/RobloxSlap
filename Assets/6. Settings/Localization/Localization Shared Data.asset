@@ -307,6 +307,22 @@ MonoBehaviour:
     m_Key: player_level
     m_Metadata:
       m_Items: []
+  - m_Id: 19388024449740800
+    m_Key: daily_reward
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19475518386155520
+    m_Key: day_number
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19735562637881344
+    m_Key: claim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19737098218713088
+    m_Key: daily
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

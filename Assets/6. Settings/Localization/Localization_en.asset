@@ -318,10 +318,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
+  - m_Id: 19388024449740800
+    m_Localized: Daily Rewards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19475518386155520
+    m_Localized: Day {value}
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 19735562637881344
+    m_Localized: Claim
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3203987063427825692
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0020c279aeae23000020826808b023000020828f238c2800002002cf109128000020027d2c9228000020022c34922800002082843d922800002082f0439228000020029a4b9228000020023678073600002042d64a1f3800
+        m_Entries: 0020c279aeae23000020826808b023000020828f238c2800002002cf109128000020027d2c9228000020022c34922800002082843d922800002082f0439228000020029a4b9228000020023678073600002042d64a1f38000030397be1304500
