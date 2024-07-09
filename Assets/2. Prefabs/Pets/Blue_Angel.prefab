@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3801613174715050893}
   - component: {fileID: 2643728167672878652}
   m_Layer: 0
-  m_Name: 'Blue_Angel '
+  m_Name: Blue_Angel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -592,7 +592,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.2
+  m_fontSize: 21.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6336,7 +6336,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.3
+  m_fontSize: 34.9
   m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8537,7 +8537,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.2
+  m_fontSize: 21.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -23132,7 +23132,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.15
+  m_fontSize: 30
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -29775,7 +29775,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679659125}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.28678977, y: -1e-45, z: -0, w: 0.95799357}
+  m_LocalRotation: {x: 0.28678977, y: 3e-45, z: -1e-45, w: 0.95799357}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -41173,7 +41173,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.2
+  m_fontSize: 21.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -42402,7 +42402,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.95
+  m_fontSize: 52
   m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -52917,7 +52917,6 @@ GameObject:
   - component: {fileID: 1082079094}
   - component: {fileID: 1082079093}
   - component: {fileID: 1082079095}
-  - component: {fileID: 1082079096}
   m_Layer: 5
   m_Name: DailyReward
   m_TagString: Untagged
@@ -53014,23 +53013,6 @@ MonoBehaviour:
   tablePrefab: {fileID: 2758358694923889831, guid: 79cb5fb4cf940b84b9932834e75de3e3, type: 3}
   container: {fileID: 1960227393}
   claim: {fileID: 1104824853}
---- !u!114 &1082079096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082079089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cec88118e5094450bb833a5777a7757d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rewards:
-  - {fileID: 11400000, guid: 872ff2c58a8f494418d0eac33bfffe55, type: 2}
-  - {fileID: 11400000, guid: e9ac0a0582cb2584c924e46d5f2524f1, type: 2}
-  - {fileID: 11400000, guid: 7ea36e6b41712c743b4b749d73a28e7e, type: 2}
-  - {fileID: 11400000, guid: 55f3f0f0ca064734ab3f2d569a662b38, type: 2}
 --- !u!1001 &1082299470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54551,7 +54533,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 116.7
+  m_fontSize: 78.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -65347,6 +65329,7 @@ GameObject:
   - component: {fileID: 1298134342}
   - component: {fileID: 1298134343}
   - component: {fileID: 1298134344}
+  - component: {fileID: 1298134345}
   m_Layer: 0
   m_Name: '[CONFIG]'
   m_TagString: Untagged
@@ -65542,6 +65525,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef9742bd247411c8296843fc6b9f553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1298134345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298134336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec88118e5094450bb833a5777a7757d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewards:
+  - {fileID: 11400000, guid: d42c5ba56331b1a4db5c9d606e359e0f, type: 2}
+  - {fileID: 11400000, guid: 66c437d65a65c0747acf802f1e7e62a4, type: 2}
+  - {fileID: 11400000, guid: 4ab5f65983f51e94ba27284d5ed13e16, type: 2}
+  - {fileID: 11400000, guid: 73e8ec07bcf5b8e4b87ad6aae4ef293f, type: 2}
+  - {fileID: 11400000, guid: 2f5630f1a2dd9da48946b50c22f12a4e, type: 2}
+  - {fileID: 11400000, guid: ba9b377196581eb4c9f1cd59a516e882, type: 2}
+  - {fileID: 11400000, guid: c34f1fed8b83b2b428574bdeafa7950d, type: 2}
 --- !u!1001 &1299160080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81316,7 +81319,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.05
+  m_fontSize: 52
   m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -92080,7 +92083,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.6
+  m_fontSize: 30
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -98825,7 +98828,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.2
+  m_fontSize: 21.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -112964,7 +112967,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.55
+  m_fontSize: 30
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -114610,7 +114613,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.75
+  m_fontSize: 15.9
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -116636,7 +116639,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095013992}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30893397, y: -0.000000016364705, z: 0.000000005315635, w: 0.95108354}
+  m_LocalRotation: {x: 0.30893397, y: 0.000000016364705, z: -0.000000005315635, w: 0.95108354}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -117302,7 +117305,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.85
+  m_fontSize: 52
   m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 1
