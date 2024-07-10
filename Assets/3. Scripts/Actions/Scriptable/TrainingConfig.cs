@@ -2,7 +2,7 @@
 
 namespace _3._Scripts.Actions.Scriptable
 {
-    [CreateAssetMenu(fileName = "TrainingConfig", menuName = "TrainingConfig", order = 0)]
+    [CreateAssetMenu(fileName = "TrainingConfig", menuName = "ScriptableObjects/TrainingConfig", order = 0)]
     public class TrainingConfig : ScriptableObject
     {
         [SerializeField] private float count;

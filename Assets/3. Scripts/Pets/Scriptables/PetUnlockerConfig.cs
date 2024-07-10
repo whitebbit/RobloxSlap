@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _3._Scripts.Pets.Scriptables
 {
-    [CreateAssetMenu(fileName = "PetUnlockerConfig", menuName = "PetUnlockerConfig", order = 0)]
+    [CreateAssetMenu(fileName = "PetUnlockerConfig", menuName = "ScriptableObjects/Pets/PetUnlockerConfig", order = 0)]
     public class PetUnlockerConfig : ScriptableObject
     {
         [SerializeField] private List<PetData> pets =new();

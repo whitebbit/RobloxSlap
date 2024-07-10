@@ -11,6 +11,7 @@ using _3._Scripts.UI.Effects;
 using _3._Scripts.UI.Elements;
 using _3._Scripts.UI.Extensions;
 using _3._Scripts.UI.Panels.Base;
+using GBGamesPlugin;
 using VInspector;
 
 namespace _3._Scripts.UI.Panels
@@ -107,6 +108,9 @@ namespace _3._Scripts.UI.Panels
             var effectInstance = CurrencyEffectPanel.Instance.SpawnEffect(effect, rewardType, rewardC);
             effectInstance.Initialize(rewardType, rewardC);
             _playerWin = false;
+            GBGames.saves.achievementSaves.Update("enemy_1", 1);
+            GBGames.saves.achievementSaves.Update("enemy_20", 1);
+            GBGames.saves.achievementSaves.Update("enemy_100", 1);
         }
 
         private void SetComponentsState(bool state)

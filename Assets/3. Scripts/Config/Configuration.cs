@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _3._Scripts.Achievements.Scriptables;
 using _3._Scripts.Characters;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Currency.Scriptable;
@@ -21,9 +22,11 @@ namespace _3._Scripts.Config
         [SerializeField] private List<TrailItem> allTrails = new();
         [SerializeField] private List<PetData> allPets = new();
         [SerializeField] private List<UpgradeItem> allUpgrades = new();
+        [SerializeField] private List<AchievementData> achievementData = new();
 
 
         public IEnumerable<PetData> AllPets => allPets;
+        public IEnumerable<AchievementData> AchievementData => achievementData;
 
         public IEnumerable<UpgradeItem> AllUpgrades => allUpgrades;
         public IEnumerable<CharacterItem> AllCharacters => allCharacters;

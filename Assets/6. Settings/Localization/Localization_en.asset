@@ -353,6 +353,38 @@ MonoBehaviour:
     m_Localized: New world
     m_Metadata:
       m_Items: []
+  - m_Id: 20217572263276544
+    m_Localized: Achievements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20225202218151936
+    m_Localized: Defeat 1 enemy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20225313279127552
+    m_Localized: Defeat 20 enemies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20225397546889216
+    m_Localized: Defeat 100 enemies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20225657291747328
+    m_Localized: Get a legendary pet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20238777917714432
+    m_Localized: Accumulate 100 slap power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20239042725097472
+    m_Localized: Accumulate 10000 slap power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20239140347523072
+    m_Localized: Accumulate 1000000 slap power
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

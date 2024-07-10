@@ -4,7 +4,7 @@ using VInspector;
 
 namespace _3._Scripts.Enemies.Scriptable
 {
-    [CreateAssetMenu(fileName = "Enemy Data", menuName = "EnemyData", order = 0)]
+    [CreateAssetMenu(fileName = "Enemy Data", menuName = "ScriptableObjects/EnemyData", order = 0)]
     public class EnemyData : ScriptableObject
     {
         [Tab("UI")] 

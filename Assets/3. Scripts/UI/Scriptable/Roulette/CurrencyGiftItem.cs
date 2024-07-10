@@ -12,7 +12,7 @@ using VInspector;
 
 namespace _3._Scripts.UI.Scriptable.Roulette
 {
-    [CreateAssetMenu(fileName = "CurrencyRouletteItem", menuName = "Roulette Item/Currency", order = 0)]
+    [CreateAssetMenu(fileName = "CurrencyRouletteItem", menuName = "ScriptableObjects/RouletteItem/Currency", order = 0)]
     public class CurrencyGiftItem : GiftItem
     {
         [Tab("Base settings")] [SerializeField]

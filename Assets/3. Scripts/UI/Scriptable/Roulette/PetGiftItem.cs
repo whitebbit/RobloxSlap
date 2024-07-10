@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _3._Scripts.UI.Scriptable.Roulette
 {
-    [CreateAssetMenu(fileName = "PetGiftItem", menuName = "Roulette Item/Pet Gift Item", order = 0)]
+    [CreateAssetMenu(fileName = "PetGiftItem", menuName = "ScriptableObjects/RouletteItem/Pet Gift Item", order = 0)]
     public class PetGiftItem: GiftItem
     {
         [SerializeField] private PetData data;

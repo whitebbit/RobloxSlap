@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _3._Scripts.Currency.Scriptable
 {
-    [CreateAssetMenu(fileName = "CurrencyData", menuName = "Currency Data", order = 0)]
+    [CreateAssetMenu(fileName = "CurrencyData", menuName = "ScriptableObjects/CurrencyData", order = 0)]
     public class CurrencyData : ScriptableObject
     {
         [SerializeField] private CurrencyType type;

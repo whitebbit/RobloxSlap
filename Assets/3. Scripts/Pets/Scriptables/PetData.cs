@@ -5,7 +5,7 @@ using VInspector;
 
 namespace _3._Scripts.Pets.Scriptables
 {
-    [CreateAssetMenu(fileName = "PetData", menuName = "PetData", order = 0)]
+    [CreateAssetMenu(fileName = "PetData", menuName = "ScriptableObjects/Pets/PetData", order = 0)]
     public class PetData : ScriptableObject
     {
         [SerializeField] private string id;

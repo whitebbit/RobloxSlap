@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _3._Scripts.Stages.Scriptable
 {
-    [CreateAssetMenu(fileName = "StageConfig", menuName = "StageConfig", order = 0)]
+    [CreateAssetMenu(fileName = "StageConfig", menuName = "ScriptableObjects/StageConfig", order = 0)]
     public class StageConfig : ScriptableObject
     {
         [SerializeField, Min(0)] private int id;
