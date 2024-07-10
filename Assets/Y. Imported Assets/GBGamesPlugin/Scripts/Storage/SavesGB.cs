@@ -22,6 +22,7 @@ namespace GBGamesPlugin
         public DailyRewardSave dailyReward = new();
         
         public int stageID;
+        public int worldID;
         public bool sound = true;
     }
 }

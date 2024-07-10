@@ -323,6 +323,26 @@ MonoBehaviour:
     m_Key: daily
     m_Metadata:
       m_Items: []
+  - m_Id: 19915601664880640
+    m_Key: next_world
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19917134695575552
+    m_Key: next_world_warning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19917777615269888
+    m_Key: yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19917920150302720
+    m_Key: no
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19919797663379456
+    m_Key: teleport_new
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

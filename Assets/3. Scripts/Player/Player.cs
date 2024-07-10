@@ -80,6 +80,11 @@ namespace _3._Scripts.Player
 
         private void Start()
         {
+            Initialize();
+        }
+
+        public void Initialize()
+        {
             InitializeCharacter();
             InitializeTrail();
             InitializePets();
@@ -116,6 +121,8 @@ namespace _3._Scripts.Player
         {
             var player = transform;
             var position = player.position + player.right * 2;
+
+            PetsHandler.ClearPets();
             foreach (var petSaveData in GBGames.saves.petsSave.selected)
             {
                 PetsHandler.CreatePet(petSaveData, position);

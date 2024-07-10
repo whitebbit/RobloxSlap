@@ -331,6 +331,28 @@ MonoBehaviour:
     m_Localized: Claim
     m_Metadata:
       m_Items: []
+  - m_Id: 19915601664880640
+    m_Localized: Next world
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19917134695575552
+    m_Localized: Moving to the next world, you will be reborn. All current progress
+      is reset. You will continue playing with a X1.5 power multiplier in a new world.
+      Continue?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19917777615269888
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19917920150302720
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19919797663379456
+    m_Localized: New world
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

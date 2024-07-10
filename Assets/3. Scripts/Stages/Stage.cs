@@ -33,7 +33,7 @@ namespace _3._Scripts.Stages
 
         private void InitializeTeleport()
         {
-            var obj = GetComponentsInChildren<StagePortal>().FirstOrDefault(s => s.Type == TeleportType.Next);
+            var obj = GetComponentsInChildren<Teleport>().FirstOrDefault(s => s.Type == TeleportType.Next);
             if (obj != null)
                 obj.SetPrice(config.TeleportPrice);
         }
