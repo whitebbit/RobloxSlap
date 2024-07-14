@@ -28,13 +28,22 @@ namespace _3._Scripts.UI.Panels
             }
             claim.onClick.AddListener(() =>
             {
-                DailyRewardsController.Instance.ClaimReward();
+                DailyRewardsController.Instance.CollectRewards();
                 foreach (var table in _tables)
                 {
                     table.UpdateClaimState();
                 }
             });
         }
-        
+
+        protected override void OnOpen()
+        {
+            base.OnOpen();
+            DailyRewardsController.Instance.CheckForNew();
+            foreach (var table in _tables)
+            {
+                table.UpdateReward();
+            }
+        }
     }
 }

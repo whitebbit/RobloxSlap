@@ -11,57 +11,87 @@ namespace _3._Scripts.DailyRewards
     {
         [SerializeField] private List<GiftItem> rewards = new();
 
-        public List<GiftItem> Rewards => rewards;
+        public IEnumerable<GiftItem> Rewards => rewards;
 
         private void Start()
         {
-            CheckDailyLogin();
+            CheckForNew();
         }
 
-        private void CheckDailyLogin()
+        public void CheckForNew()
         {
-            var today = DateTime.Today;
-            var data = GBGames.saves.dailyReward;
+#if UNITY_EDITOR
+            CheckForNewMinute();
+#else
+            CheckForNewDay();
+#endif
+        }
 
-            if (data.lastLoginDate == today.AddDays(-1))
+        private void CheckForNewDay()
+        {
+            var currentDate = DateTime.Now;
+            if (GBGames.saves.dailyReward.lastLoginDate.Date >= currentDate) return;
+            if ((currentDate - GBGames.saves.dailyReward.lastLoginDate).Days > 1)
             {
-                data.currentStreak++;
-
-                if (data.currentStreak > 7)
-                {
-                    data.currentStreak = 1;
-                    data.claimedRewards.Clear();
-                }
+                ResetRewards();
             }
             else
             {
-                data.currentStreak = 1;
-                data.claimedRewards.Clear();
+                GBGames.saves.dailyReward.currentStreak++;
             }
 
-            data.lastLoginDate = today;
+            GBGames.saves.dailyReward.lastLoginDate = currentDate;
         }
 
-
-        public void ClaimReward()
+        private void CheckForNewMinute()
         {
-            var data = GBGames.saves.dailyReward;
-            var totalRewardsToClaim = data.currentStreak;
+            var currentDate = DateTime.Now;
+            if (GBGames.saves.dailyReward.lastLoginDate.Date >= currentDate) return;
 
-            for (var i = 0; i < totalRewardsToClaim; i++)
+            if ((currentDate - GBGames.saves.dailyReward.lastLoginDate).TotalMinutes >= 1)
             {
-                if (Claimed(i)) continue;
-                var reward = rewards[i % rewards.Count];
-                reward.OnReward();
-                data.claimedRewards.Add(i);
+                ResetRewards();
             }
+            else
+            {
+                GBGames.saves.dailyReward.currentStreak++;
+            }
+
+            GBGames.saves.dailyReward.lastLoginDate = currentDate;
+        }
+
+        public void CollectRewards()
+        {
+            for (var i = 0; i <= GBGames.saves.dailyReward.currentStreak; i++)
+            {
+                if (GBGames.saves.dailyReward.collectedRewards.Contains(i)) continue;
+
+                GiveReward(i);
+                GBGames.saves.dailyReward.CollectReward(i);
+            }
+
+            if (rewards.Count <= GBGames.saves.dailyReward.currentStreak)
+            {
+                ResetRewards();
+            }
+        }
+
+        private void GiveReward(int day)
+        {
+            var reward = rewards[day];
+            reward.OnReward();
+        }
+
+        private void ResetRewards()
+        {
+            GBGames.saves.dailyReward.currentStreak = 0;
+            GBGames.saves.dailyReward.collectedRewards.Clear();
         }
 
 
         public bool Claimed(int dayIndex)
         {
-            var data = GBGames.saves.dailyReward;
-            return data.claimedRewards.Contains(dayIndex );
+            return GBGames.saves.dailyReward.collectedRewards.Contains(dayIndex);
         }
     }
 }

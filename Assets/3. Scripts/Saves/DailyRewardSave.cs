@@ -6,8 +6,14 @@ namespace _3._Scripts.Saves
     [Serializable]
     public class DailyRewardSave
     {
-        public DateTime lastLoginDate= DateTime.MinValue;
-        public List<int> claimedRewards= new();
-        public int currentStreak = 1;
+        public int currentStreak;
+        public DateTime lastLoginDate = DateTime.MinValue;
+        public List<int> collectedRewards = new();
+
+
+        public void CollectReward(int id)
+        {
+            collectedRewards.Add(id);
+        }
     }
 }

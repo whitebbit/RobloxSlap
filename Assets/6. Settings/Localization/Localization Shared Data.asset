@@ -375,6 +375,10 @@ MonoBehaviour:
     m_Key: slap_1000000
     m_Metadata:
       m_Items: []
+  - m_Id: 21600309956714496
+    m_Key: telegram_chanel
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

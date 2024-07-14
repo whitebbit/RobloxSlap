@@ -16,8 +16,12 @@ namespace _3._Scripts.UI.Elements
         [SerializeField] private Image icon;
         [SerializeField] private Image gotImage;
 
+
+        private GiftItem _giftItem;
         public void Initialize(GiftItem item, int day)
         {
+            _giftItem = item;
+            
             title.text = item.Title();
             icon.sprite = item.Icon();
             icon.ScaleImage();
@@ -34,5 +38,11 @@ namespace _3._Scripts.UI.Elements
             gotImage.gameObject.SetActive(DailyRewardsController.Instance.Claimed(_dayIndex));
         }
 
+        public void UpdateReward()
+        {
+            title.text = _giftItem.Title();
+            icon.sprite = _giftItem.Icon();
+            icon.ScaleImage();
+        }
     }
 }

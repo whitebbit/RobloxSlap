@@ -385,6 +385,10 @@ MonoBehaviour:
     m_Localized: Accumulate 1000000 slap power
     m_Metadata:
       m_Items: []
+  - m_Id: 21600309956714496
+    m_Localized: News and bonuses in Telegram
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
