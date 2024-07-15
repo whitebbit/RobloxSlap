@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 2100000, guid: f49f6e4f9a477ca46afca364c48c3802, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - DR_RIM_ON
   - _CELPRIMARYMODE_SINGLE
   - _TEXTUREBLENDINGMODE_MULTIPLY
   m_InvalidKeywords:
@@ -33,7 +34,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats: []
-    m_Colors: []
+    m_Colors:
+    - _FlatRimColor: {r: 0.5471698, g: 0.21938412, b: 0.25733057, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4731395206779457634
 MonoBehaviour:
