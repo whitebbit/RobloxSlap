@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65432d449a2647b5b5f6c56194c15f5d, type: 3}
   m_Name: day 7
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 9a46826a124bf724fb97c8ff40d185b5, type: 2}
+  data: {fileID: 11400000, guid: ab39c75670ae6f24789c4bbaf0525f92, type: 2}

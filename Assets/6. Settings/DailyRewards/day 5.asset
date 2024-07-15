@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76165b13c80403aacca0bb50c9a4d28, type: 3}
   m_Name: day 5
   m_EditorClassIdentifier: 
-  type: 0
-  count: 50000
+  type: 1
+  count: 1325000
