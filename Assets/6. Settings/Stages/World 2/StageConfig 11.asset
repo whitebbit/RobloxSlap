@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e00d5ce2174fb8a22d8af8caa10fcf, type: 3}
   m_Name: StageConfig 11
   m_EditorClassIdentifier: 
-  id: 11
+  id: 5
   teleportPrice: 150000000
   giftBooster: 5000
   petUnlocker: {fileID: 11400000, guid: 269475fe94fb41147ae0421ba945154e, type: 2}

@@ -1,11 +1,12 @@
 ﻿using System;
+using _3._Scripts.Singleton;
 using _3._Scripts.UI.Scriptable.Shop;
 using GBGamesPlugin;
 using UnityEngine;
 
 namespace _3._Scripts.Saves
 {
-    public class DefaultDataProvider : MonoBehaviour
+    public class DefaultDataProvider : Singleton<DefaultDataProvider>
     {
         [SerializeField] private CharacterItem defaultCharacter;
         [SerializeField] private TrailItem defaultTrail;

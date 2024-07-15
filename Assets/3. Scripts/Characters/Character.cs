@@ -15,20 +15,17 @@ namespace _3._Scripts.Characters
         [SerializeField] private Hand right;
         [SerializeField] private Hand left;
         
-        private Animator _animator;
-        private void Awake()
-        {
-            _animator = GetComponent<Animator>();
-        }
+        [SerializeField]private Animator animator;
 
 #if UNITY_EDITOR
         private void OnValidate()
         {
+            animator = GetComponent<Animator>();
             if(right != null  && left != null) return;
             FindAndAddHandComponent(transform);
         }
 
-        private void FindAndAddHandComponent(Transform parent)
+        private void FindAndAddHandComponent(IEnumerable parent)
         {
             if(right != null  && left != null) return;
             
@@ -60,27 +57,16 @@ namespace _3._Scripts.Characters
             }
         }
 #endif
-        
-        private void Start()
+
+        public void Initialize()
         {
-            _animator.enabled = true;
-            Player.Player.instance.PlayerAnimator.SetAvatar(_animator.avatar);
-            StartCoroutine(DelayFixAnimation());
+            Player.Player.instance.PlayerAnimator.SetAvatar(animator.avatar);
         }
 
         public void SetUpgrade(UpgradeItem upgrade)
         {
             right.Initialize(upgrade);
             left.Initialize(upgrade);
-        }
-
-        private IEnumerator DelayFixAnimation()
-        {
-            yield return null;
-            Player.Player.instance.PlayerAnimator.SetState(false);
-            yield return null;
-            Player.Player.instance.PlayerAnimator.SetState(true);
-            _animator.enabled = false;
         }
     }
 }

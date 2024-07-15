@@ -13,11 +13,7 @@ namespace _3._Scripts.Stages
     public class StageController : Singleton<StageController>
     {
         [SerializeField] private List<World> worlds = new();
-        
-        [Header("Components")] [SerializeField]
-        private DefaultDataProvider defaultData;
-
-        
+     
         public Stage CurrentStage { get; private set; }
         public int CurrentStageID { get; private set; }
 
@@ -50,17 +46,9 @@ namespace _3._Scripts.Stages
         {
             GBGames.saves.worldID += 1;
             GBGames.saves.stageID = 0;
-
-            WalletManager.FirstCurrency = 0;
-            WalletManager.SecondCurrency = 0;
             
-            GBGames.saves.petsSave = new PetSave();
-            GBGames.saves.characterSaves = new SaveHandler<string>();
-            GBGames.saves.upgradeSaves = new SaveHandler<string>();
-            
+            Player.Player.instance.Reborn();
             TeleportToStage(0);
-            defaultData.SetPlayerDefaultData();
-            Player.Player.instance.Initialize();
         }
 
         private void TeleportToStage(int stageID)
