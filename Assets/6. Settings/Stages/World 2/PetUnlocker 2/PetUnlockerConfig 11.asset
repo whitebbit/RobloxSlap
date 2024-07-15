@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PetUnlockerConfig 11
   m_EditorClassIdentifier: 
   pets:
-  - {fileID: 11400000, guid: 9a46826a124bf724fb97c8ff40d185b5, type: 2}
-  - {fileID: 11400000, guid: cf583fb6f34b6a34e8689753a564ae56, type: 2}
-  - {fileID: 11400000, guid: 64ec87bc80e67f1499c952fdc6c4853d, type: 2}
+  - {fileID: 11400000, guid: 2fb96538ce1574f4eba22538dfd40424, type: 2}
+  - {fileID: 11400000, guid: 43987bcab55b96e4e9acc042463c0a13, type: 2}
+  - {fileID: 11400000, guid: ab39c75670ae6f24789c4bbaf0525f92, type: 2}
   price: 62500000
