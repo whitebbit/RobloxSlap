@@ -350,9 +350,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 19919797663379456
-    m_Localized: New world
+    m_Localized: 'New world
+
+      <sprite index=0>{price} Is required'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 3203987063427825692
   - m_Id: 20217572263276544
     m_Localized: Achievements
     m_Metadata:
@@ -395,4 +398,4 @@ MonoBehaviour:
     - rid: 3203987063427825692
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0020c279aeae23000020826808b023000020828f238c2800002002cf109128000020027d2c9228000020022c34922800002082843d922800002082f0439228000020029a4b9228000020023678073600002042d64a1f38000030397be1304500
+        m_Entries: 0020c279aeae23000020826808b023000020828f238c2800002002cf109128000020027d2c9228000020022c34922800002082843d922800002082f0439228000020029a4b9228000020023678073600002042d64a1f38000030397be13045000030b94ff3c44600

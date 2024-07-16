@@ -29,8 +29,14 @@ namespace _3._Scripts.Stages
                     text.SetVariable("price", WalletManager.ConvertToWallet((decimal) _teleportPrice));
                     break;
                 case TeleportType.Previous:
+                    text.SetReference("teleport_return");
+
+
                     break;
                 case TeleportType.New:
+                    text.SetReference("teleport_new");
+                    text.SetVariable("price", WalletManager.ConvertToWallet((decimal) _teleportPrice));
+
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -46,10 +52,10 @@ namespace _3._Scripts.Stages
                     text.SetVariable("price", WalletManager.ConvertToWallet((decimal) _teleportPrice));
                     break;
                 case TeleportType.Previous:
-                    text.SetReference("teleport_return");
                     break;
                 case TeleportType.New:
                     text.SetReference("teleport_new");
+                    text.SetVariable("price", WalletManager.ConvertToWallet((decimal) _teleportPrice));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -81,7 +87,8 @@ namespace _3._Scripts.Stages
                     StageController.Instance.TeleportToPreviousStage();
                     break;
                 case TeleportType.New:
-                    UIManager.Instance.GetPanel<WorldUpdaterPanel>().Enabled = true;
+                    if (WalletManager.SecondCurrency >= _teleportPrice)
+                        UIManager.Instance.GetPanel<WorldUpdaterPanel>().Enabled = true;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
