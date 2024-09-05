@@ -8,6 +8,7 @@ using _3._Scripts.UI.Effects;
 using _3._Scripts.UI.Panels;
 using _3._Scripts.Wallet;
 using DG.Tweening;
+using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using VInspector;
@@ -49,10 +50,14 @@ namespace _3._Scripts.Actions
             
             var training = Player.Player.instance.GetTrainingStrength(_count);
             var obj = CurrencyEffectPanel.Instance.SpawnEffect(effect, currencyType, training);
-            
+
             obj.Initialize(currencyType, training);
             shakeObject.DOShakePosition(0.25f, 0.25f, 50).OnComplete(() => shakeObject.localPosition = _startPosition);
             particle.Play();
+            
+            GBGames.saves.achievementSaves.Update("slap_100", training);
+            GBGames.saves.achievementSaves.Update("slap_10000", training);
+            GBGames.saves.achievementSaves.Update("slap_1000000", training);
         }
     }
 }

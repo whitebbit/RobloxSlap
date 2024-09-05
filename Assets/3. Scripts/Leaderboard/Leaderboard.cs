@@ -27,10 +27,9 @@ namespace _3._Scripts.Leaderboard
 
         public void UpdateScore(int score)
         {
-            if (GBGames.GetLeaderboardScore(leaderboardName) != score)
-            {
-                GBGames.SetLeaderboardScore(leaderboardName, score);
-            }
+            if (GBGames.GetLeaderboardScore(leaderboardName) > score) return;
+
+            GBGames.SetLeaderboardScore(leaderboardName, score);
         }
 
         private IEnumerator InitializeLeaderboard()

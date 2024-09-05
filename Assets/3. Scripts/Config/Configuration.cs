@@ -17,6 +17,8 @@ namespace _3._Scripts.Config
 {
     public class Configuration : Singleton<Configuration>
     {
+        [SerializeField] private RemoteConfig<bool> interByTime;
+        [Space]
         [SerializeField] private List<CurrencyData> currencyData = new();
         [SerializeField] private List<CharacterItem> allCharacters = new();
         [SerializeField] private List<TrailItem> allTrails = new();
@@ -25,6 +27,7 @@ namespace _3._Scripts.Config
         [SerializeField] private List<AchievementData> achievementData = new();
 
 
+        public bool InterByTime => interByTime.Value;
         public IEnumerable<PetData> AllPets => allPets;
         public IEnumerable<AchievementData> AchievementData => achievementData;
 

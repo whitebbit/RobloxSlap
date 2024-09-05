@@ -52,6 +52,8 @@ namespace _3._Scripts.Stages
                     text.SetVariable("price", WalletManager.ConvertToWallet((decimal) _teleportPrice));
                     break;
                 case TeleportType.Previous:
+                    text.SetReference("teleport_return");
+
                     break;
                 case TeleportType.New:
                     text.SetReference("teleport_new");
