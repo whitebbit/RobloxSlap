@@ -146,6 +146,8 @@ namespace _3._Scripts.UI.Panels
             
             for (var i = 0; i < 3; i++)
             {
+                if (best.Count == i) break;
+
                 var slot = _slots.FirstOrDefault(s => s.SaveData.id == best[i].id);
                 
                 if (slot == null) continue;

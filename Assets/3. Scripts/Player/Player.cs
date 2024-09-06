@@ -142,8 +142,10 @@ namespace _3._Scripts.Player
             var pets = GBGames.saves.petsSave.unlocked.OrderByDescending(p => p.booster).ToList();
             
             PetsHandler.ClearPets();
+            
             for (var i = 0; i < 3; i++)
             {
+                if (pets.Count == i) break;
                 PetsHandler.CreatePet(pets[i], position);
             }
         }
