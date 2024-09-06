@@ -13,10 +13,8 @@ namespace _3._Scripts.Boosters
     {
         [Tab("View")] 
         [SerializeField] private Image cooldownImage;
-
         [SerializeField] private Image adImage;
         
-
         [Tab("Settings")] [SerializeField] private float timeToDeactivate;
 
         public Action onActivateBooster;

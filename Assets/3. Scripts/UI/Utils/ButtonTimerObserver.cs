@@ -36,8 +36,12 @@ namespace _3._Scripts.UI.Utils
             {
                 yield return new WaitForSeconds(minimumCheckTime);
 
-                if (timers.Count(timer => timer != null && timer.TimerEnd() && !timer.TimerStopped) > 0)
+                if (timers.Count(timer => timer != null && timer.TimerEnd() && !timer.TimerStopped) <= 0) continue;
+                if (!notificationImage.gameObject.activeSelf)
+                {
                     notificationImage.gameObject.SetActive(true);
+                    notificationImage.transform.DOScale(1.25f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+                }
             }
         }
     }

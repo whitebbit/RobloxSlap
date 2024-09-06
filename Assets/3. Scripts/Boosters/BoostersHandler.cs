@@ -12,7 +12,7 @@ namespace _3._Scripts.Boosters
     public class BoostersHandler : Singleton<BoostersHandler>
     {
         [Tab("Buttons")]
-        [SerializeField] private BoosterButton autoClickerButton;
+        [SerializeField] private BoosterButtonSwitcher autoClickerButton;
         [SerializeField] private BoosterButton healthBooster;
         [SerializeField] private BoosterButton rewardBooster;
         [SerializeField] private BoosterButton slapBooster;

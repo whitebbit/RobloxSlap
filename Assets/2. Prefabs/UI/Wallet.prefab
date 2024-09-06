@@ -15348,6 +15348,7 @@ GameObject:
   - component: {fileID: 7517476583540853876}
   - component: {fileID: 4845850141111037236}
   - component: {fileID: 1484907307384761119}
+  - component: {fileID: 3360324443421843522}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -15454,6 +15455,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &3360324443421843522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494962779247231213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a6cfa23f0249f08ede935de5d457f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 3396259340028679014}
 --- !u!1 &6659824164320558310
 GameObject:
   m_ObjectHideFlags: 0

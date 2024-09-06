@@ -379,6 +379,22 @@ MonoBehaviour:
     m_Key: telegram_chanel
     m_Metadata:
       m_Items: []
+  - m_Id: 41129171258318848
+    m_Key: max_pet_unlocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41156988440289280
+    m_Key: rarity_rare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41157148402655232
+    m_Key: rarity_mythical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41157232255180800
+    m_Key: rarity_legendary
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -46,10 +46,12 @@ namespace _3._Scripts.Player
                 Configuration.Instance.AllCharacters.FirstOrDefault(c => c.ID == GBGames.saves.characterSaves.current)
                     ?.Icon;
 
+            var health = Configuration.Instance.AllCharacters.FirstOrDefault(
+                h => h.ID == GBGames.saves.characterSaves.current).Booster;
             return new FighterData
             {
                 photo = photo,
-                health = BoostersHandler.Instance.GetBoosterState("health_booster") ? 200 : 100,
+                health = BoostersHandler.Instance.GetBoosterState("health_booster") ? health * 2 : health,
                 strength = BoostersHandler.Instance.GetBoosterState("slap_booster")
                     ? WalletManager.FirstCurrency * 2
                     : WalletManager.FirstCurrency
@@ -66,10 +68,11 @@ namespace _3._Scripts.Player
             var hand = Configuration.Instance.AllUpgrades.FirstOrDefault(
                 h => h.ID == GBGames.saves.upgradeSaves.current).Booster;
             var pets = GBGames.saves.petsSave.selected.Sum(p => p.booster);
-            var character = Configuration.Instance.AllCharacters.FirstOrDefault(
+            /*var character = Configuration.Instance.AllCharacters.FirstOrDefault(
                 h => h.ID == GBGames.saves.characterSaves.current).Booster;
+                */
 
-            return (strengthPerClick + pets + character) * hand;
+            return (strengthPerClick + pets) * hand;
         }
 
         public void Teleport(Vector3 position)
@@ -96,16 +99,16 @@ namespace _3._Scripts.Player
         {
             WalletManager.FirstCurrency = 0;
             WalletManager.SecondCurrency = 0;
-            
+
             GBGames.saves.petsSave = new PetSave();
             GBGames.saves.characterSaves = new SaveHandler<string>();
             GBGames.saves.upgradeSaves = new SaveHandler<string>();
-            
+
             DefaultDataProvider.Instance.SetPlayerDefaultData();
 
             Initialize();
         }
-        
+
         private void Update()
         {
             if (isFight && Input.GetMouseButtonDown(0))
@@ -136,11 +139,12 @@ namespace _3._Scripts.Player
         {
             var player = transform;
             var position = player.position + player.right * 2;
-
+            var pets = GBGames.saves.petsSave.unlocked.OrderByDescending(p => p.booster).ToList();
+            
             PetsHandler.ClearPets();
-            foreach (var petSaveData in GBGames.saves.petsSave.selected)
+            for (var i = 0; i < 3; i++)
             {
-                PetsHandler.CreatePet(petSaveData, position);
+                PetsHandler.CreatePet(pets[i], position);
             }
         }
 

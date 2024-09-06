@@ -36,8 +36,8 @@ namespace _3._Scripts.UI.Panels
             OutTransition = transition;
 
             booster.gameObject.SetActive(false);
-            select.onClick.AddListener(SelectCurrent);
-            unselect.onClick.AddListener(UnselectCurrent);
+            //select.onClick.AddListener(SelectCurrent);
+            //unselect.onClick.AddListener(UnselectCurrent);
             remove.onClick.AddListener(Remove);
             selectBest.onClick.AddListener(SelectBest);
         }
@@ -46,6 +46,7 @@ namespace _3._Scripts.UI.Panels
         {
             InitializeSlots();
             UpdateCount();
+            EquipBest();
         }
 
         protected override void OnClose()
@@ -61,7 +62,7 @@ namespace _3._Scripts.UI.Panels
 
         private void InitializeSlots()
         {
-            var unlocked = GBGames.saves.petsSave.unlocked;
+            var unlocked = GBGames.saves.petsSave.unlocked.OrderByDescending(p => p.booster).ToList();
             foreach (var item in unlocked)
             {
                 var obj = Instantiate(prefab, container);
@@ -86,14 +87,14 @@ namespace _3._Scripts.UI.Panels
 
         private void OnClick(PetSlot slot)
         {
-            if(_currentSlot != null)
+            if (_currentSlot != null)
                 _currentSlot.Unselect();
-            
+
             _currentSlot = slot;
-            
-            if(_currentSlot != null)
+
+            if (_currentSlot != null)
                 _currentSlot.Select();
-            
+
             booster.gameObject.SetActive(true);
             selected.Initialize(slot.SaveData);
             booster.SetBooster(slot.SaveData);
@@ -117,8 +118,8 @@ namespace _3._Scripts.UI.Panels
         {
             var best = _slots.OrderByDescending(p => p.SaveData.booster).ToList();
             var selectedPets = new List<PetSaveData>(GBGames.saves.petsSave.selected);
-            if(best.Count <= 0) return;
-             
+            if (best.Count <= 0) return;
+
             foreach (var data in selectedPets)
             {
                 Unselect(data);
@@ -126,7 +127,7 @@ namespace _3._Scripts.UI.Panels
 
             for (var i = 0; i < 3; i++)
             {
-                if(i >= best.Count) continue;
+                if (i >= best.Count) continue;
                 Select(best[i].SaveData);
             }
 
@@ -134,6 +135,25 @@ namespace _3._Scripts.UI.Panels
             UpdateCount();
         }
 
+        private void EquipBest()
+        {
+            var best = GBGames.saves.petsSave.unlocked.OrderByDescending(p => p.booster).ToList();
+            
+            foreach (var slot in _slots)
+            {
+                slot.UnEquip();
+            }
+            
+            for (var i = 0; i < 3; i++)
+            {
+                var slot = _slots.FirstOrDefault(s => s.SaveData.id == best[i].id);
+                
+                if (slot == null) continue;
+                
+                slot.Equip();
+            }
+        }
+        
         public void Select(PetSaveData data, PetSlot slot = null)
         {
             slot = slot == null ? _slots.FirstOrDefault(s => s.SaveData.id == data.id) : slot;
@@ -175,21 +195,22 @@ namespace _3._Scripts.UI.Panels
 
         private void Remove()
         {
-            if (_currentSlot == null) return;
-            var data = _currentSlot.SaveData;
-
-            _currentSlot.UnEquip();
-
-            Player.Player.instance.PetsHandler.DestroyPet(data.id);
-            GBGames.saves.petsSave.Unselect(data.id);
-            GBGames.saves.petsSave.Remove(data.id);
+            var best = GBGames.saves.petsSave.unlocked.OrderByDescending(p => p.booster).ToList();
+            for (var i = 0; i < best.Count; i++)
+            {
+                if (i < 3) continue;
+                Player.Player.instance.PetsHandler.DestroyPet(best[i].id);
+                GBGames.saves.petsSave.Unselect(best[i].id);
+                GBGames.saves.petsSave.Remove(best[i].id);
+            }
+            
             GBGames.instance.Save();
 
             selected.Clear();
             booster.gameObject.SetActive(false);
-
-            _slots.Remove(_currentSlot);
-            Destroy(_currentSlot.gameObject);
+            
+            DeleteSlots();
+            InitializeSlots();
             UpdateCount();
         }
     }

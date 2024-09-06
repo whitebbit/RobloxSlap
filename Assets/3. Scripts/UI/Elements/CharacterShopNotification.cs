@@ -2,6 +2,7 @@
 using System.Linq;
 using _3._Scripts.Config;
 using _3._Scripts.Wallet;
+using DG.Tweening;
 using GBGamesPlugin;
 using UnityEngine;
 
@@ -21,6 +22,8 @@ namespace _3._Scripts.UI.Elements
             WalletManager.OnSecondCurrencyChange -= OnChange;
         }
 
+        private Tween _currentTween;
+
         private void OnChange(float _, float newValue)
         {
             // Получаем текущего персонажа игрока
@@ -34,7 +37,18 @@ namespace _3._Scripts.UI.Elements
                 .FirstOrDefault(c => c.Booster > current.Booster);
 
             // Включаем или отключаем уведомление
-            notification.gameObject.SetActive(character != null);
+            var state = character != null;
+
+            notification.gameObject.SetActive(state);
+            if (state)
+            {
+                _currentTween = notification.DOScale(1.25f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+            }
+            else
+            {
+                _currentTween.Kill();
+                _currentTween = null;
+            }
         }
     }
 }

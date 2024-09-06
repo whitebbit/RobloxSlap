@@ -11,9 +11,11 @@ namespace _3._Scripts.UI.Structs
         [SerializeField] private Sprite table;
         [SerializeField] private Color mainColor;
         [SerializeField] private Color additionalColor;
+        [SerializeField] private string titleId;
+
         public Rarity Rarity => rarity;
         public Sprite Table => table;
-
+        public string TitleID => titleId;
         public Color MainColor => mainColor;
         public Color AdditionalColor => additionalColor;
     }

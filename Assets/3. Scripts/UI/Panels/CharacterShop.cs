@@ -34,6 +34,7 @@ namespace _3._Scripts.UI.Panels
             
             GBGames.saves.characterSaves.SetCurrent(id);
             SetSlotsState();
+            HealthManager.Instance.ChangeValue();
             GBGames.instance.Save();
 
             return true;

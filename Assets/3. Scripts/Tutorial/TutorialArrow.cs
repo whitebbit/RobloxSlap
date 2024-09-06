@@ -10,14 +10,15 @@ namespace _3._Scripts.Tutorial
     public class TutorialArrow : MonoBehaviour
     {
         [SerializeField] private string stepName;
+        [SerializeField] private LineRenderer lineRenderer;
+        [SerializeField] private Transform player;
         [SerializeField] private Transform target;
-        [SerializeField] private Transform model;
 
         private bool _active;
 
         private void Start()
         {
-            model.gameObject.SetActive(false);
+            lineRenderer.gameObject.SetActive(false);
         }
 
         private void OnEnable()
@@ -26,34 +27,37 @@ namespace _3._Scripts.Tutorial
             TutorialSystem.TutorialStepComplete += OnTutorialStepComplete;
         }
 
-        
+
         private void OnDisable()
         {
             TutorialSystem.TutorialStepStart -= OnTutorialStepStart;
             TutorialSystem.TutorialStepComplete -= OnTutorialStepComplete;
         }
-        
+
         private void OnTutorialStepStart(string obj)
         {
-            if(obj != stepName) return;
-            
-            model.gameObject.SetActive(true);
+            if (obj != stepName) return;
+
+            lineRenderer.gameObject.SetActive(true);
             _active = true;
         }
-        
+
         private void OnTutorialStepComplete(string obj)
         {
-            if(obj != stepName) return;
-            
-            model.gameObject.SetActive(false);
+            if (obj != stepName) return;
+
+            lineRenderer.gameObject.SetActive(false);
             _active = false;
         }
 
 
         private void Update()
         {
-            if(_active)
-                transform.LookAt(target.transform.position);
+            if (!_active) return;
+            lineRenderer.positionCount = 2;
+
+            lineRenderer.SetPosition(0, player.position);
+            lineRenderer.SetPosition(1, target.position + Vector3.up);
         }
     }
 }

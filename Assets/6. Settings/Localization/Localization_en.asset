@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 9685054192230400
-    m_Localized: Delete
+    m_Localized: Remove the worst
     m_Metadata:
       m_Items: []
   - m_Id: 9762012313821184
@@ -390,6 +390,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 21600309956714496
     m_Localized: News and bonuses in Telegram
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41129171258318848
+    m_Localized: The backpack with pets is full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41156988440289280
+    m_Localized: Rare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41157148402655232
+    m_Localized: Mythical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41157232255180800
+    m_Localized: Legendary
     m_Metadata:
       m_Items: []
   references:
