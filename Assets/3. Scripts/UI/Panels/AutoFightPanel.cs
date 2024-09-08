@@ -37,17 +37,18 @@ namespace _3._Scripts.UI.Panels
                 button.AddListener(action);
             }
         }
+
         private void InitializeButtons()
         {
             var enemies = StageController.Instance.CurrentStage.EnemyData.OrderBy(e => e.ComplexityType).ToList();
-            foreach (var data in enemies)
+            for (var i = 0; i < StageController.Instance.CurrentStage.MiniGames.Count; i++)
             {
                 var button = Instantiate(enemySelectButtonPrefab, container);
-                button.Initialize(data);
+                button.Initialize(enemies[i]);
                 _enemySelectButtons.Add(button);
             }
         }
-        
+
         private void ClearButtons()
         {
             foreach (var child in _enemySelectButtons)

@@ -6,7 +6,6 @@ using _3._Scripts.Stages;
 using _3._Scripts.UI.Panels;
 using _3._Scripts.Wallet;
 using TMPro;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization.Components;
