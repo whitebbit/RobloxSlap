@@ -12,7 +12,7 @@ namespace _3._Scripts.Wallet
     {
         [SerializeField] private TMP_Text text;
 
-        private void OnEnable()
+        private void Start()
         {
             ChangeValue();
         }

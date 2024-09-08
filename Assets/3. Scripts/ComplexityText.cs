@@ -57,10 +57,10 @@ namespace _3._Scripts
     
     public enum ComplexityType
     {
-        Starter,
-        Average,
-        Hard,
-        Extreme,
-        FinalBoss
+        Starter = 0,
+        Average = 1,
+        Hard = 2,
+        Extreme = 3,
+        FinalBoss = 4
     }
 }

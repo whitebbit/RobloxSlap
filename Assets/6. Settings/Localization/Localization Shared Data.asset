@@ -395,6 +395,14 @@ MonoBehaviour:
     m_Key: rarity_legendary
     m_Metadata:
       m_Items: []
+  - m_Id: 41842909183614976
+    m_Key: auto_fight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41865480499240960
+    m_Key: select_enemy
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -109,9 +109,22 @@ namespace _3._Scripts.Player
             Initialize();
         }
 
+        private float _timeToSlap;
         private void Update()
         {
-            if (isFight && Input.GetMouseButtonDown(0))
+            if (!isFight) return;
+
+            if (BoostersHandler.Instance.GetBoosterState("auto_fight"))
+            {
+                _timeToSlap += Time.deltaTime;
+
+                if (!(_timeToSlap >= 0.5f)) return;
+
+                _timeToSlap = 0;
+                Slap();
+            }
+
+            if (Input.GetMouseButtonDown(0))
             {
                 Slap();
             }
@@ -140,9 +153,9 @@ namespace _3._Scripts.Player
             var player = transform;
             var position = player.position + player.right * 2;
             var pets = GBGames.saves.petsSave.unlocked.OrderByDescending(p => p.booster).ToList();
-            
+
             PetsHandler.ClearPets();
-            
+
             for (var i = 0; i < 3; i++)
             {
                 if (pets.Count == i) break;

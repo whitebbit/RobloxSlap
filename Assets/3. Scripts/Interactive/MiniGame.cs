@@ -15,17 +15,16 @@ namespace _3._Scripts.Interactive
 {
     public class MiniGame : MonoBehaviour, IInteractive
     {
-        [Tab("Fight components")] [SerializeField]
-        private Enemy enemyPrefab;
+        [Tab("Fight components")]
+        [SerializeField] private Enemy enemyPrefab;
 
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
         [Tab("Transforms")] [SerializeField] private Transform playerPoint;
         [SerializeField] private Transform enemyPoint;
         [SerializeField] private Transform useTutorialObject;
 
-        private EnemyData _enemyData;
+        public EnemyData EnemyData { get; private set; }
         private Fighter _enemy;
-
         private bool _fightStarted;
 
         public void Initialize(EnemyData data)
@@ -34,10 +33,10 @@ namespace _3._Scripts.Interactive
 
             var enemy = Instantiate(enemyPrefab, transform);
 
-            _enemyData = data;
+            EnemyData = data;
 
             enemy.transform.localPosition = enemyPoint.localPosition;
-            enemy.Initialize(_enemyData);
+            enemy.Initialize(EnemyData);
 
             _enemy = enemy;
         }
@@ -49,32 +48,39 @@ namespace _3._Scripts.Interactive
 
         public void StartInteract()
         {
+            if (_fightStarted) return;
+            
             useTutorialObject.gameObject.SetActive(true);
         }
 
         public void Interact()
         {
             if (_fightStarted) return;
+            
+            _fightStarted = true;
 
             var panel = UIManager.Instance.GetPanel<MiniGamePanel>();
             var player = Player.Player.instance;
 
             panel.Enabled = true;
-            panel.StartMiniGame(Player.Player.instance, _enemy, _enemyData.RewardCount, EndFight);
-
+            panel.StartMiniGame(Player.Player.instance, _enemy, EnemyData.RewardCount, EndFight);
+            
             useTutorialObject.gameObject.SetActive(false);
 
             player.PetsHandler.SetState(false);
             player.Teleport(playerPoint.position);
             player.transform.DOLookAt(_enemy.transform.position, 0, AxisConstraint.Y);
 
+            useTutorialObject.gameObject.SetActive(false);
+            
             CameraController.Instance.SwapTo(virtualCamera);
             TutorialSystem.StepComplete("fight");
 
-            _fightStarted = true;
 
             Player.Player.instance.OnStart();
             _enemy.OnStart();
+            
+            useTutorialObject.gameObject.SetActive(false);
         }
 
         private void EndFight()

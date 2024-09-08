@@ -408,6 +408,14 @@ MonoBehaviour:
     m_Localized: Legendary
     m_Metadata:
       m_Items: []
+  - m_Id: 41842909183614976
+    m_Localized: Auto-Fight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41865480499240960
+    m_Localized: Choose an opponent
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Actions;
 using _3._Scripts.Bots;
+using _3._Scripts.Enemies.Scriptable;
 using _3._Scripts.Pets;
 using _3._Scripts.Stages.Enums;
 using _3._Scripts.Stages.Scriptable;
@@ -17,6 +18,8 @@ namespace _3._Scripts.Stages
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private List<Bot> bots = new();
 
+        public List<Interactive.MiniGame> MiniGames { get; set; }
+        public List<EnemyData> EnemyData => config.Enemies;
         private readonly List<Bot> _currentBots = new();
         public Transform SpawnPoint => spawnPoint;
         public float GiftBooster => config.GiftBooster;
@@ -41,9 +44,9 @@ namespace _3._Scripts.Stages
 
         private void InitializeEnemy()
         {
-            var obj = GetComponentsInChildren<Interactive.MiniGame>();
+            MiniGames = GetComponentsInChildren<Interactive.MiniGame>().ToList();
             var enemyIndex = 0;
-            foreach (var miniGame in obj)
+            foreach (var miniGame in MiniGames)
             {
                 miniGame.Initialize(config.Enemies[enemyIndex]);
                 enemyIndex++;
