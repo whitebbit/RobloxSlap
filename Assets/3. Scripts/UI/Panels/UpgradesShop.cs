@@ -2,13 +2,14 @@
 using _3._Scripts.Characters;
 using _3._Scripts.Config;
 using _3._Scripts.UI.Elements;
+using _3._Scripts.UI.Elements.ShopSlots;
 using _3._Scripts.UI.Scriptable.Shop;
 using _3._Scripts.Wallet;
 using GBGamesPlugin;
 
 namespace _3._Scripts.UI.Panels
 {
-    public class UpgradesShop: ShopPanel<UpgradeItem>
+    public class UpgradesShop: ShopPanel<UpgradeItem, ShopSlot>
     {
         protected override IEnumerable<UpgradeItem> ShopItems()
         {

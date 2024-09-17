@@ -9,22 +9,20 @@ namespace _3._Scripts.Enemies.Scriptable
     {
         [Tab("UI")] 
         [SerializeField] private string localizationID;
-        [SerializeField] private Sprite icon;
         [Tab("Settings")]
         [SerializeField] private float health;
         [SerializeField] private float strength;
         [SerializeField] private float rewardCount;
 
         [SerializeField] private ComplexityType complexityType;
-        [Tab("View")] [SerializeField]
-        private Transform model;
-
+        [Tab("View")] 
+        [SerializeField] private Material skin;
+        
         public float RewardCount => rewardCount;
-        public Transform Model => model;
+        public Material Skin => skin;
         public string LocalizationID => localizationID;
 
         public float Health => health;
-        public Sprite Icon => icon;
 
         public float Strength => strength;
 

@@ -12,7 +12,7 @@ namespace _3._Scripts.UI.Elements
     [Serializable]
     public class FighterTable
     {
-        [SerializeField] private Image icon;
+        [SerializeField] private RawImage icon;
         [SerializeField] private Slider healthBar;
         [SerializeField] private TMP_Text healthText;
 
@@ -23,7 +23,7 @@ namespace _3._Scripts.UI.Elements
         public void Initialize(FighterData data)
         {
             _data = data;
-            icon.sprite = data.photo;
+            icon.texture = data.photo;
             healthBar.value = 1;
             healthText.text =
                 $"{WalletManager.ConvertToWallet((decimal) _data.health)}/{WalletManager.ConvertToWallet((decimal) _data.health)}";

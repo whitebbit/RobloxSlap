@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using _3._Scripts.Config;
+using _3._Scripts.UI.Elements.ShopSlots;
 using _3._Scripts.UI.Scriptable.Shop;
 using _3._Scripts.Wallet;
 using GBGamesPlugin;
 
 namespace _3._Scripts.UI.Panels
 {
-    public class CharacterShop : ShopPanel<CharacterItem>
+    public class CharacterShop : ShopPanel<CharacterItem, CharacterShopSlot>
     {
         protected override IEnumerable<CharacterItem> ShopItems()
         {
@@ -29,7 +30,7 @@ namespace _3._Scripts.UI.Panels
             if (IsSelected(id)) return false;
 
             var player = Player.Player.instance;
-            player.CharacterHandler.SetCharacter(id, player.transform);
+            player.CharacterHandler.SetCharacter(id);
             player.InitializeUpgrade();
             
             GBGames.saves.characterSaves.SetCurrent(id);

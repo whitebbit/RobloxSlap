@@ -18,4 +18,4 @@ MonoBehaviour:
   currencyType: 1
   price: 110000
   booster: 80
-  prefab: {fileID: 5183314557221967149, guid: d93fe2d42494bdd4e938059ea329d55a, type: 3}
+  skin: {fileID: 2100000, guid: c525a01a8c2fdab449c4009e5fcf760a, type: 2}

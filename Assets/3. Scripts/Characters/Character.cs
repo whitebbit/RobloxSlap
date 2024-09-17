@@ -14,13 +14,11 @@ namespace _3._Scripts.Characters
     {
         [SerializeField] private Hand right;
         [SerializeField] private Hand left;
+        [SerializeField] private List<SkinnedMeshRenderer> renderers = new();
         
-        [SerializeField]private Animator animator;
-
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            animator = GetComponent<Animator>();
             if(right != null  && left != null) return;
             FindAndAddHandComponent(transform);
         }
@@ -58,9 +56,12 @@ namespace _3._Scripts.Characters
         }
 #endif
 
-        public void Initialize()
+        public void Initialize(Material skin)
         {
-            Player.Player.instance.PlayerAnimator.SetAvatar(animator.avatar);
+            foreach (var meshRenderer in renderers)
+            {
+                meshRenderer.material = skin;
+            }
         }
 
         public void SetUpgrade(UpgradeItem upgrade)

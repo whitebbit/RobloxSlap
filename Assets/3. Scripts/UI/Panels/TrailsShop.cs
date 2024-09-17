@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using _3._Scripts.Config;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.UI.Elements;
+using _3._Scripts.UI.Elements.ShopSlots;
 using _3._Scripts.UI.Scriptable.Shop;
 using _3._Scripts.Wallet;
 using GBGamesPlugin;
 
 namespace _3._Scripts.UI.Panels
 {
-    public class TrailsShop : ShopPanel<TrailItem>
+    public class TrailsShop : ShopPanel<TrailItem, ShopSlot>
     {
         protected override IEnumerable<TrailItem> ShopItems()
         {

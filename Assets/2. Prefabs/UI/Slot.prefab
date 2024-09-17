@@ -32,6 +32,7 @@ RectTransform:
   - {fileID: 6746869862780643244}
   - {fileID: 3514285686799685749}
   - {fileID: 4805144002472036824}
+  - {fileID: 7578731969133185917}
   m_Father: {fileID: 7514361455593463194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -273,8 +274,8 @@ GameObject:
   - component: {fileID: 7514361455593463194}
   - component: {fileID: 2120230304135131442}
   - component: {fileID: 5612511035342984423}
-  - component: {fileID: 3847949702315102277}
   - component: {fileID: 5993999286476520773}
+  - component: {fileID: 7050266893096546936}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -342,42 +343,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3847949702315102277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7157520354119721197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e7b3b1f3d394867b639f650dea4c506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rarityTables:
-  - rarity: 1
-    table: {fileID: 21300000, guid: 6d6ec25e5a91643a696a5e0a318beaae, type: 3}
-    mainColor: {r: 0, g: 0.75294125, b: 1, a: 1}
-    additionalColor: {r: 0, g: 0.61960787, b: 0.97647065, a: 1}
-    titleId: 
-  - rarity: 2
-    table: {fileID: 21300000, guid: 37578498ade654b1b968f060db7d7ec0, type: 3}
-    mainColor: {r: 0.7843138, g: 0.33333334, b: 1, a: 1}
-    additionalColor: {r: 0.627451, g: 0.21568629, b: 0.9803922, a: 1}
-    titleId: 
-  - rarity: 3
-    table: {fileID: 21300000, guid: 9475d9daadce5488f8e89fb0740835be, type: 3}
-    mainColor: {r: 1, g: 0.7372549, b: 0.2784314, a: 1}
-    additionalColor: {r: 1, g: 0.8470589, b: 0.3137255, a: 1}
-    titleId: 
-  title: {fileID: 1798569882498430996}
-  glow: {fileID: 7034360277564894085}
-  icon: {fileID: 2973739438986891758}
-  table: {fileID: 5612511035342984423}
-  backGlow: {fileID: 6164206219575631039}
-  price: {fileID: 3766094919186264900}
-  selectKey: select
-  selectedKey: selected
 --- !u!114 &5993999286476520773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,6 +387,42 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7050266893096546936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157520354119721197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97e30a29b2c49c8863023198e2b556c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rarityTables:
+  - rarity: 1
+    table: {fileID: 21300000, guid: 6d6ec25e5a91643a696a5e0a318beaae, type: 3}
+    mainColor: {r: 0, g: 0.75294125, b: 1, a: 1}
+    additionalColor: {r: 0, g: 0.61960787, b: 0.97647065, a: 1}
+    titleId: 
+  - rarity: 2
+    table: {fileID: 21300000, guid: 37578498ade654b1b968f060db7d7ec0, type: 3}
+    mainColor: {r: 0.7843138, g: 0.33333334, b: 1, a: 1}
+    additionalColor: {r: 0.627451, g: 0.21568629, b: 0.9803922, a: 1}
+    titleId: 
+  - rarity: 3
+    table: {fileID: 21300000, guid: 9475d9daadce5488f8e89fb0740835be, type: 3}
+    mainColor: {r: 1, g: 0.7372549, b: 0.2784314, a: 1}
+    additionalColor: {r: 1, g: 0.8470589, b: 0.3137255, a: 1}
+    titleId: 
+  price: {fileID: 3766094919186264900}
+  selectKey: select
+  selectedKey: selected
+  title: {fileID: 1798569882498430996}
+  glow: {fileID: 7034360277564894085}
+  icon: {fileID: 8120590238699295684}
+  table: {fileID: 5612511035342984423}
+  backGlow: {fileID: 6164206219575631039}
 --- !u!1 &7289531399029018717
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3514285686799685749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -706,3 +707,75 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8785936445488821988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7578731969133185917}
+  - component: {fileID: 7114279593730250493}
+  - component: {fileID: 8120590238699295684}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7578731969133185917
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8785936445488821988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6207096592309623525}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -78}
+  m_SizeDelta: {x: 386.26, y: 386.261}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7114279593730250493
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8785936445488821988}
+  m_CullTransparentMesh: 1
+--- !u!114 &8120590238699295684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8785936445488821988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1

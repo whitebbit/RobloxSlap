@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using _3._Scripts.Enemies.Scriptable;
 using _3._Scripts.Localization;
 using _3._Scripts.MiniGame;
@@ -17,8 +18,10 @@ namespace _3._Scripts.Enemies
         [Tab("Components")] 
         [SerializeField, Min(1)] private float attackSpeed;
         [SerializeField] private PlayerAnimator animator;
-        [Tab("Texts")] [SerializeField]
-        private Transform allTexts;
+        [SerializeField] private List<SkinnedMeshRenderer> meshRenderers = new();
+        
+        [Tab("Texts")] 
+        [SerializeField] private Transform allTexts;
         [Space]
         [SerializeField] private LocalizeStringEvent nameText;
         [SerializeField] private LocalizeStringEvent complexityText;
@@ -29,26 +32,23 @@ namespace _3._Scripts.Enemies
 
         public void Initialize(EnemyData data)
         {
-            var obj = Instantiate(data.Model, transform);
-            var anim = obj.GetComponent<Animator>();
-            
-            obj.localScale = Vector3.one * 0.5f;
-            obj.localPosition = Vector3.zero;
 
-            anim.enabled = false;
-            
             _fighterData = new FighterData
             {
                 health = data.Health,
                 strength = data.Strength,
-                photo = data.Icon
+                photo = RuntimeSkinIconRenderer.Instance.GetTexture2D(data.LocalizationID, data.Skin)
             };
 
             InitializeText(data);
             
-            animator.SetAvatar(anim.avatar);
             animator.SetSpeed(0);
             animator.SetGrounded(true);
+            
+            foreach (var meshRenderer in meshRenderers)
+            {
+                meshRenderer.material = data.Skin;
+            }
         }
         
         public override void StartFight()
