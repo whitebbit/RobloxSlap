@@ -20,6 +20,8 @@ namespace _3._Scripts.Player
         [Tab("Setting")] [SerializeField] private float speed;
         [SerializeField] private float jumpHeight;
         [Tab("Components")] [SerializeField] private CinemachineFreeLook freeLookCamera;
+        [SerializeField] private AutoFightBooster autoFightBooster;
+        
         [Tab("Ground")] [SerializeField] private Transform groundCheck;
         [SerializeField] private float groundDistance;
         [SerializeField] private LayerMask groundMask;
@@ -31,7 +33,7 @@ namespace _3._Scripts.Player
         private float _turnSmoothVelocity;
         private PlayerAnimator _animator;
         public float SpeedMultiplier { get; set; } = 1;
-
+        public bool Blocked { get; set; }
         private void Awake()
         {
             _animator = GetComponent<PlayerAnimator>();
@@ -47,7 +49,8 @@ namespace _3._Scripts.Player
         private void Update()
         {
             ResetVelocity();
-            if (UIManager.Instance.Active || InterstitialsTimer.Instance.Active)
+            
+            if (UIManager.Instance.Active || InterstitialsTimer.Instance.Active || Blocked)
             {
                 _animator.SetSpeed(0);
                 _animator.SetGrounded(true);
@@ -75,6 +78,7 @@ namespace _3._Scripts.Player
 
             transform.rotation = Quaternion.Euler(0, angle, 0);
             _characterController.Move(moveDirection * speed * SpeedMultiplier * Time.deltaTime);
+            autoFightBooster.Deactivate();
             PlayFootstepSound();
         }
 

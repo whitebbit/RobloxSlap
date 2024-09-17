@@ -20,15 +20,11 @@ namespace _3._Scripts.UI
             {
                 if (value)
                 {
-                    if (!(this is MiniGamePanel))
-                        GBGames.GameplayStopped();
                     UIManager.Instance.Active = true;
                     Open();
                 }
                 else
                 {
-                    if (!(this is MiniGamePanel))
-                        GBGames.GameplayStarted();
                     UIManager.Instance.Active = false;
                     Close();
                 }

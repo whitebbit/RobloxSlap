@@ -25,7 +25,7 @@ namespace _3._Scripts.Boosters
 
         private void Start()
         {
-            Deactivate();
+            _button.image.sprite = disableSprite;
             _button.onClick.AddListener(OnCLick);
         }
 
@@ -35,8 +35,9 @@ namespace _3._Scripts.Boosters
             else Activate();
         }
 
-        private void Deactivate()
+        public void Deactivate()
         {
+            if (!_state) return;
             _state = false;
             onDeactivateBooster?.Invoke();
             _button.image.sprite = disableSprite;
@@ -50,7 +51,7 @@ namespace _3._Scripts.Boosters
             panel.AddListenersToButtons(ActivateBooster);
         }
 
-        public void ActivateBooster()
+        private void ActivateBooster()
         {
             _state = true;
             onActivateBooster?.Invoke();

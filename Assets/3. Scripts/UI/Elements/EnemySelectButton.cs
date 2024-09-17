@@ -43,8 +43,8 @@ namespace _3._Scripts.UI.Elements
             if (miniGame == null) return;
             
             BoostersHandler.Instance.CurrentMiniGame = miniGame;
-            miniGame.Interact();
             UIManager.Instance.GetPanel<AutoFightPanel>().Enabled = false;
+            miniGame.Interact();
         }
     }
 }
