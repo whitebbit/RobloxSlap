@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Actions;
 using _3._Scripts.Config;
@@ -18,6 +19,8 @@ namespace _3._Scripts.Bots
     {
         [SerializeField] private UnitNavMeshAgent navMesh;
         [SerializeField] private LocalizeStringEvent levelText;
+        [SerializeField] private List<SkinnedMeshRenderer> skinnedMeshRenderers = new();
+        
         [Tab("Hands")]
         [SerializeField] private Hand right;
         [SerializeField] private Hand left;
@@ -120,7 +123,7 @@ namespace _3._Scripts.Bots
             }
         }
 
-        public void Initialize(Training[] trainings)
+        public void Initialize(Training[] trainings, Material material)
         {
             var hand = Configuration.Instance.AllUpgrades.ToList()[Random.Range(0, Configuration.Instance.AllUpgrades.Count())];
             
@@ -128,6 +131,12 @@ namespace _3._Scripts.Bots
             left.Initialize(hand);
             levelText.SetVariable("value", Random.Range(100, 500).ToString());
             trainingState.SetTrainings(trainings);
+
+            foreach (var skinned in skinnedMeshRenderers)
+            {
+                skinned.material = material;
+            }
+            
             StartCoroutine(ChangeState());
         }
     }

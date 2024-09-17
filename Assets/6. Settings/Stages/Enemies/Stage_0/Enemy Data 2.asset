@@ -17,4 +17,4 @@ MonoBehaviour:
   strength: 5
   rewardCount: 25
   complexityType: 2
-  skin: {fileID: 2100000, guid: c8b7861267b60d14899149418c6440f1, type: 2}
+  skin: {fileID: 2100000, guid: 8225b1ceba24a3a41b43a1befbac07e1, type: 2}

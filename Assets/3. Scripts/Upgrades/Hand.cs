@@ -22,7 +22,7 @@ namespace _3._Scripts.Upgrades
 
             r.material.mainTexture = hand.Texture;
 
-            t.localPosition = new Vector3(0, 0.35f, 0);
+            t.localPosition = new Vector3(0, 0, 0);
             t.localScale = Vector3.one;
             t.eulerAngles = Vector3.zero;
         }

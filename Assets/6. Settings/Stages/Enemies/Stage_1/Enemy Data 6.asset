@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Enemy Data 6
   m_EditorClassIdentifier: 
   localizationID: Enemy_07
-  icon: {fileID: 21300000, guid: 2eb1388ca82b16b4fb674a41b7262c23, type: 3}
   health: 500000000
   strength: 20
   rewardCount: 1000
   complexityType: 1
-  model: {fileID: -8679921383154817045, guid: 876fe6c6e544f27429d14b26a6fffbce, type: 3}
+  skin: {fileID: 2100000, guid: 54d9b6741e6c348488cd531a3b888fa3, type: 2}
