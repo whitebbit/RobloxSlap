@@ -49,14 +49,7 @@ namespace GBGamesPlugin
 
         private void Advertisement()
         {
-            /*Bridge.advertisement.bannerStateChanged += OnBannerStateChanged;
-            Bridge.advertisement.interstitialStateChanged += OnInterstitialStateChanged;
-            Bridge.advertisement.rewardedStateChanged += OnRewardedStateChanged;
-
-            minimumDelayBetweenInterstitial = instance.settings.minimumDelayBetweenInterstitial;
-
-            if (instance.settings.enableBannerAutomatically)
-                ShowBanner();*/
+            
         }
         
         private void Storage()

@@ -77,6 +77,7 @@ namespace GBGamesPlugin
         /// </summary>
         public static void ShowInterstitial()
         {
+            
         }
 
         public static event Action InterstitialLoadingCallback;
