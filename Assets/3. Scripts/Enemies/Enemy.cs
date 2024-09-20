@@ -15,24 +15,26 @@ namespace _3._Scripts.Enemies
 {
     public class Enemy : Fighter
     {
-        [Tab("Components")] 
-        [SerializeField, Min(1)] private float attackSpeed;
+        [Tab("Components")] [SerializeField, Min(1)]
+        private float attackSpeed;
+
         [SerializeField] private PlayerAnimator animator;
         [SerializeField] private List<SkinnedMeshRenderer> meshRenderers = new();
-        
-        [Tab("Texts")] 
-        [SerializeField] private Transform allTexts;
-        [Space]
-        [SerializeField] private LocalizeStringEvent nameText;
+
+        [Tab("Texts")] [SerializeField] private Transform allTexts;
+        [Space] [SerializeField] private LocalizeStringEvent nameText;
         [SerializeField] private LocalizeStringEvent complexityText;
         [SerializeField] private LocalizeStringEvent recommendationText;
-        
+
         private FighterData _fighterData;
-       
+
+        private void Start()
+        {
+            InitializeAnimation();
+        }
 
         public void Initialize(EnemyData data)
         {
-
             _fighterData = new FighterData
             {
                 health = data.Health,
@@ -41,16 +43,16 @@ namespace _3._Scripts.Enemies
             };
 
             InitializeText(data);
-            
+
             animator.SetSpeed(0);
             animator.SetGrounded(true);
-            
+
             foreach (var meshRenderer in meshRenderers)
             {
                 meshRenderer.material = data.Skin;
             }
         }
-        
+
         public override void StartFight()
         {
             base.StartFight();
@@ -97,6 +99,7 @@ namespace _3._Scripts.Enemies
             nameText.SetReference(data.LocalizationID);
             complexityText.TextToComplexity(data.ComplexityType);
             recommendationText.SetVariable("value", WalletManager.ConvertToWallet((decimal) (data.Health / 25)));
+            recommendationText.SetVariable("cup_value", WalletManager.ConvertToWallet((decimal) data.RewardCount));
         }
     }
 }

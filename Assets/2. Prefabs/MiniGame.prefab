@@ -370,7 +370,7 @@ Transform:
   m_GameObject: {fileID: 1760573040947957593}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: -0.8}
+  m_LocalPosition: {x: 0, y: -1, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -401,7 +401,7 @@ Transform:
   m_GameObject: {fileID: 2195022797991235072}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -424,7 +424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4818048278597302951
 Transform:
   m_ObjectHideFlags: 0
@@ -725,7 +725,6 @@ MonoBehaviour:
   virtualCamera: {fileID: 6431574359921663622}
   playerPoint: {fileID: 9221788403065127692}
   enemyPoint: {fileID: 1666364324328827990}
-  useTutorialObject: {fileID: 4818048278597302951}
 --- !u!65 &8644970721980841312
 BoxCollider:
   m_ObjectHideFlags: 0

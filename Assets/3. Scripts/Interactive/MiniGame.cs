@@ -1,6 +1,8 @@
 ﻿using System;
 using _3._Scripts.Enemies;
 using _3._Scripts.Enemies.Scriptable;
+using _3._Scripts.Inputs;
+using _3._Scripts.Inputs.Enums;
 using _3._Scripts.Interactive.Interfaces;
 using _3._Scripts.MiniGame;
 using _3._Scripts.Tutorial;
@@ -21,7 +23,6 @@ namespace _3._Scripts.Interactive
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
         [Tab("Transforms")] [SerializeField] private Transform playerPoint;
         [SerializeField] private Transform enemyPoint;
-        [SerializeField] private Transform useTutorialObject;
 
         public EnemyData EnemyData { get; private set; }
         private Fighter _enemy;
@@ -40,17 +41,12 @@ namespace _3._Scripts.Interactive
 
             _enemy = enemy;
         }
-
-        private void Start()
-        {
-            useTutorialObject.gameObject.SetActive(false);
-        }
-
+        
         public void StartInteract()
         {
             if (_fightStarted) return;
-            
-            useTutorialObject.gameObject.SetActive(true);
+
+            InputHandler.Instance.SetActionButtonType(ActionButtonType.Fight);
         }
 
         public void Interact()
@@ -65,28 +61,21 @@ namespace _3._Scripts.Interactive
             panel.Enabled = true;
             panel.StartMiniGame(Player.Player.instance, _enemy, EnemyData.RewardCount, EndFight);
             
-            useTutorialObject.gameObject.SetActive(false);
-
             player.PetsHandler.SetState(false);
             player.Teleport(playerPoint.position);
             player.transform.DOLookAt(_enemy.transform.position, 0, AxisConstraint.Y);
-
-            useTutorialObject.gameObject.SetActive(false);
             
             CameraController.Instance.SwapTo(virtualCamera);
             TutorialSystem.StepComplete("fight");
-
-
+            
             Player.Player.instance.OnStart();
             _enemy.OnStart();
             
-            useTutorialObject.gameObject.SetActive(false);
         }
 
         private void EndFight()
         {
             _fightStarted = false;
-            useTutorialObject.gameObject.SetActive(true);
 
             Player.Player.instance.PetsHandler.SetState(true);
             CameraController.Instance.SwapToMain();
@@ -98,7 +87,7 @@ namespace _3._Scripts.Interactive
 
         public void StopInteract()
         {
-            useTutorialObject.gameObject.SetActive(false);
+            InputHandler.Instance.SetActionButtonType(ActionButtonType.Training);
         }
     }
 }

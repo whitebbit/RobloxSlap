@@ -10,12 +10,12 @@ namespace _3._Scripts.UI.Elements
 
         private void OnEnable()
         {
-            GBGames.saves.achievementSaves.OnAchievementComplete += SetState;
+            //GBGames.saves.achievementSaves.OnAchievementComplete += SetState;
         }
 
         private void OnDisable()
         {
-            GBGames.saves.achievementSaves.OnAchievementComplete -= SetState;
+            //GBGames.saves.achievementSaves.OnAchievementComplete -= SetState;
         }
 
         private void SetState()

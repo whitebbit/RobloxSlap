@@ -59,5 +59,10 @@ namespace _3._Scripts.Actions
             GBGames.saves.achievementSaves.Update("slap_10000", training);
             GBGames.saves.achievementSaves.Update("slap_1000000", training);
         }
+
+        public bool CanAction()
+        {
+            return WalletManager.GetQuantityByType(currencyType) >= _requiredCount;
+        }
     }
 }

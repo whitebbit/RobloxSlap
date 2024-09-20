@@ -22,8 +22,8 @@ namespace _3._Scripts.Ads
             if (secondsPanelObject)
                 secondsPanelObject.SetActive(false);
 
-            if (!Configuration.Instance.InterByTime) return;
-
+          //  if (!Configuration.Instance.InterByTime) return;
+return;
             StartCoroutine(CheckTimerAd());
         }
 

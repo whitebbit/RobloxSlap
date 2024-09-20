@@ -14,34 +14,15 @@ namespace _3._Scripts.Leaderboard
 
         private void Awake()
         {
-            if (!GBGames.leaderboardIsSupported)
-            {
-                gameObject.SetActive(false);
-                return;
-            }
+            gameObject.SetActive(false);
 
-            GBGames.instance.LoadLeaderboardScore(leaderboardName);
-            StartCoroutine(InitializeLeaderboard());
+            
         }
-
-
+        
         public void UpdateScore(int score)
         {
-            if (GBGames.GetLeaderboardScore(leaderboardName) > score) return;
-
-            GBGames.SetLeaderboardScore(leaderboardName, score);
+            
         }
-
-        private IEnumerator InitializeLeaderboard()
-        {
-            yield return GBGames.instance.LoadLeaderboardEntries(leaderboardName);
-
-            var index = 0;
-            foreach (var entry in GBGames.leaderboardEntries)
-            {
-                leaderboardEntryViews[index].Initialize(entry);
-                index++;
-            }
-        }
+        
     }
 }

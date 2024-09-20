@@ -1,19 +1,17 @@
 ﻿using System;
 using _3._Scripts.Config;
 using Cinemachine;
-using GBGamesPlugin;
 using UnityEngine;
-using DeviceType = InstantGamesBridge.Modules.Device.DeviceType;
 
 namespace _3._Scripts
 {
     public class CameraSettingsProvider : MonoBehaviour
     {
-        [SerializeField] private RemoteConfig<float> mobileXMaxSpeed;
-        [SerializeField] private RemoteConfig<float> mobileYMaxSpeed;
-        
+        [SerializeField] private float mobileXMaxSpeed;
+        [SerializeField] private float mobileYMaxSpeed;
+
         private CinemachineFreeLook _camera;
-        
+
         private void Awake()
         {
             _camera = GetComponent<CinemachineFreeLook>();
@@ -21,22 +19,17 @@ namespace _3._Scripts
 
         private void Start()
         {
-            switch (GBGames.deviceType)
-            {
-                case DeviceType.Mobile:
-                    
-                    _camera.m_XAxis.m_MaxSpeed = mobileXMaxSpeed.Value;
-                    _camera.m_YAxis.m_MaxSpeed = mobileYMaxSpeed.Value;
-                    break;
-                case DeviceType.Desktop:
-                    _camera.m_XAxis.m_MaxSpeed = 400;
-                    _camera.m_YAxis.m_MaxSpeed = 2.5f;
-                    break;
-                default:
-                    _camera.m_XAxis.m_MaxSpeed = 400;
-                    _camera.m_YAxis.m_MaxSpeed = 2.5f;
-                    break;
-            }
+            _camera.m_XAxis.m_MaxSpeed = mobileXMaxSpeed;
+            _camera.m_YAxis.m_MaxSpeed = mobileYMaxSpeed;
         }
+
+#if UNITY_EDITOR
+
+        private void Update()
+        {
+            _camera.m_XAxis.m_MaxSpeed = mobileXMaxSpeed;
+            _camera.m_YAxis.m_MaxSpeed = mobileYMaxSpeed;
+        }
+#endif
     }
 }

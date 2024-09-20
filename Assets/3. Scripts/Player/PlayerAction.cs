@@ -56,6 +56,7 @@ namespace _3._Scripts.Player
         private void DoAction()
         {
             if (_actionable == null) return;
+            if (!_actionable.CanAction()) return;
             if (_isOnCooldown) return;
 
             _isOnCooldown = true;
@@ -68,8 +69,10 @@ namespace _3._Scripts.Player
             switch (id)
             {
                 case "Action":
+                    if (_actionable == null) return;
+
                     SoundManager.Instance.PlayOneShot("action");
-                    _actionable?.Action();
+                    _actionable.Action();
                     break;
                 case "ActionEnd":
                     _isOnCooldown = false;

@@ -1,34 +1,19 @@
 ﻿using System;
-using InstantGamesBridge;
-using InstantGamesBridge.Modules.Advertisement;
-using InstantGamesBridge.Modules.Device;
-using UnityEngine;
 
 namespace GBGamesPlugin
 {
     public partial class GBGames
     {
-        public static bool NowAdsShow =>
-            interstitialState == InterstitialState.Opened || rewardedState == RewardedState.Opened;
-        
+        public static bool NowAdsShow => true;
+        public static bool CanShowInterstitial => false;
+
         #region Banner
-
-        /// <summary>
-        /// Поддерживается ли баннер.
-        /// </summary>
-        public static bool isBannerSupported => Bridge.advertisement.isBannerSupported;
-
-        /// <summary>
-        /// Текущее состояние баннера. Возможные значения: Loading, Shown, Hidden, Failed.
-        /// </summary>
-        public static BannerState bannerState => Bridge.advertisement.bannerState;
 
         /// <summary>
         /// Показать баннер.
         /// </summary>
         public static void ShowBanner()
         {
-            if (isBannerSupported) Bridge.advertisement.ShowBanner();
         }
 
         /// <summary>
@@ -36,7 +21,6 @@ namespace GBGamesPlugin
         /// </summary>
         public static void HideBanner()
         {
-            if (isBannerSupported) Bridge.advertisement.HideBanner();
         }
 
         public static event Action BannerLoadingCallback;
@@ -44,9 +28,9 @@ namespace GBGamesPlugin
         public static event Action BannerHiddenCallback;
         public static event Action BannerFailedCallback;
 
-        private void OnBannerStateChanged(BannerState state)
+        private void OnBannerStateChanged()
         {
-            switch (state)
+            /*switch (state)
             {
                 case BannerState.Loading:
                     BannerLoadingCallback?.Invoke();
@@ -69,7 +53,7 @@ namespace GBGamesPlugin
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
-            }
+            }*/
         }
 
         #endregion
@@ -77,29 +61,22 @@ namespace GBGamesPlugin
         #region Interstitial
 
         /// <summary>
-        /// Текущее состояние рекламы. Возможные значения: Loading, Opened, Closed, Failed.
-        /// </summary>
-        public static InterstitialState interstitialState => Bridge.advertisement.interstitialState;
-
-        /// <summary>
         /// Минимальный интервал между показами межстраничной рекламы.
         /// </summary>
-        public static int minimumDelayBetweenInterstitial
+        /*public static int minimumDelayBetweenInterstitial
         {
             get => Bridge.advertisement.minimumDelayBetweenInterstitial;
             set => Bridge.advertisement.SetMinimumDelayBetweenInterstitial(value);
-        }
+        }*/
 
-        public static bool CanShowInterstitial => Time.time - _lastAdShowTime >= minimumDelayBetweenInterstitial;
-        
+        //public static bool CanShowInterstitial => Time.time - _lastAdShowTime >= minimumDelayBetweenInterstitial;
         private static float _lastAdShowTime;
-        
+
         /// <summary>
         /// Показать межстраничную рекламу.
         /// </summary>
         public static void ShowInterstitial()
         {
-            Bridge.advertisement.ShowInterstitial();
         }
 
         public static event Action InterstitialLoadingCallback;
@@ -107,9 +84,9 @@ namespace GBGamesPlugin
         public static event Action InterstitialClosedCallback;
         public static event Action InterstitialFailedCallback;
 
-        private void OnInterstitialStateChanged(InterstitialState state)
+        private void OnInterstitialStateChanged()
         {
-            switch (state)
+            /*switch (state)
             {
                 case InterstitialState.Loading:
                     InterstitialLoadingCallback?.Invoke();
@@ -134,7 +111,7 @@ namespace GBGamesPlugin
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
-            }
+            }*/
         }
 
         #endregion
@@ -142,17 +119,11 @@ namespace GBGamesPlugin
         #region Rewarded
 
         /// <summary>
-        /// Текущее состояние рекламы. Возможные значения: Loading, Opened, Closed, Rewarded, Failed.
-        /// </summary>
-        public static RewardedState rewardedState => Bridge.advertisement.rewardedState;
-
-        /// <summary>
         /// Показать рекламу за вознаграждение.
         /// </summary>
         public static void ShowRewarded(Action onRewarded)
         {
             RewardedCallback = onRewarded;
-            Bridge.advertisement.ShowRewarded();
         }
 
         private static event Action RewardedCallback;
@@ -162,9 +133,9 @@ namespace GBGamesPlugin
         public static event Action RewardedClosedCallback;
         public static event Action RewardedFailedCallback;
 
-        private void OnRewardedStateChanged(RewardedState state)
+        private void OnRewardedStateChanged()
         {
-            switch (state)
+            /*switch (state)
             {
                 case RewardedState.Loading:
                     RewardedLoadingCallback?.Invoke();
@@ -190,10 +161,9 @@ namespace GBGamesPlugin
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
-            }
+            }*/
         }
 
         #endregion
-        
     }
 }

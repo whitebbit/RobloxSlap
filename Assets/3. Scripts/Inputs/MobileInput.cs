@@ -1,18 +1,31 @@
-﻿using _3._Scripts.Inputs.Interfaces;
+﻿using System;
+using _3._Scripts.Inputs.Enums;
+using _3._Scripts.Inputs.Interfaces;
 using _3._Scripts.Inputs.Utils;
 using _3._Scripts.Singleton;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using VInspector;
 
 namespace _3._Scripts.Inputs
 {
     public class MobileInput : MonoBehaviour, IInput
     {
+        [Tab("Input Components")]
         [SerializeField] private Joystick joystick;
         [SerializeField] private FixedTouchField touchField;
         [SerializeField] private FixedButton jumpButton;
         [SerializeField] private FixedButton actionButton;
         [SerializeField] private FixedButton interactButton;
-
+        [Tab("Action Components")] 
+        [SerializeField] private Image actionImage;
+        [SerializeField] private TMP_Text actionText;
+        [Space] [SerializeField] private Image buttonImage;
+        [SerializeField] private Sprite trainingSprite;
+        [SerializeField] private Sprite fightSprite;
+        
+        
         private CanvasGroup _canvas;
         
         private void Awake()
@@ -58,6 +71,27 @@ namespace _3._Scripts.Inputs
         public void CursorState()
         {
             
+        }
+        
+        public void SetActionButtonType(ActionButtonType type)
+        {
+            switch (type)
+            {
+                case ActionButtonType.Training:
+                    actionImage.gameObject.SetActive(true);
+                    actionText.gameObject.SetActive(false);
+
+                    buttonImage.sprite = trainingSprite;
+                    break;
+                case ActionButtonType.Fight:
+                    actionImage.gameObject.SetActive(false);
+                    actionText.gameObject.SetActive(true);
+
+                    buttonImage.sprite = fightSprite;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
         }
     }
 }

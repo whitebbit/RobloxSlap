@@ -57,7 +57,7 @@ namespace _3._Scripts.Pets
             foreach (var petData in _data)
             {
                 var petSlot = Instantiate(slotPrefab, content);
-                petSlot.Initialize(petData.Icon, petData.DropPercent);
+                petSlot.Initialize(petData.Icon, petData.Rarity, petData.DropPercent);
             }
         }
 
@@ -99,7 +99,11 @@ namespace _3._Scripts.Pets
                 return;
             }
 
-            if (!WalletManager.TrySpend(CurrencyType.Second, _price)) return;
+            if (!WalletManager.TrySpend(CurrencyType.Second, _price))
+            {
+                NotificationPanel.Instance.ShowNotification("no_money");
+                return;
+            }
 
             var panel = UIManager.Instance.GetPanel<PetUnlockerPanel>();
             if (panel.Enabled) return;
@@ -107,9 +111,9 @@ namespace _3._Scripts.Pets
             panel.Enabled = true;
             var pet = GetRandomPet();
             panel.UnlockPet(pet);
-            
+
             SelectBest();
-            
+
             if (pet.Rarity == Rarity.Legendary)
                 GBGames.saves.achievementSaves.Update("legendary_pet", 1);
         }
@@ -120,13 +124,15 @@ namespace _3._Scripts.Pets
             if (best.Count <= 0) return;
 
             Player.Player.instance.PetsHandler.ClearPets();
-            
+            GBGames.saves.petsSave.selected = new List<PetSaveData>();
+
             for (var i = 0; i < 3; i++)
             {
-                if(i >= best.Count) continue;
+                if (i >= best.Count) continue;
                 var player = Player.Player.instance.transform;
                 var position = player.position + player.right * 2;
                 Player.Player.instance.PetsHandler.CreatePet(best[i], position);
+                GBGames.saves.petsSave.Select(best[i].id);
             }
 
             GBGames.instance.Save();

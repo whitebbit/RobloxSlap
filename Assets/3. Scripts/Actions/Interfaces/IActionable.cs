@@ -3,5 +3,6 @@
     public interface IActionable
     {
         public void Action();
+        public bool CanAction();
     }
 }

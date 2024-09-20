@@ -118,7 +118,7 @@ MonoBehaviour:
       m_Items:
       - rid: 3203987063427825692
   - m_Id: 10714823474159616
-    m_Localized: Receive
+    m_Localized: Get
     m_Metadata:
       m_Items: []
   - m_Id: 10765505963106304
@@ -147,7 +147,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11418500446953472
-    m_Localized: <sprite index=1>{value} recommended
+    m_Localized: '<sprite index=1>{value} <sprite index=0>{cup_value} '
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
@@ -414,6 +414,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 41865480499240960
     m_Localized: Choose an opponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45826855021977600
+    m_Localized: Insufficient number of cups
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45832247164674048
+    m_Localized: FIGHT
     m_Metadata:
       m_Items: []
   references:

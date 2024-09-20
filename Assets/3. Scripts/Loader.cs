@@ -1,12 +1,8 @@
 using System;
 using System.Collections;
 using GBGamesPlugin;
-using InstantGamesBridge;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Localization.Settings;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -30,7 +26,6 @@ namespace _3._Scripts
 
         private void GBGamesOnSaveLoadedCallback()
         {
-            GBGames.InGameLoadingStarted();
             StartCoroutine(InitializeLocalization());
         }
 

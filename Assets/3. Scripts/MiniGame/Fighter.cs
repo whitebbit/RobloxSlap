@@ -1,5 +1,6 @@
 ﻿using System;
 using _3._Scripts.Player;
+using _3._Scripts.Sounds;
 using UnityEngine;
 
 namespace _3._Scripts.MiniGame
@@ -8,6 +9,11 @@ namespace _3._Scripts.MiniGame
     {
         protected bool isFight;
         public event Action OnSlap;
+
+        public void InitializeAnimation()
+        {
+            Animator().Event += AnimatorAction;
+        }
 
         public virtual void StartFight()
         {
@@ -29,10 +35,22 @@ namespace _3._Scripts.MiniGame
 
         public abstract FighterData FighterData();
         protected abstract PlayerAnimator Animator();
-
+        private void AnimatorAction(string id)
+        {
+            switch (id)
+            {
+                case "Action":
+                    Debug.Log(gameObject.name);
+                    OnSlap?.Invoke();
+                    SoundManager.Instance.PlayOneShot("action");
+                    break;
+                case "ActionEnd":
+                    //_isOnCooldown = false;
+                    break;
+            }
+        }
         protected void Slap()
         {
-            OnSlap?.Invoke();
             Animator().SetTrigger("Slap");
         }
     }

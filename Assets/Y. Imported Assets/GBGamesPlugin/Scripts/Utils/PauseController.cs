@@ -13,8 +13,6 @@ namespace GBGamesPlugin
         {
             if (state)
             {
-                GBGames.GameplayStopped();
-                
                 _audioPause = AudioListener.pause;
                 _timeScale = Time.timeScale;
                 _cursorLockMode = Cursor.lockState;
@@ -31,8 +29,6 @@ namespace GBGamesPlugin
                 AudioListener.pause = _audioPause;
                 Cursor.lockState = _cursorLockMode;
                 Cursor.visible = _cursorVisible;
-                
-                GBGames.GameplayStarted();
             }
         }
     }

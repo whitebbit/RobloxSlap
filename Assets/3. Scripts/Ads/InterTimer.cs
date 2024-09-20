@@ -22,7 +22,8 @@ namespace _3._Scripts.Ads
 
         private void Start()
         {
-            if (!Configuration.Instance.InterByTime) return;
+            return;
+            //if (!Configuration.Instance.InterByTime) return;
 
             if (secondsPanelObject)
                 secondsPanelObject.SetActive(false);

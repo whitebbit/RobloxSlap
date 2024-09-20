@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using _3._Scripts.Config;
+using _3._Scripts.UI.Enums;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +10,15 @@ namespace _3._Scripts.UI.Elements
     {
         [SerializeField] private Image icon;
         [SerializeField] private TMP_Text percent;
+        [SerializeField] private Image table;
 
-        public void Initialize(Sprite image, float percentValue)
+
+        public void Initialize(Sprite image, Rarity rarity, float percentValue)
         {
+            var rarityTable = Configuration.Instance.GetRarityTable(rarity);
             icon.sprite = image;
             percent.text = $"{percentValue}%";
+            table.color = rarityTable.MainColor;
         }
-        
     }
 }

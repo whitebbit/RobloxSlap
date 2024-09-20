@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace _3._Scripts.Player
 {
-    public class PlayerInteraction: MonoBehaviour
+    public class PlayerInteraction : MonoBehaviour
     {
         [SerializeField] private BaseDetector<IInteractive> detector;
         private IInteractive _interactive;
@@ -20,7 +20,9 @@ namespace _3._Scripts.Player
 
         private void Update()
         {
-            if (_interactive != null && InputHandler.Instance.Input.GetInteract() && !UIManager.Instance.Active && !InterstitialsTimer.Instance.Active) // ПКМ
+            if (_interactive != null &&
+                (InputHandler.Instance.Input.GetInteract() || InputHandler.Instance.Input.GetAction()) &&
+                !UIManager.Instance.Active && !InterstitialsTimer.Instance.Active) 
             {
                 _interactive.Interact();
             }
@@ -36,6 +38,5 @@ namespace _3._Scripts.Player
 
             _interactive?.StartInteract();
         }
-        
     }
 }

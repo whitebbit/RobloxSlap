@@ -17,9 +17,11 @@ namespace _3._Scripts.UI.Elements.ShopSlots
         [SerializeField] protected List<RarityTable> rarityTables = new();
         [Tab("Currency")] 
         [SerializeField] private TMP_Text price;
+
+        [SerializeField] private Image selectImage;
+        [SerializeField] private Image selectedImage;
+        
         [Tab("Localization")] 
-        [SerializeField] private string selectKey;
-        [SerializeField] private string selectedKey;
         
         private Button _button;
         public ShopItem Data { get; protected set; }
@@ -33,19 +35,26 @@ namespace _3._Scripts.UI.Elements.ShopSlots
         
         public void SetAction(Action action) => _button.onClick.AddListener(() => action?.Invoke());
 
-        public async void Select()
+        public void Select()
         {
-            price.text = await selectedKey.GetTranslate();
+            selectedImage.gameObject.SetActive(true);
+            selectImage.gameObject.SetActive(false);
+            price.gameObject.SetActive(false);
+
         }
 
-        public async void Unselect()
+        public void Unselect()
         {
-            price.text = await selectKey.GetTranslate();
+            selectedImage.gameObject.SetActive(false);
+            price.gameObject.SetActive(false);
+            selectImage.gameObject.SetActive(true);
         }
 
         public void Lock()
         {
             price.text = $"<sprite index=0>{WalletManager.ConvertToWallet((decimal) Data.Price)}";
+            selectedImage.gameObject.SetActive(false);
+            selectImage.gameObject.SetActive(false);
         }
     }
 }

@@ -18,6 +18,7 @@ namespace _3._Scripts.Player
     {
         [SerializeField] private TrailRenderer trail;
         [SerializeField] private Character character;
+        [SerializeField] private PlayerLevel level;
         
         public PetsHandler PetsHandler { get; private set; }
         public TrailHandler TrailHandler { get; private set; }
@@ -48,7 +49,7 @@ namespace _3._Scripts.Player
 
             var health = Configuration.Instance.AllCharacters.FirstOrDefault(
                 h => h.ID == GBGames.saves.characterSaves.current).Booster;
-            
+
             return new FighterData
             {
                 photo = RuntimeSkinIconRenderer.Instance.GetTexture2D(character.ID, character.Skin),
@@ -64,14 +65,24 @@ namespace _3._Scripts.Player
             return PlayerAnimator;
         }
 
+        public override void OnStart()
+        {
+            base.OnStart();
+            level.gameObject.SetActive(false);
+        }
+
+        public override void OnEnd()
+        {
+            base.OnEnd();
+            level.gameObject.SetActive(true);
+        }
+
         public float GetTrainingStrength(float strengthPerClick)
         {
             var hand = Configuration.Instance.AllUpgrades.FirstOrDefault(
                 h => h.ID == GBGames.saves.upgradeSaves.current).Booster;
             var pets = GBGames.saves.petsSave.selected.Sum(p => p.booster);
-            /*var character = Configuration.Instance.AllCharacters.FirstOrDefault(
-                h => h.ID == GBGames.saves.characterSaves.current).Booster;
-                */
+         
 
             return (strengthPerClick + pets) * hand;
         }
@@ -85,6 +96,7 @@ namespace _3._Scripts.Player
 
         private void Start()
         {
+            InitializeAnimation();
             Initialize();
         }
 
@@ -111,24 +123,19 @@ namespace _3._Scripts.Player
         }
 
         private float _timeToSlap;
+
         private void Update()
         {
             if (!isFight) return;
 
-            if (BoostersHandler.Instance.GetBoosterState("auto_fight"))
-            {
-                _timeToSlap += Time.deltaTime;
+            _timeToSlap += Time.deltaTime;
 
-                if (!(_timeToSlap >= 0.5f)) return;
+            if (!BoostersHandler.Instance.GetBoosterState("auto_fight") && !Input.GetMouseButtonDown(0)) return;
 
-                _timeToSlap = 0;
-                Slap();
-            }
+            if (!(_timeToSlap >= 0.275f)) return;
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                Slap();
-            }
+            _timeToSlap = 0;
+            Slap();
         }
 
         private void InitializeCharacter()

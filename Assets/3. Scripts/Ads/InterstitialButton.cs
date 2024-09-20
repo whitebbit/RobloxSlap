@@ -10,8 +10,8 @@ namespace _3._Scripts.Ads
     {
         private void Awake()
         {
-            if (Configuration.Instance.InterByTime) return;
-            GetComponent<Button>().onClick.AddListener(GBGames.ShowInterstitial);
+           // if (Configuration.Instance.InterByTime) return;
+            //GetComponent<Button>().onClick.AddListener(GBGames.ShowInterstitial);
         }
     }
 }

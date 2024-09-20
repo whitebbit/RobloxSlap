@@ -1,7 +1,5 @@
-﻿#if UNITY_WEBGL
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using InstantGamesBridge;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,13 +19,12 @@ namespace GBGamesPlugin
         private IEnumerator Initialize()
         {
             _inGame = true;
+            yield return new WaitForSeconds(1);
             Singleton();
-            yield return new WaitUntil(() => Bridge.instance != null && Bridge.Initialized);
             Storage();
+            yield return new WaitForSeconds(2);
             RemoteConfig();
             Advertisement();
-            Platform();
-            Player();
             Game();
         }
 
@@ -52,33 +49,16 @@ namespace GBGamesPlugin
 
         private void Advertisement()
         {
-            Bridge.advertisement.bannerStateChanged += OnBannerStateChanged;
+            /*Bridge.advertisement.bannerStateChanged += OnBannerStateChanged;
             Bridge.advertisement.interstitialStateChanged += OnInterstitialStateChanged;
             Bridge.advertisement.rewardedStateChanged += OnRewardedStateChanged;
 
             minimumDelayBetweenInterstitial = instance.settings.minimumDelayBetweenInterstitial;
 
             if (instance.settings.enableBannerAutomatically)
-                ShowBanner();
+                ShowBanner();*/
         }
-
-        private void Platform()
-        {
-            if (instance.settings.autoGameReadyAPI)
-                GameReady();
-
-            if (instance.settings.gameLoadingCallbacksOnSceneLoading)
-            {
-                SceneManager.sceneLoaded += (_, _) => { InGameLoadingStopped(); };
-            }
-        }
-
-        private void Player()
-        {
-            if (instance.settings.authPlayerAutomatically)
-                AuthorizePlayer();
-        }
-
+        
         private void Storage()
         {
             Load();
@@ -88,32 +68,13 @@ namespace GBGamesPlugin
 
         private void Game()
         {
-            Bridge.game.visibilityStateChanged += OnGameVisibilityStateChanged;
             if (instance.settings.saveOnChangeVisibilityState)
                 GameHiddenStateCallback += Save;
         }
 
         private void RemoteConfig()
         {
-            var options = new Dictionary<string, object>();
-            var clientFeatures = new object[]
-            {
-                new Dictionary<string, object>
-                {
-                    {"name", "useExtraButton"},
-                    {"value", "false"}
-                },
-                new Dictionary<string, object>
-                {
-                    {"name", "interByTime"},
-                    {"value", "false"}
-                }
-            };
-
-            options.Add("clientFeatures", clientFeatures);
-
-            LoadRemoteConfig(options);
+            
         }
     }
 }
-#endif
