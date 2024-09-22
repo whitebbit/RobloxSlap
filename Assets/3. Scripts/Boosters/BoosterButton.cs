@@ -11,10 +11,9 @@ namespace _3._Scripts.Boosters
     [RequireComponent(typeof(Button))]
     public class BoosterButton : MonoBehaviour
     {
-        [Tab("View")] 
-        [SerializeField] private Image cooldownImage;
+        [Tab("View")] [SerializeField] private Image cooldownImage;
         [SerializeField] private Image adImage;
-        
+
         [Tab("Settings")] [SerializeField] private float timeToDeactivate;
 
         public Action onActivateBooster;
@@ -31,7 +30,7 @@ namespace _3._Scripts.Boosters
         {
             _button.onClick.AddListener(OnCLick);
         }
-        
+
         private void OnCLick()
         {
             if (_used) return;

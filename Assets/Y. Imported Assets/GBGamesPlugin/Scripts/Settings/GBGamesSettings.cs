@@ -12,11 +12,9 @@ namespace GBGamesPlugin
         public bool debug = true;
 
         [Header("Advertisement")] 
-        [Tooltip("Минимальный интервал между показами межстраничной рекламы")]
-        public int minimumDelayBetweenInterstitial = 60;
+        public float intervalAfterInterstitial;
+        public float intervalAfterReward;
 
-        [Tooltip("Если платформа поддерживает баннер, включить ли его при старте игры")]
-        public bool enableBannerAutomatically = true;
         
         [Header("Storage")]
         [Tooltip("Использовать переодическое сохранение")]

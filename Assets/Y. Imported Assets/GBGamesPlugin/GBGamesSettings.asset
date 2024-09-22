@@ -13,15 +13,8 @@ MonoBehaviour:
   m_Name: GBGamesSettings
   m_EditorClassIdentifier: 
   debug: 1
-  minimumDelayBetweenInterstitial: 60
-  enableBannerAutomatically: 1
-  useCloudSaves: 1
-  useCloudSaveInterval: 1
-  cloudSaveInterval: 2
+  intervalAfterInterstitial: 45
+  intervalAfterReward: 80
   autoSaveByInterval: 1
   saveInterval: 1
   saveOnChangeVisibilityState: 1
-  authPlayerAutomatically: 0
-  yandexScopes: 1
-  autoGameReadyAPI: 0
-  gameLoadingCallbacksOnSceneLoading: 0

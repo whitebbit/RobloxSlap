@@ -1,14 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using CAS;
+using CAS.AdObject;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VInspector;
 
 namespace GBGamesPlugin
 {
     public partial class GBGames : MonoBehaviour
     {
         public static GBGames instance { get; private set; }
-        public GBGamesSettings settings;
+        [Tab("Main")]
+        [SerializeField] private GBGamesSettings settings;
+        [Tab("Advertisement")]
+        [SerializeField] private InterstitialAdObject interstitial;
+        [SerializeField] private RewardedAdObject rewarded;
+        
         private static bool _inGame;
 
         private void Awake()
@@ -21,10 +29,10 @@ namespace GBGamesPlugin
             _inGame = true;
             yield return new WaitForSeconds(1);
             Singleton();
+            Advertisement();
             Storage();
             yield return new WaitForSeconds(2);
             RemoteConfig();
-            Advertisement();
             Game();
         }
 
@@ -47,9 +55,9 @@ namespace GBGamesPlugin
             Cursor.visible = true;
         }
 
-        private void Advertisement()
+        private static void Advertisement()
         {
-            
+            OnAdShown(AdType.Interstitial);
         }
         
         private void Storage()

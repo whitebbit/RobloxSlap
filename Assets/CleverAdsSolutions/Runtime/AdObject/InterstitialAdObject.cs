@@ -28,10 +28,7 @@ namespace CAS.AdObject
         /// <summary>
         /// Check ready ad to present.
         /// </summary>
-        public bool isAdReady
-        {
-            get { return manager != null && manager.IsReadyAd(AdType.Interstitial); }
-        }
+        public bool isAdReady => manager != null && manager.IsReadyAd(AdType.Interstitial);
 
         /// <summary>
         /// Manual load Ad.

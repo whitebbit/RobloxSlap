@@ -24,7 +24,7 @@ namespace CAS.AdObject
 
         public CASUEventWithMeta OnAdImpression;
 
-        public UnityEvent OnReward;
+        private Action _onReward;
 
         private IMediationManager manager;
         private bool loadAdOnAwake = false;
@@ -53,18 +53,21 @@ namespace CAS.AdObject
         /// <summary>
         /// Present ad to user
         /// </summary>
-        public void Present()
+        public void Present(Action reward)
         {
             if (manager == null)
             {
                 OnAdFailedToShow.Invoke(AdError.ManagerIsDisabled.GetMessage());
                 return;
             }
+
+            _onReward = reward;
             OnAdShown.Invoke();
             manager.ShowAd(AdType.Rewarded);
         }
 
         #region MonoBehaviour
+
         private void Start()
         {
             if (!CASFactory.TryGetManagerByIndexAsync(managerId.index, OnManagerReady))
@@ -83,14 +86,16 @@ namespace CAS.AdObject
                 manager.OnRewardedAdFailedToLoad -= AdFailedToLoad;
                 manager.OnRewardedAdFailedToShow -= AdFailedToShow;
                 manager.OnRewardedAdClicked -= OnAdClicked.Invoke;
-                manager.OnRewardedAdCompleted -= OnReward.Invoke;
+                manager.OnRewardedAdCompleted -= AdRewarded;
                 manager.OnRewardedAdClosed -= AdClosed;
                 manager.OnRewardedAdImpression -= OnAdImpression.Invoke;
             }
         }
+
         #endregion
 
         #region Manager Events wrappers
+
         private void OnManagerReady(int index, CASManagerBase manager)
         {
             if (!this || index != managerId.index) return;
@@ -100,7 +105,7 @@ namespace CAS.AdObject
             manager.OnRewardedAdFailedToLoad += AdFailedToLoad;
             manager.OnRewardedAdFailedToShow += AdFailedToShow;
             manager.OnRewardedAdClicked += OnAdClicked.Invoke;
-            manager.OnRewardedAdCompleted += OnReward.Invoke;
+            manager.OnRewardedAdCompleted += AdRewarded;
             manager.OnRewardedAdClosed += AdClosed;
             manager.OnRewardedAdImpression += OnAdImpression.Invoke;
 
@@ -124,11 +129,13 @@ namespace CAS.AdObject
 
         private void AdFailedToLoad(AdError error)
         {
+            _onReward = null;
             OnAdFailedToLoad.Invoke(error.GetMessage());
         }
 
         private void AdFailedToShow(string error)
         {
+            _onReward = null;
             OnAdFailedToShow.Invoke(error);
             OnAdClosed.Invoke();
         }
@@ -136,9 +143,16 @@ namespace CAS.AdObject
         private void AdClosed()
         {
             if (restartInterstitialInterval)
-                CAS.MobileAds.settings.RestartInterstitialInterval();
+                MobileAds.settings.RestartInterstitialInterval();
             OnAdClosed.Invoke();
         }
+
+        private void AdRewarded()
+        {
+            _onReward?.Invoke();
+            _onReward = null;
+        }
+
         #endregion
     }
 }

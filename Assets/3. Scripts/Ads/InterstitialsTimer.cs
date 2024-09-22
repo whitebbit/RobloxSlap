@@ -3,6 +3,7 @@ using System.Collections;
 using _3._Scripts.Config;
 using _3._Scripts.Localization;
 using _3._Scripts.Singleton;
+using _3._Scripts.UI;
 using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.Localization.Components;
@@ -21,9 +22,7 @@ namespace _3._Scripts.Ads
         {
             if (secondsPanelObject)
                 secondsPanelObject.SetActive(false);
-
-          //  if (!Configuration.Instance.InterByTime) return;
-return;
+            
             StartCoroutine(CheckTimerAd());
         }
 
@@ -56,7 +55,6 @@ return;
             {
                 while (_objSecCounter > 0)
                 {
-                    Debug.Log(_objSecCounter);
                     localizedText.SetVariable("value", _objSecCounter);
                     _objSecCounter--;
                     yield return new WaitForSeconds(1.0f);
@@ -90,7 +88,7 @@ return;
 
         private bool CanShow()
         {
-            return !GBGames.NowAdsShow && !Blocked && GBGames.CanShowInterstitial;
+            return !GBGames.NowAdsShow && !Blocked && GBGames.CanShowInterstitial && !UIManager.Instance.Active;
         }
     }
 }
