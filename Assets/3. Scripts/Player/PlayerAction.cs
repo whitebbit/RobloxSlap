@@ -47,10 +47,21 @@ namespace _3._Scripts.Player
             _animator.Event += AnimatorAction;
         }
 
+        private float _timeToClick = 1;
+
         private void Update()
         {
-            if ((_input.GetAction() || BoostersHandler.Instance.GetBoosterState("auto_clicker")) &&
-                !UIManager.Instance.Active && !InterstitialsTimer.Instance.Active) DoAction();
+            if (UIManager.Instance.Active || InterstitialsTimer.Instance.Active) return;
+            if (_input.GetAction())
+            {
+                DoAction();
+            }
+
+            if (!BoostersHandler.Instance.GetBoosterState("auto_clicker")) return;
+            _timeToClick -= Time.deltaTime;
+            if (!(_timeToClick <= 0)) return;
+            _timeToClick = 1;
+            DoAction();
         }
 
         private void DoAction()

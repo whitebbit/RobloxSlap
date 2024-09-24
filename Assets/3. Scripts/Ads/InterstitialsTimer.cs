@@ -4,6 +4,9 @@ using _3._Scripts.Config;
 using _3._Scripts.Localization;
 using _3._Scripts.Singleton;
 using _3._Scripts.UI;
+using _3._Scripts.UI.Elements;
+using _3._Scripts.Wallet;
+using DG.Tweening;
 using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.Localization.Components;
@@ -12,7 +15,7 @@ namespace _3._Scripts.Ads
 {
     public class InterstitialsTimer : Singleton<InterstitialsTimer>
     {
-        [SerializeField] private GameObject secondsPanelObject;
+        [SerializeField] private CanvasGroup secondsPanelObject;
         [SerializeField] private LocalizeStringEvent localizedText;
 
         public bool Active { get; private set; }
@@ -20,9 +23,8 @@ namespace _3._Scripts.Ads
 
         private void Start()
         {
-            if (secondsPanelObject)
-                secondsPanelObject.SetActive(false);
-            
+            secondsPanelObject.alpha = 0;
+
             StartCoroutine(CheckTimerAd());
         }
 
@@ -33,9 +35,9 @@ namespace _3._Scripts.Ads
             {
                 if (CanShow())
                 {
-                    _objSecCounter = 2;
+                    _objSecCounter = 3;
                     if (secondsPanelObject)
-                        secondsPanelObject.SetActive(true);
+                        secondsPanelObject.DOFade(1, 0.25f);
 
                     StartCoroutine(TimerAdShow());
                     yield return checking = false;
@@ -45,7 +47,7 @@ namespace _3._Scripts.Ads
             }
         }
 
-        private int _objSecCounter = 2;
+        private int _objSecCounter = 3;
 
         private IEnumerator TimerAdShow()
         {
@@ -66,8 +68,12 @@ namespace _3._Scripts.Ads
                 while (!GBGames.NowAdsShow)
                     yield return null;
 
-                secondsPanelObject.SetActive(false);
-                _objSecCounter = 2;
+                WalletManager.SecondCurrency += 25;
+                
+                secondsPanelObject.alpha = 0;
+                _objSecCounter = 3;
+
+                StopCoroutine(BackupTimerClosure());
                 StartCoroutine(CheckTimerAd());
 
                 Active = false;
@@ -77,9 +83,9 @@ namespace _3._Scripts.Ads
         private IEnumerator BackupTimerClosure()
         {
             yield return new WaitForSeconds(2.5f);
-            
-            secondsPanelObject.SetActive(false);
-            _objSecCounter = 2;
+
+            secondsPanelObject.alpha = 0;
+            _objSecCounter = 3;
             Active = false;
             StopCoroutine(TimerAdShow());
             StartCoroutine(CheckTimerAd());

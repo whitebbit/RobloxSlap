@@ -305,7 +305,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15207861625954304
-    m_Localized: The advertisement will start in {value}
+    m_Localized: Ad in {value}
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
@@ -424,10 +424,39 @@ MonoBehaviour:
     m_Localized: FIGHT
     m_Metadata:
       m_Items: []
+  - m_Id: 46965535879077888
+    m_Localized: Advertising {value}
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 47265786653450240
+    m_Localized: Connection error
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47266391623081984
+    m_Localized: Reconnect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47267417176547328
+    m_Localized: Network connection error. Please reconnect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47629341080821760
+    m_Localized: New pet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47629633591582720
+    m_Localized: New hands
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47629696292233216
+    m_Localized: New trail
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3203987063427825692
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0020c279aeae23000020826808b023000020828f238c2800002002cf109128000020027d2c9228000020022c34922800002082843d922800002082f0439228000020029a4b9228000020023678073600002042d64a1f38000030397be13045000030b94ff3c44600
+        m_Entries: 0020c279aeae23000020826808b023000020828f238c2800002002cf109128000020027d2c9228000020022c34922800002082843d922800002082f0439228000020029a4b9228000020023678073600002042d64a1f38000030397be13045000030b94ff3c446000020c2f2e7daa600

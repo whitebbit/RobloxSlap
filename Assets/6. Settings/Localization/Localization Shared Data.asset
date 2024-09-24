@@ -411,6 +411,34 @@ MonoBehaviour:
     m_Key: fight
     m_Metadata:
       m_Items: []
+  - m_Id: 46965535879077888
+    m_Key: ad_count
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47265786653450240
+    m_Key: connection_error
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47266391623081984
+    m_Key: reconnect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47267417176547328
+    m_Key: network_notification
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47629341080821760
+    m_Key: offer_pet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47629633591582720
+    m_Key: offer_upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47629696292233216
+    m_Key: offer_trail
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

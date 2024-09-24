@@ -11,7 +11,7 @@ namespace _3._Scripts.Ads
         private void Awake()
         {
           
-            GetComponent<Button>().onClick.AddListener(GBGames.ShowInterstitial);
+            //GetComponent<Button>().onClick.AddListener(GBGames.ShowInterstitial);
         }
     }
 }
