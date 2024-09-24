@@ -1,5 +1,5 @@
-﻿using System;
-using _3._Scripts.Ads;
+﻿using _3._Scripts.Ads;
+using _3._Scripts.Boosters;
 using _3._Scripts.Detectors;
 using _3._Scripts.Inputs;
 using _3._Scripts.Interactive.Interfaces;
@@ -22,7 +22,7 @@ namespace _3._Scripts.Player
         {
             if (_interactive != null &&
                 (InputHandler.Instance.Input.GetInteract() || InputHandler.Instance.Input.GetAction()) &&
-                !UIManager.Instance.Active && !InterstitialsTimer.Instance.Active) 
+                !UIManager.Instance.Active && !InterstitialsTimer.Instance.Active)
             {
                 _interactive.Interact();
             }
@@ -37,6 +37,16 @@ namespace _3._Scripts.Player
             _interactive = newInteractive;
 
             _interactive?.StartInteract();
+
+            ShowPromotion(newInteractive);
+        }
+
+        private void ShowPromotion(IInteractive newInteractive)
+        {
+            if (newInteractive is Interactive.MiniGame)
+            {
+                BoostersHandler.Instance.RewardAdBooster.ShowPromotion(30);
+            }
         }
     }
 }

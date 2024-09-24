@@ -22,6 +22,8 @@ namespace GBGamesPlugin
         public PetSave petsSave = new();
         public DailyRewardSave dailyReward = new();
         public AchievementSaves achievementSaves = new();
+        public List<string> freeUsedBoosters = new();
+        
         
         public int stageID;
         public int worldID;

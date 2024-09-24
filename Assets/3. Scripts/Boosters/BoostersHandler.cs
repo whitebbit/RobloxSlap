@@ -17,12 +17,19 @@ namespace _3._Scripts.Boosters
         [Tab("Buttons")] [SerializeField] private BoosterButtonSwitcher autoClickerButton;
         [SerializeField] private AutoFightBooster autoFightBooster;
         [SerializeField] private AdBoosterButton rewardAdBooster;
-        [SerializeField] private AdBoosterButton slapAdBooster;
+        [SerializeField] private AdBoosterButton trainingAdBooster;
+        [SerializeField] private AdBoosterButton autoClickerAdBooster;
         [SerializeField] private Transform slapBoosterView;
         [Tab("Debug")] [SerializeField] private List<BoosterState> boosters = new();
 
         public Interactive.MiniGame CurrentMiniGame { get; set; }
 
+
+        public AdBoosterButton TrainingAdBooster => trainingAdBooster;
+
+        public AdBoosterButton RewardAdBooster => rewardAdBooster;
+
+        public AdBoosterButton AutoClickerAdBooster => autoClickerAdBooster;
         private void ChangeBoosterState(string boosterName, bool state)
         {
             var booster = boosters.FirstOrDefault(b => b.name == boosterName);
@@ -57,6 +64,12 @@ namespace _3._Scripts.Boosters
         {
             autoClickerButton.onActivateBooster += () => ChangeBoosterState("auto_clicker", true);
             autoClickerButton.onDeactivateBooster += () => ChangeBoosterState("auto_clicker", false);
+            
+            trainingAdBooster.onActivateBooster += () => ChangeBoosterState("train_booster", true);
+            trainingAdBooster.onDeactivateBooster += () => ChangeBoosterState("train_booster", false);
+ 
+            autoClickerAdBooster.onActivateBooster += () => ChangeBoosterState("auto_clicker_booster", true);
+            autoClickerAdBooster.onDeactivateBooster += () => ChangeBoosterState("auto_clicker_booster", false);
 
             autoFightBooster.onActivateBooster += () =>
             {
@@ -71,17 +84,6 @@ namespace _3._Scripts.Boosters
             
             rewardAdBooster.onActivateBooster += () => ChangeBoosterState("reward_booster", true);
             rewardAdBooster.onDeactivateBooster += () => ChangeBoosterState("reward_booster", false);
-
-            slapAdBooster.onActivateBooster += () =>
-            {
-                slapBoosterView.gameObject.SetActive(true);
-                ChangeBoosterState("slap_booster", true);
-            };
-            slapAdBooster.onDeactivateBooster += () =>
-            {
-                slapBoosterView.gameObject.SetActive(false);
-                ChangeBoosterState("slap_booster", false);
-            };
         }
         
         private IEnumerator MiniGameCoroutine()

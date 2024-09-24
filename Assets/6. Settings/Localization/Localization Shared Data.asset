@@ -439,6 +439,22 @@ MonoBehaviour:
     m_Key: offer_trail
     m_Metadata:
       m_Items: []
+  - m_Id: 47667000851439616
+    m_Key: get_random_pet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47701210588913664
+    m_Key: training_x2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47718434280185856
+    m_Key: free
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47730993473396736
+    m_Key: click_speed_x3
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

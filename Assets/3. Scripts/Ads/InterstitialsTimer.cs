@@ -48,7 +48,7 @@ namespace _3._Scripts.Ads
         }
 
         private int _objSecCounter = 3;
-
+        private Coroutine _backupCoroutine;
         private IEnumerator TimerAdShow()
         {
             Active = true;
@@ -62,7 +62,7 @@ namespace _3._Scripts.Ads
                     yield return new WaitForSeconds(1.0f);
                 }
 
-                StartCoroutine(BackupTimerClosure());
+                _backupCoroutine = StartCoroutine(BackupTimerClosure());
                 GBGames.ShowInterstitial();
 
                 while (!GBGames.NowAdsShow)
@@ -73,7 +73,7 @@ namespace _3._Scripts.Ads
                 secondsPanelObject.alpha = 0;
                 _objSecCounter = 3;
 
-                StopCoroutine(BackupTimerClosure());
+                StopCoroutine(_backupCoroutine);
                 StartCoroutine(CheckTimerAd());
 
                 Active = false;

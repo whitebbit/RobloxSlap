@@ -1,20 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Config;
+using _3._Scripts.Pets;
 using _3._Scripts.Pets.Scriptables;
 using _3._Scripts.Saves;
 using _3._Scripts.UI.Elements;
+using _3._Scripts.UI.Enums;
+using _3._Scripts.UI.Interfaces;
 using _3._Scripts.UI.Panels.Base;
+using _3._Scripts.Wallet;
 using GBGamesPlugin;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
 
 namespace _3._Scripts.UI.Panels
 {
-    public class PetsPanel : SimplePanel
+    public class PetsPanel : SimplePanel, IOfferIndicator
     {
         [SerializeField] private TMP_Text counter;
         [SerializeField] private TMP_Text maxCount;
@@ -22,10 +27,9 @@ namespace _3._Scripts.UI.Panels
         [SerializeField] private Transform container;
         [Tab("Selected")] [SerializeField] private PetSlot selected;
         [SerializeField] private PetBooster booster;
-        [Tab("Buttons")] [SerializeField] private Button select;
-        [SerializeField] private Button unselect;
-        [SerializeField] private Button remove;
+        [Tab("Buttons")] [SerializeField] private Button remove;
         [SerializeField] private Button selectBest;
+        [SerializeField] private Button rewardButton;
 
         private PetSlot _currentSlot;
         private readonly List<PetSlot> _slots = new();
@@ -36,10 +40,44 @@ namespace _3._Scripts.UI.Panels
             OutTransition = transition;
 
             booster.gameObject.SetActive(false);
-            //select.onClick.AddListener(SelectCurrent);
-            //unselect.onClick.AddListener(UnselectCurrent);
             remove.onClick.AddListener(Remove);
             selectBest.onClick.AddListener(SelectBest);
+            rewardButton.onClick.AddListener(() => GBGames.ShowRewarded(GetRandomPet));
+        }
+
+        public void ShowOffer()
+        {
+            var panel = UIManager.Instance.GetPanel<OfferPanel>();
+            var pets = Configuration.Instance.AllPets.ToList();
+            var data = pets[Random.Range(0, pets.Count)];
+            var maxBooster = GBGames.saves.petsSave.GetMaxBooster();
+            var currentBooster = Random.Range(maxBooster, maxBooster + 5);
+
+            panel.Enabled = true;
+            panel.SetOffer(data, () =>
+            {
+                GBGames.saves.petsSave.Unlock(data, currentBooster);
+                PetUnlocker.SelectBest();
+            });
+
+            panel.SetRarity(Rarity.Legendary);
+            panel.SetBoosterText($"+{WalletManager.ConvertToWallet((decimal) currentBooster)} <sprite index=1>");
+        }
+
+        private void GetRandomPet()
+        {
+            var pets = Configuration.Instance.AllPets.ToList();
+            var data = pets[Random.Range(0, pets.Count)];
+            var maxBooster = GBGames.saves.petsSave.GetMaxBooster();
+            var currentBooster = Random.Range(maxBooster, maxBooster + 5);
+
+            GBGames.saves.petsSave.Unlock(data, currentBooster);
+            PetUnlocker.SelectBest();
+            
+            DeleteSlots();
+            InitializeSlots();
+            UpdateCount();
+            EquipBest();
         }
 
         protected override void OnOpen()
@@ -138,25 +176,25 @@ namespace _3._Scripts.UI.Panels
         private void EquipBest()
         {
             var best = GBGames.saves.petsSave.unlocked.OrderByDescending(p => p.booster).ToList();
-            
+
             foreach (var slot in _slots)
             {
                 slot.UnEquip();
             }
-            
+
             for (var i = 0; i < 3; i++)
             {
                 if (best.Count == i) break;
 
                 var slot = _slots.FirstOrDefault(s => s.SaveData.id == best[i].id);
-                
+
                 if (slot == null) continue;
-                
+
                 slot.Equip();
             }
         }
-        
-        public void Select(PetSaveData data, PetSlot slot = null)
+
+        private void Select(PetSaveData data, PetSlot slot = null)
         {
             slot = slot == null ? _slots.FirstOrDefault(s => s.SaveData.id == data.id) : slot;
 
@@ -205,12 +243,12 @@ namespace _3._Scripts.UI.Panels
                 GBGames.saves.petsSave.Unselect(best[i].id);
                 GBGames.saves.petsSave.Remove(best[i].id);
             }
-            
+
             GBGames.instance.Save();
 
             selected.Clear();
             booster.gameObject.SetActive(false);
-            
+
             DeleteSlots();
             InitializeSlots();
             UpdateCount();

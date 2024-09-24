@@ -1,6 +1,13 @@
-﻿using _3._Scripts.Config;
+﻿using System;
+using _3._Scripts.Ads;
+using _3._Scripts.Config;
 using _3._Scripts.Localization;
+using _3._Scripts.Pets.Scriptables;
 using _3._Scripts.UI.Enums;
+using _3._Scripts.UI.Panels.Base;
+using _3._Scripts.UI.Scriptable.Shop;
+using DG.Tweening;
+using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
@@ -8,16 +15,33 @@ using UnityEngine.UI;
 
 namespace _3._Scripts.UI.Panels
 {
-    public class OfferPanel : MonoBehaviour
+    public class OfferPanel : SimplePanel
     {
         [SerializeField] private Image icon;
+        [SerializeField] private Image table;
+        [SerializeField] private TMP_Text boosterText;
         [SerializeField] private LocalizeStringEvent titleText;
         [SerializeField] private LocalizeStringEvent rarityText;
+        [SerializeField] private Button rewardButton;
+        [SerializeField] private Button closeButton;
 
-        public void SetOffer<T>(T panel, Sprite sprite) where T : UIPanel
+        public override void Initialize()
+        {
+            base.Initialize();
+            closeButton.onClick.AddListener((() => Enabled = false));
+        }
+
+        public void SetOffer<T>(T data, Action onReward) where T : ShopItem
         {
             Clear();
-            SetVariables(panel, sprite);
+            SetVariables(data);
+            rewardButton.onClick.AddListener(() => GBGames.ShowRewarded(() =>
+            {
+                onReward?.Invoke();
+                Enabled = false;
+            }));
+            closeButton.image.DOFade(0, 0.25f).From().SetDelay(3f)
+                .OnStart(() => closeButton.gameObject.SetActive(true));
         }
 
         public void SetIconColor(Color color) => icon.color = color;
@@ -26,25 +50,38 @@ namespace _3._Scripts.UI.Panels
         {
             var rarityTable = Configuration.Instance.GetRarityTable(rarity);
             rarityText.SetReference(rarityTable.TitleID);
+            table.color = rarityTable.MainColor;
             rarityText.gameObject.SetActive(true);
         }
 
-        private void SetVariables<T>(T panel, Sprite sprite) where T : UIPanel
+        public void SetBoosterText(string text)
         {
-            icon.sprite = sprite;
-            titleText.SetReference(panel switch
+            boosterText.text = text;
+            boosterText.gameObject.SetActive(true);
+        }
+        
+        private void SetVariables<T>(T data) where T : ShopItem
+        {
+            icon.sprite = data.Icon;
+            titleText.SetReference(data switch
             {
-                PetsPanel => "offer_pet",
-                UpgradesShop => "offer_upgrade",
-                TrailsShop => "offer_trail",
+                PetData => "offer_pet",
+                UpgradeItem => "offer_upgrade",
+                TrailItem => "offer_trail",
                 _ => ""
             });
         }
 
         private void Clear()
         {
-            rarityText.gameObject.SetActive(false);
             icon.color = Color.white;
+            table.color = Color.white;
+            
+            rarityText.gameObject.SetActive(false);
+            closeButton.gameObject.SetActive(false);
+            boosterText.gameObject.SetActive(false);
+            
+            rewardButton.onClick.RemoveAllListeners();
         }
     }
 }

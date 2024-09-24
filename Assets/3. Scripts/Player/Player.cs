@@ -19,7 +19,7 @@ namespace _3._Scripts.Player
         [SerializeField] private TrailRenderer trail;
         [SerializeField] private Character character;
         [SerializeField] private PlayerLevel level;
-        
+
         public PetsHandler PetsHandler { get; private set; }
         public TrailHandler TrailHandler { get; private set; }
         public CharacterHandler CharacterHandler { get; private set; }
@@ -82,9 +82,9 @@ namespace _3._Scripts.Player
             var hand = Configuration.Instance.AllUpgrades.FirstOrDefault(
                 h => h.ID == GBGames.saves.upgradeSaves.current).Booster;
             var pets = GBGames.saves.petsSave.selected.Sum(p => p.booster);
-         
 
-            return (strengthPerClick + pets) * hand;
+            var booster = BoostersHandler.Instance.GetBoosterState("train_booster") ? 2 : 1;
+            return (strengthPerClick + pets) * hand * booster;
         }
 
         public void Teleport(Vector3 position)

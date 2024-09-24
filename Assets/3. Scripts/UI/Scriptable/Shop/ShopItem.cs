@@ -8,19 +8,17 @@ namespace _3._Scripts.UI.Scriptable.Shop
 {
     public abstract class ShopItem : ScriptableObject
     {
-        [SerializeField] private string id;
-        [Tab("UI")] 
-        [SerializeField] private Sprite icon;
+        [Tab("Shop Item")] [SerializeField] private string id;
+        [Header("UI")] [SerializeField] private Sprite icon;
         [SerializeField] private Rarity rarity;
-        [Tab("Currency")] 
-        [SerializeField] private CurrencyType currencyType;
+        [Header("Currency")] [SerializeField] private CurrencyType currencyType;
         [SerializeField] private float price;
 
 
         public abstract string Title();
         public virtual string ID => id;
-        public Sprite Icon => icon;
-        public Rarity Rarity => rarity;
+        public virtual Sprite Icon => icon;
+        public virtual Rarity Rarity => rarity;
 
         public CurrencyType CurrencyType => currencyType;
         public float Price => price;

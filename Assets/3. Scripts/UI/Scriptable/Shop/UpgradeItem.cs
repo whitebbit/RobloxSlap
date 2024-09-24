@@ -21,7 +21,7 @@ namespace _3._Scripts.UI.Scriptable.Shop
 
         public override string Title()
         {
-            return $"x{WalletManager.ConvertToWallet((decimal) booster)}<sprite index=1>";
+            return $"x{WalletManager.ConvertToWallet((decimal) booster)} <sprite index=1>";
         }
     }
 }

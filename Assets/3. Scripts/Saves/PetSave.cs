@@ -12,19 +12,21 @@ namespace _3._Scripts.Saves
         public List<PetSaveData> unlocked = new();
         public List<PetSaveData> selected = new();
         public event Action ONPetUnlocked;
-        public void Unlock(PetData data)
+
+        public void Unlock(PetData data, float booster = 0)
         {
             var hash = $"{data.ID}_{DateTime.Now}".GetHashCode();
             var petSaveData = new PetSaveData
             {
                 dataID = data.ID,
-                booster = data.RandomBooster,
+                booster = booster == 0 ? data.RandomBooster : booster,
                 id = hash
             };
 
             unlocked.Add(petSaveData);
             ONPetUnlocked?.Invoke();
         }
+
 
         public void Select(int id)
         {
@@ -38,7 +40,7 @@ namespace _3._Scripts.Saves
         {
             var pet = selected.FirstOrDefault(p => p.id == id);
             if (!Selected(id)) return;
-            
+
             selected.Remove(pet);
         }
 
@@ -48,12 +50,17 @@ namespace _3._Scripts.Saves
             Unselect(id);
             unlocked.Remove(pet);
         }
-        
+
+        public float GetMaxBooster()
+        {
+            return unlocked.Count <= 0 ? 1 : unlocked.Max(p => p.booster);
+        }
+
         public bool MaxSelected(int maxObjects)
         {
             return selected.Count >= maxObjects;
         }
-        
+
         public bool MaxUnlocked(int maxObjects)
         {
             return unlocked.Count >= maxObjects;

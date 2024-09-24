@@ -8,6 +8,8 @@ namespace _3._Scripts
 {
     public class RuntimeSkinIconRenderer : Singleton<RuntimeSkinIconRenderer>
     {
+        [SerializeField] private float greenThreshold = 25;
+        
         public Camera renderCamera;
         public RenderTexture renderTexture;
         public List<SkinnedMeshRenderer> skinnedMeshRenderers = new();
@@ -48,7 +50,7 @@ namespace _3._Scripts
             {
                
                 var pixel = pixels[i];
-                if (pixel.g <= pixel.r + 50 || pixel.g <= pixel.b + 50) continue;
+                if (pixel.g <= pixel.r + greenThreshold || pixel.g <= pixel.b + greenThreshold) continue;
                 pixel.a = 0; 
                 pixels[i] = pixel;
             }

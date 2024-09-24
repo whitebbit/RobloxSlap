@@ -1,6 +1,7 @@
 ﻿using _3._Scripts.Config;
 using _3._Scripts.Pets.Scriptables;
 using _3._Scripts.Saves;
+using _3._Scripts.Wallet;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ namespace _3._Scripts.UI.Elements
             var data = Configuration.Instance.GetPet(saveData.dataID);
             var currency = Configuration.Instance.GetCurrency(data.BoosterType);
             icon.sprite = currency.Icon;
-            counter.text = $"+{saveData.booster}";
+            counter.text = $"+{WalletManager.ConvertToWallet((decimal) saveData.booster)}";
         }
         
     }

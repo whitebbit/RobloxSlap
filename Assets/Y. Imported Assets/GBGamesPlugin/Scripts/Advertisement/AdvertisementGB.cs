@@ -10,7 +10,8 @@ namespace GBGamesPlugin
         public static bool NowAdsShow { get; private set; }
         public static bool CanShowInterstitial => Time.time - _lastAdShowTime >= _adInterval;
 
-        public static UnityEvent OnAdClosed => instance.interstitial.OnAdClosed;
+        public static UnityEvent OnInterstitialClosed => instance.interstitial.OnAdClosed;
+        public static UnityEvent OnRewardedClosed => instance.rewarded.OnAdClosed;
 
         public void NowAdsShownState(bool state) => NowAdsShow = state;
 
@@ -45,7 +46,6 @@ namespace GBGamesPlugin
             if (!CanShowInterstitial) return;
             if (NowAdsShow) return;
 
-            OnAdShown(AdType.Interstitial);
             instance.interstitial.Present();
         }
 
@@ -60,7 +60,6 @@ namespace GBGamesPlugin
         {
             if (NowAdsShow) return;
 
-            OnAdShown(AdType.Rewarded);
             instance.rewarded.Present(onRewarded);
         }
 

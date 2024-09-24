@@ -1,7 +1,9 @@
 ﻿using System;
+using _3._Scripts.Ads;
 using _3._Scripts.Interactive.Interfaces;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Panels;
+using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,9 +56,9 @@ namespace _3._Scripts.Interactive
         private void OnTriggerStay(Collider other)
         {
             if (!other.TryGetComponent(out Player.Player _)) return;
-            var panel = UIManager.Instance.GetPanel<PetUnlockerPanel>();
 
-            if (panel.Enabled) return;
+            if (UIManager.Instance.Active || InterstitialsTimer.Instance.Active || GBGames.NowAdsShow) return;
+
             _waitToInteract = true;
         }
 

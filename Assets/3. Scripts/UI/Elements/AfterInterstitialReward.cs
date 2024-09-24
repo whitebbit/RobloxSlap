@@ -26,12 +26,12 @@ namespace _3._Scripts.UI.Elements
 
         private void OnEnable()
         {
-            GBGames.OnAdClosed.AddListener(ShowReward);
+            //GBGames.OnRewardedClosed.AddListener(ShowReward);
         }
 
         private void OnDisable()
         {
-            GBGames.OnAdClosed.RemoveListener(ShowReward);
+            //GBGames.OnRewardedClosed.RemoveListener(ShowReward);
         }
 
         private void ShowReward()

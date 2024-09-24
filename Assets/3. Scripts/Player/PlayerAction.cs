@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using _3._Scripts.Actions;
 using _3._Scripts.Actions.Interfaces;
 using _3._Scripts.Ads;
 using _3._Scripts.Boosters;
@@ -39,6 +40,10 @@ namespace _3._Scripts.Player
         private void DetectorOnFound(IActionable obj)
         {
             _actionable = obj;
+            if (obj is not Training) return;
+
+            BoostersHandler.Instance.TrainingAdBooster.ShowPromotion(30);
+            BoostersHandler.Instance.AutoClickerAdBooster.ShowPromotion(30);
         }
 
         private void Start()
@@ -58,9 +63,12 @@ namespace _3._Scripts.Player
             }
 
             if (!BoostersHandler.Instance.GetBoosterState("auto_clicker")) return;
+
             _timeToClick -= Time.deltaTime;
+
             if (!(_timeToClick <= 0)) return;
-            _timeToClick = 1;
+
+            _timeToClick = BoostersHandler.Instance.GetBoosterState("auto_clicker_booster") ? 0.2f : 1;
             DoAction();
         }
 

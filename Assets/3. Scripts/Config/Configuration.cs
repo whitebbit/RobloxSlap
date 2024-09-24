@@ -20,10 +20,12 @@ namespace _3._Scripts.Config
 {
     public class Configuration : Singleton<Configuration>
     {
-        [Tab("Game Data")] [SerializeField] private List<CurrencyData> currencyData = new();
+        [Tab("Game Data")] 
+        [SerializeField] private List<CurrencyData> currencyData = new();
         [SerializeField] private List<RarityTable> rarityTables = new();
         [SerializeField] private List<AchievementData> achievementData = new();
-        [Tab("Player Data")] [SerializeField] private List<CharacterItem> allCharacters = new();
+        [Tab("Player Data")] 
+        [SerializeField] private List<CharacterItem> allCharacters = new();
         [SerializeField] private List<TrailItem> allTrails = new();
         [SerializeField] private List<PetData> allPets = new();
         [SerializeField] private List<UpgradeItem> allUpgrades = new();

@@ -8,6 +8,7 @@ using _3._Scripts.Saves;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Elements;
 using _3._Scripts.UI.Enums;
+using _3._Scripts.UI.Interfaces;
 using _3._Scripts.UI.Panels;
 using _3._Scripts.Wallet;
 using GBGamesPlugin;
@@ -17,7 +18,7 @@ using VInspector;
 
 namespace _3._Scripts.Pets
 {
-    public class PetUnlocker : MonoBehaviour, IInteractive
+    public class PetUnlocker : MonoBehaviour, IInteractive, IOfferIndicator
     {
         [Tab("Price Settings")] [SerializeField]
         private TMP_Text priceText;
@@ -101,7 +102,7 @@ namespace _3._Scripts.Pets
 
             if (!WalletManager.TrySpend(CurrencyType.Second, _price))
             {
-                NotificationPanel.Instance.ShowNotification("no_money");
+                ShowOffer();
                 return;
             }
 
@@ -118,13 +119,13 @@ namespace _3._Scripts.Pets
                 GBGames.saves.achievementSaves.Update("legendary_pet", 1);
         }
 
-        private void SelectBest()
+        public static void SelectBest()
         {
             var best = GBGames.saves.petsSave.unlocked.OrderByDescending(p => p.booster).ToList();
             if (best.Count <= 0) return;
 
             Player.Player.instance.PetsHandler.ClearPets();
-            GBGames.saves.petsSave.selected = new List<PetSaveData>();
+            GBGames.saves.petsSave.selected.Clear();
 
             for (var i = 0; i < 3; i++)
             {
@@ -142,6 +143,23 @@ namespace _3._Scripts.Pets
         {
             eggModel.gameObject.SetActive(true);
             canvas.gameObject.SetActive(false);
+        }
+
+        public void ShowOffer()
+        {
+            var panel = UIManager.Instance.GetPanel<OfferPanel>();
+            var data = _data[Random.Range(0, _data.Count)];
+            var booster = data.RandomBooster;
+            
+            panel.Enabled = true;
+            panel.SetOffer(data, () =>
+            {
+                GBGames.saves.petsSave.Unlock(data, booster);
+                SelectBest();
+            });
+
+            panel.SetRarity(data.Rarity);
+            panel.SetBoosterText($"+{WalletManager.ConvertToWallet(booster)} <sprite index=1>");
         }
     }
 }

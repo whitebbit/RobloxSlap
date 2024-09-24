@@ -11,12 +11,13 @@ namespace GBGamesPlugin
     public partial class GBGames : MonoBehaviour
     {
         public static GBGames instance { get; private set; }
-        [Tab("Main")]
-        [SerializeField] private GBGamesSettings settings;
-        [Tab("Advertisement")]
-        [SerializeField] private InterstitialAdObject interstitial;
+        [Tab("Main")] [SerializeField] private GBGamesSettings settings;
+
+        [Tab("Advertisement")] [SerializeField]
+        private InterstitialAdObject interstitial;
+
         [SerializeField] private RewardedAdObject rewarded;
-        
+
         private static bool _inGame;
 
         private void Awake()
@@ -58,8 +59,10 @@ namespace GBGamesPlugin
         private static void Advertisement()
         {
             OnAdShown(AdType.Interstitial);
+            OnInterstitialClosed.AddListener(() => OnAdShown(AdType.Interstitial));
+            OnRewardedClosed.AddListener(() => OnAdShown(AdType.Rewarded));
         }
-        
+
         private void Storage()
         {
             Load();
@@ -75,7 +78,6 @@ namespace GBGamesPlugin
 
         private void RemoteConfig()
         {
-            
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using _3._Scripts.Ads;
 using _3._Scripts.Boosters;
 using UnityEngine;
@@ -115,7 +116,7 @@ namespace _3._Scripts.UI.Panels
 
         private void SetComponentsState(bool state)
         {
-            foreach (var component in deactivateComponents)
+            foreach (var component in deactivateComponents.Where(component => component.gameObject.activeSelf))
             {
                 component.gameObject.SetActive(state);
             }

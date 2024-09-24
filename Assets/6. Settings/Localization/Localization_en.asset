@@ -113,7 +113,7 @@ MonoBehaviour:
       m_Items:
       - rid: 3203987063427825692
   - m_Id: 10045174344458240
-    m_Localized: <sprite index=1>It is necessary to {value}
+    m_Localized: <sprite index=1>  {value}
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
@@ -451,6 +451,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 47629696292233216
     m_Localized: New trail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47667000851439616
+    m_Localized: Get random pet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47701210588913664
+    m_Localized: Palm X2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47718434280185856
+    m_Localized: Free
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47730993473396736
+    m_Localized: Speed x2
     m_Metadata:
       m_Items: []
   references:
