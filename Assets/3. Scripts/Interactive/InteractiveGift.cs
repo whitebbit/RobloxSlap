@@ -29,6 +29,13 @@ namespace _3._Scripts.Interactive
             }
 
             StartCoroutine(CheckTimers());
+
+            UIManager.Instance.GetPanel<FreeGiftsPanel>().ONOpen += () =>
+            {
+                arrow.gameObject.SetActive(false);
+                particles.gameObject.SetActive(false);
+                timer.gameObject.SetActive(true);
+            };
         }
         
         private IEnumerator CheckTimers()
@@ -41,7 +48,7 @@ namespace _3._Scripts.Interactive
                 yield return new WaitForSeconds(currentTime);
                 
                 _currentTimer += 1;
-                
+                timer.gameObject.SetActive(false);
                 arrow.gameObject.SetActive(true);
                 particles.gameObject.SetActive(true);
 
@@ -55,6 +62,7 @@ namespace _3._Scripts.Interactive
             UIManager.Instance.GetPanel<FreeGiftsPanel>().Enabled = true;
             arrow.gameObject.SetActive(false);
             particles.gameObject.SetActive(false);
+            timer.gameObject.SetActive(true);
         }
     }
 }
