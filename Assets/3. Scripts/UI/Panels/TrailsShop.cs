@@ -16,7 +16,7 @@ namespace _3._Scripts.UI.Panels
     {
         protected override IEnumerable<TrailItem> ShopItems()
         {
-            return Configuration.Instance.AllTrails;
+            return Configuration.Instance.AllTrails.OrderBy(obj => obj.Price);
         }
 
         protected override bool ItemUnlocked(string id)

@@ -68,7 +68,11 @@ namespace _3._Scripts.Boosters
             trainingAdBooster.onActivateBooster += () => ChangeBoosterState("train_booster", true);
             trainingAdBooster.onDeactivateBooster += () => ChangeBoosterState("train_booster", false);
  
-            autoClickerAdBooster.onActivateBooster += () => ChangeBoosterState("auto_clicker_booster", true);
+            autoClickerAdBooster.onActivateBooster += () =>
+            {
+                autoClickerButton.Activate();
+                ChangeBoosterState("auto_clicker_booster", true);
+            };
             autoClickerAdBooster.onDeactivateBooster += () => ChangeBoosterState("auto_clicker_booster", false);
 
             autoFightBooster.onActivateBooster += () =>

@@ -455,6 +455,14 @@ MonoBehaviour:
     m_Key: click_speed_x3
     m_Metadata:
       m_Items: []
+  - m_Id: 48024790660947968
+    m_Key: ad_get
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48379963342200832
+    m_Key: minigame_tutorial
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

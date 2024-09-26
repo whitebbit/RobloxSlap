@@ -13,10 +13,10 @@ namespace GBGamesPlugin
         public static GBGames instance { get; private set; }
         [Tab("Main")] [SerializeField] private GBGamesSettings settings;
 
-        [Tab("Advertisement")] [SerializeField]
-        private InterstitialAdObject interstitial;
-
+        [Tab("Advertisement")] 
+        [SerializeField] private InterstitialAdObject interstitial;
         [SerializeField] private RewardedAdObject rewarded;
+        [SerializeField] private BannerAdObject banner;
 
         private static bool _inGame;
 
@@ -28,9 +28,9 @@ namespace GBGamesPlugin
         private IEnumerator Initialize()
         {
             _inGame = true;
-            yield return new WaitForSeconds(1);
             Singleton();
             Advertisement();
+            yield return new WaitForSeconds(1);
             Storage();
             yield return new WaitForSeconds(2);
             RemoteConfig();
@@ -56,11 +56,22 @@ namespace GBGamesPlugin
             Cursor.visible = true;
         }
 
-        private static void Advertisement()
+        private void Advertisement()
         {
             OnAdShown(AdType.Interstitial);
+            
             OnInterstitialClosed.AddListener(() => OnAdShown(AdType.Interstitial));
             OnRewardedClosed.AddListener(() => OnAdShown(AdType.Rewarded));
+
+            if (saves.firstSession)
+            {
+                HideBanner();
+                StartCoroutine(FirstSessionActivate());
+            }
+            else
+            {
+                ShowBanner();
+            }
         }
 
         private void Storage()

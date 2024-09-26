@@ -40,12 +40,8 @@ namespace _3._Scripts.MiniGame
             switch (id)
             {
                 case "Action":
-                    Debug.Log(gameObject.name);
                     OnSlap?.Invoke();
                     SoundManager.Instance.PlayOneShot("action");
-                    break;
-                case "ActionEnd":
-                    //_isOnCooldown = false;
                     break;
             }
         }

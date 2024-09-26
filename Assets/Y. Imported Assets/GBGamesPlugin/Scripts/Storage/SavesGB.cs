@@ -23,10 +23,11 @@ namespace GBGamesPlugin
         public DailyRewardSave dailyReward = new();
         public AchievementSaves achievementSaves = new();
         public List<string> freeUsedBoosters = new();
-        
+        public Dictionary<string, bool> tutorialStates = new();
         
         public int stageID;
         public int worldID;
         public bool sound = true;
+        public bool firstSession = true;
     }
 }

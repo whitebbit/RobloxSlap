@@ -7,6 +7,7 @@ using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using VInspector;
 using Random = UnityEngine.Random;
@@ -23,7 +24,8 @@ namespace _3._Scripts.Debugger
         [Tab("Quality")] [SerializeField] private Volume volume;
 
         [SerializeField] private Light mainLight;
-
+        [SerializeField] private UniversalRenderPipelineAsset pc;
+        [SerializeField] private UniversalRenderPipelineAsset mobile;
 
         [Tab("Panel")] [SerializeField] private Transform panel;
 
@@ -65,6 +67,18 @@ namespace _3._Scripts.Debugger
             mainLight.shadows = mainLight.shadows == LightShadows.None ? LightShadows.Soft : LightShadows.None;
         }
 
+        public void ChangeQualityType()
+        {
+            var currentSettings = 
+                QualitySettings.GetQualityLevel() == QualitySettings.names.ToList().IndexOf("Mobile")
+                ? QualitySettings.names.ToList().IndexOf("PC")
+                : QualitySettings.names.ToList().IndexOf("Mobile");
+
+            var currentPipeline = GraphicsSettings.renderPipelineAsset == mobile ? pc : mobile;
+            
+            QualitySettings.SetQualityLevel(currentSettings);
+            GraphicsSettings.renderPipelineAsset = currentPipeline;
+        }
 
         public void UnlockRandomTrail()
         {

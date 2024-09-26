@@ -274,6 +274,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 881096990}
+--- !u!1 &416267611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 416267612}
+  - component: {fileID: 416267613}
+  m_Layer: 0
+  m_Name: Banner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &416267612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416267611}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1435043118}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &416267613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416267611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 843e5b43b4dcf427780c1376ee0473ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerId:
+    android: 0
+    ios: 0
+  adPosition: 3
+  adOffset: {x: 0, y: 0}
+  adSize: 1
+  OnAdLoaded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAdFailedToLoad:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAdShown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAdClicked:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAdHidden:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAdImpression:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &422381003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -966,6 +1034,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 322486506346723592, guid: 612db8578665c5d4db6ca135499ea275, type: 3}
+      propertyPath: banner
+      value: 
+      objectReference: {fileID: 416267613}
+    - target: {fileID: 322486506346723592, guid: 612db8578665c5d4db6ca135499ea275, type: 3}
       propertyPath: rewarded
       value: 
       objectReference: {fileID: 2058407862}
@@ -1023,6 +1095,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9082734358990559951, guid: 612db8578665c5d4db6ca135499ea275, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2058407860}
+    - targetCorrespondingSourceObject: {fileID: 9082734358990559951, guid: 612db8578665c5d4db6ca135499ea275, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 416267612}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 612db8578665c5d4db6ca135499ea275, type: 3}
 --- !u!114 &1435043115 stripped
@@ -1366,6 +1441,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   OnAdImpression:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReward:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2058407863

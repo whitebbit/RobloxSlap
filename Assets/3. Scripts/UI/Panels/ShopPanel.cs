@@ -43,7 +43,7 @@ namespace _3._Scripts.UI.Panels
 
         private void SpawnItems()
         {
-            var items = ShopItems().OrderBy(obj => obj.Price).ToList();
+            var items = ShopItems().ToList();
             foreach (var item in items)
             {
                 var obj = Instantiate(prefab, container);

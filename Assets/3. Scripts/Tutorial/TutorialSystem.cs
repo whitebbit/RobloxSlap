@@ -1,5 +1,6 @@
 using System;
 using _3._Scripts.Singleton;
+using GBGamesPlugin;
 using UnityEngine;
 
 namespace _3._Scripts.Tutorial
@@ -12,10 +13,12 @@ namespace _3._Scripts.Tutorial
         public static void StepComplete(string stepName)
         {
             TutorialStepComplete?.Invoke(stepName);
+            GBGames.saves.tutorialStates.TryAdd(stepName, true);
         }
 
         public  static void StepStart(string stepName)
-        {
+        {            
+            if(GBGames.saves.tutorialStates.ContainsKey(stepName)) return;
             TutorialStepStart?.Invoke(stepName);
         }
         

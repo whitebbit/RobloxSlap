@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using _3._Scripts.Localization;
+using _3._Scripts.UI.Enums;
 using _3._Scripts.UI.Scriptable.Shop;
 using _3._Scripts.UI.Structs;
 using _3._Scripts.Wallet;
+using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,18 +14,16 @@ using VInspector;
 namespace _3._Scripts.UI.Elements.ShopSlots
 {
     public abstract class BaseShopSlot : MonoBehaviour
-    { 
-        [Tab("Rarity Tables")] 
-        [SerializeField] protected List<RarityTable> rarityTables = new();
-        [Tab("Currency")] 
-        [SerializeField] private TMP_Text price;
+    {
+        [Tab("Rarity Tables")] [SerializeField]
+        protected List<RarityTable> rarityTables = new();
 
-        [SerializeField] private Image selectImage;
-        [SerializeField] private Image selectedImage;
-        
-        [Tab("Localization")] 
-        
-        private Button _button;
+        [Tab("Currency")] 
+        [SerializeField] protected TMP_Text price;
+        [SerializeField] protected Image selectImage;
+        [SerializeField] protected Image selectedImage;
+
+        [Tab("Localization")] private Button _button;
         public ShopItem Data { get; protected set; }
 
         private void Awake()
@@ -32,27 +32,27 @@ namespace _3._Scripts.UI.Elements.ShopSlots
         }
 
         public abstract void SetView(ShopItem item);
-        
+
         public void SetAction(Action action) => _button.onClick.AddListener(() => action?.Invoke());
 
-        public void Select()
+        public virtual void Select()
         {
             selectedImage.gameObject.SetActive(true);
             selectImage.gameObject.SetActive(false);
             price.gameObject.SetActive(false);
-
         }
 
-        public void Unselect()
+        public virtual void Unselect()
         {
             selectedImage.gameObject.SetActive(false);
             price.gameObject.SetActive(false);
             selectImage.gameObject.SetActive(true);
         }
 
-        public void Lock()
+        public virtual void Lock()
         {
-            price.text = $"<sprite index=0>{WalletManager.ConvertToWallet((decimal) Data.Price)}";
+            price.text = $"<sprite index=0> {WalletManager.ConvertToWallet((decimal) Data.Price)}";
+
             selectedImage.gameObject.SetActive(false);
             selectImage.gameObject.SetActive(false);
         }

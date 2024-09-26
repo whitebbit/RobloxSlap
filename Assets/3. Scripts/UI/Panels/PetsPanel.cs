@@ -2,7 +2,6 @@
 using System.Linq;
 using _3._Scripts.Config;
 using _3._Scripts.Pets;
-using _3._Scripts.Pets.Scriptables;
 using _3._Scripts.Saves;
 using _3._Scripts.UI.Elements;
 using _3._Scripts.UI.Enums;
@@ -11,8 +10,6 @@ using _3._Scripts.UI.Panels.Base;
 using _3._Scripts.Wallet;
 using GBGamesPlugin;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;

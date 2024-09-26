@@ -39,7 +39,7 @@ namespace _3._Scripts.Boosters
             onDeactivateBooster?.Invoke();
             _button.image.sprite = disableSprite;
         }
-        private void Activate()
+        public void Activate()
         {
             _state = true;
             onActivateBooster?.Invoke();

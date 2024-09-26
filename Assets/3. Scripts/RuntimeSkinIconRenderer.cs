@@ -18,7 +18,7 @@ namespace _3._Scripts
 
         public Texture2D GetTexture2D(string id, Material material = null)
         {
-            return _textureCache.ContainsKey(id) ? _textureCache[id] : CreateTexture2D(id, material);
+            return /*_textureCache.ContainsKey(id) ? _textureCache[id] : */CreateTexture2D(id, material);
         }
         
         private Texture2D CreateTexture2D(string id, Material material)
@@ -58,7 +58,7 @@ namespace _3._Scripts
             renderedTexture.SetPixels32(pixels);
             renderedTexture.Apply();
             
-            _textureCache.Add(id, renderedTexture);
+            _textureCache.TryAdd(id, renderedTexture);
             
             return renderedTexture;
         }

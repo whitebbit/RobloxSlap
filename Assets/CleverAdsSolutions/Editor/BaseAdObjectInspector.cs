@@ -339,14 +339,14 @@ namespace CAS.AdObject
     internal class RewardedAdObjectInspector : InterstitialAdObjectInspector
     {
         private SerializedProperty restartInterstitialIntervalProp;
-       // private SerializedProperty onRewardProp;
+        private SerializedProperty onRewardProp;
 
         protected override void OnEnable()
         {
             base.OnEnable();
             var obj = serializedObject;
             restartInterstitialIntervalProp = obj.FindProperty("restartInterstitialInterval");
-            //onRewardProp = obj.FindProperty("OnReward");
+            onRewardProp = obj.FindProperty("OnReward");
         }
 
         protected override void OnAdditionalPropertiesGUI()
@@ -356,7 +356,7 @@ namespace CAS.AdObject
                 "Restart Interstitial Ad interval on rewarded ad closed",
                 restartInterstitialIntervalProp.boolValue
             );
-            //EditorGUILayout.PropertyField(onRewardProp);
+            EditorGUILayout.PropertyField(onRewardProp);
         }
 
         protected override void OnFooterGUI()

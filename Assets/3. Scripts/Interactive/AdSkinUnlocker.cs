@@ -35,6 +35,8 @@ namespace _3._Scripts.Interactive
 
         private void SetSkin()
         {
+            if (_characterItem == null) return;
+
             foreach (var skinnedMeshRenderer in skin)
             {
                 skinnedMeshRenderer.material = _characterItem.Skin;
@@ -48,7 +50,6 @@ namespace _3._Scripts.Interactive
 
         public void Interact()
         {
-
             GBGames.ShowRewarded(() =>
             {
                 var player = Player.Player.instance;

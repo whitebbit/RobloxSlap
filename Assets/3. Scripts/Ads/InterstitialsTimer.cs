@@ -1,10 +1,14 @@
 using System;
 using System.Collections;
+using _3._Scripts.Boosters;
 using _3._Scripts.Config;
+using _3._Scripts.Currency.Enums;
 using _3._Scripts.Localization;
 using _3._Scripts.Singleton;
 using _3._Scripts.UI;
+using _3._Scripts.UI.Effects;
 using _3._Scripts.UI.Elements;
+using _3._Scripts.UI.Panels;
 using _3._Scripts.Wallet;
 using DG.Tweening;
 using GBGamesPlugin;
@@ -17,6 +21,7 @@ namespace _3._Scripts.Ads
     {
         [SerializeField] private CanvasGroup secondsPanelObject;
         [SerializeField] private LocalizeStringEvent localizedText;
+        [SerializeField] private CurrencyCounterEffect counterEffect;
 
         public bool Active { get; private set; }
         public bool Blocked { get; set; }
@@ -49,6 +54,7 @@ namespace _3._Scripts.Ads
 
         private int _objSecCounter = 3;
         private Coroutine _backupCoroutine;
+
         private IEnumerator TimerAdShow()
         {
             Active = true;
@@ -68,8 +74,9 @@ namespace _3._Scripts.Ads
                 while (!GBGames.NowAdsShow)
                     yield return null;
 
-                WalletManager.SecondCurrency += 25;
-                
+                var effectInstance = CurrencyEffectPanel.Instance.SpawnEffect(counterEffect, CurrencyType.Second, 25);
+                effectInstance.Initialize(CurrencyType.Second, 25);
+
                 secondsPanelObject.alpha = 0;
                 _objSecCounter = 3;
 
@@ -94,7 +101,8 @@ namespace _3._Scripts.Ads
 
         private bool CanShow()
         {
-            return !GBGames.NowAdsShow && !Blocked && GBGames.CanShowInterstitial && !UIManager.Instance.Active;
+            return !GBGames.NowAdsShow && !Blocked && GBGames.CanShowInterstitial && !UIManager.Instance.Active &&
+                   !GBGames.saves.firstSession;
         }
     }
 }

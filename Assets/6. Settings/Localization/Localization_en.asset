@@ -84,7 +84,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1826039177289728
-    m_Localized: "\u0410utoclick\n"
+    m_Localized: "\u0410utotap X1"
     m_Metadata:
       m_Items: []
   - m_Id: 2003956725325824
@@ -122,7 +122,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10765505963106304
-    m_Localized: 1 min.
+    m_Localized: 2 min.
     m_Metadata:
       m_Items: []
   - m_Id: 10765839972311040
@@ -467,6 +467,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 47730993473396736
     m_Localized: Speed x2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48024790660947968
+    m_Localized: Get <sprite index=4>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48379963342200832
+    m_Localized: 'Tap Tap Tap '
     m_Metadata:
       m_Items: []
   references:

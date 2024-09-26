@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using CAS;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,13 +16,24 @@ namespace GBGamesPlugin
 
         public void NowAdsShownState(bool state) => NowAdsShow = state;
 
+        private IEnumerator FirstSessionActivate()
+        {
+            yield return new WaitForSeconds(60);
+            ShowBanner();
+            yield return new WaitForSeconds(120);
+            saves.firstSession = false;
+            Save();
+        }
+        
         #region Banner
-
+        
+        
         /// <summary>
         /// Показать баннер.
         /// </summary>
         public static void ShowBanner()
         {
+            instance.banner.gameObject.SetActive(true);
         }
 
         /// <summary>
@@ -29,6 +41,7 @@ namespace GBGamesPlugin
         /// </summary>
         public static void HideBanner()
         {
+            instance.banner.gameObject.SetActive(false);
         }
 
         #endregion
@@ -56,7 +69,7 @@ namespace GBGamesPlugin
         /// <summary>
         /// Показать рекламу за вознаграждение.
         /// </summary>
-        public static void ShowRewarded(Action onRewarded)
+        public static void ShowRewarded(UnityAction onRewarded)
         {
             if (NowAdsShow) return;
 

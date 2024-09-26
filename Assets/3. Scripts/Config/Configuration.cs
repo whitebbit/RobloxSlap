@@ -35,11 +35,16 @@ namespace _3._Scripts.Config
         public IEnumerable<AchievementData> AchievementData => achievementData;
 
         public IEnumerable<UpgradeItem> AllUpgrades => allUpgrades;
-        public IEnumerable<CharacterItem> AllCharacters => allCharacters;
+        public IEnumerable<CharacterItem> AllCharacters => allCharacters.OrderBy(obj => obj.Booster);
 
         public IEnumerable<TrailItem> AllTrails => allTrails;
         public CurrencyData GetCurrency(CurrencyType type) => currencyData.FirstOrDefault(c => c.Type == type);
         public PetData GetPet(string id) => AllPets.FirstOrDefault(p => p.ID == id);
         public RarityTable GetRarityTable(Rarity rarity) => rarityTables.FirstOrDefault(r => r.Rarity == rarity);
+
+        private void Start()
+        {
+            GBGames.ShowBanner();
+        }
     }
 }

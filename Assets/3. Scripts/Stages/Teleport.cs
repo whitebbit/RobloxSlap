@@ -2,6 +2,7 @@
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Localization;
 using _3._Scripts.Stages.Enums;
+using _3._Scripts.Tutorial;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Panels;
 using _3._Scripts.Wallet;
@@ -83,7 +84,8 @@ namespace _3._Scripts.Stages
                             StageController.Instance.TeleportToNextStage();
                         }
                     }
-
+                    
+                    TutorialSystem.StepComplete("portal");
                     break;
                 case TeleportType.Previous:
                     StageController.Instance.TeleportToPreviousStage();

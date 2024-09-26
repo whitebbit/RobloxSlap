@@ -194,7 +194,7 @@ TextureImporter:
         width: 128
         height: 112
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,6 +202,27 @@ TextureImporter:
       bones: []
       spriteID: 008dedbe43d54424f962a007b6e607bf
       internalID: 621237649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Currency_4
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 268
+        width: 109
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e48e92a27b4338642abdf7e7016a8cca
+      internalID: -366164345
       vertices: []
       indices: 
       edges: []

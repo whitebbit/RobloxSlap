@@ -16,7 +16,7 @@ namespace _3._Scripts.UI.Panels
     {
         protected override IEnumerable<UpgradeItem> ShopItems()
         {
-            return Configuration.Instance.AllUpgrades;
+            return Configuration.Instance.AllUpgrades.OrderBy(obj => obj.Price);
         }
 
         protected override bool ItemUnlocked(string id)
