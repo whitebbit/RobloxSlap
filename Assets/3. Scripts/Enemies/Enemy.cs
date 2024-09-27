@@ -98,7 +98,7 @@ namespace _3._Scripts.Enemies
         {
             nameText.SetReference(data.LocalizationID);
             complexityText.TextToComplexity(data.ComplexityType);
-            recommendationText.SetVariable("value", WalletManager.ConvertToWallet((decimal) (data.Health / 25)));
+            recommendationText.SetVariable("value", WalletManager.ConvertToWallet((decimal) (data.Health / 10)));
             recommendationText.SetVariable("cup_value", WalletManager.ConvertToWallet((decimal) data.RewardCount));
         }
     }
