@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Enemy Data
   m_EditorClassIdentifier: 
   localizationID: Enemy_01
-  health: 3000
-  strength: 0
+  health: 2250
+  strength: 5
   rewardCount: 1
   complexityType: 0
   skin: {fileID: 2100000, guid: 68ca098e5198c7b4fb5b5590e04c84c3, type: 2}

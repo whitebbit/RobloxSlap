@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy Data 2
   m_EditorClassIdentifier: 
   localizationID: Enemy_03
-  health: 1000000
+  health: 750000
   strength: 5
   rewardCount: 25
   complexityType: 2
