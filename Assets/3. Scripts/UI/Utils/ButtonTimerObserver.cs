@@ -10,46 +10,58 @@ namespace _3._Scripts.UI.Utils
 {
     public class ButtonTimerObserver : MonoBehaviour
     {
-
-        [SerializeField] private List<Timer> timers = new();
-        [SerializeField] private Image notificationImage;
+        [SerializeField] private List<Timer> timers = new(); // Список таймеров
+        [SerializeField] private Image notificationImage; // Уведомление
 
         private Button _button;
-        private readonly List<float> _times = new();
-        private int _currentTimer;
+        private int _currentTimerIndex = 0; // Индекс текущего таймера
+        private float _elapsedTime = 0f; // Время, прошедшее с начала отсчета
 
         private void Awake()
         {
             _button = GetComponent<Button>();
+            _button.onClick.AddListener(OnButtonClick);
         }
 
         private void Start()
         {
             notificationImage.gameObject.SetActive(false);
 
-            foreach (var timer in timers.OrderBy(t => t.DurationInSeconds))
-            {
-                _times.Add(timer.DurationInSeconds);
-            }
+            // Сортируем таймеры по времени
+            timers = timers.OrderBy(t => t.DurationInSeconds).ToList();
 
-            _button.onClick.AddListener(() => notificationImage.gameObject.SetActive(false));
-
+            // Запускаем корутину для отслеживания таймеров
             StartCoroutine(CheckTimers());
+        }
+
+        private void OnButtonClick()
+        {
+            notificationImage.gameObject.SetActive(false);
         }
 
         private IEnumerator CheckTimers()
         {
-            while (_currentTimer < _times.Count)
+            while (_currentTimerIndex < timers.Count)
             {
-                var currentTime = _times[_currentTimer] - _times.Take(_currentTimer).ToList().Sum();
-                yield return new WaitForSeconds(currentTime);
-                _currentTimer += 1;
+                var currentTime = timers[_currentTimerIndex].DurationInSeconds - _elapsedTime;
 
-                if (notificationImage.gameObject.activeSelf) continue;
+                if (currentTime > 0)
+                {
+                    yield return new WaitForSeconds(currentTime);
+                }
 
-                notificationImage.gameObject.SetActive(true);
-                notificationImage.transform.DOScale(1.25f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+                _elapsedTime += currentTime; 
+
+                if (!notificationImage.gameObject.activeSelf)
+                {
+                    notificationImage.gameObject.SetActive(true);
+                    notificationImage.transform.DOScale(1.25f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+                }
+
+                _currentTimerIndex++;
             }
+
+            notificationImage.gameObject.SetActive(false);
         }
     }
 }

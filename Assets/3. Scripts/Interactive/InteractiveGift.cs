@@ -16,45 +16,51 @@ namespace _3._Scripts.Interactive
         [SerializeField] private Transform arrow;
         [SerializeField] private Transform particles;
         
-        private readonly List<float> _times = new();
         private int _currentTimer;
         private void Start()
         {
             arrow.gameObject.SetActive(false);
             particles.gameObject.SetActive(false);
 
-            foreach (var t in timers.OrderBy(t => t.DurationInSeconds))
-            {
-                _times.Add(t.DurationInSeconds);
-            }
-
-            StartCoroutine(CheckTimers());
-
+            timers = timers.OrderBy(t => t.DurationInSeconds).ToList();
+            
             UIManager.Instance.GetPanel<FreeGiftsPanel>().ONOpen += () =>
             {
                 arrow.gameObject.SetActive(false);
                 particles.gameObject.SetActive(false);
                 timer.gameObject.SetActive(true);
             };
+            
+            StartCoroutine(CheckTimers());
         }
-        
+
+        private int _currentTimerIndex; 
+        private float _elapsedTime; 
         private IEnumerator CheckTimers()
         {
-            while (_currentTimer < _times.Count)
+            while (_currentTimerIndex < timers.Count)
             {
-                var currentTime = _times[_currentTimer] - _times.Take(_currentTimer).ToList().Sum();
-                timer.StartTimer(currentTime);
-                
-                yield return new WaitForSeconds(currentTime);
-                
-                _currentTimer += 1;
+                var currentTime = timers[_currentTimerIndex].DurationInSeconds - _elapsedTime;
+
+                if (currentTime > 0)
+                {
+                    timer.StartTimer(currentTime);
+                    yield return new WaitForSeconds(currentTime);
+                }
+
+                _elapsedTime += currentTime; 
+
                 timer.gameObject.SetActive(false);
                 arrow.gameObject.SetActive(true);
                 particles.gameObject.SetActive(true);
 
+                _currentTimerIndex++;
             }
+            
+            arrow.gameObject.SetActive(false);
+            particles.gameObject.SetActive(false);
+            timer.gameObject.SetActive(false);
         }
-        
         private void OnTriggerEnter(Collider other)
         {
             if(!other.TryGetComponent(out Player.Player _)) return;

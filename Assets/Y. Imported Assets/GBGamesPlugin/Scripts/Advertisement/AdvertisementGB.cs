@@ -17,7 +17,8 @@ namespace GBGamesPlugin
         public void NowAdsShownState(bool state) => NowAdsShow = state;
 
         private IEnumerator FirstSessionActivate()
-        {
+        {               
+            HideBanner();
             yield return new WaitForSeconds(60);
             ShowBanner();
             yield return new WaitForSeconds(120);

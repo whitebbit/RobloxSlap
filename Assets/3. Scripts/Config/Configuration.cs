@@ -44,7 +44,8 @@ namespace _3._Scripts.Config
 
         private void Start()
         {
-            GBGames.ShowBanner();
+            if(!GBGames.saves.firstSession)
+                GBGames.ShowBanner();
         }
     }
 }

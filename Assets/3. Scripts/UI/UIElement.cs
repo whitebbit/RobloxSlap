@@ -22,12 +22,10 @@ namespace _3._Scripts.UI
                 if (value)
                 {
                     UIManager.Instance.Active = true;
-                    //InterstitialsTimer.Instance.Blocked = true;
                     Open();
                 }
                 else
                 {
-                    //InterstitialsTimer.Instance.Blocked = false;
                     UIManager.Instance.Active = false;
                     Close();
                 }

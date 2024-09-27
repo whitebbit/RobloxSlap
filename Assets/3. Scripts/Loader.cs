@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using _3._Scripts.Saves;
 using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -11,7 +12,8 @@ namespace _3._Scripts
     public class Loader : MonoBehaviour
     {
         [SerializeField] private Slider progressBar;
-
+        [SerializeField] private DefaultDataProvider defaultData;
+        
 
         private void OnEnable()
         {
@@ -27,6 +29,7 @@ namespace _3._Scripts
         private void GBGamesOnSaveLoadedCallback()
         {
             StartCoroutine(InitializeLocalization());
+            defaultData.SetDefault();
         }
 
         private IEnumerator InitializeLocalization()

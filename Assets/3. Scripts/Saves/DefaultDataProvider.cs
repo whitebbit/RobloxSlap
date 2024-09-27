@@ -11,13 +11,9 @@ namespace _3._Scripts.Saves
         [SerializeField] private CharacterItem defaultCharacter;
         [SerializeField] private TrailItem defaultTrail;
         [SerializeField] private UpgradeItem defaultUpgrade;
+        
 
-        private void Awake()
-        {
-            SetDefault();
-        }
-
-        private void SetDefault()
+        public void SetDefault()
         {
             if (GBGames.saves.defaultLoaded) return;
             
