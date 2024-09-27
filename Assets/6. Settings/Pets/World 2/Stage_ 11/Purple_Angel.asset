@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Purple_Angel
   m_EditorClassIdentifier: 
   id: Purple_Angel
-  dropPercent: 1
+  icon: {fileID: 21300000, guid: 5ee39796cfc92df43bf8252ae4b87f70, type: 3}
   rarity: 3
+  purchaseType: 0
+  price: 0
+  currencyType: 0
+  dropPercent: 1
   prefab: {fileID: 4623204859190185603, guid: 3fd66add288d9ac4f82b8e0f3f53a55b, type: 3}
   boosterType: 0
-  minBooster: 201
+  minBooster: 211
   maxBooster: 250
-  icon: {fileID: 21300000, guid: 5ee39796cfc92df43bf8252ae4b87f70, type: 3}

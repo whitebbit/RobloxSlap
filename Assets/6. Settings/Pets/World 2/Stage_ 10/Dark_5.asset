@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Dark_5
   m_EditorClassIdentifier: 
   id: Dark_5
-  dropPercent: 60
+  icon: {fileID: 21300000, guid: cd61bc37dc8622d46b9c45227dfe3052, type: 3}
   rarity: 1
+  purchaseType: 0
+  price: 0
+  currencyType: 0
+  dropPercent: 60
   prefab: {fileID: 1293302208378113744, guid: d3b1da91308d64c4d8cb4da8223c3739, type: 3}
   boosterType: 0
-  minBooster: 113
-  maxBooster: 114
-  icon: {fileID: 21300000, guid: cd61bc37dc8622d46b9c45227dfe3052, type: 3}
+  minBooster: 136
+  maxBooster: 150

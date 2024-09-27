@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Elefan
   m_EditorClassIdentifier: 
   id: Elefan
-  dropPercent: 1
+  icon: {fileID: 21300000, guid: d5cd6a742f594844198ed9b371ef7751, type: 3}
   rarity: 3
+  purchaseType: 0
+  price: 0
+  currencyType: 0
+  dropPercent: 1
   prefab: {fileID: 3954579151297894951, guid: a7ab101239cda624486e4ed56749cd9f, type: 3}
   boosterType: 0
-  minBooster: 13
-  maxBooster: 20
-  icon: {fileID: 21300000, guid: d5cd6a742f594844198ed9b371ef7751, type: 3}
+  minBooster: 22
+  maxBooster: 27

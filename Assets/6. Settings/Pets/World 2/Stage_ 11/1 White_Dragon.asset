@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: 1 White_Dragon
   m_EditorClassIdentifier: 
   id: White_Dragon
-  dropPercent: 60
+  icon: {fileID: 21300000, guid: f40c4f130e1ec6d428001709e1312067, type: 3}
   rarity: 1
+  purchaseType: 0
+  price: 0
+  currencyType: 0
+  dropPercent: 60
   prefab: {fileID: 5365037291325916741, guid: b221112722b81a04daca88854e065eab, type: 3}
   boosterType: 0
-  minBooster: 160
-  maxBooster: 175
-  icon: {fileID: 21300000, guid: f40c4f130e1ec6d428001709e1312067, type: 3}
+  minBooster: 181
+  maxBooster: 195

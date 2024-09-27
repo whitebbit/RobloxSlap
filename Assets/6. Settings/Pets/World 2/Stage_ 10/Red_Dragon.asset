@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Red_Dragon
   m_EditorClassIdentifier: 
   id: Red_Dragon
-  dropPercent: 1
+  icon: {fileID: 21300000, guid: 5d4d127403e42964c987feec16bd1cf7, type: 3}
   rarity: 3
+  purchaseType: 0
+  price: 0
+  currencyType: 0
+  dropPercent: 1
   prefab: {fileID: 1383603029575664354, guid: 66ec4953af3540c4cbe939485e780a35, type: 3}
   boosterType: 0
-  minBooster: 125
-  maxBooster: 140
-  icon: {fileID: 21300000, guid: 5d4d127403e42964c987feec16bd1cf7, type: 3}
+  minBooster: 166
+  maxBooster: 180

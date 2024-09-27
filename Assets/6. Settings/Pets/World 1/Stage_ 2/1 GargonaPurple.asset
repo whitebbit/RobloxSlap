@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: 1 GargonaPurple
   m_EditorClassIdentifier: 
   id: gargona_purple_pet
-  dropPercent: 60
+  icon: {fileID: 21300000, guid: a8f4c7f380a4dad4a9b024cedc7cafba, type: 3}
   rarity: 1
+  purchaseType: 0
+  price: 0
+  currencyType: 0
+  dropPercent: 60
   prefab: {fileID: 1253531607806711470, guid: a9a2e929703df324980e375850282d62, type: 3}
   boosterType: 0
-  minBooster: 45
-  maxBooster: 53
-  icon: {fileID: 21300000, guid: a8f4c7f380a4dad4a9b024cedc7cafba, type: 3}
+  minBooster: 55
+  maxBooster: 65
