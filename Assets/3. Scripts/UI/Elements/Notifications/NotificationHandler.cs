@@ -49,29 +49,37 @@ namespace _3._Scripts.UI.Elements.Notifications
 
         private static bool CharacterShopPredicate()
         {
-            var current = Configuration.Instance.AllCharacters
-                .FirstOrDefault(c => GBGames.saves.characterSaves.IsCurrent(c.ID));
-
-            if (current == null) return false;
+            var unlockedSkins = Configuration.Instance.AllCharacters.Where(c => GBGames.saves.characterSaves.Unlocked(c.ID))
+                .OrderByDescending(c => c.Booster) 
+                .ToList();
+            
+            var bestSkin = unlockedSkins.First();
+            
+            if (bestSkin == null) return false;
 
             var character = Configuration.Instance.AllCharacters
                 .Where(c => c.Price <= WalletManager.SecondCurrency && !GBGames.saves.characterSaves.Unlocked(c.ID))
                 .OrderByDescending(c => c.Booster)
-                .FirstOrDefault(c => c.Booster > current.Booster);
+                .FirstOrDefault(c => c.Booster > bestSkin.Booster);
 
             return character != null;
         }
 
         private static bool UpgradeShopPredicate()
         {
-            var current = Configuration.Instance.AllUpgrades
-                .FirstOrDefault(c => GBGames.saves.upgradeSaves.IsCurrent(c.ID));
-            if (current == null) return false;
+            
+            var unlocked = Configuration.Instance.AllUpgrades.Where(c => GBGames.saves.upgradeSaves.Unlocked(c.ID))
+                .OrderByDescending(c => c.Booster) 
+                .ToList();
+            
+            var best = unlocked.First();
+            
+            if (best == null) return false;
 
             var upgrade = Configuration.Instance.AllUpgrades
                 .Where(c => c.Price <= WalletManager.SecondCurrency && !GBGames.saves.upgradeSaves.Unlocked(c.ID))
                 .OrderByDescending(c => c.Booster)
-                .FirstOrDefault(c => c.Booster > current.Booster);
+                .FirstOrDefault(c => c.Booster > best.Booster);
 
             return upgrade != null;
         }
