@@ -424,7 +424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4818048278597302951
 Transform:
   m_ObjectHideFlags: 0
@@ -725,6 +725,7 @@ MonoBehaviour:
   virtualCamera: {fileID: 6431574359921663622}
   playerPoint: {fileID: 9221788403065127692}
   enemyPoint: {fileID: 1666364324328827990}
+  useTutorialObject: {fileID: 4818048278597302951}
 --- !u!65 &8644970721980841312
 BoxCollider:
   m_ObjectHideFlags: 0

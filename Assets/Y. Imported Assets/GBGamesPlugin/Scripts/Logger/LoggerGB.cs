@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using InstantGamesBridge;
+using InstantGamesBridge.Common;
+using InstantGamesBridge.Modules.Platform;
+using UnityEngine;
 
 namespace GBGamesPlugin
 {

@@ -1,23 +1,16 @@
-﻿using System.Collections;
+﻿#if UNITY_WEBGL
+using System.Collections;
 using System.Collections.Generic;
-using CAS;
-using CAS.AdObject;
+using InstantGamesBridge;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using VInspector;
 
 namespace GBGamesPlugin
 {
     public partial class GBGames : MonoBehaviour
     {
         public static GBGames instance { get; private set; }
-        [Tab("Main")] [SerializeField] private GBGamesSettings settings;
-
-        [Tab("Advertisement")] 
-        [SerializeField] private InterstitialAdObject interstitial;
-        [SerializeField] private RewardedAdObject rewarded;
-        [SerializeField] private BannerAdObject banner;
-
+        public GBGamesSettings settings;
         private static bool _inGame;
 
         private void Awake()
@@ -29,11 +22,12 @@ namespace GBGamesPlugin
         {
             _inGame = true;
             Singleton();
-            Advertisement();
-            yield return new WaitForSeconds(1);
+            yield return new WaitUntil(() => Bridge.instance != null && Bridge.Initialized);
             Storage();
-            yield return new WaitForSeconds(2);
             RemoteConfig();
+            Advertisement();
+            Platform();
+            Player();
             Game();
         }
 
@@ -58,19 +52,38 @@ namespace GBGamesPlugin
 
         private void Advertisement()
         {
-            OnAdShown(AdType.Interstitial);
-            
-            OnInterstitialClosed.AddListener(() => OnAdShown(AdType.Interstitial));
-            OnRewardedClosed.AddListener(() => OnAdShown(AdType.Rewarded));
+            Bridge.advertisement.bannerStateChanged += OnBannerStateChanged;
+            Bridge.advertisement.interstitialStateChanged += OnInterstitialStateChanged;
+            Bridge.advertisement.rewardedStateChanged += OnRewardedStateChanged;
+
+            minimumDelayBetweenInterstitial = instance.settings.minimumDelayBetweenInterstitial;
 
             if (saves.firstSession)
             {
+                HideBanner();
                 StartCoroutine(FirstSessionActivate());
             }
             else
             {
                 ShowBanner();
             }
+        }
+
+        private void Platform()
+        {
+            if (instance.settings.autoGameReadyAPI)
+                GameReady();
+
+            if (instance.settings.gameLoadingCallbacksOnSceneLoading)
+            {
+                SceneManager.sceneLoaded += (_, _) => { InGameLoadingStopped(); };
+            }
+        }
+
+        private void Player()
+        {
+            if (instance.settings.authPlayerAutomatically)
+                AuthorizePlayer();
         }
 
         private void Storage()
@@ -82,12 +95,32 @@ namespace GBGamesPlugin
 
         private void Game()
         {
+            Bridge.game.visibilityStateChanged += OnGameVisibilityStateChanged;
             if (instance.settings.saveOnChangeVisibilityState)
                 GameHiddenStateCallback += Save;
         }
 
         private void RemoteConfig()
         {
+            var options = new Dictionary<string, object>();
+            var clientFeatures = new object[]
+            {
+                new Dictionary<string, object>
+                {
+                    {"name", "useExtraButton"},
+                    {"value", "false"}
+                },
+                new Dictionary<string, object>
+                {
+                    {"name", "interByTime"},
+                    {"value", "false"}
+                }
+            };
+
+            options.Add("clientFeatures", clientFeatures);
+
+            LoadRemoteConfig(options);
         }
     }
 }
+#endif

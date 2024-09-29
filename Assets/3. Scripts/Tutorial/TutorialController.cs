@@ -17,12 +17,15 @@ namespace _3._Scripts.Tutorial
         {
             WalletManager.OnFirstCurrencyChange += (_, f1) =>
             {
-                if (f1 >= 120)
-                {
-                    TutorialSystem.StepComplete("training");
-                    TutorialSystem.StepStart("fight");
-                }
-                else if (f1 >= 5000)
+                if (!(f1 >= 120)) return;
+                TutorialSystem.StepComplete("training");
+                TutorialSystem.StepStart("fight");
+
+            };
+
+            WalletManager.OnSecondCurrencyChange += (f, f1) =>
+            {
+                if (f1 >= 5000)
                 {
                     TutorialSystem.StepStart("portal");
                 }

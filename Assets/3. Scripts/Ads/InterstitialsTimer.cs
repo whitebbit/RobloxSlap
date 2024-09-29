@@ -29,7 +29,8 @@ namespace _3._Scripts.Ads
         private void Start()
         {
             secondsPanelObject.alpha = 0;
-
+            if(!Configuration.Instance.InterByTime) return;
+            
             StartCoroutine(CheckTimerAd());
         }
 

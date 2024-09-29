@@ -1,8 +1,9 @@
-﻿
+﻿using System;
+using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DeviceType = InstantGamesBridge.Modules.Device.DeviceType;
 
 namespace _3._Scripts.UI.Extensions
 {
@@ -21,10 +22,24 @@ namespace _3._Scripts.UI.Extensions
             if(mobile3D != null)
                 mobile3D.gameObject.SetActive(false);
             
-            if(mobile != null)
-                mobile.gameObject.SetActive(true);
-            if(mobile3D != null)
-                mobile3D.gameObject.SetActive(true);
+            switch (GBGames.deviceType)
+            {
+                case DeviceType.Mobile:
+                    if(mobile != null)
+                        mobile.gameObject.SetActive(true);
+                    if(mobile3D != null)
+                        mobile3D.gameObject.SetActive(true);
+                    break;
+                case DeviceType.Tablet:
+                    break;
+                case DeviceType.Desktop:
+                    pc.gameObject.SetActive(true);
+                    break;
+                case DeviceType.TV:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

@@ -20,6 +20,8 @@ namespace _3._Scripts.Config
 {
     public class Configuration : Singleton<Configuration>
     {
+        [Tab("Remote")] [SerializeField] private RemoteConfig<bool> interByTime;
+
         [Tab("Game Data")] 
         [SerializeField] private List<CurrencyData> currencyData = new();
         [SerializeField] private List<RarityTable> rarityTables = new();
@@ -30,6 +32,7 @@ namespace _3._Scripts.Config
         [SerializeField] private List<PetData> allPets = new();
         [SerializeField] private List<UpgradeItem> allUpgrades = new();
 
+        public bool InterByTime => interByTime.Value;
 
         public IEnumerable<PetData> AllPets => allPets;
         public IEnumerable<AchievementData> AchievementData => achievementData;
