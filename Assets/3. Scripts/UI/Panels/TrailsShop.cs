@@ -67,6 +67,8 @@ namespace _3._Scripts.UI.Panels
             var currentIndex = list.IndexOf(current);
             var nextItem = list[(currentIndex + 1) % list.Count];
 
+            if(currentIndex + 1 >= list.Count ) return;
+
             panel.Enabled = true;
             
             panel.SetOffer(nextItem, () =>

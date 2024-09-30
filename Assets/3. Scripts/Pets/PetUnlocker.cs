@@ -147,6 +147,12 @@ namespace _3._Scripts.Pets
 
         public void ShowOffer()
         {
+            if (GBGames.saves.petsSave.MaxUnlocked(25))
+            {
+                NotificationPanel.Instance.ShowNotification("max_pet_unlocked");
+                return;
+            }
+            
             var panel = UIManager.Instance.GetPanel<OfferPanel>();
             var data = _data[Random.Range(0, _data.Count)];
             var booster = data.RandomBooster;

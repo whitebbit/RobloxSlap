@@ -20,18 +20,18 @@ namespace _3._Scripts.Debugger
         private Button enableButton;
 
         [SerializeField] private Transform enableArrow;
-
-        [Tab("Quality")] [SerializeField] private Volume volume;
-
+        [SerializeField] private Transform console;
+        
+        [Tab("Quality")] 
+        [SerializeField] private Volume volume;
         [SerializeField] private Light mainLight;
         [SerializeField] private UniversalRenderPipelineAsset pc;
         [SerializeField] private UniversalRenderPipelineAsset mobile;
 
-        [Tab("Panel")] [SerializeField] private Transform panel;
-
-        [Tab("Pet")] [SerializeField] private TMP_InputField petInputField;
-        [Tab("Trail")] [SerializeField] private TMP_InputField trailInputField;
-        [Tab("FPS")] [SerializeField] private TMP_Text fpsText;
+        [Tab("Panel")]
+        [SerializeField] private Transform panel;
+        [Tab("FPS")] 
+        [SerializeField] private TMP_Text fpsText;
 
 
         private void Awake()
@@ -49,15 +49,13 @@ namespace _3._Scripts.Debugger
         {
             var rotation = state ? Vector3.zero : new Vector3(0, 0, 180);
             panel.gameObject.SetActive(state);
+            console.gameObject.SetActive(state);
             enableArrow.transform.eulerAngles = rotation;
         }
 
         public void Save() => GBGames.instance.Save();
 
         public void DeleteSaves() => GBGames.Delete();
-
-        //public void UnlockPet() => GBGames.saves.petSaves.Unlock(petInputField.text);
-        public void UnlockTrail() => GBGames.saves.trailSaves.Unlock(trailInputField.text);
         public void Add1000FirstCurrency() => WalletManager.FirstCurrency += 100000000;
         public void Add1000SecondCurrency() => WalletManager.SecondCurrency += 100000000;
         public void ChangePostProcessing() => volume.enabled = !volume.enabled;

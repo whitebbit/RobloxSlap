@@ -66,6 +66,8 @@ namespace _3._Scripts.UI.Panels
             var current = list.FirstOrDefault(u => GBGames.saves.upgradeSaves.IsCurrent(u.ID));
             var currentIndex = list.IndexOf(current);
             var nextItem = list[(currentIndex + 1) % list.Count];
+            
+            if(currentIndex + 1 >= list.Count ) return;
 
             panel.Enabled = true;
             panel.SetOffer(nextItem, () =>
