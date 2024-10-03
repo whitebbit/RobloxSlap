@@ -27,6 +27,8 @@ namespace GBGamesPlugin
         
         public int stageID;
         public int worldID;
+        public int bossFightsCount;
+        public int playerLevel;
         public bool sound = true;
         public bool firstSession = true;
     }

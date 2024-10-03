@@ -1,5 +1,6 @@
 ﻿using System;
 using DG.Tweening;
+using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -38,12 +39,16 @@ namespace _3._Scripts.Boosters
             _state = false;
             onDeactivateBooster?.Invoke();
             _button.image.sprite = disableSprite;
+            GBGames.ReportBoosterChangeStateEvent("UI_auto_tap", false);
+
         }
         public void Activate()
         {
             _state = true;
             onActivateBooster?.Invoke();
             _button.image.sprite = enableSprite;
+            
+            GBGames.ReportBoosterChangeStateEvent("UI_auto_tap", true);
         }
     }
 }

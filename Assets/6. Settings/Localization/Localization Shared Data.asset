@@ -463,6 +463,10 @@ MonoBehaviour:
     m_Key: minigame_tutorial
     m_Metadata:
       m_Items: []
+  - m_Id: 50530983564419072
+    m_Key: ad_not_ready
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

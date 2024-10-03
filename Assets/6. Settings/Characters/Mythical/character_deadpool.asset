@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc77ba5bdead465a9e7a64059ec3ef30, type: 3}
   m_Name: character_deadpool
   m_EditorClassIdentifier: 
-  id: character_deadpool
+  id: skin_magican
   icon: {fileID: 21300000, guid: ec3279533ec81224ab0223f4994b9c09, type: 3}
   rarity: 2
-  currencyType: 1
+  purchaseType: 0
   price: 65000
+  currencyType: 1
   booster: 75
   skin: {fileID: 2100000, guid: cde509a9205d267408e36eb9028a316c, type: 2}

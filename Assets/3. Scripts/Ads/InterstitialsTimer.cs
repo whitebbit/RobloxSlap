@@ -13,6 +13,7 @@ using _3._Scripts.Wallet;
 using DG.Tweening;
 using GBGamesPlugin;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Localization.Components;
 
 namespace _3._Scripts.Ads
@@ -31,6 +32,9 @@ namespace _3._Scripts.Ads
             secondsPanelObject.alpha = 0;
 
             StartCoroutine(CheckTimerAd());
+            
+            GBGames.InterstitialOnClosed.AddListener(AfterAd);
+            GBGames.InterstitialOnFailedToShow += AfterFailed;
         }
 
         private IEnumerator CheckTimerAd()
@@ -53,7 +57,6 @@ namespace _3._Scripts.Ads
         }
 
         private int _objSecCounter = 3;
-        private Coroutine _backupCoroutine;
 
         private IEnumerator TimerAdShow()
         {
@@ -68,36 +71,26 @@ namespace _3._Scripts.Ads
                     yield return new WaitForSeconds(1.0f);
                 }
 
-                _backupCoroutine = StartCoroutine(BackupTimerClosure());
                 GBGames.ShowInterstitial();
-
-                while (!GBGames.NowAdsShow)
-                    yield return null;
-
-                var effectInstance = CurrencyEffectPanel.Instance.SpawnEffect(counterEffect, CurrencyType.Second, 25);
-                effectInstance.Initialize(CurrencyType.Second, 25);
-
-                secondsPanelObject.alpha = 0;
-                _objSecCounter = 3;
-
-                StopCoroutine(_backupCoroutine);
-                StartCoroutine(CheckTimerAd());
-
                 Active = false;
             }
         }
 
-        private IEnumerator BackupTimerClosure()
+        private void AfterAd()
         {
-            yield return new WaitForSeconds(2.5f);
+            var effectInstance = CurrencyEffectPanel.Instance.SpawnEffect(counterEffect, CurrencyType.Second, 25);
+            effectInstance.Initialize(CurrencyType.Second, 25);
 
-            secondsPanelObject.alpha = 0;
-            _objSecCounter = 3;
-            Active = false;
-            StopCoroutine(TimerAdShow());
-            StartCoroutine(CheckTimerAd());
+            AfterFailed();
         }
 
+        private void AfterFailed()
+        {
+            secondsPanelObject.alpha = 0;
+            _objSecCounter = 3;
+
+            StartCoroutine(CheckTimerAd());
+        }
 
         private bool CanShow()
         {

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using _3._Scripts.UI.Scriptable.Shop;
 using _3._Scripts.Upgrades;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 

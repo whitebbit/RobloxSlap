@@ -5,6 +5,8 @@ using System.Linq;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Panels;
 using DG.Tweening;
+using GBGamesPlugin;
+using GBGamesPlugin.Enums;
 using UnityEngine;
 
 namespace _3._Scripts.Interactive
@@ -66,6 +68,8 @@ namespace _3._Scripts.Interactive
             if(!other.TryGetComponent(out Player.Player _)) return;
 
             UIManager.Instance.GetPanel<FreeGiftsPanel>().Enabled = true;
+            GBGames.ReportGiftOpenEvent(GiftOpenType.Location);
+
             arrow.gameObject.SetActive(false);
             particles.gameObject.SetActive(false);
             timer.gameObject.SetActive(true);

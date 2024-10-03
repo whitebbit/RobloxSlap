@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc77ba5bdead465a9e7a64059ec3ef30, type: 3}
   m_Name: character_pomni
   m_EditorClassIdentifier: 
-  id: character_pomni
+  id: skin_guy
   icon: {fileID: 21300000, guid: 00f8f0e0ed5a54d4db6dcfffcd1bff57, type: 3}
   rarity: 3
   purchaseType: 1

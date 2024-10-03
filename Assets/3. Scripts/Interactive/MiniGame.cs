@@ -10,6 +10,7 @@ using _3._Scripts.UI;
 using _3._Scripts.UI.Panels;
 using Cinemachine;
 using DG.Tweening;
+using GBGamesPlugin;
 using UnityEngine;
 using VInspector;
 
@@ -17,8 +18,8 @@ namespace _3._Scripts.Interactive
 {
     public class MiniGame : MonoBehaviour, IInteractive
     {
-        [Tab("Fight components")]
-        [SerializeField] private Enemy enemyPrefab;
+        [Tab("Fight components")] [SerializeField]
+        private Enemy enemyPrefab;
 
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
         [Tab("Transforms")] [SerializeField] private Transform playerPoint;
@@ -41,7 +42,7 @@ namespace _3._Scripts.Interactive
 
             _enemy = enemy;
         }
-        
+
         public void StartInteract()
         {
             if (_fightStarted) return;
@@ -52,7 +53,7 @@ namespace _3._Scripts.Interactive
         public void Interact()
         {
             if (_fightStarted) return;
-            
+
             _fightStarted = true;
 
             var panel = UIManager.Instance.GetPanel<MiniGamePanel>();
@@ -60,14 +61,17 @@ namespace _3._Scripts.Interactive
 
             panel.Enabled = true;
             panel.StartMiniGame(Player.Player.instance, _enemy, EnemyData.RewardCount, EndFight);
-            
+
             player.PetsHandler.SetState(false);
             player.Teleport(playerPoint.position);
             player.transform.DOLookAt(_enemy.transform.position, 0, AxisConstraint.Y);
-            
+
             CameraController.Instance.SwapTo(virtualCamera);
             TutorialSystem.StepComplete("fight");
             
+            GBGames.saves.bossFightsCount += 1;
+            GBGames.ReportBossEvent();
+
             Player.Player.instance.OnStart();
             _enemy.OnStart();
             

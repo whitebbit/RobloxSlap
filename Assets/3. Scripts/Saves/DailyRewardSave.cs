@@ -9,8 +9,7 @@ namespace _3._Scripts.Saves
         public int currentStreak;
         public DateTime lastLoginDate = DateTime.MinValue.Date;
         public List<int> collectedRewards = new();
-
-
+        
         public void CollectReward(int id)
         {
             collectedRewards.Add(id);

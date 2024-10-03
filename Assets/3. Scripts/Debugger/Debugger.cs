@@ -86,16 +86,8 @@ namespace _3._Scripts.Debugger
             var rand = Random.Range(0, trails.Count);
             GBGames.saves.trailSaves.Unlock(trails[rand].ID);
         }
-
-        public void UnlockRandomPet()
-        {
-            //var pets = Configuration.Instance.AllPets.Where(t => !GBGames.saves.petSaves.Unlocked(t.ID)).ToList();
-            //if(pets.Count <= 0) return;
-
-            //var rand = Random.Range(0, pets.Count);
-            //GBGames.saves.petSaves.Unlock(pets[rand].ID);
-        }
-
+        
+        
         private float _deltaTime;
 
         private void UpdateFPS()

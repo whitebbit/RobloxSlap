@@ -2,10 +2,8 @@
 
 namespace GBGamesPlugin
 {
-    
     public partial class GBGames
     {
-        
         private static void Message(string message, LoggerState state = LoggerState.log)
         {
             if (!instance.settings.debug) return;
@@ -17,6 +15,12 @@ namespace GBGamesPlugin
                 _ => ""
             };
             Debug.Log($"{prefix} {message}");
+        }
+
+        private static void ReportEventMessage(string eventType, string json)
+        {
+            if (!instance.settings.debug) return;
+            Debug.Log($"{eventType}, {json}");
         }
     }
 }

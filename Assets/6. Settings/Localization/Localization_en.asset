@@ -337,7 +337,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 19917134695575552
     m_Localized: Moving to the next world, you will be reborn. All current progress
-      is reset. You will continue playing with a X1.5 power multiplier in a new world.
+      is reset. You will continue playing with a x1.5 power multiplier in a new world.
       Continue?
     m_Metadata:
       m_Items: []
@@ -475,6 +475,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 48379963342200832
     m_Localized: 'Tap Tap Tap '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50530983564419072
+    m_Localized: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u043D\u0435 \u0433\u043E\u0442\u043E\u0432\u0430"
     m_Metadata:
       m_Items: []
   references:

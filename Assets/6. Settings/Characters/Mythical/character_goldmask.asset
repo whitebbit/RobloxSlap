@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc77ba5bdead465a9e7a64059ec3ef30, type: 3}
   m_Name: character_goldmask
   m_EditorClassIdentifier: 
-  id: character_goldmask
+  id: skin_bluegirl
   icon: {fileID: 21300000, guid: ccdfe0f31669a2a4ba3ebda5de8a6be6, type: 3}
   rarity: 2
-  currencyType: 1
+  purchaseType: 0
   price: 610000
+  currencyType: 1
   booster: 90
   skin: {fileID: 2100000, guid: e282d2099f52349448969679cc9e5dc5, type: 2}

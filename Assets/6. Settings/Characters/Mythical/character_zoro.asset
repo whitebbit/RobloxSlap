@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc77ba5bdead465a9e7a64059ec3ef30, type: 3}
   m_Name: character_zoro
   m_EditorClassIdentifier: 
-  id: character_zoro
+  id: skin_ice_fire
   icon: {fileID: 21300000, guid: df239bbbd356c8943964bef23a6549fe, type: 3}
   rarity: 2
-  currencyType: 1
+  purchaseType: 0
   price: 32000000
+  currencyType: 1
   booster: 110
   skin: {fileID: 2100000, guid: 2d53d3b451753dd489de4f88810cb179, type: 2}

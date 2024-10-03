@@ -11,6 +11,8 @@ namespace _3._Scripts.UI.Scriptable.Roulette
     {
         [SerializeField] private PetData data;
 
+        public string ID => data.ID;
+
         public override Sprite Icon()
         {
             return data.Icon;

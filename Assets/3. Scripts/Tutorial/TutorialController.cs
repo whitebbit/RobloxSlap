@@ -10,7 +10,7 @@ namespace _3._Scripts.Tutorial
     {
         private void Start()
         {
-            TutorialSystem.StepStart("training");
+            TutorialSystem.StepStart("01_training");
         }
 
         private void OnEnable()
@@ -19,12 +19,12 @@ namespace _3._Scripts.Tutorial
             {
                 if (f1 >= 120)
                 {
-                    TutorialSystem.StepComplete("training");
-                    TutorialSystem.StepStart("fight");
+                    TutorialSystem.StepComplete("01_training");
+                    TutorialSystem.StepStart("02_fight");
                 }
                 else if (f1 >= 5000)
                 {
-                    TutorialSystem.StepStart("portal");
+                    TutorialSystem.StepStart("03_portal");
                 }
             };
         }

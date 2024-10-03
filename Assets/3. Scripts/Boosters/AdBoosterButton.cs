@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
+using CAS;
 using DG.Tweening;
 using GBGamesPlugin;
+using GBGamesPlugin.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,13 +14,17 @@ namespace _3._Scripts.Boosters
     [RequireComponent(typeof(Button))]
     public class AdBoosterButton : MonoBehaviour
     {
-        [Tab("View")] [SerializeField] private CanvasGroup canvasGroup;
-
+        [Tab("View")] 
+        [SerializeField] private CanvasGroup canvasGroup;
         [SerializeField] private Image cooldownImage;
         [SerializeField] private Image adImage;
         [SerializeField] private TMP_Text freeText;
         [SerializeField] private Slider slider;
-        [Tab("Settings")] [SerializeField] private string id;
+        [Tab("Settings")] 
+        [SerializeField] private string id;
+
+        [SerializeField] private AdEventPlacement adEventPlacement;
+        
         [SerializeField] private float timeToDeactivate;
 
         public Action onActivateBooster;
@@ -70,7 +76,7 @@ namespace _3._Scripts.Boosters
                 Activate();
             }
             else
-                GBGames.ShowRewarded(Activate);
+                GBGames.ShowRewarded(Activate, adEventPlacement);
         }
 
         private void Activate()

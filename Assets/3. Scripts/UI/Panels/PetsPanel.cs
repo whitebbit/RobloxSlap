@@ -8,7 +8,9 @@ using _3._Scripts.UI.Enums;
 using _3._Scripts.UI.Interfaces;
 using _3._Scripts.UI.Panels.Base;
 using _3._Scripts.Wallet;
+using CAS;
 using GBGamesPlugin;
+using GBGamesPlugin.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -89,7 +91,7 @@ namespace _3._Scripts.UI.Panels
                 InitializeSlots();
                 UpdateCount();
                 EquipBest(); 
-            });
+            }, AdEventPlacement.ADGetRandomPet);
         }
 
         protected override void OnOpen()

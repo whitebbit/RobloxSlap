@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc77ba5bdead465a9e7a64059ec3ef30, type: 3}
   m_Name: character_sperman
   m_EditorClassIdentifier: 
-  id: character_sperman
+  id: skin_demon
   icon: {fileID: 21300000, guid: dbcb8600f2fc9a2429fe09321b20015d, type: 3}
   rarity: 1
   purchaseType: 1

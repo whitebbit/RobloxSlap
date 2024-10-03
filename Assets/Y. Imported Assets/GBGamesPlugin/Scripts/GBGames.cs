@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CAS;
 using CAS.AdObject;
+using GBGamesPlugin.Enums;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VInspector;
@@ -13,8 +14,9 @@ namespace GBGamesPlugin
         public static GBGames instance { get; private set; }
         [Tab("Main")] [SerializeField] private GBGamesSettings settings;
 
-        [Tab("Advertisement")] 
-        [SerializeField] private InterstitialAdObject interstitial;
+        [Tab("Advertisement")] [SerializeField]
+        private InterstitialAdObject interstitial;
+
         [SerializeField] private RewardedAdObject rewarded;
         [SerializeField] private BannerAdObject banner;
 
@@ -30,10 +32,10 @@ namespace GBGamesPlugin
             _inGame = true;
             Singleton();
             Advertisement();
+            Analytics();
             yield return new WaitForSeconds(1);
             Storage();
             yield return new WaitForSeconds(2);
-            RemoteConfig();
             Game();
         }
 
@@ -59,10 +61,32 @@ namespace GBGamesPlugin
         private void Advertisement()
         {
             OnAdShown(AdType.Interstitial);
-            
-            OnInterstitialClosed.AddListener(() => OnAdShown(AdType.Interstitial));
-            OnRewardedClosed.AddListener(() => OnAdShown(AdType.Rewarded));
 
+            instance.interstitial.OnAdClosed.AddListener(() =>
+            {
+                OnAdShown(AdType.Interstitial);
+                ReportAdsEvent(AdEventType.VideoAdsSuccess, AdEventResult.Watched);
+            });
+            instance.rewarded.OnAdClosed.AddListener(() =>
+            {
+                OnAdShown(AdType.Rewarded);
+                ReportAdsEvent(AdEventType.VideoAdsSuccess, AdEventResult.Watched);
+            });
+
+            instance.interstitial.OnAdShown.AddListener(() =>
+                ReportAdsEvent(AdEventType.VideoAdsStarted, AdEventResult.Start));
+            instance.rewarded.OnAdShown.AddListener(() =>
+                ReportAdsEvent(AdEventType.VideoAdsStarted, AdEventResult.Start));
+            
+            instance.interstitial.OnAdFailedToShow.AddListener(_ =>
+            {
+                OnAdShown(AdType.Interstitial);
+                ReportAdsEvent(AdEventType.VideoAdsStarted, AdEventResult.Failed);
+            });
+            instance.rewarded.OnAdFailedToShow.AddListener(_ =>
+                ReportAdsEvent(AdEventType.VideoAdsStarted, AdEventResult.Failed));
+            
+            
             if (saves.firstSession)
             {
                 StartCoroutine(FirstSessionActivate());
@@ -86,8 +110,9 @@ namespace GBGamesPlugin
                 GameHiddenStateCallback += Save;
         }
 
-        private void RemoteConfig()
+        private void Analytics()
         {
+            InitializeFirebase();
         }
     }
 }

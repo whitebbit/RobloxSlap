@@ -20,7 +20,8 @@ namespace _3._Scripts.UI.Scriptable.Roulette
 
         [SerializeField] private int count;
 
-        private float Count => StageController.Instance.CurrentStage == null
+        public CurrencyType Type => type;
+        public float Count => StageController.Instance.CurrentStage == null
             ? count * 1
             : count * StageController.Instance.CurrentStage.GiftBooster;
 

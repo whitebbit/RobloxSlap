@@ -21,7 +21,7 @@ namespace _3._Scripts.Inputs.Utils
 
         public bool Pressed { get; private set; }
 
-        void Update()
+        private void Update()
         {
             if (Pressed)
             {
@@ -29,26 +29,18 @@ namespace _3._Scripts.Inputs.Utils
 
                 if (distance >= minMovementThreshold)
                 {
-                    // Вычисление необработанного вектора направления
+                    // Calculate raw axis
                     var rawAxis = _currentTouchPosition - _startTouchPosition;
 
-                    // Проверка резкого изменения направления
-                    if (Vector2.Dot(_smoothedAxis.normalized, rawAxis.normalized) < minMovementThreshold)
-                    {
-                        // Если направление резко изменилось, сбрасываем сглаживание
-                        _smoothedAxis = rawAxis;
-                    }
-                    else
-                    {
-                        // Иначе продолжаем сглаживать
-                        _smoothedAxis = Vector2.Lerp(_smoothedAxis, rawAxis, Time.deltaTime * smoothingSpeed);
-                    }
+                    // Smooth the axis movement over time using unscaledDeltaTime for frame independence
+                    _smoothedAxis = Vector2.Dot(_smoothedAxis.normalized, rawAxis.normalized) < minMovementThreshold 
+                        ? rawAxis 
+                        : Vector2.Lerp(_smoothedAxis, rawAxis, smoothingSpeed * Time.unscaledDeltaTime);
 
                     Axis = _smoothedAxis;
                 }
                 else
                 {
-                    // Обнуление и обновление позиции для предотвращения рывков
                     Axis = Vector2.zero;
                     _startTouchPosition = _currentTouchPosition;
                 }

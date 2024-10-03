@@ -8,6 +8,7 @@ using _3._Scripts.UI.Panels.Base;
 using _3._Scripts.UI.Scriptable.Shop;
 using DG.Tweening;
 using GBGamesPlugin;
+using GBGamesPlugin.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
@@ -39,7 +40,8 @@ namespace _3._Scripts.UI.Panels
             {
                 onReward?.Invoke();
                 Enabled = false;
-            }));
+            }, GetPlacement(data)));
+            
             closeButton.image.DOFade(0, 0.25f).From().SetDelay(3f)
                 .OnStart(() => closeButton.gameObject.SetActive(true));
         }
@@ -59,7 +61,7 @@ namespace _3._Scripts.UI.Panels
             boosterText.text = text;
             boosterText.gameObject.SetActive(true);
         }
-        
+
         private void SetVariables<T>(T data) where T : ShopItem
         {
             icon.sprite = data.Icon;
@@ -72,15 +74,26 @@ namespace _3._Scripts.UI.Panels
             });
         }
 
+        private AdEventPlacement GetPlacement<T>(T data) where T : ShopItem
+        {
+            return data switch
+            {
+                PetData => AdEventPlacement.ADOfferPet,
+                UpgradeItem => AdEventPlacement.ADOfferHand,
+                TrailItem => AdEventPlacement.ADOfferTrail,
+                _ => throw new ArgumentOutOfRangeException(nameof(data), data, null)
+            };
+        }
+
         private void Clear()
         {
             icon.color = Color.white;
             table.color = Color.white;
-            
+
             rarityText.gameObject.SetActive(false);
             closeButton.gameObject.SetActive(false);
             boosterText.gameObject.SetActive(false);
-            
+
             rewardButton.onClick.RemoveAllListeners();
         }
     }

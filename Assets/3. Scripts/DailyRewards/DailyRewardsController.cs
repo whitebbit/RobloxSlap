@@ -54,6 +54,7 @@ namespace _3._Scripts.DailyRewards
                 if (GBGames.saves.dailyReward.collectedRewards.Contains(i)) continue;
 
                 GiveReward(i);
+                GBGames.ReportDailyRewardEvent(i + 1, GBGames.saves.dailyReward.currentStreak);
                 GBGames.saves.dailyReward.CollectReward(i);
             }
 

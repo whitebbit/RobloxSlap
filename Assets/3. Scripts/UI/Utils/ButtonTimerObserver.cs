@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using GBGamesPlugin;
+using GBGamesPlugin.Enums;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,6 +38,7 @@ namespace _3._Scripts.UI.Utils
 
         private void OnButtonClick()
         {
+            GBGames.ReportGiftOpenEvent(GiftOpenType.UI);
             notificationImage.gameObject.SetActive(false);
         }
 

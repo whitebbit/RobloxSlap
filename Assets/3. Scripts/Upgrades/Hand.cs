@@ -1,5 +1,4 @@
 ﻿using _3._Scripts.UI.Scriptable.Shop;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _3._Scripts.Upgrades

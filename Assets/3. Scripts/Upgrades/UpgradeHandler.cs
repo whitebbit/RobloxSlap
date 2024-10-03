@@ -1,10 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using _3._Scripts.Characters;
 using _3._Scripts.Config;
-using Unity.VisualScripting;
-using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace _3._Scripts.Upgrades
 {

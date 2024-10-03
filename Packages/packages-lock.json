@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.google.external-dependency-manager": {
+      "version": "https://github.com/google-unity/external-dependency-manager.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "a9c3ae1e997a77f6978f8257d3cad11f0e03afe7"
+    },
     "com.unity.2d.animation": {
       "version": "9.1.0",
       "depth": 1,
@@ -373,15 +380,14 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
-    "com.unity.visualscripting": {
-      "version": "1.9.2",
+    "io.appmetrica.analytics": {
+      "version": "https://github.com/appmetrica/appmetrica-unity-plugin.git#v6.2.0",
       "depth": 0,
-      "source": "registry",
+      "source": "git",
       "dependencies": {
-        "com.unity.ugui": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0"
+        "com.google.external-dependency-manager": "1.2.177"
       },
-      "url": "https://packages.unity.com"
+      "hash": "e0fb22d2e1079a689c1ff13cd5b43b03bdbfce71"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
