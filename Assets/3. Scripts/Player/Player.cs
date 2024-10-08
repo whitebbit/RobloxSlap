@@ -7,6 +7,8 @@ using _3._Scripts.MiniGame;
 using _3._Scripts.Pets;
 using _3._Scripts.Saves;
 using _3._Scripts.Trails;
+using _3._Scripts.UI;
+using _3._Scripts.UI.Panels;
 using _3._Scripts.Upgrades;
 using _3._Scripts.Wallet;
 using GBGamesPlugin;
@@ -25,6 +27,8 @@ namespace _3._Scripts.Player
         public CharacterHandler CharacterHandler { get; private set; }
         public UpgradeHandler UpgradeHandler { get; private set; }
         public PlayerAnimator PlayerAnimator { get; private set; }
+        public PlayerAction PlayerAction { get; private set; }
+        public PlayerMovement PlayerMovement { get; private set; }
 
         public static Player instance;
         private CharacterController _characterController;
@@ -40,6 +44,8 @@ namespace _3._Scripts.Player
             UpgradeHandler = new UpgradeHandler(CharacterHandler);
             TrailHandler = new TrailHandler(GetComponent<PlayerMovement>(), trail);
             _characterController = GetComponent<CharacterController>();
+            PlayerAction = GetComponent<PlayerAction>();
+            PlayerMovement = GetComponent<PlayerMovement>();
         }
 
         public override FighterData FighterData()
@@ -77,14 +83,16 @@ namespace _3._Scripts.Player
             level.gameObject.SetActive(true);
         }
 
-        public float GetTrainingStrength(float strengthPerClick)
+        public float GetTrainingStrength()
         {
             var hand = Configuration.Instance.AllUpgrades.FirstOrDefault(
                 h => h.ID == GBGames.saves.upgradeSaves.current).Booster;
             var pets = GBGames.saves.petsSave.selected.Sum(p => p.booster);
 
+            var strength = WalletManager.FirstCurrency * 0.1f;
             var booster = BoostersHandler.Instance.GetBoosterState("train_booster") ? 2 : 1;
-            return (strengthPerClick + pets) * hand * booster;
+            
+            return (strength + pets) * hand * booster ;
         }
 
         public void Teleport(Vector3 position)

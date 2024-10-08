@@ -85,7 +85,7 @@ namespace _3._Scripts.Stages
                         }
                     }
                     
-                    TutorialSystem.StepComplete("portal");
+                    TutorialSystem.StepComplete("03_portal");
                     break;
                 case TeleportType.Previous:
                     StageController.Instance.TeleportToPreviousStage();

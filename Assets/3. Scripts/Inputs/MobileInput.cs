@@ -19,9 +19,12 @@ namespace _3._Scripts.Inputs
         [SerializeField] private FixedButton actionButton;
         [SerializeField] private FixedButton interactButton;
         [Tab("Action Components")] 
-        [SerializeField] private Image actionImage;
-        [SerializeField] private TMP_Text actionText;
-        [Space] [SerializeField] private Image buttonImage;
+        [SerializeField] private Image baseImage;
+        [SerializeField] private TMP_Text fightText;
+        [SerializeField] private TMP_Text trainingText;
+        [Space] 
+        [SerializeField] private Image buttonImage;
+        [SerializeField] private Sprite baseSprite;
         [SerializeField] private Sprite trainingSprite;
         [SerializeField] private Sprite fightSprite;
         
@@ -72,22 +75,38 @@ namespace _3._Scripts.Inputs
         {
             
         }
+
+        public void SetMovementState(bool state)
+        {
+            joystick.gameObject.SetActive(state);
+            touchField.gameObject.SetActive(state);
+            jumpButton.gameObject.SetActive(state);
+        }
         
         public void SetActionButtonType(ActionButtonType type)
         {
             switch (type)
             {
                 case ActionButtonType.Training:
-                    actionImage.gameObject.SetActive(true);
-                    actionText.gameObject.SetActive(false);
+                    baseImage.gameObject.SetActive(false);
+                    trainingText.gameObject.SetActive(true);
+                    fightText.gameObject.SetActive(false);
 
                     buttonImage.sprite = trainingSprite;
                     break;
                 case ActionButtonType.Fight:
-                    actionImage.gameObject.SetActive(false);
-                    actionText.gameObject.SetActive(true);
+                    baseImage.gameObject.SetActive(false);
+                    trainingText.gameObject.SetActive(false);
+                    fightText.gameObject.SetActive(true);
 
                     buttonImage.sprite = fightSprite;
+                    break;
+                case ActionButtonType.Base:
+                    baseImage.gameObject.SetActive(true);
+                    trainingText.gameObject.SetActive(false);
+                    fightText.gameObject.SetActive(false);
+
+                    buttonImage.sprite = baseSprite;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);

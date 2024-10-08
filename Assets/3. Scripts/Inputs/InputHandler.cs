@@ -26,17 +26,23 @@ namespace _3._Scripts.Inputs
 
         private void Start()
         {
-            SetActionButtonType(ActionButtonType.Training);
+            SetActionButtonType(ActionButtonType.Base);
         }
 
         public void SetActionButtonType(ActionButtonType type)
         {
             mobileInput.SetActionButtonType(type);
         }
-        
+
+
         public void SetState(bool state)
         {
             mobileInput.SetState(state);
+        }
+
+        public void SetMovementState(bool state)
+        {
+            mobileInput.SetMovementState(state);
         }
     }
 }

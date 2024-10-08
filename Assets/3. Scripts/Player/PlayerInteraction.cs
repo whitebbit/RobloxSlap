@@ -1,4 +1,5 @@
-﻿using _3._Scripts.Ads;
+﻿using _3._Scripts.Actions;
+using _3._Scripts.Ads;
 using _3._Scripts.Boosters;
 using _3._Scripts.Detectors;
 using _3._Scripts.Inputs;
@@ -41,11 +42,17 @@ namespace _3._Scripts.Player
             ShowPromotion(newInteractive);
         }
 
-        private void ShowPromotion(IInteractive newInteractive)
+        private static void ShowPromotion(IInteractive newInteractive)
         {
-            if (newInteractive is Interactive.MiniGame)
+            switch (newInteractive)
             {
-                BoostersHandler.Instance.RewardAdBooster.ShowPromotion(30);
+                case Interactive.MiniGame:
+                    BoostersHandler.Instance.RewardAdBooster.ShowPromotion(30);
+                    break;
+                case Training:
+                    BoostersHandler.Instance.TrainingAdBooster.ShowPromotion(30);
+                    BoostersHandler.Instance.AutoClickerAdBooster.ShowPromotion(30);
+                    break;
             }
         }
     }

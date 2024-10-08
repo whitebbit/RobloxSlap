@@ -98,7 +98,7 @@ namespace _3._Scripts.Bots
             var time = 0;
             while (true)
             {
-                var rand = Random.Range(0, 3);
+                var rand = Random.Range(0, 2);
                 switch (rand)
                 {
                     case 0:
@@ -111,12 +111,6 @@ namespace _3._Scripts.Bots
                         _running = true;
                         _training = false;
                         time = Random.Range(5, 10);
-                        break;
-
-                    case 2:
-                        _running = false;
-                        _training = true;
-                        time = Random.Range(20, 30);
                         break;
                 }
                 yield return new WaitForSeconds(time);

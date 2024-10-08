@@ -1,27 +1,21 @@
-﻿using System;
-using System.Linq;
+﻿
 using _3._Scripts.Actions;
 using _3._Scripts.Actions.Interfaces;
 using _3._Scripts.Ads;
 using _3._Scripts.Boosters;
-using _3._Scripts.Config;
 using _3._Scripts.Detectors;
-using _3._Scripts.Detectors.Interfaces;
 using _3._Scripts.Inputs;
 using _3._Scripts.Inputs.Interfaces;
-using _3._Scripts.Interactive.Interfaces;
 using _3._Scripts.Sounds;
 using _3._Scripts.UI;
-using _3._Scripts.UI.Scriptable.Shop;
-using GBGamesPlugin;
 using UnityEngine;
-using VInspector;
+
 
 namespace _3._Scripts.Player
 {
     public class PlayerAction : MonoBehaviour
     {
-        [SerializeField] private float baseAnimationTime = 1;
+        [SerializeField] private float baseAnimationTime = 1; 
         [SerializeField] private BaseDetector<IActionable> detector;
 
         private IInput _input;
@@ -30,7 +24,7 @@ namespace _3._Scripts.Player
         private PlayerAnimator _animator;
 
         private IActionable _actionable;
-
+        private float _currentBooster;
         private void Awake()
         {
             _animator = GetComponent<PlayerAnimator>();
@@ -40,10 +34,6 @@ namespace _3._Scripts.Player
         private void DetectorOnFound(IActionable obj)
         {
             _actionable = obj;
-            if (obj is not Training) return;
-
-            BoostersHandler.Instance.TrainingAdBooster.ShowPromotion(30);
-            BoostersHandler.Instance.AutoClickerAdBooster.ShowPromotion(30);
         }
 
         private void Start()
@@ -56,7 +46,7 @@ namespace _3._Scripts.Player
 
         private void Update()
         {
-            if (UIManager.Instance.Active || InterstitialsTimer.Instance.Active) return;
+            if ( InterstitialsTimer.Instance.Active) return;
             if (_input.GetAction())
             {
                 DoAction();
@@ -75,7 +65,9 @@ namespace _3._Scripts.Player
         private void DoAction()
         {
             if (_actionable == null) return;
+            
             if (!_actionable.CanAction()) return;
+            
             if (_isOnCooldown) return;
 
             _isOnCooldown = true;
@@ -90,8 +82,8 @@ namespace _3._Scripts.Player
                 case "Action":
                     if (_actionable == null) return;
 
-                    SoundManager.Instance.PlayOneShot("action");
                     _actionable.Action();
+                    SoundManager.Instance.PlayOneShot("action");
                     break;
                 case "ActionEnd":
                     _isOnCooldown = false;

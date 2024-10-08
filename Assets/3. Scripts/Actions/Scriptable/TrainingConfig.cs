@@ -1,18 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace _3._Scripts.Actions.Scriptable
 {
     [CreateAssetMenu(fileName = "TrainingConfig", menuName = "ScriptableObjects/TrainingConfig", order = 0)]
     public class TrainingConfig : ScriptableObject
     {
-        [SerializeField] private float count;
-        [SerializeField] private float requiredCount;
-        [SerializeField] private Color color;
-        
+        [SerializeField] private List<TrainingObjectConfig> trainingObjects = new();
 
-        public float Count => count;
-
-        public Color Color => color;
-        public float RequiredCount => requiredCount;
+        public IEnumerable<TrainingObjectConfig> TrainingObjects => trainingObjects;
     }
 }

@@ -22,7 +22,8 @@ namespace _3._Scripts.Interactive
         private Enemy enemyPrefab;
 
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
-        [Tab("Transforms")] [SerializeField] private Transform playerPoint;
+        [Tab("Transforms")] 
+        [SerializeField] private Transform playerPoint;
         [SerializeField] private Transform enemyPoint;
 
         public EnemyData EnemyData { get; private set; }
@@ -67,7 +68,7 @@ namespace _3._Scripts.Interactive
             player.transform.DOLookAt(_enemy.transform.position, 0, AxisConstraint.Y);
 
             CameraController.Instance.SwapTo(virtualCamera);
-            TutorialSystem.StepComplete("fight");
+            TutorialSystem.StepComplete("02_fight");
             
             GBGames.saves.bossFightsCount += 1;
             GBGames.ReportBossEvent();
@@ -91,7 +92,7 @@ namespace _3._Scripts.Interactive
 
         public void StopInteract()
         {
-            InputHandler.Instance.SetActionButtonType(ActionButtonType.Training);
+            InputHandler.Instance.SetActionButtonType(ActionButtonType.Base);
         }
     }
 }

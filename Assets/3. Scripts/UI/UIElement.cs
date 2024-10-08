@@ -21,12 +21,14 @@ namespace _3._Scripts.UI
             {
                 if (value)
                 {
-                    UIManager.Instance.Active = true;
+                    if (!(this is TrainingPanel))
+                        UIManager.Instance.Active = true;
                     Open();
                 }
                 else
                 {
-                    UIManager.Instance.Active = false;
+                    if (!(this is TrainingPanel))
+                        UIManager.Instance.Active = false;
                     Close();
                 }
 

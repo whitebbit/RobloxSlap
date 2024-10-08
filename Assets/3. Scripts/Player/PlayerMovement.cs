@@ -53,7 +53,7 @@ namespace _3._Scripts.Player
 
             if (UIManager.Instance.Active || Blocked)
             {
-                _animator.SetSpeed(0);
+                // /_animator.SetSpeed(0);
                 _animator.SetGrounded(true);
                 SetCameraInputAxis(Vector2.zero);
                 return;

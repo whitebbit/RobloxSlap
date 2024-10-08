@@ -2,6 +2,7 @@
 {
     public enum ActionButtonType
     {
+        Base,
         Training,
         Fight
     }
