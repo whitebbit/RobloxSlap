@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _3._Scripts.Actions.Scriptable;
 using _3._Scripts.Inputs;
 using _3._Scripts.Inputs.Enums;
@@ -17,19 +18,27 @@ namespace _3._Scripts.Actions
     public class Training : MonoBehaviour, IInteractive
     {
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
+        [SerializeField] private Transform cameraPoint;
 
         private Vector3 _startPosition;
-        private List<TrainingObject> _trainingObjects = new();
+        private readonly List<TrainingObject> _trainingObjects = new();
         private int _currentObjectIndex;
 
         public bool TrainingStarted { get; private set; }
+
+        private void Update()
+        {
+            if (TrainingStarted)
+            {
+                cameraPoint.position = Player.Player.instance.transform.position;
+            }
+        }
 
         public void Initialize(TrainingConfig config)
         {
             if (_trainingObjects.Count > 0) return;
 
             var startPosition = Vector3.zero;
-            var transform1 = Player.Player.instance.transform;
 
             foreach (var trainingObject in config.TrainingObjects)
             {
@@ -42,30 +51,49 @@ namespace _3._Scripts.Actions
                 startPosition -= transform.forward * 3;
                 _trainingObjects.Add(obj);
             }
-
-            virtualCamera.LookAt = transform1;
-            virtualCamera.Follow = transform1;
         }
+
+        private bool _restarted;
 
         public void Restart()
         {
+            if (_restarted) return;
+            
             var player = Player.Player.instance;
-
+            _restarted = true;
+            
             if (_currentObjectIndex < _trainingObjects.Count)
                 _trainingObjects[_currentObjectIndex].SetHealthBarState(false);
 
             _currentObjectIndex = 0;
+            var obj = _trainingObjects[0];
 
-            foreach (var trainingObject in _trainingObjects)
-            {
-                trainingObject.Refresh();
-            }
+            _currentTween?.Kill();
+            _currentTween = player.Teleport(obj.PlayerPoint.position, 1)
+                .OnComplete(() =>
+                {
+                    foreach (var trainingObject in _trainingObjects)
+                    {
+                        trainingObject.Refresh();
+                    }
 
-            _trainingObjects[_currentObjectIndex].SetHealthBarState(true);
+                    player.PlayerAnimator.SetSpeed(0);
+                    player.transform.DOLookAt(obj.transform.position, 0f, AxisConstraint.Y);
+                    obj.SetHealthBarState(true);
+                    _restarted = false;
+                })
+                .OnStart(() =>
+                {
+                    foreach (var trainingObject in _trainingObjects)
+                    {
+                        trainingObject.Blocked = true;
+                    }
+                    player.PlayerAnimator.SetSpeed(1);
+                    player.transform.DOLookAt(obj.transform.position, 0.25f, AxisConstraint.Y);
+                });
 
-            player.Teleport(_trainingObjects[0].PlayerPoint.position);
-            player.transform.DOLookAt(_trainingObjects[0].transform.position, 0f, AxisConstraint.Y);
         }
+
 
         public void StartInteract()
         {
@@ -105,6 +133,7 @@ namespace _3._Scripts.Actions
         public void StopTraining()
         {
             TrainingStarted = false;
+            _restarted = false;
             InputHandler.Instance.SetActionButtonType(ActionButtonType.Base);
 
             foreach (var obj in _trainingObjects)
@@ -112,8 +141,12 @@ namespace _3._Scripts.Actions
                 obj.Refresh();
                 obj.SetHealthBarState(false);
             }
+
             _currentObjectIndex = 0;
+            _currentTween?.Kill();
         }
+
+        private Tween _currentTween;
 
         private void OnTrainingObjectDestroy()
         {
@@ -123,12 +156,15 @@ namespace _3._Scripts.Actions
             if (_currentObjectIndex >= _trainingObjects.Count)
             {
                 Restart();
+                Debug.Log("!!!!!!!!!");
                 return;
             }
 
             var player = Player.Player.instance;
             var obj = _trainingObjects[_currentObjectIndex];
-            player.transform.DOMove(obj.PlayerPoint.position, 0.5f)
+
+            _currentTween?.Kill();
+            _currentTween = player.transform.DOMove(obj.PlayerPoint.position, 0.5f)
                 .OnStart(() =>
                 {
                     obj.Blocked = true;
@@ -140,6 +176,8 @@ namespace _3._Scripts.Actions
                     player.PlayerAnimator.SetSpeed(0);
                     _trainingObjects[_currentObjectIndex].SetHealthBarState(true);
                 });
+            
+            Debug.Log("!!!!!!!!!");
         }
     }
 }

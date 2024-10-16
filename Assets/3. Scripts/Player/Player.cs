@@ -11,6 +11,7 @@ using _3._Scripts.UI;
 using _3._Scripts.UI.Panels;
 using _3._Scripts.Upgrades;
 using _3._Scripts.Wallet;
+using DG.Tweening;
 using GBGamesPlugin;
 using UnityEngine;
 
@@ -95,11 +96,12 @@ namespace _3._Scripts.Player
             return (strength + pets) * hand * booster ;
         }
 
-        public void Teleport(Vector3 position)
+        public Tween Teleport(Vector3 position, float speed = 0)
         {
             _characterController.enabled = false;
-            transform.position = position;
+            var tween = transform.DOMove(position, speed).SetEase(Ease.Linear);
             _characterController.enabled = true;
+            return tween;
         }
 
         private void Start()

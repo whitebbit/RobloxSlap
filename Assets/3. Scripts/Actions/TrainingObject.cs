@@ -63,7 +63,7 @@ namespace _3._Scripts.Actions
             shakeObject.localScale = _startSize;
             rewardText.gameObject.SetActive(true);
             shakeObject.localPosition = _startPosition;
-            
+            Blocked = false;
             healthBar.value = _health;
             healthText.text = WalletManager.ConvertToWallet((decimal) _health);
         }
