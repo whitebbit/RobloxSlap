@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trainingObjects:
   - {fileID: 11400000, guid: a3fd37819fe0498419b4df4df12e631c, type: 2}
-  - {fileID: 11400000, guid: a3fd37819fe0498419b4df4df12e631c, type: 2}
-  - {fileID: 11400000, guid: a3fd37819fe0498419b4df4df12e631c, type: 2}
-  - {fileID: 11400000, guid: a3fd37819fe0498419b4df4df12e631c, type: 2}
-  - {fileID: 11400000, guid: a3fd37819fe0498419b4df4df12e631c, type: 2}
-  - {fileID: 11400000, guid: a3fd37819fe0498419b4df4df12e631c, type: 2}
-  - {fileID: 11400000, guid: a3fd37819fe0498419b4df4df12e631c, type: 2}
+  - {fileID: 11400000, guid: 56fc1f187d3912943b36fddf8c30d161, type: 2}
+  - {fileID: 11400000, guid: cc81f6c05a85fd047a2f462908e937c2, type: 2}
+  - {fileID: 11400000, guid: ad3b25369a5a82f49992292df7f4c926, type: 2}
+  - {fileID: 11400000, guid: bff04d70a96172b4bba5c8ba9ddd7974, type: 2}
