@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TrainingObjectConfig
   m_EditorClassIdentifier: 
   prefab: {fileID: 6635553487461107903, guid: d54df34de2d52f049b54842df909b7ff, type: 3}
-  reward: 6
+  reward: 16
   health: 1000
