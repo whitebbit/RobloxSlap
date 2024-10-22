@@ -4,6 +4,7 @@ using _3._Scripts.Actions.Scriptable;
 using _3._Scripts.Inputs;
 using _3._Scripts.Inputs.Enums;
 using _3._Scripts.Interactive.Interfaces;
+using _3._Scripts.Localization;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Panels;
 using _3._Scripts.Wallet;
@@ -11,6 +12,7 @@ using Cinemachine;
 using DG.Tweening;
 using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 using VInspector;
 
 namespace _3._Scripts.Actions
@@ -19,12 +21,15 @@ namespace _3._Scripts.Actions
     {
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
         [SerializeField] private Transform cameraPoint;
+        [SerializeField] private LocalizeStringEvent requiredText;
+        [SerializeField] private LocalizeStringEvent rewardText;
 
         private Vector3 _startPosition;
         private readonly List<TrainingObject> _trainingObjects = new();
         private int _currentObjectIndex;
-
         public bool TrainingStarted { get; private set; }
+
+        private float _requiredCount;
 
         private void Update()
         {
@@ -39,34 +44,46 @@ namespace _3._Scripts.Actions
             if (_trainingObjects.Count > 0) return;
 
             var startPosition = Vector3.zero;
+            var startHealth = 1;
 
             foreach (var trainingObject in config.TrainingObjects)
             {
-                var obj = Instantiate(trainingObject.Prefab, transform);
+                var obj = Instantiate(trainingObject, transform);
 
                 obj.transform.localPosition = startPosition;
-                obj.Initialize(this, trainingObject.Reward, trainingObject.Health);
+                obj.Initialize(this, startHealth, config.Count);
                 obj.OnDestroy += OnTrainingObjectDestroy;
 
                 startPosition -= transform.forward * 3;
+                startHealth += 1;
                 _trainingObjects.Add(obj);
             }
+
+            _requiredCount = config.RequiredCount;
+
+            requiredText.SetVariable("value", WalletManager.ConvertToWallet((decimal) config.RequiredCount));
+            rewardText.SetVariable("value", WalletManager.ConvertToWallet((decimal) config.Count));
+
+            SetTextState(true);
         }
 
         private bool _restarted;
 
+        private void SetTextState(bool state)
+        {
+            requiredText.gameObject.SetActive(state);
+            rewardText.gameObject.SetActive(state);
+        }
+
         public void Restart()
         {
             if (_restarted) return;
-            
-            var player = Player.Player.instance;
-            _restarted = true;
-            
-            if (_currentObjectIndex < _trainingObjects.Count)
-                _trainingObjects[_currentObjectIndex].SetHealthBarState(false);
 
-            _currentObjectIndex = 0;
+            var player = Player.Player.instance;
             var obj = _trainingObjects[0];
+
+            _restarted = true;
+            _currentObjectIndex = 0;
 
             _currentTween?.Kill();
             _currentTween = player.Teleport(obj.PlayerPoint.position, 1)
@@ -79,7 +96,6 @@ namespace _3._Scripts.Actions
 
                     player.PlayerAnimator.SetSpeed(0);
                     player.transform.DOLookAt(obj.transform.position, 0f, AxisConstraint.Y);
-                    obj.SetHealthBarState(true);
                     _restarted = false;
                 })
                 .OnStart(() =>
@@ -88,22 +104,21 @@ namespace _3._Scripts.Actions
                     {
                         trainingObject.Blocked = true;
                     }
+
                     player.PlayerAnimator.SetSpeed(1);
                     player.transform.DOLookAt(obj.transform.position, 0.25f, AxisConstraint.Y);
                 });
-
         }
-
 
         public void StartInteract()
         {
-            if (TrainingStarted) return;
+            if (TrainingStarted || !CanInteract()) return;
             InputHandler.Instance.SetActionButtonType(ActionButtonType.Training);
         }
 
         public void Interact()
         {
-            if (TrainingStarted) return;
+            if (TrainingStarted || !CanInteract()) return;
 
             var panel = UIManager.Instance.GetPanel<TrainingPanel>();
             var player = Player.Player.instance;
@@ -116,11 +131,17 @@ namespace _3._Scripts.Actions
             player.Teleport(_trainingObjects[0].PlayerPoint.position);
             player.transform.DOLookAt(_trainingObjects[0].transform.position, 0.1f, AxisConstraint.Y);
 
-            _trainingObjects[_currentObjectIndex].SetHealthBarState(true);
-
             InputHandler.Instance.SetActionButtonType(ActionButtonType.Base);
             InputHandler.Instance.SetMovementState(false);
             CameraController.Instance.SwapTo(virtualCamera);
+
+            SetTextState(false);
+
+            foreach (var trainingObject in _trainingObjects)
+            {
+                trainingObject.SetReward();
+                trainingObject.SetRewardTextState(true);
+            }
 
             TrainingStarted = true;
         }
@@ -139,24 +160,23 @@ namespace _3._Scripts.Actions
             foreach (var obj in _trainingObjects)
             {
                 obj.Refresh();
-                obj.SetHealthBarState(false);
+                obj.SetRewardTextState(false);
             }
 
             _currentObjectIndex = 0;
             _currentTween?.Kill();
+            SetTextState(true);
         }
 
         private Tween _currentTween;
 
         private void OnTrainingObjectDestroy()
         {
-            _trainingObjects[_currentObjectIndex].SetHealthBarState(false);
             _currentObjectIndex += 1;
 
             if (_currentObjectIndex >= _trainingObjects.Count)
             {
                 Restart();
-                Debug.Log("!!!!!!!!!");
                 return;
             }
 
@@ -174,10 +194,11 @@ namespace _3._Scripts.Actions
                 {
                     obj.Blocked = false;
                     player.PlayerAnimator.SetSpeed(0);
-                    _trainingObjects[_currentObjectIndex].SetHealthBarState(true);
                 });
-            
+
             Debug.Log("!!!!!!!!!");
         }
+
+        public bool CanInteract() => WalletManager.FirstCurrency >= _requiredCount;
     }
 }

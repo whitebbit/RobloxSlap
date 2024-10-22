@@ -19,42 +19,40 @@ namespace _3._Scripts.Actions
         [SerializeField] private Transform shakeObject;
         [SerializeField] private ParticleSystem hitParticle;
         [SerializeField] private TMP_Text rewardText;
-        [SerializeField] private TMP_Text healthText;
         [SerializeField] private CurrencyCounterEffect effect;
-        [SerializeField] private Slider healthBar;
-        
+
         public event Action OnDestroy;
         public bool Blocked { get; set; }
 
         private Vector3 _startPosition;
         private Vector3 _startSize;
-        
+
         private float _health;
         private float _currentHealth;
         private float _currentReward;
+        private float _clickBooster;
 
         private Training _training;
 
         public Transform PlayerPoint => playerPoint;
+        private float Reward => _health * Player.Player.instance.GetTrainingStrength(_clickBooster);
 
-        public void Initialize(Training training, float reward, float health)
+        public void Initialize(Training training, float health, float clickBooster)
         {
             _training = training;
-
+            _clickBooster = clickBooster;
             _currentHealth = health;
             _health = health;
             _startPosition = shakeObject.localPosition;
             _startSize = shakeObject.localScale;
-            _currentReward = reward;
-            
-            healthBar.maxValue = health;
-            healthBar.value = health;
 
-            healthText.text = WalletManager.ConvertToWallet((decimal) health);
-            rewardText.text = $"{WalletManager.ConvertToWallet((decimal) reward)}<sprite index=1>";
-
-            SetHealthBarState(false);
+            SetRewardTextState(false);
         }
+
+        public void SetReward() =>
+            rewardText.text = $"{WalletManager.ConvertToWallet((decimal) Reward)}<sprite index=1>";
+
+        public void SetRewardTextState(bool state) => rewardText.gameObject.SetActive(state);
 
         public void Refresh()
         {
@@ -64,51 +62,44 @@ namespace _3._Scripts.Actions
             rewardText.gameObject.SetActive(true);
             shakeObject.localPosition = _startPosition;
             Blocked = false;
-            healthBar.value = _health;
-            healthText.text = WalletManager.ConvertToWallet((decimal) _health);
         }
 
         public void Action()
         {
             if (_currentHealth <= 0) return;
 
-            var training = Player.Player.instance.GetTrainingStrength();
-
             shakeObject.DOShakePosition(0.25f, 0.25f, 50).OnComplete(() => shakeObject.localPosition = _startPosition);
             hitParticle.Play();
-            
-            _currentHealth -= training;
-            healthBar.value = _currentHealth;
-            healthText.text = WalletManager.ConvertToWallet((decimal) _currentHealth);
+
+            _currentHealth -= 1;
 
             if (_currentHealth > 0) return;
 
             Destroy();
         }
 
-        public void SetHealthBarState(bool state) => healthBar.gameObject.SetActive(state);
-        
+
         private void Destroy()
         {
             var trainBooster = UIManager.Instance.GetPanel<TrainingPanel>().GetBooster();
-            var obj = CurrencyEffectPanel.Instance.SpawnEffect(effect, CurrencyType.First, _currentReward * trainBooster);
+            var train = Reward * trainBooster;
+            var obj = CurrencyEffectPanel.Instance.SpawnEffect(effect, CurrencyType.First, train);
 
-            obj.Initialize(CurrencyType.First, _currentReward * trainBooster);
+            obj.Initialize(CurrencyType.First, train);
 
             shakeObject.gameObject.SetActive(false);
             rewardText.gameObject.SetActive(false);
 
             OnDestroy?.Invoke();
 
-            GBGames.saves.achievementSaves.Update("slap_100", _currentReward * trainBooster);
-            GBGames.saves.achievementSaves.Update("slap_10000", _currentReward * trainBooster);
-            GBGames.saves.achievementSaves.Update("slap_1000000", _currentReward * trainBooster);
+            GBGames.saves.achievementSaves.Update("slap_100", train);
+            GBGames.saves.achievementSaves.Update("slap_10000", train);
+            GBGames.saves.achievementSaves.Update("slap_1000000", train);
         }
-        
+
         public bool CanAction()
         {
             return _currentHealth > 0 && _training.TrainingStarted && !Blocked;
         }
-        
     }
 }

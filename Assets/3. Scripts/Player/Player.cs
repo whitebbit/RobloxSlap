@@ -84,16 +84,14 @@ namespace _3._Scripts.Player
             level.gameObject.SetActive(true);
         }
 
-        public float GetTrainingStrength()
+        public float GetTrainingStrength(float strengthPerClick)
         {
             var hand = Configuration.Instance.AllUpgrades.FirstOrDefault(
                 h => h.ID == GBGames.saves.upgradeSaves.current).Booster;
             var pets = GBGames.saves.petsSave.selected.Sum(p => p.booster);
 
-            var strength = WalletManager.FirstCurrency * 0.1f;
             var booster = BoostersHandler.Instance.GetBoosterState("train_booster") ? 2 : 1;
-            
-            return (strength + pets) * hand * booster ;
+            return (strengthPerClick + pets) * hand * booster;
         }
 
         public Tween Teleport(Vector3 position, float speed = 0)

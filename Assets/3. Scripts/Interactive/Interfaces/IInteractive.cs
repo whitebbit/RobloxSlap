@@ -4,7 +4,6 @@
     {
         void StartInteract();
         void Interact();
-        
         void StopInteract();
     }
 }

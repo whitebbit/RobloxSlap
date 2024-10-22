@@ -4957,9 +4957,7 @@ MonoBehaviour:
   shakeObject: {fileID: 9134545538545684748}
   hitParticle: {fileID: 2904328592456060975}
   rewardText: {fileID: 733822934897017877}
-  healthText: {fileID: 4032112194006129809}
   effect: {fileID: 3400154131304464156, guid: 469f7092be63a304f82faf0c38812156, type: 3}
-  healthBar: {fileID: 8410846709399936845}
 --- !u!65 &6945431984777838871
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5269,8 +5267,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3383945787995969154}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.437, y: 0}
+  m_AnchorMax: {x: 0.437, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10243,7 +10241,7 @@ RectTransform:
   m_Father: {fileID: 5132966776269073854}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.437, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15369,7 +15367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1739012824859898086
 RectTransform:
   m_ObjectHideFlags: 0
