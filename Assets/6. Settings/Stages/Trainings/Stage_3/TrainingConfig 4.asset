@@ -19,4 +19,4 @@ MonoBehaviour:
   - {fileID: 6635553487461107903, guid: 6e1706a64af1a0f4c99cd82796876cb9, type: 3}
   - {fileID: 6635553487461107903, guid: 97f1dc4cbf81c5e4cbc7b018ace424a3, type: 3}
   count: 125000
-  requiredCount: 5e+13
+  requiredCount: 5.2e+13
