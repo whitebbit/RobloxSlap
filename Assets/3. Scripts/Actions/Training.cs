@@ -51,10 +51,12 @@ namespace _3._Scripts.Actions
                 var obj = Instantiate(trainingObject, transform);
 
                 obj.transform.localPosition = startPosition;
+                obj.transform.localEulerAngles = new Vector3(0, 180, 0);
+                
                 obj.Initialize(this, startHealth, config.Count);
                 obj.OnDestroy += OnTrainingObjectDestroy;
 
-                startPosition -= transform.forward * 3;
+                startPosition -= Vector3.forward * 3;
                 startHealth += 1;
                 _trainingObjects.Add(obj);
             }
