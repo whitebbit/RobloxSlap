@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd05df2cce5d47ab82b760ad297b8988, type: 3}
   m_Name: TrainingConfig 2
   m_EditorClassIdentifier: 
+  trainingObjects:
+  - {fileID: 6635553487461107903, guid: af11ee62686f4c445a1d43b9206ae943, type: 3}
+  - {fileID: 6635553487461107903, guid: 8c483b819fb0f4f459fa80faf48282b0, type: 3}
+  - {fileID: 6635553487461107903, guid: 110a16ff60c93b841bae4ad512b501c4, type: 3}
+  - {fileID: 6635553487461107903, guid: c0fbc0facb99fd34198cdbf87a5a9a27, type: 3}
+  - {fileID: 6635553487461107903, guid: 9d1cf70e3bed2374b948734806be9104, type: 3}
   count: 75000
   requiredCount: 5e+12
-  color: {r: 1, g: 0, b: 0.5408287, a: 1}

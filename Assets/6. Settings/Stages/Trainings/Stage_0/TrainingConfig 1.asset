@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: TrainingConfig 1
   m_EditorClassIdentifier: 
   trainingObjects:
-  - {fileID: 11400000, guid: 9b237a8fd1863834d928e5199a4f1231, type: 2}
-  - {fileID: 11400000, guid: e411d0bbfaa78104cb70faf3840fb171, type: 2}
-  - {fileID: 11400000, guid: eda91393c48fdce48b13bf3ed6b76013, type: 2}
-  - {fileID: 11400000, guid: f5671b0c8024ef644906bbe738c63ff5, type: 2}
-  - {fileID: 11400000, guid: 6e8088e7193677442ae048b27d07b7ec, type: 2}
+  - {fileID: 6635553487461107903, guid: d54df34de2d52f049b54842df909b7ff, type: 3}
+  - {fileID: 6635553487461107903, guid: 97f1dc4cbf81c5e4cbc7b018ace424a3, type: 3}
+  - {fileID: 6635553487461107903, guid: c0fbc0facb99fd34198cdbf87a5a9a27, type: 3}
+  - {fileID: 6635553487461107903, guid: 356b87fa891728e468a887ffc36b9982, type: 3}
+  - {fileID: 6635553487461107903, guid: 9cd07b35b530095429b2cd5b0fcdc359, type: 3}
+  count: 2
+  requiredCount: 600
