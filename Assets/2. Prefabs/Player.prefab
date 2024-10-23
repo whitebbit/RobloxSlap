@@ -316,7 +316,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0.25, z: 0}
   considerObstacles: 0
   gizmos:
-    type: 1
+    type: 0
     color: {r: 1, g: 0, b: 0, a: 0.5019608}
   radius: 4
 --- !u!114 &420629615244745389
@@ -338,12 +338,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   startPoint: {fileID: 9115963613469310830}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0.5, z: 0.75}
   considerObstacles: 0
   gizmos:
     type: 1
     color: {r: 0.19131923, g: 1, b: 0, a: 0.5019608}
-  radius: 2
+  radius: 1
 --- !u!95 &6123722009812743178
 Animator:
   serializedVersion: 5

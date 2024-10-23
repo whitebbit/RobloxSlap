@@ -53,6 +53,7 @@ namespace _3._Scripts.Inputs
 
         public bool GetAction()
         {
+            
             return actionButton.ButtonDown;
         }
 

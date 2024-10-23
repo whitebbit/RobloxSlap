@@ -62,6 +62,7 @@ namespace _3._Scripts.Interactive
 
             panel.Enabled = true;
             panel.StartMiniGame(Player.Player.instance, _enemy, EnemyData.RewardCount, EndFight);
+            Player.Player.instance.PlayerAnimator.SetSpeed(0);
 
             player.PetsHandler.SetState(false);
             player.Teleport(playerPoint.position);

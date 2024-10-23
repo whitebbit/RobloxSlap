@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace _3._Scripts.Inputs.Utils
@@ -24,7 +25,7 @@ namespace _3._Scripts.Inputs.Utils
         private void LateUpdate()
         {
             if (ButtonDown)
-                ButtonDown = false;
+                ButtonDown = false; 
             
             if (ButtonUp)
                 ButtonUp = false;
