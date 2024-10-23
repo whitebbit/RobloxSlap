@@ -35,6 +35,10 @@ mergeInto(LibraryManager.library, {
     InstantGamesBridgeSendMessageToPlatform: function(message) {
         window.sendMessageToPlatform(UTF8ToString(message))
     },
+    
+    InstantGamesBridgeGetServerTime: function() {
+        window.getServerTime()
+    },
 
 
     InstantGamesBridgeGetDeviceType: function() {
@@ -179,6 +183,10 @@ mergeInto(LibraryManager.library, {
 
     InstantGamesBridgeShowRewarded: function() {
         window.showRewarded()
+    },
+    
+    InstantGamesBridgeCheckAdBlock: function() {
+        window.checkAdBlock()
     },
 
 

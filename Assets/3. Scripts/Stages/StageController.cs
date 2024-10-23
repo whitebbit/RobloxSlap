@@ -5,7 +5,6 @@ using _3._Scripts.Saves;
 using _3._Scripts.Singleton;
 using _3._Scripts.Wallet;
 using GBGamesPlugin;
-using GBGamesPlugin.Enums;
 using UnityEngine;
 using VInspector;
 
@@ -20,7 +19,6 @@ namespace _3._Scripts.Stages
 
         private void Start()
         {
-            GBGames.ReportLevelEvent(LevelEventType.LevelStart);
 
 #if UNITY_EDITOR
             if (Application.isPlaying)
@@ -36,11 +34,9 @@ namespace _3._Scripts.Stages
             
             if (CurrentStageID > GBGames.saves.stageID)
             {
-                GBGames.ReportLevelEvent(LevelEventType.LevelFinish);
                 
                 GBGames.saves.stageID = CurrentStageID;
                 
-                GBGames.ReportLevelEvent(LevelEventType.LevelStart);
             }
 
             TeleportToStage(CurrentStageID);
@@ -55,7 +51,6 @@ namespace _3._Scripts.Stages
 
         public void TeleportToNextWorld()
         {
-            GBGames.ReportLevelEvent(LevelEventType.LevelFinish);
 
             GBGames.saves.worldID += 1;
             GBGames.saves.stageID = 0;
@@ -63,7 +58,6 @@ namespace _3._Scripts.Stages
             Player.Player.instance.Reborn();
             TeleportToStage(0);
             
-            GBGames.ReportLevelEvent(LevelEventType.LevelStart);
         }
 
         private void TeleportToStage(int stageID)

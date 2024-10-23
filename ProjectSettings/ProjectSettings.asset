@@ -172,7 +172,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 5
+  AndroidBundleVersionCode: 6
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -475,6 +475,7 @@ PlayerSettings:
     CUSTOM_EVENT_IN_HTML: 
     CUSTOM_EVENT_IN_JS: 
     DISABLE_CONSOLE_MESSAGES: 
+    GAME_DISTRIBUTION_GAME_ID: 
     GP_GAMEREADY_AUTOCALL_DELAY: 
     GP_PROJECT_ID: 
     GP_SHOW_PRELOADER_AD: 
@@ -482,6 +483,10 @@ PlayerSettings:
     IGB_GAME_DISTRIBUTION_GAME_ID: 
     IGB_VK_PLAY_GAME_ID: 
     LOCK_ASPECT_RATIO: 
+    OVERLAY_BACKGROUND_COLOR: 
+    PROGRESS_BAR_BACKGROUND_COLOR: 
+    PROGRESS_BAR_FILL_COLOR: 
+    VK_PLAY_GAME_ID: 
     YG_BANNER_DYNAMIC_1: 
     YG_BANNER_DYNAMIC_2: 
     YG_BANNER_STATIC_1: 
@@ -750,7 +755,7 @@ PlayerSettings:
   ps4IncludedModules: []
   ps4attribVROutputEnabled: 0
   monoEnv: 
-  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: 2411cc8f07d34eb438acaa7935ae7225, type: 3}
+  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: 3fea4936622ff8c46a409d13c6428d92, type: 3}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
   blurSplashScreenBackground: 0
   spritePackerPolicy: 
@@ -762,7 +767,7 @@ PlayerSettings:
   webGLDebugSymbols: 2
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: PROJECT:GBGames
+  webGLTemplate: PROJECT:Bridge
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 0

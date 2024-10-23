@@ -7,7 +7,6 @@ using _3._Scripts.UI.Enums;
 using _3._Scripts.UI.Scriptable.Shop;
 using _3._Scripts.Wallet;
 using GBGamesPlugin;
-using GBGamesPlugin.Enums;
 
 namespace _3._Scripts.UI.Panels
 {
@@ -61,7 +60,6 @@ namespace _3._Scripts.UI.Panels
 
             GBGames.saves.characterSaves.Unlock(slot.ID);
             Select(slot.ID);
-            GBGames.ReportSkinUnlockEvent(slot.ID, slot.Rarity, PurchaseType.Currency);
             return true;
         }
 
@@ -72,8 +70,7 @@ namespace _3._Scripts.UI.Panels
                 SetSlotsState();
                 GBGames.saves.characterSaves.Unlock(slot.ID);
                 Select(slot.ID);
-                GBGames.ReportSkinUnlockEvent(slot.ID, slot.Rarity, PurchaseType.Ad);
-            }, AdEventPlacement.ADMenuCharacter);
+            });
             
             return true;
         }

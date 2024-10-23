@@ -8,7 +8,6 @@ using _3._Scripts.UI.Panels.Base;
 using _3._Scripts.UI.Scriptable.Shop;
 using DG.Tweening;
 using GBGamesPlugin;
-using GBGamesPlugin.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
@@ -40,7 +39,7 @@ namespace _3._Scripts.UI.Panels
             {
                 onReward?.Invoke();
                 Enabled = false;
-            }, GetPlacement(data)));
+            }));
             
             closeButton.image.DOFade(0, 0.25f).From().SetDelay(3f)
                 .OnStart(() => closeButton.gameObject.SetActive(true));
@@ -73,17 +72,7 @@ namespace _3._Scripts.UI.Panels
                 _ => ""
             });
         }
-
-        private AdEventPlacement GetPlacement<T>(T data) where T : ShopItem
-        {
-            return data switch
-            {
-                PetData => AdEventPlacement.ADOfferPet,
-                UpgradeItem => AdEventPlacement.ADOfferHand,
-                TrailItem => AdEventPlacement.ADOfferTrail,
-                _ => throw new ArgumentOutOfRangeException(nameof(data), data, null)
-            };
-        }
+        
 
         private void Clear()
         {

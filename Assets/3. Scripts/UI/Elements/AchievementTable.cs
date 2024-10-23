@@ -57,9 +57,6 @@ namespace _3._Scripts.UI.Elements
         {
             var save = GBGames.saves.achievementSaves.Get(_data.ID);
             save.giftReceived = true;
-
-            GBGames.ReportAchievementsEvent(_data.ID);
-            
             _data.Gift.OnReward();
             getReward.gameObject.SetActive(false);
         }

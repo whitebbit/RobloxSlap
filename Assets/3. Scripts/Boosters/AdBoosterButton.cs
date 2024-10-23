@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
-using CAS;
 using DG.Tweening;
 using GBGamesPlugin;
-using GBGamesPlugin.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +20,6 @@ namespace _3._Scripts.Boosters
         [Tab("Settings")] 
         [SerializeField] private string id;
 
-        [SerializeField] private AdEventPlacement adEventPlacement;
         
         [SerializeField] private float timeToDeactivate;
 
@@ -76,7 +72,7 @@ namespace _3._Scripts.Boosters
                 Activate();
             }
             else
-                GBGames.ShowRewarded(Activate, adEventPlacement);
+                GBGames.ShowRewarded(Activate);
         }
 
         private void Activate()

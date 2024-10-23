@@ -48,7 +48,7 @@ namespace _3._Scripts.Interactive
         {
             if (_fightStarted) return;
 
-            InputHandler.Instance.SetActionButtonType(ActionButtonType.Fight);
+            //InputHandler.Instance.SetActionButtonType(ActionButtonType.Fight);
         }
 
         public void Interact()
@@ -62,7 +62,8 @@ namespace _3._Scripts.Interactive
 
             panel.Enabled = true;
             panel.StartMiniGame(Player.Player.instance, _enemy, EnemyData.RewardCount, EndFight);
-
+            player.PlayerAnimator.SetSpeed(0);
+             
             player.PetsHandler.SetState(false);
             player.Teleport(playerPoint.position);
             player.transform.DOLookAt(_enemy.transform.position, 0, AxisConstraint.Y);
@@ -71,7 +72,6 @@ namespace _3._Scripts.Interactive
             TutorialSystem.StepComplete("02_fight");
             
             GBGames.saves.bossFightsCount += 1;
-            GBGames.ReportBossEvent();
 
             Player.Player.instance.OnStart();
             _enemy.OnStart();
@@ -92,7 +92,7 @@ namespace _3._Scripts.Interactive
 
         public void StopInteract()
         {
-            InputHandler.Instance.SetActionButtonType(ActionButtonType.Base);
+            //InputHandler.Instance.SetActionButtonType(ActionButtonType.Base);
         }
     }
 }

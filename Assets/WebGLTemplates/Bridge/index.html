@@ -240,6 +240,16 @@
                 bridge.platform.sendMessage(message)
             }
 
+            window.getServerTime = function() {
+                bridge.platform.getServerTime()
+                    .then(result => {
+                        sendMessageToUnity('OnGetServerTimeCompleted', result.toString())
+                    })
+                    .catch(error => {
+                        sendMessageToUnity('OnGetServerTimeCompleted', 'false')
+                    })
+            }
+
 
             // device
             window.getDeviceType = function() {
@@ -436,6 +446,16 @@
 
             window.showRewarded = function() {
                 bridge.advertisement.showRewarded()
+            }
+
+            window.checkAdBlock = function() {
+                bridge.advertisement.checkAdBlock()
+                    .then(result => {
+                        sendMessageToUnity('OnCheckAdBlockCompleted', result.toString())
+                    })
+                    .catch(error => {
+                        sendMessageToUnity('OnCheckAdBlockCompleted', 'false')
+                    })
             }
 
 

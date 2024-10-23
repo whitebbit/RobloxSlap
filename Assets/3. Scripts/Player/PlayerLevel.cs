@@ -48,7 +48,6 @@ namespace _3._Scripts.Player
             if (playerLevel <= GBGames.saves.playerLevel) return;
             
             GBGames.saves.playerLevel = playerLevel;
-            GBGames.ReportPlayerLevelEvent(playerLevel);
             _text.SetVariable("value", playerLevel.ToString());
         }
     }

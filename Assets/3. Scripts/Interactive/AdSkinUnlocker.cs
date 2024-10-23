@@ -8,7 +8,6 @@ using _3._Scripts.UI.Enums;
 using _3._Scripts.UI.Scriptable.Shop;
 using _3._Scripts.Wallet;
 using GBGamesPlugin;
-using GBGamesPlugin.Enums;
 using UnityEngine;
 
 namespace _3._Scripts.Interactive
@@ -64,10 +63,10 @@ namespace _3._Scripts.Interactive
                 HealthManager.Instance.ChangeValue();
                 GBGames.instance.Save();
 
-                GBGames.ReportSkinUnlockEvent(_characterItem.ID, _characterItem.Rarity, PurchaseType.Ad);
-
+              
+              
                 Initialize();
-            }, AdEventPlacement.ADLocationCharacter);
+            });
         }
 
         public void StopInteract()

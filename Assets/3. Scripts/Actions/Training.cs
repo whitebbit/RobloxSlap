@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using _3._Scripts.Actions.Scriptable;
 using _3._Scripts.Inputs;
@@ -10,7 +11,6 @@ using _3._Scripts.UI.Panels;
 using _3._Scripts.Wallet;
 using Cinemachine;
 using DG.Tweening;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using VInspector;
@@ -106,7 +106,7 @@ namespace _3._Scripts.Actions
                     {
                         trainingObject.Blocked = true;
                     }
-
+                    
                     player.PlayerAnimator.SetSpeed(1);
                     player.transform.DOLookAt(obj.transform.position, 0.25f, AxisConstraint.Y);
                 });
@@ -128,6 +128,7 @@ namespace _3._Scripts.Actions
             panel.Enabled = true;
             panel.StartTraining(this);
 
+            player.PlayerAnimator.SetSpeed(0);
             player.PetsHandler.SetState(false);
             player.PlayerMovement.Blocked = true;
             player.Teleport(_trainingObjects[0].PlayerPoint.position);
@@ -141,6 +142,8 @@ namespace _3._Scripts.Actions
 
             foreach (var trainingObject in _trainingObjects)
             {
+                trainingObject.Blocked = false;
+                trainingObject.Refresh();
                 trainingObject.SetReward();
                 trainingObject.SetRewardTextState(true);
             }
@@ -157,19 +160,29 @@ namespace _3._Scripts.Actions
         {
             TrainingStarted = false;
             _restarted = false;
-            InputHandler.Instance.SetActionButtonType(ActionButtonType.Base);
 
+            StartCoroutine(DelayRefresh());
+        }
+
+        private IEnumerator DelayRefresh()
+        {
+            yield return new WaitForSeconds(0.1f);
+            
+            _currentObjectIndex = 0;
+            _currentTween?.Kill();
+            SetTextState(true);
+            
             foreach (var obj in _trainingObjects)
             {
+                obj.Blocked = true;
                 obj.Refresh();
                 obj.SetRewardTextState(false);
             }
 
-            _currentObjectIndex = 0;
-            _currentTween?.Kill();
-            SetTextState(true);
+            InputHandler.Instance.SetActionButtonType(ActionButtonType.Base);
+            Player.Player.instance.PetsHandler.SetState(true);
         }
-
+        
         private Tween _currentTween;
 
         private void OnTrainingObjectDestroy()
