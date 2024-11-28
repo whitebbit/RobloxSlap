@@ -11,7 +11,6 @@ namespace _3._Scripts.UI.Utils
 
         private void Start()
         {
-            GetComponent<Button>().onClick.AddListener(() => GBGames.ReportUINavigationEvent(placement));
         }
     }
 }

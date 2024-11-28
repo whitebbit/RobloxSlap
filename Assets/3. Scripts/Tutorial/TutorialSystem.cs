@@ -17,7 +17,6 @@ namespace _3._Scripts.Tutorial
             TutorialStepComplete?.Invoke(stepName);
 
             GBGames.saves.tutorialStates.TryAdd(stepName, true);
-            GBGames.ReportTutorialEvent($"{stepName}");
         }
 
         public static void StepStart(string stepName)

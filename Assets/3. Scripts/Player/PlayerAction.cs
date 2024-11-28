@@ -46,7 +46,7 @@ namespace _3._Scripts.Player
 
         private void Update()
         {
-            if ( InterstitialsTimer.Instance.Active) return;
+            //if ( InterstitialsTimer.Instance.Active) return;
             if (_input.GetAction())
             {
                 DoAction();

@@ -25,7 +25,7 @@ namespace GBGamesPlugin
         [PostProcessBuild]
         public static void ModifyBuildDo(BuildTarget target, string pathToBuiltProject)
         {
-            //ArchivingBuild.Archiving(pathToBuiltProject);
+            ArchivingBuild.Archiving(pathToBuiltProject);
         }
     }
 }

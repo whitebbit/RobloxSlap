@@ -2,8 +2,9 @@
 using _3._Scripts.Inputs.Enums;
 using _3._Scripts.Inputs.Interfaces;
 using _3._Scripts.Singleton;
+using GBGamesPlugin;
 using UnityEngine;
-
+using DeviceType = InstantGamesBridge.Modules.Device.DeviceType;
 
 namespace _3._Scripts.Inputs
 {
@@ -16,28 +17,48 @@ namespace _3._Scripts.Inputs
         {
             get
             {
-                if (!mobileInput.gameObject.activeSelf)
-                    mobileInput.gameObject.SetActive(true);
-                
-                        //UnityEngine.Input.multiTouchEnabled = true;
-                return mobileInput;
+                switch (GBGames.deviceType)
+                {
+                    case DeviceType.Mobile:
+                        if(!mobileInput.gameObject.activeSelf)
+                            mobileInput.gameObject.SetActive(true);
+                        UnityEngine.Input.multiTouchEnabled = true;
+                        return mobileInput;
+                    case DeviceType.Desktop:
+                        if(mobileInput.gameObject.activeSelf)
+                            mobileInput.gameObject.SetActive(false);
+                        return _desktopInput ??= new DesktopInput();
+                    case DeviceType.Tablet:
+                        return default;
+                    case DeviceType.TV:
+                        return default;
+                    default: 
+                        return default;
+                }
             }
         }
 
-        private void Start()
+        public void SetState(bool state)
         {
-            SetActionButtonType(ActionButtonType.Base);
+            switch (GBGames.deviceType)
+            {
+                case DeviceType.Mobile:
+                    mobileInput.SetState(state);
+                    break;
+                case DeviceType.Tablet:
+                    break;
+                case DeviceType.Desktop:
+                    break;
+                case DeviceType.TV:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
-
+        
         public void SetActionButtonType(ActionButtonType type)
         {
             mobileInput.SetActionButtonType(type);
-        }
-
-
-        public void SetState(bool state)
-        {
-            mobileInput.SetState(state);
         }
 
         public void SetMovementState(bool state)

@@ -43,7 +43,6 @@ namespace _3._Scripts.Boosters
             onDeactivateBooster?.Invoke();
             _button.image.sprite = disableSprite;
             
-            GBGames.ReportBoosterChangeStateEvent("UI_auto_fight", false);
         }
 
         private void Activate()
@@ -53,7 +52,6 @@ namespace _3._Scripts.Boosters
             panel.Enabled = true;
             panel.AddListenersToButtons(ActivateBooster);
 
-            GBGames.ReportBoosterChangeStateEvent("UI_auto_fight", true);
         }
 
         private void ActivateBooster()

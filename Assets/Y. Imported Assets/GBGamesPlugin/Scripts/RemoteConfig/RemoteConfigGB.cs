@@ -1,15 +1,20 @@
-﻿
+﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
+using InstantGamesBridge;
+using InstantGamesBridge.Modules.RemoteConfig;
+using UnityEngine;
 
 namespace GBGamesPlugin
 {
     public partial class GBGames
     {
+        public static bool remoteConfigIsSupported => Bridge.remoteConfig.isSupported;
+        private static List<RemoteConfigValue> _data = new();
 
         public static T GetRemoteValue<T>(string id, T defaultValue = default)
         {
-            /*var configValue = _data.FirstOrDefault(d => d.name == id);
+            var configValue = _data.FirstOrDefault(d => d.name == id);
 
             if (configValue == null || !remoteConfigIsSupported)
             {
@@ -43,14 +48,29 @@ namespace GBGamesPlugin
             catch
             {
                 return defaultValue;
-            }*/
-            return defaultValue;
+            }
         }
 
         private static void LoadRemoteConfig(Dictionary<string, object> options = default)
         {
-            
+            if (!remoteConfigIsSupported) return;
+
+            options ??= new Dictionary<string, object>();
+            Bridge.remoteConfig.Get(options, OnRemoteConfigGetCompleted);
         }
-        
+
+        private static void OnRemoteConfigGetCompleted(bool success, List<RemoteConfigValue> data)
+        {
+            if (success)
+            {
+                _data = data;
+                Message("Load Remote Config Success");
+            }
+            else
+            {
+                _data = new List<RemoteConfigValue>();
+                Message("Load Remote Config Failed", LoggerState.error);
+            }
+        }
     }
 }

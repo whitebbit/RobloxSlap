@@ -29,12 +29,9 @@ namespace _3._Scripts.Ads
 
         private void Start()
         {
-            secondsPanelObject.alpha = 0;
+            //secondsPanelObject.alpha = 0;
 
-            StartCoroutine(CheckTimerAd());
-            
-            GBGames.InterstitialOnClosed.AddListener(AfterAd);
-            GBGames.InterstitialOnFailedToShow += AfterFailed;
+            //StartCoroutine(CheckTimerAd());
         }
 
         private IEnumerator CheckTimerAd()

@@ -1,25 +1,16 @@
-﻿using System.Collections;
+﻿#if UNITY_WEBGL
+using System.Collections;
 using System.Collections.Generic;
-using CAS;
-using CAS.AdObject;
-using GBGamesPlugin.Enums;
+using InstantGamesBridge;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using VInspector;
 
 namespace GBGamesPlugin
 {
     public partial class GBGames : MonoBehaviour
     {
         public static GBGames instance { get; private set; }
-        [Tab("Main")] [SerializeField] private GBGamesSettings settings;
-
-        [Tab("Advertisement")] [SerializeField]
-        private InterstitialAdObject interstitial;
-
-        [SerializeField] private RewardedAdObject rewarded;
-        [SerializeField] private BannerAdObject banner;
-
+        public GBGamesSettings settings;
         private static bool _inGame;
 
         private void Awake()
@@ -31,11 +22,12 @@ namespace GBGamesPlugin
         {
             _inGame = true;
             Singleton();
-            Advertisement();
-            Analytics();
-            yield return new WaitForSeconds(1);
+            yield return new WaitUntil(() => Bridge.instance != null && Bridge.Initialized);
             Storage();
-            yield return new WaitForSeconds(2);
+            RemoteConfig();
+            Advertisement();
+            Platform();
+            Player();
             Game();
         }
 
@@ -60,41 +52,38 @@ namespace GBGamesPlugin
 
         private void Advertisement()
         {
-            OnAdShown(AdType.Interstitial);
+            Bridge.advertisement.bannerStateChanged += OnBannerStateChanged;
+            Bridge.advertisement.interstitialStateChanged += OnInterstitialStateChanged;
+            Bridge.advertisement.rewardedStateChanged += OnRewardedStateChanged;
 
-            instance.interstitial.OnAdClosed.AddListener(() =>
-            {
-                OnAdShown(AdType.Interstitial);
-                ReportAdsEvent(AdEventType.VideoAdsSuccess, AdEventResult.Watched);
-            });
-            instance.rewarded.OnAdClosed.AddListener(() =>
-            {
-                OnAdShown(AdType.Rewarded);
-                ReportAdsEvent(AdEventType.VideoAdsSuccess, AdEventResult.Watched);
-            });
+            minimumDelayBetweenInterstitial = instance.settings.minimumDelayBetweenInterstitial;
 
-            instance.interstitial.OnAdShown.AddListener(() =>
-                ReportAdsEvent(AdEventType.VideoAdsStarted, AdEventResult.Start));
-            instance.rewarded.OnAdShown.AddListener(() =>
-                ReportAdsEvent(AdEventType.VideoAdsStarted, AdEventResult.Start));
-            
-            instance.interstitial.OnAdFailedToShow.AddListener(_ =>
-            {
-                OnAdShown(AdType.Interstitial);
-                ReportAdsEvent(AdEventType.VideoAdsStarted, AdEventResult.Failed);
-            });
-            instance.rewarded.OnAdFailedToShow.AddListener(_ =>
-                ReportAdsEvent(AdEventType.VideoAdsStarted, AdEventResult.Failed));
-            
-            
             if (saves.firstSession)
             {
+                HideBanner();
                 StartCoroutine(FirstSessionActivate());
             }
             else
             {
                 ShowBanner();
             }
+        }
+
+        private void Platform()
+        {
+            if (instance.settings.autoGameReadyAPI)
+                GameReady();
+
+            if (instance.settings.gameLoadingCallbacksOnSceneLoading)
+            {
+                SceneManager.sceneLoaded += (_, _) => { InGameLoadingStopped(); };
+            }
+        }
+
+        private void Player()
+        {
+            if (instance.settings.authPlayerAutomatically)
+                AuthorizePlayer();
         }
 
         private void Storage()
@@ -106,13 +95,42 @@ namespace GBGamesPlugin
 
         private void Game()
         {
+            Bridge.game.visibilityStateChanged += OnGameVisibilityStateChanged;
             if (instance.settings.saveOnChangeVisibilityState)
                 GameHiddenStateCallback += Save;
         }
 
-        private void Analytics()
+        private void RemoteConfig()
         {
-            InitializeFirebase();
+            var options = new Dictionary<string, object>();
+            var clientFeatures = new object[]
+            {
+                new Dictionary<string, object>
+                {
+                    {"name", "useExtraButton"},
+                    {"value", "false"}
+                },
+                new Dictionary<string, object>
+                {
+                    {"name", "useExtraButton_1"},
+                    {"value", "false"}
+                },
+                new Dictionary<string, object>
+                {
+                    {"name", "interByTime"},
+                    {"value", "false"}
+                },
+                new Dictionary<string, object>
+                {
+                    {"name", "interByTime_1"},
+                    {"value", "false"}
+                },
+            };
+
+            options.Add("clientFeatures", clientFeatures);
+
+            LoadRemoteConfig(options);
         }
     }
 }
+#endif

@@ -39,7 +39,6 @@ namespace _3._Scripts.Boosters
             _state = false;
             onDeactivateBooster?.Invoke();
             _button.image.sprite = disableSprite;
-            GBGames.ReportBoosterChangeStateEvent("UI_auto_tap", false);
 
         }
         public void Activate()
@@ -48,7 +47,6 @@ namespace _3._Scripts.Boosters
             onActivateBooster?.Invoke();
             _button.image.sprite = enableSprite;
             
-            GBGames.ReportBoosterChangeStateEvent("UI_auto_tap", true);
         }
     }
 }

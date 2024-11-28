@@ -69,7 +69,6 @@ namespace _3._Scripts.UI.Elements
             timer.TimerStopped = true;
             item.OnReward();
 
-            GBGames.ReportGiftProgressEvent(Number, item);
         }
     }
 }

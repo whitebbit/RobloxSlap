@@ -99,6 +99,10 @@ namespace _3._Scripts.Actions
 
         public bool CanAction()
         {
+            Debug.Log(gameObject.name);
+            Debug.Log($"_currentHealth > 0 - {_currentHealth > 0}");
+            Debug.Log($"_training.TrainingStarted - {_training.TrainingStarted}");
+            Debug.Log($"!Blocked - {!Blocked}");
             return _currentHealth > 0 && _training.TrainingStarted && !Blocked;
         }
     }
