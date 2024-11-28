@@ -65,7 +65,7 @@ namespace _3._Scripts.UI.Panels
                 PetUnlocker.SelectBest();
             });
 
-            panel.SetRarity(Rarity.Legendary);
+            panel.SetRarity(data.Rarity);
             panel.SetBoosterText($"+{WalletManager.ConvertToWallet((decimal) currentBooster)} <sprite index=1>");
         }
 

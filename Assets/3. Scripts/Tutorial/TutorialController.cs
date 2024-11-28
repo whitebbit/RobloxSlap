@@ -17,7 +17,7 @@ namespace _3._Scripts.Tutorial
         {
             WalletManager.OnFirstCurrencyChange += (_, f1) =>
             {
-                if (f1 >= 120)
+                if (f1 >= 300)
                 {
                     TutorialSystem.StepComplete("01_training");
                     TutorialSystem.StepStart("02_fight");

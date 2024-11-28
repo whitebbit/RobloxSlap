@@ -19,4 +19,4 @@ MonoBehaviour:
   price: 250000
   currencyType: 1
   booster: 85
-  skin: {fileID: 2100000, guid: 66e93e0b327f7134e9480c73eda4d30d, type: 2}
+  skin: {fileID: 2100000, guid: 471ffc616a12f6b428136402d704b485, type: 2}
